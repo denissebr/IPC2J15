@@ -2,6 +2,18 @@
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
 
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="Content/base.css" />
+<link rel="stylesheet" href="Content/style.css" />
+    
+<script src="Scripts/jquery-1.9.1.min.js"></script>
+<script src="Scripts/modernizr.js"></script>
+<script src="Scripts/tabs.js"></script>
+
+
+
+
 <head>
 
 
@@ -32,13 +44,30 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, aperiam, optio, magnam sed aliquam harum sunt ad est velit ipsam ratione quo perferendis! Suscipit necessitatibus reiciendis nobis nam non est. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, quis, iste expedita quo soluta maxime voluptas delectus quod quaerat repudiandae perspiciatis voluptatum tempore natus eum veritatis atque voluptates ea illo?
             </li>
             <li>
-                <h2>This is the second tab</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, pariatur, laborum, sit molestiae eos itaque iste repudiandae eum aperiam ad sapiente dicta reprehenderit. Omnis culpa harum blanditiis voluptates explicabo quis?
-            </li>
+                <h2>Cotizacion</h2>
+                Precio&nbsp;
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                US $<br />
+                <br />
+                Peso
+                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                Libras<br />
+                <br />
+                Tipo&nbsp;
+                <asp:ListBox ID="ListBox1" runat="server" Height="25px" Width="225px"></asp:ListBox>
+                </li>
             <li>
-                <h2>Tab number three wee hee</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, quod mollitia iusto non sapiente ipsa dicta quis perspiciatis voluptates ducimus. Aliquid, voluptatem non necessitatibus dolor nostrum a earum rerum ex. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, unde, iusto, consectetur, cumque cum illum eligendi necessitatibus molestiae aut odit nostrum laborum accusantium enim! Minima, delectus porro non consequuntur quos.
-            </li>
+                <h2>Bienvenido</h2>
+                <asp:Label ID="Label1" runat="server" Text="Usuario"></asp:Label>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                Contraseña <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Iniciar Sesion" />
+           </li>
             <li>
                 <h2>Fourth tab not bad</h2>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, repellendus explicabo recusandae dicta tempore nam perspiciatis atque vero praesentium hic. Laudantium tempore quas consequatur exercitationem eveniet voluptatem reiciendis quidem tenetur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, repudiandae, natus odio minus voluptates culpa sapiente vitae nulla ad? Distinctio, laboriosam assumenda facilis aspernatur consequuntur praesentium inventore id earum hic!
