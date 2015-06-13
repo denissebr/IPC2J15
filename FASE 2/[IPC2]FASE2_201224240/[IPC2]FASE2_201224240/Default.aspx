@@ -1,23 +1,64 @@
 ﻿<%@ Page Title="QUTEZAL EXPRESS" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_FASE2_201224240._Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
-  <ul class="nav nav-pills">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li class="disabled"><a href="#">Disabled</a></li>
-  <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      Dropdown <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-    </ul>
-  </li>
-</ul> 
+
+<head>
 
 
+</head>
+    <body>
+
+        <div id="wrapper">
+
+            <header>
+                <div id="title" class="container">
+                    <h1>QUETZAL EXPRESS</h1>
+        <h2>La mejor forma de transportar sus pedidos internacionales</h2>
+    </div>
+</header><!-- /header -->
+
+
+<div id="main">
+    <div class="container">
+        <ul id="tabs">
+            <li class="active">Inicio</li>
+            <li>Cotizar</li>
+            <li>Iniciar Sesion</li>
+            <li>Registrar</li>
+        </ul>
+        <ul id="tab">
+            <li class="active">
+                <h2>QUETZAL EXPRESS</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, aperiam, optio, magnam sed aliquam harum sunt ad est velit ipsam ratione quo perferendis! Suscipit necessitatibus reiciendis nobis nam non est. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, quis, iste expedita quo soluta maxime voluptas delectus quod quaerat repudiandae perspiciatis voluptatum tempore natus eum veritatis atque voluptates ea illo?
+            </li>
+            <li>
+                <h2>This is the second tab</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, pariatur, laborum, sit molestiae eos itaque iste repudiandae eum aperiam ad sapiente dicta reprehenderit. Omnis culpa harum blanditiis voluptates explicabo quis?
+            </li>
+            <li>
+                <h2>Tab number three wee hee</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, quod mollitia iusto non sapiente ipsa dicta quis perspiciatis voluptates ducimus. Aliquid, voluptatem non necessitatibus dolor nostrum a earum rerum ex. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, unde, iusto, consectetur, cumque cum illum eligendi necessitatibus molestiae aut odit nostrum laborum accusantium enim! Minima, delectus porro non consequuntur quos.
+            </li>
+            <li>
+                <h2>Fourth tab not bad</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, repellendus explicabo recusandae dicta tempore nam perspiciatis atque vero praesentium hic. Laudantium tempore quas consequatur exercitationem eveniet voluptatem reiciendis quidem tenetur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, repudiandae, natus odio minus voluptates culpa sapiente vitae nulla ad? Distinctio, laboriosam assumenda facilis aspernatur consequuntur praesentium inventore id earum hic!
+            </li>
+            <li>
+                <h2>Tab number five here we go!</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, a, reprehenderit, quod at quae numquam quaerat delectus eius ex eligendi dolorum sapiente id saepe. Possimus provident porro neque ut pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, velit, unde, pariatur, illo quis tenetur eaque harum similique quos deserunt laborum dolor molestias sint cumque facere consectetur neque! Deleniti, aliquid.
+            </li>
+        </ul>
+    </div>
+</div><!-- #main -->
+
+
+<footer>
+</footer><!-- /footer -->
+
+
+
+</div><!-- /#wrapper -->
+
+
+</body>
 </asp:Content>
