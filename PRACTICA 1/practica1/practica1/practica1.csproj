@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="agregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="agregar.Designer.cs">
+      <DependentUpon>agregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="inicio.cs">
       <SubType>Form</SubType>
     </Compile>

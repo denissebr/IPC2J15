@@ -9,18 +9,11 @@ using System.Windows.Forms;
 
 namespace practica1
 {
-    public partial class inicio : Form
+    public partial class agregar : Form
     {
-        public inicio()
+        public agregar()
         {
             InitializeComponent();
-        }
-
-        private void add_Click(object sender, EventArgs e)
-        {
-            agregar frm = new agregar();
-            frm.Show();
-            this.Hide();
         }
     }
 }

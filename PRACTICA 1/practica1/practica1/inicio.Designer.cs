@@ -132,6 +132,7 @@
             this.add.TabIndex = 4;
             this.add.Text = "Agregar Libro";
             this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
             // 
             // addUser
             // 
