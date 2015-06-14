@@ -49,7 +49,7 @@
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 US $<br />
                 <br />
-                Peso
+                Peso&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                 Libras<br />
                 <br />
