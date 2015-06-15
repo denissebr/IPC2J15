@@ -36,12 +36,21 @@ namespace webServiceTareaPractica1
             miConexionBase.Open();
         }
 
-        public void AgregarLibro(String nombre, String apellido)
+        public void AgregarLibro(String nombre, int existencia,int pagina,String tema,String autor)
         {
             inicia();
-            SqlCommand miComandoSQL = new SqlCommand("insert into cuenta values ('" + nombre + "','" + apellido + "')", miConexionBase);
+            SqlCommand miComandoSQL = new SqlCommand("insert into libro values ('" + nombre + "','" + existencia + "','"+ pagina+"','" +tema+"','" +autor +"')", miConexionBase);
             miComandoSQL.ExecuteNonQuery();
             miConexionBase.Close();
         }
+
+        public void AgregarCliente(String nombre, int existencia, int pagina, String tema, String autor)
+        {
+            inicia();
+            SqlCommand miComandoSQL = new SqlCommand("insert into libro values ('" + nombre + "','" + existencia + "','" + pagina + "','" + tema + "','" + autor + "')", miConexionBase);
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
+        }
+
     }
 }
