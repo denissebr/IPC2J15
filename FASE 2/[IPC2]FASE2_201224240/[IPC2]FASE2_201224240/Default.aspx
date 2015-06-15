@@ -60,13 +60,13 @@
                 <h2>Bienvenido</h2>
                 <asp:Label ID="Label1" runat="server" Text="Usuario"></asp:Label>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                <asp:TextBox ID="us" runat="server"></asp:TextBox>
                 <br />
                 <br />
-                Contraseña <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                Contraseña <asp:TextBox ID="pass" runat="server" TextMode="Password"></asp:TextBox>
                 <br />
                 <br />
-                <asp:Button ID="Button1" runat="server" Text="Iniciar Sesion" />
+                <asp:Button ID="Button1" runat="server" Text="Iniciar Sesion" OnClick="Button1_Click" />
            </li>
             <li>
                 <h2>Fourth tab not bad</h2>

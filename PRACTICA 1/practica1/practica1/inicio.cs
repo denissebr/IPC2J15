@@ -22,5 +22,12 @@ namespace practica1
             frm.Show();
             this.Hide();
         }
+
+        private void addUser_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            cliente c = new cliente();
+            c.Show();
+        }
     }
 }

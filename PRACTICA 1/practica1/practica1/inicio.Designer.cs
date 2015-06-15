@@ -142,6 +142,7 @@
             this.addUser.TabIndex = 5;
             this.addUser.Text = "Usuario Nuevo";
             this.addUser.UseVisualStyleBackColor = true;
+            this.addUser.Click += new System.EventHandler(this.addUser_Click);
             // 
             // show
             // 
