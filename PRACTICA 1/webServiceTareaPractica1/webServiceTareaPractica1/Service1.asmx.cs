@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -21,6 +22,26 @@ namespace webServiceTareaPractica1
         public string HelloWorld()
         {
             return "Hola a todos";
+        }
+
+        String cadenaConexion = "Data Source=(local);Initial Catalog=ipc2;Integrated Security=True";
+        SqlCommand miComandoSQL;
+        SqlConnection miConexionBase;
+        SqlDataAdapter adaptadorDatos;
+
+        public void inicia()
+        {
+            miConexionBase = new SqlConnection();
+            miConexionBase.ConnectionString = cadenaConexion;
+            miConexionBase.Open();
+        }
+
+        public void AgregarLibro(String nombre, String apellido)
+        {
+            inicia();
+            SqlCommand miComandoSQL = new SqlCommand("insert into cuenta values ('" + nombre + "','" + apellido + "')", miConexionBase);
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
         }
     }
 }
