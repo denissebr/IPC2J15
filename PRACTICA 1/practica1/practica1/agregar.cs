@@ -15,5 +15,12 @@ namespace practica1
         {
             InitializeComponent();
         }
+
+        private void inicio_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            inicio inicio = new inicio();
+            inicio.Show();
+        }
     }
 }
