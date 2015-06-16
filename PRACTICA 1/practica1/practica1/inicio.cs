@@ -29,5 +29,11 @@ namespace practica1
             cliente c = new cliente();
             c.Show();
         }
+
+        private void estado_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+        }
     }
 }

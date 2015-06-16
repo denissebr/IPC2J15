@@ -20,7 +20,7 @@ namespace practica1
         {
             this.Hide();
             inicio inicio = new inicio();
-            inicio.Activate();
+            inicio.Show();
         }
 
        

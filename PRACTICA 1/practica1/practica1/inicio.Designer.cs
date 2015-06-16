@@ -161,6 +161,7 @@
             this.estado.TabIndex = 7;
             this.estado.Text = "Cambio de Estado";
             this.estado.UseVisualStyleBackColor = true;
+            this.estado.Click += new System.EventHandler(this.estado_Click);
             // 
             // inicio
             // 

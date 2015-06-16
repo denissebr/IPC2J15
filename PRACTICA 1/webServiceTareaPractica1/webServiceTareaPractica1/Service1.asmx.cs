@@ -29,6 +29,7 @@ namespace webServiceTareaPractica1
         SqlConnection miConexionBase;
         SqlDataAdapter adaptadorDatos;
 
+        [WebMethod]
         public void inicia()
         {
             miConexionBase = new SqlConnection();
@@ -36,6 +37,7 @@ namespace webServiceTareaPractica1
             miConexionBase.Open();
         }
 
+        [WebMethod]
         public void AgregarLibro(String nombre, int existencia,int pagina,String tema,String autor)
         {
             inicia();
@@ -44,6 +46,7 @@ namespace webServiceTareaPractica1
             miConexionBase.Close();
         }
 
+        [WebMethod]
         public void AgregarCliente(String nombre, int existencia, int pagina, String tema, String autor)
         {
             inicia();
