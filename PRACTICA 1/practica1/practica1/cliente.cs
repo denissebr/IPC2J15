@@ -23,6 +23,27 @@ namespace practica1
             inicio.Show();
         }
 
+        private void addC_Click(object sender, EventArgs e)
+        {
+
+            ServiceReference1.Service1SoapClient ws = new ServiceReference1.Service1SoapClient();
+            if (!id.Text.Equals("") && !nombre.Text.Equals("") && !dpi1.Text.Equals("") && !dir.Text.Equals("") && !tel.Text.Equals(""))
+            {
+
+                ws.AgregarCliente(Convert.ToInt32(id.Text), nombre.Text, Convert.ToInt64(dpi1.Text), dir.Text, Convert.ToInt64(tel.Text));
+                MessageBox.Show("Se ha agregado a : " + nombre.Text + " exitosamente");
+                id.Text = "";
+                nombre.Text = "";
+                dpi1.Text = "";
+                dir.Text = "";
+                tel.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Es necesario llenar todos los campos");
+            }
+        }
+
        
     }
 }

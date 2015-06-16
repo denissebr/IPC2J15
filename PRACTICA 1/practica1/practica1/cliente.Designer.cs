@@ -130,6 +130,7 @@
             this.addC.TabIndex = 10;
             this.addC.Text = "Agregar";
             this.addC.UseVisualStyleBackColor = true;
+            this.addC.Click += new System.EventHandler(this.addC_Click);
             // 
             // inicio
             // 

@@ -31,18 +31,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nombreLibro = new System.Windows.Forms.TextBox();
             this.buscarLibro = new System.Windows.Forms.Button();
-            this.tabla = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Existencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibles = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prestados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reservados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.add = new System.Windows.Forms.Button();
             this.addUser = new System.Windows.Forms.Button();
             this.show = new System.Windows.Forms.Button();
             this.estado = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Existencia = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Paginas = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Autor = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Tema = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Disponibles = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Reservados = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Prestdos = new System.Windows.Forms.DataGridViewLinkColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,60 +71,7 @@
             this.buscarLibro.TabIndex = 2;
             this.buscarLibro.Text = "Buscar";
             this.buscarLibro.UseVisualStyleBackColor = true;
-            // 
-            // tabla
-            // 
-            this.tabla.AllowUserToAddRows = false;
-            this.tabla.AllowUserToDeleteRows = false;
-            this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
-            this.Autor,
-            this.Existencia,
-            this.Disponibles,
-            this.Prestados,
-            this.Reservados});
-            this.tabla.Location = new System.Drawing.Point(13, 72);
-            this.tabla.Name = "tabla";
-            this.tabla.ReadOnly = true;
-            this.tabla.Size = new System.Drawing.Size(644, 150);
-            this.tabla.TabIndex = 3;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre Libro";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Autor
-            // 
-            this.Autor.HeaderText = "Autor";
-            this.Autor.Name = "Autor";
-            this.Autor.ReadOnly = true;
-            // 
-            // Existencia
-            // 
-            this.Existencia.HeaderText = "Existencia Dentro de La Biblioteca";
-            this.Existencia.Name = "Existencia";
-            this.Existencia.ReadOnly = true;
-            // 
-            // Disponibles
-            // 
-            this.Disponibles.HeaderText = "Disponibles";
-            this.Disponibles.Name = "Disponibles";
-            this.Disponibles.ReadOnly = true;
-            // 
-            // Prestados
-            // 
-            this.Prestados.HeaderText = "Prestados";
-            this.Prestados.Name = "Prestados";
-            this.Prestados.ReadOnly = true;
-            // 
-            // Reservados
-            // 
-            this.Reservados.HeaderText = "Reservados";
-            this.Reservados.Name = "Reservados";
-            this.Reservados.ReadOnly = true;
+            this.buscarLibro.Click += new System.EventHandler(this.buscarLibro_Click);
             // 
             // add
             // 
@@ -163,22 +112,90 @@
             this.estado.UseVisualStyleBackColor = true;
             this.estado.Click += new System.EventHandler(this.estado_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Existencia,
+            this.Paginas,
+            this.Autor,
+            this.Tema,
+            this.Disponibles,
+            this.Reservados,
+            this.Prestdos});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 61);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(645, 150);
+            this.dataGridView1.TabIndex = 8;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Existencia
+            // 
+            this.Existencia.HeaderText = "Existencia";
+            this.Existencia.Name = "Existencia";
+            this.Existencia.ReadOnly = true;
+            // 
+            // Paginas
+            // 
+            this.Paginas.HeaderText = "Paginas";
+            this.Paginas.Name = "Paginas";
+            this.Paginas.ReadOnly = true;
+            // 
+            // Autor
+            // 
+            this.Autor.HeaderText = "Autor";
+            this.Autor.Name = "Autor";
+            this.Autor.ReadOnly = true;
+            // 
+            // Tema
+            // 
+            this.Tema.HeaderText = "Tema";
+            this.Tema.Name = "Tema";
+            this.Tema.ReadOnly = true;
+            // 
+            // Disponibles
+            // 
+            this.Disponibles.HeaderText = "Disponibles";
+            this.Disponibles.Name = "Disponibles";
+            this.Disponibles.ReadOnly = true;
+            // 
+            // Reservados
+            // 
+            this.Reservados.HeaderText = "Reservados";
+            this.Reservados.Name = "Reservados";
+            this.Reservados.ReadOnly = true;
+            // 
+            // Prestdos
+            // 
+            this.Prestdos.HeaderText = "Parestados";
+            this.Prestdos.Name = "Prestdos";
+            this.Prestdos.ReadOnly = true;
+            // 
             // inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 313);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.show);
             this.Controls.Add(this.addUser);
             this.Controls.Add(this.add);
-            this.Controls.Add(this.tabla);
             this.Controls.Add(this.buscarLibro);
             this.Controls.Add(this.nombreLibro);
             this.Controls.Add(this.label1);
             this.Name = "inicio";
             this.Text = "BIBLIOTECA";
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,17 +206,19 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nombreLibro;
         private System.Windows.Forms.Button buscarLibro;
-        private System.Windows.Forms.DataGridView tabla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Existencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Disponibles;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prestados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reservados;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button addUser;
         private System.Windows.Forms.Button show;
         private System.Windows.Forms.Button estado;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewLinkColumn Nombre;
+        private System.Windows.Forms.DataGridViewLinkColumn Existencia;
+        private System.Windows.Forms.DataGridViewLinkColumn Paginas;
+        private System.Windows.Forms.DataGridViewLinkColumn Autor;
+        private System.Windows.Forms.DataGridViewLinkColumn Tema;
+        private System.Windows.Forms.DataGridViewLinkColumn Disponibles;
+        private System.Windows.Forms.DataGridViewLinkColumn Reservados;
+        private System.Windows.Forms.DataGridViewLinkColumn Prestdos;
     }
 }
 

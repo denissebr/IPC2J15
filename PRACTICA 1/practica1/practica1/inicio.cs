@@ -35,5 +35,11 @@ namespace practica1
             this.Hide();
 
         }
+
+        private void buscarLibro_Click(object sender, EventArgs e)
+        {
+            ServiceReference2.Service1SoapClient ws = new ServiceReference2.Service1SoapClient();
+            ws.buscarLibro(nombreLibro.Text);
+        }
     }
 }

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "practica1", "practica1\practica1.csproj", "{5D5A0955-21AB-4FA3-A6F9-8DD963B16518}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3C7B1A20-A539-4509-B818-6FD4A20C48DC} = {3C7B1A20-A539-4509-B818-6FD4A20C48DC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webSservicePractica1", "webSservicePractica1\webSservicePractica1.csproj", "{3C7B1A20-A539-4509-B818-6FD4A20C48DC}"
 EndProject
