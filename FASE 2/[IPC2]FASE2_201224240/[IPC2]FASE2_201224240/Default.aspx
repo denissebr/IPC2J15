@@ -41,8 +41,8 @@
         <ul id="tab">
             <li class="active">
                 <h2>QUETZAL EXPRESS</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, aperiam, optio, magnam sed aliquam harum sunt ad est velit ipsam ratione quo perferendis! Suscipit necessitatibus reiciendis nobis nam non est. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, quis, iste expedita quo soluta maxime voluptas delectus quod quaerat repudiandae perspiciatis voluptatum tempore natus eum veritatis atque voluptates ea illo?
-            </li>
+                somos una empresa confiable cuya finalidad es brindar el mejor servicio de paqueteria internacional. Por el momento solo contamos con sedes en USA y Guatemala pero esperamos muy pronto expandir nuestro servicio por toda Centro America.<br />
+                Para poder mandar a traer sus paquetes debe registrarse con nosotros. Tratamos de mantener los precios mas bajos del mercado en cuanto a importacion. Esperamos que su experiencia sea nada menos que excelente.</li>
             <li>
                 <h2>Cotizacion</h2>
                 Precio&nbsp;
@@ -68,14 +68,85 @@
                 <br />
                 <asp:Button ID="Button1" runat="server" Text="Iniciar Sesion" OnClick="Button1_Click" />
            </li>
-            <li>
-                <h2>Fourth tab not bad</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, repellendus explicabo recusandae dicta tempore nam perspiciatis atque vero praesentium hic. Laudantium tempore quas consequatur exercitationem eveniet voluptatem reiciendis quidem tenetur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, repudiandae, natus odio minus voluptates culpa sapiente vitae nulla ad? Distinctio, laboriosam assumenda facilis aspernatur consequuntur praesentium inventore id earum hic!
+            <li >
+                <h2>Registro</h2>
+                <table class="nav-justified">
+                    <tr>
+                        <td class="auto-style1">NOMBRE</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="nombre" runat="server" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">APELLIDO</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="apellido" runat="server" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">NIT</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="nit" runat="server" TextMode="Number" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">TELEFONO</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="tel" runat="server" TextMode="Phone" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">DIRECCION</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="dir" runat="server" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">No. TARJETA</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="tarjeta" runat="server" TextMode="Number" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">DPI</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="dpi" runat="server" TextMode="Number" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">CORREO</td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="mail" runat="server" TextMode="Email" Width="457px"></asp:TextBox>
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">CONTRASEÑA </td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="con" runat="server" TextMode="Password" Width="457px"></asp:TextBox>
+                            <br />
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <asp:Button ID="reg" runat="server" Text="Registrar" OnClick="reg_Click" />
             </li>
-            <li>
-                <h2>Tab number five here we go!</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, a, reprehenderit, quod at quae numquam quaerat delectus eius ex eligendi dolorum sapiente id saepe. Possimus provident porro neque ut pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, velit, unde, pariatur, illo quis tenetur eaque harum similique quos deserunt laborum dolor molestias sint cumque facere consectetur neque! Deleniti, aliquid.
-            </li>
+           
         </ul>
     </div>
 </div><!-- #main -->
@@ -91,3 +162,14 @@
 
 </body>
 </asp:Content>
+<asp:Content ID="Content1" runat="server" contentplaceholderid="HeadContent">
+    <style type="text/css">
+        .auto-style1 {
+            width: 113px;
+        }
+        .auto-style2 {
+            width: 340px;
+        }
+    </style>
+</asp:Content>
+

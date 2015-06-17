@@ -18,5 +18,10 @@ namespace _IPC2_FASE2_201224240
         {
             Response.Redirect("inicioC.aspx");
         }
+
+        protected void reg_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
