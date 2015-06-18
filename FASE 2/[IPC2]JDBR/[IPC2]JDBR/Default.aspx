@@ -1,8 +1,7 @@
-﻿<%@ Page Title="Quetzal Express" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_JDBR._Default" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-   <head>
+<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
+<head>
 
 <!-- title and meta -->
 <meta charset="utf-8" />
@@ -117,5 +116,5 @@
 
 
 
-</body> 
+</body>  
 </asp:Content>
