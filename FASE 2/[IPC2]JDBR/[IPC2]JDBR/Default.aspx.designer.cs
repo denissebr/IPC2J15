@@ -121,13 +121,13 @@ namespace _IPC2_JDBR {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// Control precio.
+        /// Control lblprecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label precio;
+        protected global::System.Web.UI.WebControls.Label lblprecio;
         
         /// <summary>
         /// Control Label6.

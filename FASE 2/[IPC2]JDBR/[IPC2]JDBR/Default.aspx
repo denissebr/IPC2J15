@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_JDBR._Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
-<head>
+    <head>
 
 <!-- title and meta -->
 <meta charset="utf-8" />
@@ -62,7 +62,8 @@
             <li class="active">
                 <h2>PRECIO DE PRODUCTO</h2>
                 <asp:Label ID="Label2" runat="server" Text="Precio"></asp:Label>
-                &nbsp;<asp:TextBox ID="costo" runat="server" OnTextChanged="costo_TextChanged" TextMode="Number" ValidateRequestMode="Enabled"></asp:TextBox>
+                &nbsp;
+                <asp:TextBox ID="costo" runat="server"></asp:TextBox>
 &nbsp;US $<br />
                 <br />
                 <asp:Label ID="Label3" runat="server" Text="Peso"></asp:Label>
@@ -72,7 +73,7 @@
                 <br />
                 <asp:Label ID="Label4" runat="server" Text="Tipo"></asp:Label>
             &nbsp;&nbsp;&nbsp;
-                <asp:ListBox ID="ListBox1" runat="server" Height="25px" Width="201px">
+                <asp:ListBox ID="ListBox1" runat="server" Height="25px" Width="201px" AutoPostBack="True">
                     <asp:ListItem Value="0">celulares</asp:ListItem>
                     <asp:ListItem Value="0.10">cables</asp:ListItem>
                     <asp:ListItem Value="0.15">consola de video juegos</asp:ListItem>
@@ -83,7 +84,7 @@
                 <br />
                 <br />
                 <asp:Label ID="Label5" runat="server" Text="El precio del producto es: " Visible="False"></asp:Label>
-&nbsp;<asp:Label ID="precio" runat="server" Visible="False"></asp:Label>
+&nbsp;<asp:Label ID="lblprecio" runat="server" Visible="False"></asp:Label>
             </li>
             <li >
                 <h2>Usuario Nuevo</h2>
