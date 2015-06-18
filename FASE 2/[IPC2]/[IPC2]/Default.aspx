@@ -63,12 +63,12 @@
             <li class="active">
                 <h2>PRECIO DE PRODUCTO</h2>
                 <asp:Label ID="Label2" runat="server" Text="Precio"></asp:Label>
-                &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                &nbsp;<asp:TextBox ID="pr" runat="server" TextMode="Number"></asp:TextBox>
 &nbsp;US $<br />
                 <br />
                 <asp:Label ID="Label3" runat="server" Text="Peso"></asp:Label>
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <asp:TextBox ID="peso" runat="server" TextMode="Number"></asp:TextBox>
                 Libras<br />
                 <br />
                 <asp:Label ID="Label4" runat="server" Text="Tipo"></asp:Label>
