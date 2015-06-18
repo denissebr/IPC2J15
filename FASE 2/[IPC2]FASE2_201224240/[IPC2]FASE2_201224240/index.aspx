@@ -1,8 +1,10 @@
 ﻿<%@ Page Title="QUTEZAL EXPRESS" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_FASE2_201224240._Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
+
+
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 
 <head>
 
@@ -32,12 +34,7 @@
 
 <div id="wrapper">
 
-<div id="top-bar">
-    <div class="container clearfix">
-        <span class="all-labs"><a href="http://callmenick.com/">&larr; all labs</a></span>
-        <span class="back-to-tutorial"><a href="http://callmenick.com/post/simple-tabbed-content-area-with-css-and-jquery">back to the tutorial</a></span>
-    </div>
-</div><!-- /#top-bar -->
+
 
 <header>
     <div id="title" class="container">
@@ -89,50 +86,8 @@
 
 </div><!-- /#wrapper -->
 
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-34160351-1']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
-
-<script type="text/javascript" src="//cdn.fusionads.net/fusion.js?zoneid=1332&serve=C6SDP2Y&placement=callmenickcom" id="_fusionads_js"></script>
-<script>
-    var interval = setInterval(function () {
-
-        // check for when fusionads shows up in DOM
-        var fusionad = document.getElementById("fusionads");
-
-        if (fusionad) {
-
-            // clear the interval so we stop looping
-            clearInterval(interval);
-
-            // add the close ad button
-            var closead = document.createElement("a");
-            closead.id = "close-fusionad";
-            closead.innerHTML = "x";
-            closead.href = "#";
-            document.body.appendChild(closead);
-
-            // close the ad
-            document.getElementById("close-fusionad").addEventListener("click", function (e) {
-                e.preventDefault();
-                this.remove();
-                fusionad.remove();
-            });
-
-        }
-
-    }, 100); // check every 100ms
-</script>
 
 </body>
 </html>
-
-
 </asp:Content>
+

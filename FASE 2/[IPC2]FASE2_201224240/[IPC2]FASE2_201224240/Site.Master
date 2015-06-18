@@ -45,7 +45,7 @@
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Date %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Date %> - [FASE 2] 201224240</p>
             </div>
         </div>
     </footer>
