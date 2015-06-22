@@ -27,14 +27,13 @@ namespace _IPC2_JDBR
             
         }
 
-        protected void LoginButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("");
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
 
         }

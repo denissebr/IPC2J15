@@ -16,7 +16,7 @@ namespace WebService
    
     public class Service1 : System.Web.Services.WebService
     {
-        String cadenaConexion = "Data Source=DENISSEBR;Initial Catalog=TareaPractica1;Integrated Security=True";
+        String cadenaConexion = "Data Source=DENISSEBR;Initial Catalog=IPC2J15;Integrated Security=True";
         SqlCommand miComandoSQL;
         SqlConnection miConexionBase = null;
         SqlDataAdapter adaptadorDatos;
@@ -62,6 +62,34 @@ namespace WebService
             float total = parcial + precioq + libras;
             
             return Convert.ToString(total);
+            
+        }
+
+        [WebMethod]
+        public void cargarEmpleado(String direccion)
+        {
+             
+            
+             SqlCommand miComandoSQL = new SqlCommand("BULK INSERT Empleado FROM '" + direccion + "' WITH ( FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK )");
+             miConexionBase = new SqlConnection(cadenaConexion);
+             miComandoSQL.Connection = miConexionBase;
+             miConexionBase.Open();
+             miComandoSQL.ExecuteNonQuery();
+             miConexionBase.Close();        
+                  
+                   
+          
+        }
+        [WebMethod]
+        public void cargarCategoria(String direccion)
+        {
+             SqlCommand miComandoSQL = new SqlCommand("BULK INSERT Categoria FROM '" + direccion + "' WITH ( FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK )");
+             miConexionBase = new SqlConnection(cadenaConexion);
+             miComandoSQL.Connection = miConexionBase;
+             miConexionBase.Open();
+             miComandoSQL.ExecuteNonQuery();
+             miConexionBase.Close(); 
+               
             
         }
 
