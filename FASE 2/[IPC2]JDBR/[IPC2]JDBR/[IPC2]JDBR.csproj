@@ -200,6 +200,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="director.aspx" />
+    <Content Include="empleado.aspx" />
     <Content Include="imagenes\modulos.jpg" />
     <Content Include="imagenes\pstlogin.jpg" />
     <Content Include="Images\accent.png" />
@@ -220,6 +221,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="modificar.aspx" />
     <Content Include="packages.config" />
     <Content Include="datos.csv" />
     <Content Include="datoC.csv" />
@@ -299,6 +301,15 @@
     <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginEResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.usuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -373,8 +384,22 @@
     <Compile Include="director.aspx.designer.cs">
       <DependentUpon>director.aspx</DependentUpon>
     </Compile>
+    <Compile Include="empleado.aspx.cs">
+      <DependentUpon>empleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="empleado.aspx.designer.cs">
+      <DependentUpon>empleado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="modificar.aspx.cs">
+      <DependentUpon>modificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modificar.aspx.designer.cs">
+      <DependentUpon>modificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\WebServiceRef\Reference.cs">

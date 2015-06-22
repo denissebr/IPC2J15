@@ -85,6 +85,27 @@ namespace _IPC2_JDBR.WebServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/loginE", ReplyAction="*")]
         System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginEResponse> loginEAsync(_IPC2_JDBR.WebServiceRef.loginERequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://quetzalexpress.com no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/loginD", ReplyAction="*")]
+        _IPC2_JDBR.WebServiceRef.loginDResponse loginD(_IPC2_JDBR.WebServiceRef.loginDRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/loginD", ReplyAction="*")]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginDResponse> loginDAsync(_IPC2_JDBR.WebServiceRef.loginDRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://quetzalexpress.com no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/loginA", ReplyAction="*")]
+        _IPC2_JDBR.WebServiceRef.loginAResponse loginA(_IPC2_JDBR.WebServiceRef.loginARequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/loginA", ReplyAction="*")]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginAResponse> loginAAsync(_IPC2_JDBR.WebServiceRef.loginARequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento usuarioResult del espacio de nombres http://quetzalexpress.com no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/usuario", ReplyAction="*")]
+        _IPC2_JDBR.WebServiceRef.usuarioResponse usuario(_IPC2_JDBR.WebServiceRef.usuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/usuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.usuarioResponse> usuarioAsync(_IPC2_JDBR.WebServiceRef.usuarioRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -666,13 +687,218 @@ namespace _IPC2_JDBR.WebServiceRef {
     public partial class loginEResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool loginEResult;
+        public int loginEResult;
         
         public loginEResponseBody() {
         }
         
-        public loginEResponseBody(bool loginEResult) {
+        public loginEResponseBody(int loginEResult) {
             this.loginEResult = loginEResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class loginDRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginD", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.loginDRequestBody Body;
+        
+        public loginDRequest() {
+        }
+        
+        public loginDRequest(_IPC2_JDBR.WebServiceRef.loginDRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
+    public partial class loginDRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string user;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string pass;
+        
+        public loginDRequestBody() {
+        }
+        
+        public loginDRequestBody(string user, string pass) {
+            this.user = user;
+            this.pass = pass;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class loginDResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginDResponse", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.loginDResponseBody Body;
+        
+        public loginDResponse() {
+        }
+        
+        public loginDResponse(_IPC2_JDBR.WebServiceRef.loginDResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
+    public partial class loginDResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int loginDResult;
+        
+        public loginDResponseBody() {
+        }
+        
+        public loginDResponseBody(int loginDResult) {
+            this.loginDResult = loginDResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class loginARequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginA", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.loginARequestBody Body;
+        
+        public loginARequest() {
+        }
+        
+        public loginARequest(_IPC2_JDBR.WebServiceRef.loginARequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
+    public partial class loginARequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string user;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string pass;
+        
+        public loginARequestBody() {
+        }
+        
+        public loginARequestBody(string user, string pass) {
+            this.user = user;
+            this.pass = pass;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class loginAResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginAResponse", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.loginAResponseBody Body;
+        
+        public loginAResponse() {
+        }
+        
+        public loginAResponse(_IPC2_JDBR.WebServiceRef.loginAResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
+    public partial class loginAResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int loginAResult;
+        
+        public loginAResponseBody() {
+        }
+        
+        public loginAResponseBody(int loginAResult) {
+            this.loginAResult = loginAResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class usuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="usuario", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.usuarioRequestBody Body;
+        
+        public usuarioRequest() {
+        }
+        
+        public usuarioRequest(_IPC2_JDBR.WebServiceRef.usuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class usuarioRequestBody {
+        
+        public usuarioRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class usuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="usuarioResponse", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.usuarioResponseBody Body;
+        
+        public usuarioResponse() {
+        }
+        
+        public usuarioResponse(_IPC2_JDBR.WebServiceRef.usuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
+    public partial class usuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string usuarioResult;
+        
+        public usuarioResponseBody() {
+        }
+        
+        public usuarioResponseBody(string usuarioResult) {
+            this.usuarioResult = usuarioResult;
         }
     }
     
@@ -906,7 +1132,7 @@ namespace _IPC2_JDBR.WebServiceRef {
             return base.Channel.loginE(request);
         }
         
-        public bool loginE(string user, string pass) {
+        public int loginE(string user, string pass) {
             _IPC2_JDBR.WebServiceRef.loginERequest inValue = new _IPC2_JDBR.WebServiceRef.loginERequest();
             inValue.Body = new _IPC2_JDBR.WebServiceRef.loginERequestBody();
             inValue.Body.user = user;
@@ -926,6 +1152,83 @@ namespace _IPC2_JDBR.WebServiceRef {
             inValue.Body.user = user;
             inValue.Body.pass = pass;
             return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).loginEAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _IPC2_JDBR.WebServiceRef.loginDResponse _IPC2_JDBR.WebServiceRef.Service1Soap.loginD(_IPC2_JDBR.WebServiceRef.loginDRequest request) {
+            return base.Channel.loginD(request);
+        }
+        
+        public int loginD(string user, string pass) {
+            _IPC2_JDBR.WebServiceRef.loginDRequest inValue = new _IPC2_JDBR.WebServiceRef.loginDRequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.loginDRequestBody();
+            inValue.Body.user = user;
+            inValue.Body.pass = pass;
+            _IPC2_JDBR.WebServiceRef.loginDResponse retVal = ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).loginD(inValue);
+            return retVal.Body.loginDResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginDResponse> _IPC2_JDBR.WebServiceRef.Service1Soap.loginDAsync(_IPC2_JDBR.WebServiceRef.loginDRequest request) {
+            return base.Channel.loginDAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginDResponse> loginDAsync(string user, string pass) {
+            _IPC2_JDBR.WebServiceRef.loginDRequest inValue = new _IPC2_JDBR.WebServiceRef.loginDRequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.loginDRequestBody();
+            inValue.Body.user = user;
+            inValue.Body.pass = pass;
+            return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).loginDAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _IPC2_JDBR.WebServiceRef.loginAResponse _IPC2_JDBR.WebServiceRef.Service1Soap.loginA(_IPC2_JDBR.WebServiceRef.loginARequest request) {
+            return base.Channel.loginA(request);
+        }
+        
+        public int loginA(string user, string pass) {
+            _IPC2_JDBR.WebServiceRef.loginARequest inValue = new _IPC2_JDBR.WebServiceRef.loginARequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.loginARequestBody();
+            inValue.Body.user = user;
+            inValue.Body.pass = pass;
+            _IPC2_JDBR.WebServiceRef.loginAResponse retVal = ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).loginA(inValue);
+            return retVal.Body.loginAResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginAResponse> _IPC2_JDBR.WebServiceRef.Service1Soap.loginAAsync(_IPC2_JDBR.WebServiceRef.loginARequest request) {
+            return base.Channel.loginAAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginAResponse> loginAAsync(string user, string pass) {
+            _IPC2_JDBR.WebServiceRef.loginARequest inValue = new _IPC2_JDBR.WebServiceRef.loginARequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.loginARequestBody();
+            inValue.Body.user = user;
+            inValue.Body.pass = pass;
+            return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).loginAAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _IPC2_JDBR.WebServiceRef.usuarioResponse _IPC2_JDBR.WebServiceRef.Service1Soap.usuario(_IPC2_JDBR.WebServiceRef.usuarioRequest request) {
+            return base.Channel.usuario(request);
+        }
+        
+        public string usuario() {
+            _IPC2_JDBR.WebServiceRef.usuarioRequest inValue = new _IPC2_JDBR.WebServiceRef.usuarioRequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.usuarioRequestBody();
+            _IPC2_JDBR.WebServiceRef.usuarioResponse retVal = ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).usuario(inValue);
+            return retVal.Body.usuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.usuarioResponse> _IPC2_JDBR.WebServiceRef.Service1Soap.usuarioAsync(_IPC2_JDBR.WebServiceRef.usuarioRequest request) {
+            return base.Channel.usuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.usuarioResponse> usuarioAsync() {
+            _IPC2_JDBR.WebServiceRef.usuarioRequest inValue = new _IPC2_JDBR.WebServiceRef.usuarioRequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.usuarioRequestBody();
+            return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).usuarioAsync(inValue);
         }
     }
 }

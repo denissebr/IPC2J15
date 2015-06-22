@@ -17,7 +17,8 @@ namespace _IPC2_JDBR
         WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            nombre.Visible = true;
+            nombre.Text = wsr.usuario();
             lista = wsr.Categorias();
             foreach (string categoria in lista)
             {

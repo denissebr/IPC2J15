@@ -24,7 +24,7 @@
       &nbsp;
       &nbsp;<asp:Label ID="nombre" runat="server" Font-Size="XX-Large"></asp:Label>
       <br />
-      <asp:HyperLink ID="perfil" runat="server" Font-Size="XX-Large">Editar Perfil</asp:HyperLink>
+      <asp:HyperLink ID="perfil" runat="server" Font-Size="XX-Large" href="modificar.aspx" NavigateUrl="~/modificar.aspx">Editar Perfil</asp:HyperLink>
      
          
   </div>

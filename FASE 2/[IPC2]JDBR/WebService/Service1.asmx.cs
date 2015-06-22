@@ -126,10 +126,11 @@ namespace WebService
             miComandoSQL.ExecuteNonQuery();
             miConexionBase.Close();
         }
-
+        string nombreUs;
         [WebMethod]
-        public bool loginC(String user,String pass)
+                public bool loginC(String user,String pass)
         {
+            nombreUs = user;
             SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -147,25 +148,90 @@ namespace WebService
         }
 
         [WebMethod]
-        public bool loginE(String user, String pass)
+        public int loginE(String user, String pass)
         {
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'", cadenaConexion);
+            
+            rol = "empleado";
+
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='" + rol + "'", cadenaConexion);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+
+                return 1;
+                
+            }
+            else
+            {
+
+                return 0;
+            }
+        }
+        [WebMethod]
+        public int loginD(String user, String pass)
+        {
+            rol = "director";
+
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='" + rol + "'", cadenaConexion);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+
+                return 2;
+
+            }
+            else
+            {
+
+                return 0;
+            }
+        }
+        String rol;
+        [WebMethod]
+        public int loginA(String user, String pass)
+        {
+           
+            rol="administrador";
+           
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='"+rol+"'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
 
             if (dt.Rows[0][0].ToString() == "1")
             {
                 
-                return true;
+                return 3;
 
             }
             else
             {
-                return false;
+                
+                return 0;
             }
         }
+        String name;
+        [WebMethod]
+        public string usuario()
+        {
+            //select Nombre,Apellido from Cliente where Usuario='denissebr'
+            SqlCommand miComandoSQL = new SqlCommand("select * from Cliente where Usuario='" + nombreUs + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            string nombre = lector.GetString(1); ;
+            string apellido  = lector.GetString(2);;
+            return name = nombre + " " + apellido;
+            
+        }
+       
 
-        
        
     }
 }
