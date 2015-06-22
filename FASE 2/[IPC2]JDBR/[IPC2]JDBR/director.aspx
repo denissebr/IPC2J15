@@ -93,6 +93,19 @@
               <asp:Label ID="Label4" runat="server" Font-Bold="True" Font-Size="Medium" Text="DESPEDIR EMPLEADO"></asp:Label>
               </CENTER>
           </asp:Panel>
+          <br />
+          <br />
+          <center>
+
+             <asp:Label ID="Label8" runat="server" Text="Ingrese el codigo del empleado: "></asp:Label>
+              &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+              <br />
+              <br />
+              <asp:Button ID="baja" runat="server" Text="Dar de baja" /> 
+
+          </center>
+          <br />
+          <br />
       </asp:Panel>
   </div>
 </div>
