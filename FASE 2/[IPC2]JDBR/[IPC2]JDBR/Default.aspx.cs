@@ -39,8 +39,8 @@ namespace _IPC2_JDBR
            
             bool cliente=wsr.loginC(user.Text,passw.Text);
             int empleado = wsr.loginE(user.Text, passw.Text);
-            int admin = wsr.loginA(user.Text, passw.Text);
-            int director = wsr.loginD(user.Text, passw.Text);
+            //int admin = wsr.loginA(user.Text, passw.Text);
+            //int director = wsr.loginD(user.Text, passw.Text);
             
             if (cliente ==true)
             {
@@ -50,27 +50,21 @@ namespace _IPC2_JDBR
             }
             else
             {
-                if (admin == 3)
+
+                
+                if(empleado==1){
+                    Response.Redirect("empleado.aspx");
+                }
+                else if(empleado==2)
                 {
-                    Response.Redirect("administrador.aspx");
+                    Response.Write("director.aspx");
+                }
+                else if(empleado==3){
+                    Response.Write("administrador.aspx");
                 }
                 else
                 {
-                    if (director == 2)
-                    {
-                        Response.Redirect("director.aspx");
-                    }
-                    else
-                    {
-                        if (empleado == 1)
-                        {
-                            Response.Redirect("empleado.aspx");
-                        }
-                        else
-                        {
-                            Response.Write("ERROR FATAL");
-                        }
-                    }
+                    Response.Write("ERROR FATAL");
                 }
             }
 

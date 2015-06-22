@@ -28,13 +28,11 @@
               Seleccione el archivo:
               <asp:FileUpload ID="FileUpload1" runat="server" />
               
-               <asp:RadioButtonList ID="lista" runat="server" AutoPostBack="True">
-                  <asp:ListItem>Empleado</asp:ListItem>
-                  <asp:ListItem>Impuesto</asp:ListItem>
-              </asp:RadioButtonList>
-              
               <br />
-              <asp:Button ID="cargar" runat="server" OnClick="cargar_Click" Text="Cargar" />
+              <asp:Button ID="cargar" runat="server" OnClick="cargar_Click" Text="Cargar Empleado" />
+                   
+              &nbsp;&nbsp;
+              <asp:Button ID="cimp" runat="server" OnClick="cimp_Click" Text="Cargar Impuesto" />
                    
           </center>
 

@@ -1,2 +1,5 @@
 codigo,Nombre,Apellido, Telefono,Sueldo,Direccion,IdDepartamento,Rol,IdSucursal,Usuario,Contraseña
- ,Jorge,Lopez,14785236,2900,zona 18,1,empleado,1,jol,2jol
+ ,luis,estrada,78965412,2950,zona 17,1,empleado,1,lues,5lues
+,oscar,rolando,78965412,2900,mixco,1,empleado,1,osrol,os6rol
+,carolina,rodriguez,54826876,4000,zona 6,1,director,1,carol,enfer
+,denisse,barrera,55145771,6000,zona 6 ,1,administrador,1,denissebr1,nnajos

@@ -9,6 +9,10 @@ namespace _IPC2_JDBR
 {
     public partial class administrador : System.Web.UI.Page
     {
+
+        WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,20 +20,16 @@ namespace _IPC2_JDBR
 
         protected void cargar_Click(object sender, EventArgs e)
         {
-            WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
             String direccionCSV = Server.MapPath(FileUpload1.FileName);
-            
-            if(lista.Equals("Impuesto")){
-                wsr.cargarCategoria(direccionCSV);
-
-                      }
-            else if(lista.Equals("Empleado"))
-            {
-                wsr.cargarEmpleado(direccionCSV);
-            }
-            
+            wsr.cargarEmpleado(direccionCSV);
            
 
+        }
+
+        protected void cimp_Click(object sender, EventArgs e)
+        {
+            String direccionCSV = Server.MapPath(FileUpload1.FileName);
+            wsr.cargarCategoria(direccionCSV);
         }
 
     }

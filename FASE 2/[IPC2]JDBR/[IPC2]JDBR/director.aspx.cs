@@ -25,6 +25,7 @@ namespace _IPC2_JDBR
         protected void baja_Click(object sender, EventArgs e)
         {
             wsr.despedir(id.Text);
+            id.Text = "";
         }
     }
 }

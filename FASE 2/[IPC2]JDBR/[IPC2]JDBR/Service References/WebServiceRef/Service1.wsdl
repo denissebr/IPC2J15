@@ -117,42 +117,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="loginD">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="loginDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="loginDResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="loginA">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="loginAResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="loginAResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="usuario">
-        <s:complexType />
-      </s:element>
-      <s:element name="usuarioResponse">
-        <s:complexType />
-      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="comprobarSoapIn">
@@ -209,24 +173,6 @@
   <wsdl:message name="loginESoapOut">
     <wsdl:part name="parameters" element="tns:loginEResponse" />
   </wsdl:message>
-  <wsdl:message name="loginDSoapIn">
-    <wsdl:part name="parameters" element="tns:loginD" />
-  </wsdl:message>
-  <wsdl:message name="loginDSoapOut">
-    <wsdl:part name="parameters" element="tns:loginDResponse" />
-  </wsdl:message>
-  <wsdl:message name="loginASoapIn">
-    <wsdl:part name="parameters" element="tns:loginA" />
-  </wsdl:message>
-  <wsdl:message name="loginASoapOut">
-    <wsdl:part name="parameters" element="tns:loginAResponse" />
-  </wsdl:message>
-  <wsdl:message name="usuarioSoapIn">
-    <wsdl:part name="parameters" element="tns:usuario" />
-  </wsdl:message>
-  <wsdl:message name="usuarioSoapOut">
-    <wsdl:part name="parameters" element="tns:usuarioResponse" />
-  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="comprobar">
       <wsdl:input message="tns:comprobarSoapIn" />
@@ -263,18 +209,6 @@
     <wsdl:operation name="loginE">
       <wsdl:input message="tns:loginESoapIn" />
       <wsdl:output message="tns:loginESoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="loginD">
-      <wsdl:input message="tns:loginDSoapIn" />
-      <wsdl:output message="tns:loginDSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="loginA">
-      <wsdl:input message="tns:loginASoapIn" />
-      <wsdl:output message="tns:loginASoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="usuario">
-      <wsdl:input message="tns:usuarioSoapIn" />
-      <wsdl:output message="tns:usuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -360,33 +294,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="loginD">
-      <soap:operation soapAction="http://quetzalexpress.com/loginD" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="loginA">
-      <soap:operation soapAction="http://quetzalexpress.com/loginA" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="usuario">
-      <soap:operation soapAction="http://quetzalexpress.com/usuario" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -464,33 +371,6 @@
     </wsdl:operation>
     <wsdl:operation name="loginE">
       <soap12:operation soapAction="http://quetzalexpress.com/loginE" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="loginD">
-      <soap12:operation soapAction="http://quetzalexpress.com/loginD" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="loginA">
-      <soap12:operation soapAction="http://quetzalexpress.com/loginA" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="usuario">
-      <soap12:operation soapAction="http://quetzalexpress.com/usuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

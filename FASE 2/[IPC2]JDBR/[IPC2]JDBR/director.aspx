@@ -16,7 +16,7 @@
     <h3 class="panel-title">GESTION DE EMPLEADO</h3>
   </div>
   <div class="panel-body" >
-      <asp:Panel ID="csv" runat="server" Height="185px" BorderColor="Black" BorderStyle="Solid"  style="align-content:space-around" ScrollBars="Auto">
+      <asp:Panel ID="csv" runat="server" Height="220px" BorderColor="Black" BorderStyle="Solid"  style="align-content:space-around" ScrollBars="Auto">
           <asp:Panel ID="tirc" runat="server" Font-Bold="True" Font-Size="Medium" ScrollBars="Auto" BackColor="#FFCC99" BorderColor="Black">
               <CENTER>
                   <asp:Label ID="Label1" runat="server" Font-Bold="True" Text="REALIZAR CONTRATACION"></asp:Label>

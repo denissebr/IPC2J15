@@ -21,6 +21,7 @@ namespace WebService
         SqlCommand miComandoSQL;
         SqlConnection miConexionBase = null;
         SqlDataAdapter adaptadorDatos;
+        string rol = null;
 
         [WebMethod]
         public bool comprobar(ref string error)
@@ -65,33 +66,32 @@ namespace WebService
             return Convert.ToString(total);
             
         }
-
         [WebMethod]
         public void cargarEmpleado(String direccion)
         {
-             
-            
-             SqlCommand miComandoSQL = new SqlCommand("BULK INSERT Empleado FROM '" + direccion + "' WITH ( FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK )");
-             miConexionBase = new SqlConnection(cadenaConexion);
-             miComandoSQL.Connection = miConexionBase;
-             miConexionBase.Open();
-             miComandoSQL.ExecuteNonQuery();
-             miConexionBase.Close();        
-                  
-                   
-          
+
+
+            SqlCommand miComandoSQL = new SqlCommand("BULK INSERT Empleado FROM '" + direccion + "' WITH ( FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK )");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
+
+
+
         }
         [WebMethod]
         public void cargarCategoria(String direccion)
         {
-             SqlCommand miComandoSQL = new SqlCommand("BULK INSERT Categoria FROM '" + direccion + "' WITH ( FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK )");
-             miConexionBase = new SqlConnection(cadenaConexion);
-             miComandoSQL.Connection = miConexionBase;
-             miConexionBase.Open();
-             miComandoSQL.ExecuteNonQuery();
-             miConexionBase.Close(); 
-               
-            
+            SqlCommand miComandoSQL = new SqlCommand("BULK INSERT Categoria FROM '" + direccion + "' WITH ( FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK )");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
+
+
         }
         [WebMethod]
         public List<string> Categorias()
@@ -126,11 +126,11 @@ namespace WebService
             miComandoSQL.ExecuteNonQuery();
             miConexionBase.Close();
         }
-        string nombreUs;
+        
         [WebMethod]
                 public bool loginC(String user,String pass)
         {
-            nombreUs = user;
+            
             SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -150,85 +150,53 @@ namespace WebService
         [WebMethod]
         public int loginE(String user, String pass)
         {
-            
+            SqlDataAdapter sda;
+            DataTable dt;
             rol = "empleado";
 
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='" + rol + "'", cadenaConexion);
-            DataTable dt = new DataTable();
+             sda= new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='"+rol+"'", cadenaConexion);
+             dt= new DataTable();
             sda.Fill(dt);
 
             if (dt.Rows[0][0].ToString() == "1")
             {
 
                 return 1;
-                
-            }
-            else
-            {
-
-                return 0;
-            }
-        }
-        [WebMethod]
-        public int loginD(String user, String pass)
-        {
-            rol = "director";
-
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='" + rol + "'", cadenaConexion);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-
-            if (dt.Rows[0][0].ToString() == "1")
-            {
-
-                return 2;
 
             }
             else
             {
+                rol="director";
+                sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='" + rol + "'", cadenaConexion);
+                dt = new DataTable();
+                sda.Fill(dt);
 
-                return 0;
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+
+                    return 2;
+
+                }
+                else{
+                    rol="administrador";
+                    sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='" + rol + "'", cadenaConexion);
+                dt = new DataTable();
+                sda.Fill(dt);
+
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+
+                    return 3;
+
+                }
+                else
+                {
+                    return 0;
+                }
+                }
             }
         }
-        String rol;
-        [WebMethod]
-        public int loginA(String user, String pass)
-        {
-           
-            rol="administrador";
-           
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'and Rol='"+rol+"'", cadenaConexion);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-
-            if (dt.Rows[0][0].ToString() == "1")
-            {
-                
-                return 3;
-
-            }
-            else
-            {
-                
-                return 0;
-            }
-        }
-        String name;
-        [WebMethod]
-        public void usuario()
-        {
-            //select Nombre,Apellido from Cliente where Usuario='denissebr'
-            SqlCommand miComandoSQL = new SqlCommand("select * from Cliente where Usuario='" + nombreUs + "'");
-            miConexionBase = new SqlConnection(cadenaConexion);
-            miComandoSQL.Connection = miConexionBase;
-            miConexionBase.Open();
-            miComandoSQL.ExecuteNonQuery();
-            SqlDataReader lector = miComandoSQL.ExecuteReader();
-            string nombre = lector.GetString(1); ;
-            string apellido  = lector.GetString(2);;
-            name = nombre + " " + apellido;
-            
-        }
+        
 
        
 

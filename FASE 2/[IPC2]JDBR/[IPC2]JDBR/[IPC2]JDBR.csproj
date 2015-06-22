@@ -223,8 +223,6 @@
     <Content Include="Global.asax" />
     <Content Include="modificar.aspx" />
     <Content Include="packages.config" />
-    <Content Include="datos.csv" />
-    <Content Include="datoC.csv" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -299,12 +297,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginEResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginAResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginDResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
