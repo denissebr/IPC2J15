@@ -9,6 +9,7 @@ namespace _IPC2_JDBR
 {
     public partial class _Default : Page
     {
+        WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,7 +20,7 @@ namespace _IPC2_JDBR
 
             float precio = Convert.ToSingle(costo.Text);
             float libras = Convert.ToSingle(peso.Text);
-            WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
+            
             String prueba=wsr.cotizar(precio,libras);  
             lblprecio.Visible = true;
             Label5.Visible = true;
@@ -35,6 +36,13 @@ namespace _IPC2_JDBR
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+
+
+            bool cliente=wsr.loginC(user.Text,passw.Text);
+            if (cliente ==true)
+            {
+                Response.Redirect("cliente.aspx");
+            }
 
         }
 

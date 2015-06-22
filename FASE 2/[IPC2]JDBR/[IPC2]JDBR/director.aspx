@@ -98,10 +98,10 @@
           <center>
 
              <asp:Label ID="Label8" runat="server" Text="Ingrese el codigo del empleado: "></asp:Label>
-              &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+              &nbsp;<asp:TextBox ID="id" runat="server"></asp:TextBox>
               <br />
               <br />
-              <asp:Button ID="baja" runat="server" Text="Dar de baja" /> 
+              <asp:Button ID="baja" runat="server" Text="Dar de baja" OnClick="baja_Click" /> 
 
           </center>
           <br />

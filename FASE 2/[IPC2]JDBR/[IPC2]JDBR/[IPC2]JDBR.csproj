@@ -290,6 +290,15 @@
     <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.CategoriasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.despedirResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

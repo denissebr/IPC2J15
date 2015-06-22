@@ -22,13 +22,13 @@ namespace _IPC2_JDBR {
         protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
-        /// Control TextBox10.
+        /// Control user.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox user;
         
         /// <summary>
         /// Control Label11.
@@ -40,22 +40,22 @@ namespace _IPC2_JDBR {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// Control TextBox11.
+        /// Control passw.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.TextBox passw;
         
         /// <summary>
-        /// Control Button2.
+        /// Control login.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button login;
         
         /// <summary>
         /// Control Label2.

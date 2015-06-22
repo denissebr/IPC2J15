@@ -9,6 +9,7 @@ namespace _IPC2_JDBR
 {
     public partial class director : System.Web.UI.Page
     {
+        WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,7 +17,14 @@ namespace _IPC2_JDBR
 
         protected void cargaEmpleado_Click(object sender, EventArgs e)
         {
+            
+            String direccion = Server.MapPath(FileUpload1.FileName);
+            wsr.cargarEmpleado(direccion);
+        }
 
+        protected void baja_Click(object sender, EventArgs e)
+        {
+            wsr.despedir(id.Text);
         }
     }
 }

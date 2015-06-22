@@ -229,13 +229,13 @@ namespace _IPC2_JDBR {
         protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control id.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox id;
         
         /// <summary>
         /// Control baja.

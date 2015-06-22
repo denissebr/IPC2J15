@@ -56,16 +56,16 @@
                    <asp:Label ID="Label10" runat="server" Text="Usuario"></asp:Label>  
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  
                 </left>
-                <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+                <asp:TextBox ID="user" runat="server"></asp:TextBox>
                 <br />
                 <br />
                 <asp:Label ID="Label11" runat="server" Text="Contraseña"></asp:Label>
 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+                <asp:TextBox ID="passw" runat="server" TextMode="Password"></asp:TextBox>
                 <br />
                 <br />
                 <center>
-                <asp:Button ID="Button2" runat="server" Text="Iniciar Sesion" OnClick="Button2_Click" />
+                <asp:Button ID="login" runat="server" Text="Iniciar Sesion" OnClick="Button2_Click" />
                     </center>
                 <br />
                 <br />

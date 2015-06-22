@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Data;
 
 namespace WebService
 {
@@ -109,13 +110,62 @@ namespace WebService
                 {
                     nombre = lector.GetString(1);
                     valor = (lector.GetDouble(2).ToString());
-                    cat.Add(nombre + "-" + valor);
+                    cat.Add(nombre + " - " + valor+"%");
                 }
             }
             return cat;
         }
 
+        [WebMethod]
+        public void despedir(String id)
+        {
+            SqlCommand miComandoSQL = new SqlCommand("delete from Empleado where codigo='"+id+"'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
+        }
 
+        [WebMethod]
+        public bool loginC(String user,String pass)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'", cadenaConexion);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool loginE(String user, String pass)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where Usuario='" + user + "' and Contraseña='" + pass + "'", cadenaConexion);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+                
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        
        
     }
 }
