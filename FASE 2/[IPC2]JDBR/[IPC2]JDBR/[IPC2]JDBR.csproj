@@ -307,9 +307,6 @@
     <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.loginDResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\WebServiceRef\_IPC2_JDBR.WebServiceRef.usuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

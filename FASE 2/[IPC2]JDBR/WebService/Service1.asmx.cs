@@ -215,7 +215,7 @@ namespace WebService
         }
         String name;
         [WebMethod]
-        public string usuario()
+        public void usuario()
         {
             //select Nombre,Apellido from Cliente where Usuario='denissebr'
             SqlCommand miComandoSQL = new SqlCommand("select * from Cliente where Usuario='" + nombreUs + "'");
@@ -223,13 +223,13 @@ namespace WebService
             miComandoSQL.Connection = miConexionBase;
             miConexionBase.Open();
             miComandoSQL.ExecuteNonQuery();
-            miConexionBase.Close();
             SqlDataReader lector = miComandoSQL.ExecuteReader();
             string nombre = lector.GetString(1); ;
             string apellido  = lector.GetString(2);;
-            return name = nombre + " " + apellido;
+            name = nombre + " " + apellido;
             
         }
+
        
 
        

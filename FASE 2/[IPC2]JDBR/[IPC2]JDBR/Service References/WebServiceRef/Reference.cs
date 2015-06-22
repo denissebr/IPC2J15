@@ -100,12 +100,11 @@ namespace _IPC2_JDBR.WebServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/loginA", ReplyAction="*")]
         System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.loginAResponse> loginAAsync(_IPC2_JDBR.WebServiceRef.loginARequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento usuarioResult del espacio de nombres http://quetzalexpress.com no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/usuario", ReplyAction="*")]
-        _IPC2_JDBR.WebServiceRef.usuarioResponse usuario(_IPC2_JDBR.WebServiceRef.usuarioRequest request);
+        void usuario();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/usuario", ReplyAction="*")]
-        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.usuarioResponse> usuarioAsync(_IPC2_JDBR.WebServiceRef.usuarioRequest request);
+        System.Threading.Tasks.Task usuarioAsync();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -841,67 +840,6 @@ namespace _IPC2_JDBR.WebServiceRef {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class usuarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="usuario", Namespace="http://quetzalexpress.com", Order=0)]
-        public _IPC2_JDBR.WebServiceRef.usuarioRequestBody Body;
-        
-        public usuarioRequest() {
-        }
-        
-        public usuarioRequest(_IPC2_JDBR.WebServiceRef.usuarioRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class usuarioRequestBody {
-        
-        public usuarioRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class usuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="usuarioResponse", Namespace="http://quetzalexpress.com", Order=0)]
-        public _IPC2_JDBR.WebServiceRef.usuarioResponseBody Body;
-        
-        public usuarioResponse() {
-        }
-        
-        public usuarioResponse(_IPC2_JDBR.WebServiceRef.usuarioResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
-    public partial class usuarioResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string usuarioResult;
-        
-        public usuarioResponseBody() {
-        }
-        
-        public usuarioResponseBody(string usuarioResult) {
-            this.usuarioResult = usuarioResult;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Service1SoapChannel : _IPC2_JDBR.WebServiceRef.Service1Soap, System.ServiceModel.IClientChannel {
     }
@@ -1208,27 +1146,12 @@ namespace _IPC2_JDBR.WebServiceRef {
             return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).loginAAsync(inValue);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _IPC2_JDBR.WebServiceRef.usuarioResponse _IPC2_JDBR.WebServiceRef.Service1Soap.usuario(_IPC2_JDBR.WebServiceRef.usuarioRequest request) {
-            return base.Channel.usuario(request);
+        public void usuario() {
+            base.Channel.usuario();
         }
         
-        public string usuario() {
-            _IPC2_JDBR.WebServiceRef.usuarioRequest inValue = new _IPC2_JDBR.WebServiceRef.usuarioRequest();
-            inValue.Body = new _IPC2_JDBR.WebServiceRef.usuarioRequestBody();
-            _IPC2_JDBR.WebServiceRef.usuarioResponse retVal = ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).usuario(inValue);
-            return retVal.Body.usuarioResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.usuarioResponse> _IPC2_JDBR.WebServiceRef.Service1Soap.usuarioAsync(_IPC2_JDBR.WebServiceRef.usuarioRequest request) {
-            return base.Channel.usuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.usuarioResponse> usuarioAsync() {
-            _IPC2_JDBR.WebServiceRef.usuarioRequest inValue = new _IPC2_JDBR.WebServiceRef.usuarioRequest();
-            inValue.Body = new _IPC2_JDBR.WebServiceRef.usuarioRequestBody();
-            return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).usuarioAsync(inValue);
+        public System.Threading.Tasks.Task usuarioAsync() {
+            return base.Channel.usuarioAsync();
         }
     }
 }
