@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "[IPC2]JDBR", "[IPC2]JDBR\[IPC2]JDBR.csproj", "{264EE06D-14EA-4C11-B8BE-916D2C988E6E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FAC60AF3-C4CE-4D07-A46A-5901E698387D} = {FAC60AF3-C4CE-4D07-A46A-5901E698387D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{FAC60AF3-C4CE-4D07-A46A-5901E698387D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{264EE06D-14EA-4C11-B8BE-916D2C988E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{264EE06D-14EA-4C11-B8BE-916D2C988E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{264EE06D-14EA-4C11-B8BE-916D2C988E6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAC60AF3-C4CE-4D07-A46A-5901E698387D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC60AF3-C4CE-4D07-A46A-5901E698387D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC60AF3-C4CE-4D07-A46A-5901E698387D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC60AF3-C4CE-4D07-A46A-5901E698387D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

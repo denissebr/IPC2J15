@@ -1,0 +1,302 @@
+* {
+	margin:0;
+	padding:0;
+}
+ 
+
+ 
+
+
+
+body {  
+    background:url("../../../imagenes/modulos.jpg") no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+
+}
+
+
+
+
+
+
+header {
+	margin-top:10px;
+    width: 100%;
+    overflow: hidden;
+    height: 150px;
+    position: relative;
+}
+ 
+nav {
+    top:-20px;
+    position: absolute;
+    left:0;
+    right:0;
+	margin:20px auto;
+	max-width:1000px;
+	width:90%;
+}
+ 
+nav ul {
+	list-style:none;
+}
+ 
+nav > ul {
+	display:table;
+	/*Quitamos el overflow hidden que estaba aqui*/
+	width:100%;
+	background:#000;
+	position:relative;
+}
+ 
+nav > ul li {
+	display:table-cell;
+}
+ 
+/*Sub-menu*/
+nav > ul > li:hover > ul {
+	display:block;
+	height:100%;
+}
+ 
+nav > ul > li > ul {
+	display:block;
+	position:absolute;
+	background:#000;
+	left:0;
+	right:0;
+	overflow:hidden;
+	height:0%;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+ 
+nav > ul li a {
+	color:#fff;
+	display:block;
+	line-height:20px;
+	padding:20px;
+	position: relative;
+	text-align:center;
+	text-decoration:none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+ 
+nav > ul > li > ul > li a:hover {
+	background:#5da5a2;
+}
+ 
+nav > ul > li > a span {
+	background:#174459;
+	display:block;
+	height:100%;
+	width:100%;
+	left:0;
+	position:absolute;
+	top:-55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+ 
+nav > ul > li > a span .icon {
+	display:block;
+	line-height:60px;
+}
+ 
+nav > ul > li > a:hover > span {
+	top:0;
+}
+ 
+/*Colores*/
+nav ul li a .primero {
+	background:#0e5061;
+}
+ 
+nav ul li a .segundo {
+	background:#5da5a2;
+}
+ 
+nav ul li a .tercero {
+	background:#f25724;
+}
+ 
+nav ul li a .cuarto {
+	background:#174459;
+}
+ 
+nav ul li a .quinto {
+	background:#37a4d9;
+}
+
+
+h1.titulo{
+	font-size: 7.2em;
+	color:rgba(255, 255, 255, 0.36);
+	text-align:center;
+    padding-top: 10px;
+    opacity:.8;
+    -webkit-transition:padding-top .4s;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-fjbsja');
+	src:url('fonts/icomoon.eot?#iefix-fjbsja') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-fjbsja') format('woff'),
+		url('fonts/icomoon.ttf?-fjbsja') format('truetype'),
+		url('fonts/icomoon.svg?-fjbsja#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+	content: "\e900";
+}
+
+.icon-pencil:before {
+	content: "\e905";
+}
+
+.icon-quill:before {
+	content: "\e907";
+}
+
+.icon-books:before {
+	content: "\e920";
+}
+
+.icon-folder:before {
+	content: "\e92f";
+}
+
+.icon-folder-open:before {
+	content: "\e930";
+}
+
+.icon-folder-plus:before {
+	content: "\e931";
+}
+
+.icon-folder-minus:before {
+	content: "\e932";
+}
+
+.icon-folder-download:before {
+	content: "\e933";
+}
+
+.icon-display:before {
+	content: "\e956";
+}
+
+.icon-download:before {
+	content: "\e960";
+}
+
+.icon-upload:before {
+	content: "\e961";
+}
+
+.icon-database:before {
+	content: "\e964";
+}
+
+.icon-user:before {
+	content: "\e971";
+}
+
+.icon-users:before {
+	content: "\e972";
+}
+
+.icon-user-plus:before {
+	content: "\e973";
+}
+
+.icon-user-minus:before {
+	content: "\e974";
+}
+
+.icon-lock:before {
+	content: "\e98f";
+}
+
+.icon-unlocked:before {
+	content: "\e990";
+}
+
+.icon-cog:before {
+	content: "\e994";
+}
+
+.icon-list2:before {
+	content: "\e9bb";
+}
+
+.icon-menu:before {
+	content: "\e9bd";
+}
+
+.icon-plus:before {
+	content: "\ea0a";
+}
+
+.icon-minus:before {
+	content: "\ea0b";
+}
+
+.icon-cross:before {
+	content: "\ea0f";
+}
+
+.icon-checkmark:before {
+	content: "\ea10";
+}
+
+.icon-enter:before {
+	content: "\ea13";
+}
+
+.icon-exit:before {
+	content: "\ea14";
+}
+
+.icon-loop2:before {
+	content: "\ea2e";
+}
+
+.icon-paragraph-left:before {
+	content: "\ea77";
+}
+
+.icon-terminal:before {
+	content: "\ea81";
+}
+

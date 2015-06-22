@@ -65,9 +65,6 @@ namespace _IPC2_JDBR
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

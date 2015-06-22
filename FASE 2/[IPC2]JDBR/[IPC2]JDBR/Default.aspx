@@ -1,7 +1,7 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_JDBR._Default" %>
+﻿<%@ Page Title="Quetzal Express" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_IPC2_JDBR._Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
-    <head>
+<head>
 
 <!-- title and meta -->
 <meta charset="utf-8" />
@@ -42,22 +42,62 @@
 <div id="main">
     <div class="container">
         <ul id="tabs">
-            <li>INICIO DE SESION</li>
-            <li>COTIZAR PRODUCTO</li>
-            <li>REGISTRARSE</li>
+            <li >INICIO DE SESION</li>
+            <li class="active">COTIZAR PRODUCTO</li>
+            <li >REGISTRARSE</li>
         </ul>
         <ul id="tab">
-            <li class="active">
+            <li >
                 <h2>BIENVENIDO</h2>
-                <asp:Label ID="Label1" runat="server" Text="Usuario"></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="us" runat="server"></asp:TextBox>
+                <asp:Login ID="Login1" runat="server">
+                    <LayoutTemplate>
+                        <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
+                            <tr>
+                                <td>
+                                    <table cellpadding="0">
+                                        <tr>
+                                            <td align="center" colspan="2">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Nombre de usuario:</asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña:</asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <asp:CheckBox ID="RememberMe" runat="server" Text="Recordármelo la próxima vez." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" colspan="2" style="color:Red;">
+                                                <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" colspan="2">
+                                                <asp:Button ID="LoginButton" runat="server" CommandName="Login" OnClick="LoginButton_Click" Text="Inicio de sesión" ValidationGroup="Login1" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </LayoutTemplate>
+                </asp:Login>
                 <br />
-                <br />
-                Contraseña&nbsp; <asp:TextBox ID="con" runat="server" TextMode="Password"></asp:TextBox>
-                <br />
-                <br />
-                <asp:Button ID="login" runat="server" Text="Iniciar Sesion" />
             </li>
             <li class="active">
                 <h2>PRECIO DE PRODUCTO</h2>
@@ -68,16 +108,13 @@
                 <br />
                 <asp:Label ID="Label3" runat="server" Text="Peso"></asp:Label>
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="peso" runat="server" TextMode="Number"></asp:TextBox>
+                <asp:TextBox ID="peso" runat="server"></asp:TextBox>
                 Libras<br />
                 <br />
                 <asp:Label ID="Label4" runat="server" Text="Tipo"></asp:Label>
-            &nbsp;&nbsp;&nbsp;
-                <asp:ListBox ID="ListBox1" runat="server" Height="25px" Width="201px" AutoPostBack="True">
-                    <asp:ListItem Value="0">celulares</asp:ListItem>
-                    <asp:ListItem Value="0.10">cables</asp:ListItem>
-                    <asp:ListItem Value="0.15">consola de video juegos</asp:ListItem>
-                </asp:ListBox>
+            &nbsp;&nbsp; &nbsp;&nbsp;
+                <asp:DropDownList ID="DropDownList1" runat="server">
+                </asp:DropDownList>
                 <br />
                 <br />
                 <asp:Button ID="cotizar" runat="server" Text="Cotizar" OnClick="cotizar_Click" />
@@ -86,29 +123,55 @@
                 <asp:Label ID="Label5" runat="server" Text="El precio del producto es: " Visible="False"></asp:Label>
 &nbsp;<asp:Label ID="lblprecio" runat="server" Visible="False"></asp:Label>
             </li>
-            <li >
+            <li class="active">
                 <h2>Usuario Nuevo</h2>
-                <asp:Label ID="Label6" runat="server" Text="Nombre"></asp:Label>
+                Nombre&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="nombre" runat="server"></asp:TextBox>
+                <asp:Label ID="Label6" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
                 <br />
                 <br />
-                <asp:Label ID="Label7" runat="server" Text="Apellido"></asp:Label>
+                Apellido&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <asp:Label ID="Label7" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
+                <br />
+                <br />
+                 DPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                <asp:Label ID="Label8" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
+                <br />
+                 <br />
+                NIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                Telefono&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                Direccion&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                Tarjeta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                <asp:Label ID="Label9" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
+                <br />
+                <br />
+                Usuario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                  <br />
                 <br />
+                Contraseña<asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+                <br />
+                 <br />
+                <center>
+                <asp:Button ID="Button1" runat="server" Text="Registrar" OnClick="Button1_Click" />
+                </center>
                  </li>
-            <li>
-                <h2>Fourth tab not bad</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, repellendus explicabo recusandae dicta tempore nam perspiciatis atque vero praesentium hic. Laudantium tempore quas consequatur exercitationem eveniet voluptatem reiciendis quidem tenetur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, repudiandae, natus odio minus voluptates culpa sapiente vitae nulla ad? Distinctio, laboriosam assumenda facilis aspernatur consequuntur praesentium inventore id earum hic!
-            </li>
-            <li>
-                <h2>Tab number five here we go!</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, fugit nobis qui temporibus culpa inventore consectetur aliquam. Unde, itaque, quos, laboriosam, reprehenderit ipsa deleniti sequi animi eveniet dolorem maiores alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, a, reprehenderit, quod at quae numquam quaerat delectus eius ex eligendi dolorum sapiente id saepe. Possimus provident porro neque ut pariatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, velit, unde, pariatur, illo quis tenetur eaque harum similique quos deserunt laborum dolor molestias sint cumque facere consectetur neque! Deleniti, aliquid.
-            </li>
+          
         </ul>
     </div>
 </div><!-- #main -->
 
 
 <footer>
+    <p> &copy; <%: DateTime.Now.Year %> -[IPC2]FASE2_JDBR</p>
 </footer><!-- /footer -->
 
 
@@ -119,3 +182,6 @@
 
 </body>  
 </asp:Content>
+<asp:Content ID="Content1" runat="server" contentplaceholderid="HeadContent">
+    </asp:Content>
+
