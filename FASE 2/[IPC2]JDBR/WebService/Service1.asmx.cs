@@ -92,6 +92,29 @@ namespace WebService
                
             
         }
+        [WebMethod]
+        public List<string> Categorias()
+        {
+            List<string> cat = new List<string>();
+            SqlCommand comando = new SqlCommand("Select * FROM Categoria");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            string nombre = "";
+            string valor = "";
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    nombre = lector.GetString(1);
+                    valor = (lector.GetDouble(2).ToString());
+                    cat.Add(nombre + "-" + valor);
+                }
+            }
+            return cat;
+        }
+
 
        
     }

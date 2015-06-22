@@ -12,10 +12,17 @@ namespace _IPC2_JDBR
     public partial class cliente : System.Web.UI.Page
     {
 
-     
+     List<string> lista = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            WebServiceRef.Service1SoapClient wsr = new WebServiceRef.Service1SoapClient();
+            lista = wsr.Categorias();
+            foreach (string categoria in lista)
+            {
+                DropDownList1.Items.Add(categoria);
+            }
+        
         }
 
         protected void Button1_Click(object sender, EventArgs e)

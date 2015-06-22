@@ -57,6 +57,13 @@ namespace _IPC2_JDBR.WebServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/cargarCategoria", ReplyAction="*")]
         System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.cargarCategoriaResponse> cargarCategoriaAsync(_IPC2_JDBR.WebServiceRef.cargarCategoriaRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CategoriasResult del espacio de nombres http://quetzalexpress.com no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/Categorias", ReplyAction="*")]
+        _IPC2_JDBR.WebServiceRef.CategoriasResponse Categorias(_IPC2_JDBR.WebServiceRef.CategoriasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://quetzalexpress.com/Categorias", ReplyAction="*")]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.CategoriasResponse> CategoriasAsync(_IPC2_JDBR.WebServiceRef.CategoriasRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -382,6 +389,67 @@ namespace _IPC2_JDBR.WebServiceRef {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CategoriasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Categorias", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.CategoriasRequestBody Body;
+        
+        public CategoriasRequest() {
+        }
+        
+        public CategoriasRequest(_IPC2_JDBR.WebServiceRef.CategoriasRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CategoriasRequestBody {
+        
+        public CategoriasRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CategoriasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CategoriasResponse", Namespace="http://quetzalexpress.com", Order=0)]
+        public _IPC2_JDBR.WebServiceRef.CategoriasResponseBody Body;
+        
+        public CategoriasResponse() {
+        }
+        
+        public CategoriasResponse(_IPC2_JDBR.WebServiceRef.CategoriasResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://quetzalexpress.com")]
+    public partial class CategoriasResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public _IPC2_JDBR.WebServiceRef.ArrayOfString CategoriasResult;
+        
+        public CategoriasResponseBody() {
+        }
+        
+        public CategoriasResponseBody(_IPC2_JDBR.WebServiceRef.ArrayOfString CategoriasResult) {
+            this.CategoriasResult = CategoriasResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Service1SoapChannel : _IPC2_JDBR.WebServiceRef.Service1Soap, System.ServiceModel.IClientChannel {
     }
@@ -531,6 +599,29 @@ namespace _IPC2_JDBR.WebServiceRef {
             inValue.Body = new _IPC2_JDBR.WebServiceRef.cargarCategoriaRequestBody();
             inValue.Body.direccion = direccion;
             return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).cargarCategoriaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _IPC2_JDBR.WebServiceRef.CategoriasResponse _IPC2_JDBR.WebServiceRef.Service1Soap.Categorias(_IPC2_JDBR.WebServiceRef.CategoriasRequest request) {
+            return base.Channel.Categorias(request);
+        }
+        
+        public _IPC2_JDBR.WebServiceRef.ArrayOfString Categorias() {
+            _IPC2_JDBR.WebServiceRef.CategoriasRequest inValue = new _IPC2_JDBR.WebServiceRef.CategoriasRequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.CategoriasRequestBody();
+            _IPC2_JDBR.WebServiceRef.CategoriasResponse retVal = ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).Categorias(inValue);
+            return retVal.Body.CategoriasResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.CategoriasResponse> _IPC2_JDBR.WebServiceRef.Service1Soap.CategoriasAsync(_IPC2_JDBR.WebServiceRef.CategoriasRequest request) {
+            return base.Channel.CategoriasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_IPC2_JDBR.WebServiceRef.CategoriasResponse> CategoriasAsync() {
+            _IPC2_JDBR.WebServiceRef.CategoriasRequest inValue = new _IPC2_JDBR.WebServiceRef.CategoriasRequest();
+            inValue.Body = new _IPC2_JDBR.WebServiceRef.CategoriasRequestBody();
+            return ((_IPC2_JDBR.WebServiceRef.Service1Soap)(this)).CategoriasAsync(inValue);
         }
     }
 }

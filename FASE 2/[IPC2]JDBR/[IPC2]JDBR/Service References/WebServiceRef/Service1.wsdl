@@ -67,6 +67,16 @@
       <s:element name="cargarCategoriaResponse">
         <s:complexType />
       </s:element>
+      <s:element name="Categorias">
+        <s:complexType />
+      </s:element>
+      <s:element name="CategoriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CategoriasResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="comprobarSoapIn">
@@ -99,6 +109,12 @@
   <wsdl:message name="cargarCategoriaSoapOut">
     <wsdl:part name="parameters" element="tns:cargarCategoriaResponse" />
   </wsdl:message>
+  <wsdl:message name="CategoriasSoapIn">
+    <wsdl:part name="parameters" element="tns:Categorias" />
+  </wsdl:message>
+  <wsdl:message name="CategoriasSoapOut">
+    <wsdl:part name="parameters" element="tns:CategoriasResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="comprobar">
       <wsdl:input message="tns:comprobarSoapIn" />
@@ -119,6 +135,10 @@
     <wsdl:operation name="cargarCategoria">
       <wsdl:input message="tns:cargarCategoriaSoapIn" />
       <wsdl:output message="tns:cargarCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Categorias">
+      <wsdl:input message="tns:CategoriasSoapIn" />
+      <wsdl:output message="tns:CategoriasSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -168,6 +188,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Categorias">
+      <soap:operation soapAction="http://quetzalexpress.com/Categorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -209,6 +238,15 @@
     </wsdl:operation>
     <wsdl:operation name="cargarCategoria">
       <soap12:operation soapAction="http://quetzalexpress.com/cargarCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Categorias">
+      <soap12:operation soapAction="http://quetzalexpress.com/Categorias" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
