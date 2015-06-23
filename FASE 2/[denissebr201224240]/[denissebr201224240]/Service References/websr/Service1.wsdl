@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="logC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="logCResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="logEResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="logDResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="logAResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="usuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuarioC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="usuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="asignar">
+        <s:complexType />
+      </s:element>
+      <s:element name="asignarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="asignarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="despedir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="despedirResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="cargarEmpleado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarEmpleadoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="cargarCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarCategoriaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="registrar">
+        <s:complexType />
+      </s:element>
+      <s:element name="registrarResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="logCSoapIn">
+    <wsdl:part name="parameters" element="tns:logC" />
+  </wsdl:message>
+  <wsdl:message name="logCSoapOut">
+    <wsdl:part name="parameters" element="tns:logCResponse" />
+  </wsdl:message>
+  <wsdl:message name="logESoapIn">
+    <wsdl:part name="parameters" element="tns:logE" />
+  </wsdl:message>
+  <wsdl:message name="logESoapOut">
+    <wsdl:part name="parameters" element="tns:logEResponse" />
+  </wsdl:message>
+  <wsdl:message name="logDSoapIn">
+    <wsdl:part name="parameters" element="tns:logD" />
+  </wsdl:message>
+  <wsdl:message name="logDSoapOut">
+    <wsdl:part name="parameters" element="tns:logDResponse" />
+  </wsdl:message>
+  <wsdl:message name="logASoapIn">
+    <wsdl:part name="parameters" element="tns:logA" />
+  </wsdl:message>
+  <wsdl:message name="logASoapOut">
+    <wsdl:part name="parameters" element="tns:logAResponse" />
+  </wsdl:message>
+  <wsdl:message name="usuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:usuario" />
+  </wsdl:message>
+  <wsdl:message name="usuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:usuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="asignarSoapIn">
+    <wsdl:part name="parameters" element="tns:asignar" />
+  </wsdl:message>
+  <wsdl:message name="asignarSoapOut">
+    <wsdl:part name="parameters" element="tns:asignarResponse" />
+  </wsdl:message>
+  <wsdl:message name="despedirSoapIn">
+    <wsdl:part name="parameters" element="tns:despedir" />
+  </wsdl:message>
+  <wsdl:message name="despedirSoapOut">
+    <wsdl:part name="parameters" element="tns:despedirResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarEmpleadoSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="cargarEmpleadoSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="cargarCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="registrarSoapIn">
+    <wsdl:part name="parameters" element="tns:registrar" />
+  </wsdl:message>
+  <wsdl:message name="registrarSoapOut">
+    <wsdl:part name="parameters" element="tns:registrarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="logC">
+      <wsdl:input message="tns:logCSoapIn" />
+      <wsdl:output message="tns:logCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logE">
+      <wsdl:input message="tns:logESoapIn" />
+      <wsdl:output message="tns:logESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logD">
+      <wsdl:input message="tns:logDSoapIn" />
+      <wsdl:output message="tns:logDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logA">
+      <wsdl:input message="tns:logASoapIn" />
+      <wsdl:output message="tns:logASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="usuario">
+      <wsdl:input message="tns:usuarioSoapIn" />
+      <wsdl:output message="tns:usuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="asignar">
+      <wsdl:input message="tns:asignarSoapIn" />
+      <wsdl:output message="tns:asignarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="despedir">
+      <wsdl:input message="tns:despedirSoapIn" />
+      <wsdl:output message="tns:despedirSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarEmpleado">
+      <wsdl:input message="tns:cargarEmpleadoSoapIn" />
+      <wsdl:output message="tns:cargarEmpleadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarCategoria">
+      <wsdl:input message="tns:cargarCategoriaSoapIn" />
+      <wsdl:output message="tns:cargarCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registrar">
+      <wsdl:input message="tns:registrarSoapIn" />
+      <wsdl:output message="tns:registrarSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="logC">
+      <soap:operation soapAction="http://tempuri.org/logC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logE">
+      <soap:operation soapAction="http://tempuri.org/logE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logD">
+      <soap:operation soapAction="http://tempuri.org/logD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logA">
+      <soap:operation soapAction="http://tempuri.org/logA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usuario">
+      <soap:operation soapAction="http://tempuri.org/usuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="asignar">
+      <soap:operation soapAction="http://tempuri.org/asignar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="despedir">
+      <soap:operation soapAction="http://tempuri.org/despedir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarEmpleado">
+      <soap:operation soapAction="http://tempuri.org/cargarEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarCategoria">
+      <soap:operation soapAction="http://tempuri.org/cargarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrar">
+      <soap:operation soapAction="http://tempuri.org/registrar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="logC">
+      <soap12:operation soapAction="http://tempuri.org/logC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logE">
+      <soap12:operation soapAction="http://tempuri.org/logE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logD">
+      <soap12:operation soapAction="http://tempuri.org/logD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logA">
+      <soap12:operation soapAction="http://tempuri.org/logA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usuario">
+      <soap12:operation soapAction="http://tempuri.org/usuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="asignar">
+      <soap12:operation soapAction="http://tempuri.org/asignar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="despedir">
+      <soap12:operation soapAction="http://tempuri.org/despedir" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/cargarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarCategoria">
+      <soap12:operation soapAction="http://tempuri.org/cargarCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrar">
+      <soap12:operation soapAction="http://tempuri.org/registrar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://localhost:6287/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://localhost:6287/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
