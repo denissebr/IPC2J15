@@ -117,6 +117,15 @@
     <Content Include="Service References\websr\_denissebr201224240_.websr.usuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\websr\_denissebr201224240_.websr.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\websr\_denissebr201224240_.websr.CategoriasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\websr\_denissebr201224240_.websr.cotizarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin.aspx.cs">

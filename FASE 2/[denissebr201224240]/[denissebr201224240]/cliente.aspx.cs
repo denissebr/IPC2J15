@@ -13,5 +13,27 @@ namespace _denissebr201224240_
         {
 
         }
+
+        protected void cotizar_Click(object sender, EventArgs e)
+        {
+            websr.Service1SoapClient wsr = new websr.Service1SoapClient();
+            if (!peso.Text.Equals("") && !precio.Text.Equals(""))
+            {
+                
+                float costo = Convert.ToSingle(precio.Text);
+                float libras = Convert.ToSingle(peso.Text);
+                
+                String prueba = wsr.cotizar(costo, libras);
+                String seleccion = DropDownList1.SelectedItem.ToString();
+                seleccion = seleccion.Replace('%', ' ');
+                string[] aux = seleccion.Split('-');
+                float valor = float.Parse(aux[1]);
+                float temporal = (valor * costo) / 100;
+                float totalf = Convert.ToSingle(prueba) + temporal;
+                precioF.Visible = true;
+                precioF.Text = "Q" + totalf.ToString();
+            }
+           
+        }
     }
 }

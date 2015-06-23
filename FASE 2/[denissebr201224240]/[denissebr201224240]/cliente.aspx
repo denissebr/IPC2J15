@@ -56,7 +56,7 @@
               <br />
               <center>
                    <asp:Label ID="Label3" runat="server" Text="Precio: "></asp:Label>
-              <asp:TextBox ID="costo" runat="server" Width="159px"></asp:TextBox>
+              <asp:TextBox ID="precio" runat="server" Width="159px"></asp:TextBox>
               <asp:Label ID="Label5" runat="server" Text=" US$"></asp:Label>
               <br />
               <br />
@@ -66,7 +66,11 @@
               <asp:Label ID="Label7" runat="server" Text=" libras"></asp:Label>
               <br />
               <br />
-              <asp:Button ID="cotizar" runat="server" Text="COTIZAR" />
+              <asp:Button ID="cotizar" runat="server" Text="COTIZAR" OnClick="cotizar_Click" />
+                   &nbsp;<br />
+                   <br />
+                   <asp:Label ID="Label17" runat="server" Text="El precio del producto es:  "></asp:Label>
+                   <asp:Label ID="precioF" runat="server"></asp:Label>
               </center>
                    </asp:Panel>
       </asp:Panel>

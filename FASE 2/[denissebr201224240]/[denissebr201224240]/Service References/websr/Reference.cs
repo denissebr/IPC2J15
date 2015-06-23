@@ -9,7 +9,16 @@
 //------------------------------------------------------------------------------
 
 namespace _denissebr201224240_.websr {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="websr.Service1Soap")]
@@ -83,6 +92,20 @@ namespace _denissebr201224240_.websr {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrar", ReplyAction="*")]
         System.Threading.Tasks.Task registrarAsync();
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento cotizarResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cotizar", ReplyAction="*")]
+        _denissebr201224240_.websr.cotizarResponse cotizar(_denissebr201224240_.websr.cotizarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cotizar", ReplyAction="*")]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.cotizarResponse> cotizarAsync(_denissebr201224240_.websr.cotizarRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CategoriasResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
+        _denissebr201224240_.websr.CategoriasResponse Categorias(_denissebr201224240_.websr.CategoriasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.CategoriasResponse> CategoriasAsync(_denissebr201224240_.websr.CategoriasRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -678,6 +701,139 @@ namespace _denissebr201224240_.websr {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class cotizarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="cotizar", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.cotizarRequestBody Body;
+        
+        public cotizarRequest() {
+        }
+        
+        public cotizarRequest(_denissebr201224240_.websr.cotizarRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class cotizarRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public float precio;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public float peso;
+        
+        public cotizarRequestBody() {
+        }
+        
+        public cotizarRequestBody(float precio, float peso) {
+            this.precio = precio;
+            this.peso = peso;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class cotizarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="cotizarResponse", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.cotizarResponseBody Body;
+        
+        public cotizarResponse() {
+        }
+        
+        public cotizarResponse(_denissebr201224240_.websr.cotizarResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class cotizarResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string cotizarResult;
+        
+        public cotizarResponseBody() {
+        }
+        
+        public cotizarResponseBody(string cotizarResult) {
+            this.cotizarResult = cotizarResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CategoriasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Categorias", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.CategoriasRequestBody Body;
+        
+        public CategoriasRequest() {
+        }
+        
+        public CategoriasRequest(_denissebr201224240_.websr.CategoriasRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class CategoriasRequestBody {
+        
+        public CategoriasRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class CategoriasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="CategoriasResponse", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.CategoriasResponseBody Body;
+        
+        public CategoriasResponse() {
+        }
+        
+        public CategoriasResponse(_denissebr201224240_.websr.CategoriasResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class CategoriasResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public _denissebr201224240_.websr.ArrayOfString CategoriasResult;
+        
+        public CategoriasResponseBody() {
+        }
+        
+        public CategoriasResponseBody(_denissebr201224240_.websr.ArrayOfString CategoriasResult) {
+            this.CategoriasResult = CategoriasResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface Service1SoapChannel : _denissebr201224240_.websr.Service1Soap, System.ServiceModel.IClientChannel {
     }
@@ -938,6 +1094,56 @@ namespace _denissebr201224240_.websr {
         
         public System.Threading.Tasks.Task registrarAsync() {
             return base.Channel.registrarAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _denissebr201224240_.websr.cotizarResponse _denissebr201224240_.websr.Service1Soap.cotizar(_denissebr201224240_.websr.cotizarRequest request) {
+            return base.Channel.cotizar(request);
+        }
+        
+        public string cotizar(float precio, float peso) {
+            _denissebr201224240_.websr.cotizarRequest inValue = new _denissebr201224240_.websr.cotizarRequest();
+            inValue.Body = new _denissebr201224240_.websr.cotizarRequestBody();
+            inValue.Body.precio = precio;
+            inValue.Body.peso = peso;
+            _denissebr201224240_.websr.cotizarResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).cotizar(inValue);
+            return retVal.Body.cotizarResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.cotizarResponse> _denissebr201224240_.websr.Service1Soap.cotizarAsync(_denissebr201224240_.websr.cotizarRequest request) {
+            return base.Channel.cotizarAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_denissebr201224240_.websr.cotizarResponse> cotizarAsync(float precio, float peso) {
+            _denissebr201224240_.websr.cotizarRequest inValue = new _denissebr201224240_.websr.cotizarRequest();
+            inValue.Body = new _denissebr201224240_.websr.cotizarRequestBody();
+            inValue.Body.precio = precio;
+            inValue.Body.peso = peso;
+            return ((_denissebr201224240_.websr.Service1Soap)(this)).cotizarAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _denissebr201224240_.websr.CategoriasResponse _denissebr201224240_.websr.Service1Soap.Categorias(_denissebr201224240_.websr.CategoriasRequest request) {
+            return base.Channel.Categorias(request);
+        }
+        
+        public _denissebr201224240_.websr.ArrayOfString Categorias() {
+            _denissebr201224240_.websr.CategoriasRequest inValue = new _denissebr201224240_.websr.CategoriasRequest();
+            inValue.Body = new _denissebr201224240_.websr.CategoriasRequestBody();
+            _denissebr201224240_.websr.CategoriasResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).Categorias(inValue);
+            return retVal.Body.CategoriasResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.CategoriasResponse> _denissebr201224240_.websr.Service1Soap.CategoriasAsync(_denissebr201224240_.websr.CategoriasRequest request) {
+            return base.Channel.CategoriasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_denissebr201224240_.websr.CategoriasResponse> CategoriasAsync() {
+            _denissebr201224240_.websr.CategoriasRequest inValue = new _denissebr201224240_.websr.CategoriasRequest();
+            inValue.Body = new _denissebr201224240_.websr.CategoriasRequestBody();
+            return ((_denissebr201224240_.websr.Service1Soap)(this)).CategoriasAsync(inValue);
         }
     }
 }

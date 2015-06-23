@@ -118,6 +118,36 @@
       <s:element name="registrarResponse">
         <s:complexType />
       </s:element>
+      <s:element name="cotizar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cotizarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cotizarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Categorias">
+        <s:complexType />
+      </s:element>
+      <s:element name="CategoriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CategoriasResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="logCSoapIn">
@@ -180,6 +210,18 @@
   <wsdl:message name="registrarSoapOut">
     <wsdl:part name="parameters" element="tns:registrarResponse" />
   </wsdl:message>
+  <wsdl:message name="cotizarSoapIn">
+    <wsdl:part name="parameters" element="tns:cotizar" />
+  </wsdl:message>
+  <wsdl:message name="cotizarSoapOut">
+    <wsdl:part name="parameters" element="tns:cotizarResponse" />
+  </wsdl:message>
+  <wsdl:message name="CategoriasSoapIn">
+    <wsdl:part name="parameters" element="tns:Categorias" />
+  </wsdl:message>
+  <wsdl:message name="CategoriasSoapOut">
+    <wsdl:part name="parameters" element="tns:CategoriasResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -220,6 +262,14 @@
     <wsdl:operation name="registrar">
       <wsdl:input message="tns:registrarSoapIn" />
       <wsdl:output message="tns:registrarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cotizar">
+      <wsdl:input message="tns:cotizarSoapIn" />
+      <wsdl:output message="tns:cotizarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Categorias">
+      <wsdl:input message="tns:CategoriasSoapIn" />
+      <wsdl:output message="tns:CategoriasSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -314,6 +364,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cotizar">
+      <soap:operation soapAction="http://tempuri.org/cotizar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Categorias">
+      <soap:operation soapAction="http://tempuri.org/Categorias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -400,6 +468,24 @@
     </wsdl:operation>
     <wsdl:operation name="registrar">
       <soap12:operation soapAction="http://tempuri.org/registrar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cotizar">
+      <soap12:operation soapAction="http://tempuri.org/cotizar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Categorias">
+      <soap12:operation soapAction="http://tempuri.org/Categorias" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
