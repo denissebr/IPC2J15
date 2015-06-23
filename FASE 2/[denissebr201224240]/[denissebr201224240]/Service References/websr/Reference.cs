@@ -52,20 +52,6 @@ namespace _denissebr201224240_.websr {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logA", ReplyAction="*")]
         System.Threading.Tasks.Task<_denissebr201224240_.websr.logAResponse> logAAsync(_denissebr201224240_.websr.logARequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento usuarioC del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/usuario", ReplyAction="*")]
-        _denissebr201224240_.websr.usuarioResponse usuario(_denissebr201224240_.websr.usuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/usuario", ReplyAction="*")]
-        System.Threading.Tasks.Task<_denissebr201224240_.websr.usuarioResponse> usuarioAsync(_denissebr201224240_.websr.usuarioRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento asignarResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/asignar", ReplyAction="*")]
-        _denissebr201224240_.websr.asignarResponse asignar(_denissebr201224240_.websr.asignarRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/asignar", ReplyAction="*")]
-        System.Threading.Tasks.Task<_denissebr201224240_.websr.asignarResponse> asignarAsync(_denissebr201224240_.websr.asignarRequest request);
-        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento id del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/despedir", ReplyAction="*")]
         _denissebr201224240_.websr.despedirResponse despedir(_denissebr201224240_.websr.despedirRequest request);
@@ -87,11 +73,19 @@ namespace _denissebr201224240_.websr {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cargarCategoria", ReplyAction="*")]
         System.Threading.Tasks.Task<_denissebr201224240_.websr.cargarCategoriaResponse> cargarCategoriaAsync(_denissebr201224240_.websr.cargarCategoriaRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento sucursalResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/sucursal", ReplyAction="*")]
+        _denissebr201224240_.websr.sucursalResponse sucursal(_denissebr201224240_.websr.sucursalRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/sucursal", ReplyAction="*")]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.sucursalResponse> sucursalAsync(_denissebr201224240_.websr.sucursalRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento nombre del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrar", ReplyAction="*")]
-        void registrar();
+        _denissebr201224240_.websr.registrarResponse registrar(_denissebr201224240_.websr.registrarRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrar", ReplyAction="*")]
-        System.Threading.Tasks.Task registrarAsync();
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.registrarResponse> registrarAsync(_denissebr201224240_.websr.registrarRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento cotizarResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cotizar", ReplyAction="*")]
@@ -106,6 +100,13 @@ namespace _denissebr201224240_.websr {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
         System.Threading.Tasks.Task<_denissebr201224240_.websr.CategoriasResponse> CategoriasAsync(_denissebr201224240_.websr.CategoriasRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento usuario del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DevolverNombreCliente", ReplyAction="*")]
+        _denissebr201224240_.websr.DevolverNombreClienteResponse DevolverNombreCliente(_denissebr201224240_.websr.DevolverNombreClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DevolverNombreCliente", ReplyAction="*")]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.DevolverNombreClienteResponse> DevolverNombreClienteAsync(_denissebr201224240_.websr.DevolverNombreClienteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -400,128 +401,6 @@ namespace _denissebr201224240_.websr {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class usuarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="usuario", Namespace="http://tempuri.org/", Order=0)]
-        public _denissebr201224240_.websr.usuarioRequestBody Body;
-        
-        public usuarioRequest() {
-        }
-        
-        public usuarioRequest(_denissebr201224240_.websr.usuarioRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class usuarioRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string usuarioC;
-        
-        public usuarioRequestBody() {
-        }
-        
-        public usuarioRequestBody(string usuarioC) {
-            this.usuarioC = usuarioC;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class usuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="usuarioResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _denissebr201224240_.websr.usuarioResponseBody Body;
-        
-        public usuarioResponse() {
-        }
-        
-        public usuarioResponse(_denissebr201224240_.websr.usuarioResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class usuarioResponseBody {
-        
-        public usuarioResponseBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class asignarRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="asignar", Namespace="http://tempuri.org/", Order=0)]
-        public _denissebr201224240_.websr.asignarRequestBody Body;
-        
-        public asignarRequest() {
-        }
-        
-        public asignarRequest(_denissebr201224240_.websr.asignarRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class asignarRequestBody {
-        
-        public asignarRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class asignarResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="asignarResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _denissebr201224240_.websr.asignarResponseBody Body;
-        
-        public asignarResponse() {
-        }
-        
-        public asignarResponse(_denissebr201224240_.websr.asignarResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class asignarResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string asignarResult;
-        
-        public asignarResponseBody() {
-        }
-        
-        public asignarResponseBody(string asignarResult) {
-            this.asignarResult = asignarResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class despedirRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="despedir", Namespace="http://tempuri.org/", Order=0)]
@@ -705,6 +584,168 @@ namespace _denissebr201224240_.websr {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class sucursalRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="sucursal", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.sucursalRequestBody Body;
+        
+        public sucursalRequest() {
+        }
+        
+        public sucursalRequest(_denissebr201224240_.websr.sucursalRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class sucursalRequestBody {
+        
+        public sucursalRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class sucursalResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="sucursalResponse", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.sucursalResponseBody Body;
+        
+        public sucursalResponse() {
+        }
+        
+        public sucursalResponse(_denissebr201224240_.websr.sucursalResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class sucursalResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public _denissebr201224240_.websr.ArrayOfString sucursalResult;
+        
+        public sucursalResponseBody() {
+        }
+        
+        public sucursalResponseBody(_denissebr201224240_.websr.ArrayOfString sucursalResult) {
+            this.sucursalResult = sucursalResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class registrarRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="registrar", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.registrarRequestBody Body;
+        
+        public registrarRequest() {
+        }
+        
+        public registrarRequest(_denissebr201224240_.websr.registrarRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class registrarRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int dpi;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string nombre;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string apellido;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int nit;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public int telefono;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string direccion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=6)]
+        public long tarjeta;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=7)]
+        public int sucursal;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string usuario;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
+        public string contra;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=10)]
+        public int estado;
+        
+        public registrarRequestBody() {
+        }
+        
+        public registrarRequestBody(int dpi, string nombre, string apellido, int nit, int telefono, string direccion, long tarjeta, int sucursal, string usuario, string contra, int estado) {
+            this.dpi = dpi;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.nit = nit;
+            this.telefono = telefono;
+            this.direccion = direccion;
+            this.tarjeta = tarjeta;
+            this.sucursal = sucursal;
+            this.usuario = usuario;
+            this.contra = contra;
+            this.estado = estado;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class registrarResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="registrarResponse", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.registrarResponseBody Body;
+        
+        public registrarResponse() {
+        }
+        
+        public registrarResponse(_denissebr201224240_.websr.registrarResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class registrarResponseBody {
+        
+        public registrarResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class cotizarRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="cotizar", Namespace="http://tempuri.org/", Order=0)]
@@ -831,6 +872,74 @@ namespace _denissebr201224240_.websr {
         
         public CategoriasResponseBody(_denissebr201224240_.websr.ArrayOfString CategoriasResult) {
             this.CategoriasResult = CategoriasResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DevolverNombreClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DevolverNombreCliente", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.DevolverNombreClienteRequestBody Body;
+        
+        public DevolverNombreClienteRequest() {
+        }
+        
+        public DevolverNombreClienteRequest(_denissebr201224240_.websr.DevolverNombreClienteRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DevolverNombreClienteRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string usuario;
+        
+        public DevolverNombreClienteRequestBody() {
+        }
+        
+        public DevolverNombreClienteRequestBody(string usuario) {
+            this.usuario = usuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class DevolverNombreClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DevolverNombreClienteResponse", Namespace="http://tempuri.org/", Order=0)]
+        public _denissebr201224240_.websr.DevolverNombreClienteResponseBody Body;
+        
+        public DevolverNombreClienteResponse() {
+        }
+        
+        public DevolverNombreClienteResponse(_denissebr201224240_.websr.DevolverNombreClienteResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class DevolverNombreClienteResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string DevolverNombreClienteResult;
+        
+        public DevolverNombreClienteResponseBody() {
+        }
+        
+        public DevolverNombreClienteResponseBody(string DevolverNombreClienteResult) {
+            this.DevolverNombreClienteResult = DevolverNombreClienteResult;
         }
     }
     
@@ -970,53 +1079,6 @@ namespace _denissebr201224240_.websr {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _denissebr201224240_.websr.usuarioResponse _denissebr201224240_.websr.Service1Soap.usuario(_denissebr201224240_.websr.usuarioRequest request) {
-            return base.Channel.usuario(request);
-        }
-        
-        public void usuario(string usuarioC) {
-            _denissebr201224240_.websr.usuarioRequest inValue = new _denissebr201224240_.websr.usuarioRequest();
-            inValue.Body = new _denissebr201224240_.websr.usuarioRequestBody();
-            inValue.Body.usuarioC = usuarioC;
-            _denissebr201224240_.websr.usuarioResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).usuario(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_denissebr201224240_.websr.usuarioResponse> _denissebr201224240_.websr.Service1Soap.usuarioAsync(_denissebr201224240_.websr.usuarioRequest request) {
-            return base.Channel.usuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_denissebr201224240_.websr.usuarioResponse> usuarioAsync(string usuarioC) {
-            _denissebr201224240_.websr.usuarioRequest inValue = new _denissebr201224240_.websr.usuarioRequest();
-            inValue.Body = new _denissebr201224240_.websr.usuarioRequestBody();
-            inValue.Body.usuarioC = usuarioC;
-            return ((_denissebr201224240_.websr.Service1Soap)(this)).usuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _denissebr201224240_.websr.asignarResponse _denissebr201224240_.websr.Service1Soap.asignar(_denissebr201224240_.websr.asignarRequest request) {
-            return base.Channel.asignar(request);
-        }
-        
-        public string asignar() {
-            _denissebr201224240_.websr.asignarRequest inValue = new _denissebr201224240_.websr.asignarRequest();
-            inValue.Body = new _denissebr201224240_.websr.asignarRequestBody();
-            _denissebr201224240_.websr.asignarResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).asignar(inValue);
-            return retVal.Body.asignarResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_denissebr201224240_.websr.asignarResponse> _denissebr201224240_.websr.Service1Soap.asignarAsync(_denissebr201224240_.websr.asignarRequest request) {
-            return base.Channel.asignarAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_denissebr201224240_.websr.asignarResponse> asignarAsync() {
-            _denissebr201224240_.websr.asignarRequest inValue = new _denissebr201224240_.websr.asignarRequest();
-            inValue.Body = new _denissebr201224240_.websr.asignarRequestBody();
-            return ((_denissebr201224240_.websr.Service1Soap)(this)).asignarAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         _denissebr201224240_.websr.despedirResponse _denissebr201224240_.websr.Service1Soap.despedir(_denissebr201224240_.websr.despedirRequest request) {
             return base.Channel.despedir(request);
         }
@@ -1088,12 +1150,71 @@ namespace _denissebr201224240_.websr {
             return ((_denissebr201224240_.websr.Service1Soap)(this)).cargarCategoriaAsync(inValue);
         }
         
-        public void registrar() {
-            base.Channel.registrar();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _denissebr201224240_.websr.sucursalResponse _denissebr201224240_.websr.Service1Soap.sucursal(_denissebr201224240_.websr.sucursalRequest request) {
+            return base.Channel.sucursal(request);
         }
         
-        public System.Threading.Tasks.Task registrarAsync() {
-            return base.Channel.registrarAsync();
+        public _denissebr201224240_.websr.ArrayOfString sucursal() {
+            _denissebr201224240_.websr.sucursalRequest inValue = new _denissebr201224240_.websr.sucursalRequest();
+            inValue.Body = new _denissebr201224240_.websr.sucursalRequestBody();
+            _denissebr201224240_.websr.sucursalResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).sucursal(inValue);
+            return retVal.Body.sucursalResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.sucursalResponse> _denissebr201224240_.websr.Service1Soap.sucursalAsync(_denissebr201224240_.websr.sucursalRequest request) {
+            return base.Channel.sucursalAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_denissebr201224240_.websr.sucursalResponse> sucursalAsync() {
+            _denissebr201224240_.websr.sucursalRequest inValue = new _denissebr201224240_.websr.sucursalRequest();
+            inValue.Body = new _denissebr201224240_.websr.sucursalRequestBody();
+            return ((_denissebr201224240_.websr.Service1Soap)(this)).sucursalAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _denissebr201224240_.websr.registrarResponse _denissebr201224240_.websr.Service1Soap.registrar(_denissebr201224240_.websr.registrarRequest request) {
+            return base.Channel.registrar(request);
+        }
+        
+        public void registrar(int dpi, string nombre, string apellido, int nit, int telefono, string direccion, long tarjeta, int sucursal, string usuario, string contra, int estado) {
+            _denissebr201224240_.websr.registrarRequest inValue = new _denissebr201224240_.websr.registrarRequest();
+            inValue.Body = new _denissebr201224240_.websr.registrarRequestBody();
+            inValue.Body.dpi = dpi;
+            inValue.Body.nombre = nombre;
+            inValue.Body.apellido = apellido;
+            inValue.Body.nit = nit;
+            inValue.Body.telefono = telefono;
+            inValue.Body.direccion = direccion;
+            inValue.Body.tarjeta = tarjeta;
+            inValue.Body.sucursal = sucursal;
+            inValue.Body.usuario = usuario;
+            inValue.Body.contra = contra;
+            inValue.Body.estado = estado;
+            _denissebr201224240_.websr.registrarResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).registrar(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.registrarResponse> _denissebr201224240_.websr.Service1Soap.registrarAsync(_denissebr201224240_.websr.registrarRequest request) {
+            return base.Channel.registrarAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_denissebr201224240_.websr.registrarResponse> registrarAsync(int dpi, string nombre, string apellido, int nit, int telefono, string direccion, long tarjeta, int sucursal, string usuario, string contra, int estado) {
+            _denissebr201224240_.websr.registrarRequest inValue = new _denissebr201224240_.websr.registrarRequest();
+            inValue.Body = new _denissebr201224240_.websr.registrarRequestBody();
+            inValue.Body.dpi = dpi;
+            inValue.Body.nombre = nombre;
+            inValue.Body.apellido = apellido;
+            inValue.Body.nit = nit;
+            inValue.Body.telefono = telefono;
+            inValue.Body.direccion = direccion;
+            inValue.Body.tarjeta = tarjeta;
+            inValue.Body.sucursal = sucursal;
+            inValue.Body.usuario = usuario;
+            inValue.Body.contra = contra;
+            inValue.Body.estado = estado;
+            return ((_denissebr201224240_.websr.Service1Soap)(this)).registrarAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1144,6 +1265,31 @@ namespace _denissebr201224240_.websr {
             _denissebr201224240_.websr.CategoriasRequest inValue = new _denissebr201224240_.websr.CategoriasRequest();
             inValue.Body = new _denissebr201224240_.websr.CategoriasRequestBody();
             return ((_denissebr201224240_.websr.Service1Soap)(this)).CategoriasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        _denissebr201224240_.websr.DevolverNombreClienteResponse _denissebr201224240_.websr.Service1Soap.DevolverNombreCliente(_denissebr201224240_.websr.DevolverNombreClienteRequest request) {
+            return base.Channel.DevolverNombreCliente(request);
+        }
+        
+        public string DevolverNombreCliente(string usuario) {
+            _denissebr201224240_.websr.DevolverNombreClienteRequest inValue = new _denissebr201224240_.websr.DevolverNombreClienteRequest();
+            inValue.Body = new _denissebr201224240_.websr.DevolverNombreClienteRequestBody();
+            inValue.Body.usuario = usuario;
+            _denissebr201224240_.websr.DevolverNombreClienteResponse retVal = ((_denissebr201224240_.websr.Service1Soap)(this)).DevolverNombreCliente(inValue);
+            return retVal.Body.DevolverNombreClienteResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<_denissebr201224240_.websr.DevolverNombreClienteResponse> _denissebr201224240_.websr.Service1Soap.DevolverNombreClienteAsync(_denissebr201224240_.websr.DevolverNombreClienteRequest request) {
+            return base.Channel.DevolverNombreClienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<_denissebr201224240_.websr.DevolverNombreClienteResponse> DevolverNombreClienteAsync(string usuario) {
+            _denissebr201224240_.websr.DevolverNombreClienteRequest inValue = new _denissebr201224240_.websr.DevolverNombreClienteRequest();
+            inValue.Body = new _denissebr201224240_.websr.DevolverNombreClienteRequestBody();
+            inValue.Body.usuario = usuario;
+            return ((_denissebr201224240_.websr.Service1Soap)(this)).DevolverNombreClienteAsync(inValue);
         }
     }
 }

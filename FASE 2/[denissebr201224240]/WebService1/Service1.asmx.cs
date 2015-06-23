@@ -99,34 +99,7 @@ namespace WebService1
                 return false;
             }
         }
-        //------>IGNORAR 
-        String name, nombre, apellido;
-        [WebMethod]
-        public void usuario(String usuarioC)
-        {
-            nombre = null; apellido = null;
-            //select Nombre,Apellido from Cliente where Usuario='denissebr'
-            SqlCommand miComandoSQL = new SqlCommand("select * from Cliente where Usuario='" + usuarioC + "'");
-            miConexionBase = new SqlConnection(cadenaConexion);
-            miComandoSQL.Connection = miConexionBase;
-            miConexionBase.Open();
-            SqlDataReader reader = miComandoSQL.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    name = reader.GetString(1);
-                }
-            }
-            reader.Close();
-            miComandoSQL.ExecuteNonQuery();
-            miConexionBase.Close();
-        }
-        [WebMethod]
-        public string asignar()
-        {
-            return name;
-        }
+        
         //------>DEPEDIR EMPLEADO
         [WebMethod]
         public void despedir(String id)
@@ -169,11 +142,38 @@ namespace WebService1
         }
 
         //---->REGISTRAR USUARIO
-
         [WebMethod]
-        public void registrar()
+       
+        public List<string> sucursal()
         {
-
+            List<string> cat = new List<string>();
+            SqlCommand comando = new SqlCommand("Select * FROM Sucursal");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            string direccion = "";
+            
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    direccion = lector.GetString(2);
+                    
+                    cat.Add(direccion);
+                }
+            }
+            return cat;
+        }
+        [WebMethod]
+        public void registrar(int dpi,string nombre,string apellido,int nit,int telefono,string direccion,long tarjeta,int sucursal,string usuario,string contra,int estado)
+        {
+            SqlCommand miComandoSQL = new SqlCommand("INSERT INTO CLIENTE (DPI,Nombre,Apellidos,NIT,Telefono,Domicilio,Tarjeta,IdSucursal,Usuario,Contraseña,Estado), VALUES('" + dpi + "','" + nombre + "','" + apellido + "','" + nit + "','" + telefono + "','" + direccion + "','" + tarjeta + "','" + sucursal + "','" + usuario + "','" + contra + "','"+0+"'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            miComandoSQL.ExecuteNonQuery();
+            miConexionBase.Close();
         }
         //---->COTIZAR
         [WebMethod]
@@ -213,6 +213,29 @@ namespace WebService1
             return cat;
         }
 
+        //----> DATOS USUARIO
+        [WebMethod]
+        public string DevolverNombreCliente(String usuario)
+        {
+            string nombre = "";
+            string apellido = "";
+            SqlCommand comando = new SqlCommand("SELECT Nombre FROM Cliente WHERE Usuario = '" + usuario+"'");
+            SqlCommand comando1 = new SqlCommand();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    nombre = lector.GetString(0);
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return nombre;
+        }
 
 
 

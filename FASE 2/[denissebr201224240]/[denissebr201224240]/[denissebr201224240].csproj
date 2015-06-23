@@ -68,9 +68,11 @@
     <Content Include="Content\tabbedContent.css" />
     <Content Include="director.aspx" />
     <Content Include="empleado.aspx" />
+    <Content Include="estado.aspx" />
     <Content Include="index.aspx" />
     <Content Include="masterP.Master" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
+    <Content Include="modi.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -90,9 +92,6 @@
     </None>
     <Content Include="Web.config" />
     <None Include="Service References\websr\Service1.wsdl" />
-    <Content Include="Service References\websr\_denissebr201224240_.websr.asignarResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\websr\_denissebr201224240_.websr.cargarCategoriaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -114,9 +113,6 @@
     <Content Include="Service References\websr\_denissebr201224240_.websr.logEResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\websr\_denissebr201224240_.websr.usuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\websr\_denissebr201224240_.websr.ArrayOfString.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -124,6 +120,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\websr\_denissebr201224240_.websr.cotizarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\websr\_denissebr201224240_.websr.DevolverNombreClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\websr\_denissebr201224240_.websr.registrarResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\websr\_denissebr201224240_.websr.sucursalResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
   </ItemGroup>
@@ -156,6 +161,13 @@
     <Compile Include="empleado.aspx.designer.cs">
       <DependentUpon>empleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="estado.aspx.cs">
+      <DependentUpon>estado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estado.aspx.designer.cs">
+      <DependentUpon>estado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,6 +181,13 @@
     </Compile>
     <Compile Include="masterP.Master.designer.cs">
       <DependentUpon>masterP.Master</DependentUpon>
+    </Compile>
+    <Compile Include="modi.aspx.cs">
+      <DependentUpon>modi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modi.aspx.designer.cs">
+      <DependentUpon>modi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\websr\Reference.cs">

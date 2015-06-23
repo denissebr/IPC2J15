@@ -10,23 +10,31 @@ namespace _denissebr201224240_
     public partial class index : System.Web.UI.Page
     {
         websr.Service1SoapClient wsr = new websr.Service1SoapClient();
-
+        List<string> lista = new List<string>();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            lista = wsr.sucursal();
 
+            foreach (string sucursal in lista);
+            {
+                
+            }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if(!user.Text.Equals("")&&!passw.Text.Equals("")){
 
+            if(!user.Text.Equals("")&&!passw.Text.Equals("")){
+            
             bool cliente = wsr.logC(user.Text, passw.Text);
             bool emp=wsr.logE(user.Text,passw.Text);
             bool dir = wsr.logD(user.Text,passw.Text);
             bool admin=wsr.logA(user.Text,passw.Text);
             if (cliente == true)
             {
-
+                Session["Usuario"] = user.Text;
+               
                 Response.Redirect("cliente.aspx");
             }
             else
@@ -60,7 +68,10 @@ namespace _denissebr201224240_
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+          /*wsr.registrar(){
+
+          }  */
         }
+
     }
     }

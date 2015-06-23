@@ -73,7 +73,7 @@
                 <br />
                 <br />
             </li>
-            <li >
+            <li>
                 <h2>Usuario Nuevo</h2>
                 Nombre&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:TextBox ID="nombre" runat="server"></asp:TextBox>
@@ -81,33 +81,39 @@
                 <br />
                 <br />
                 Apellido&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <asp:TextBox ID="apellido" runat="server"></asp:TextBox>
                 <asp:Label ID="Label7" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
                 <br />
                 <br />
                  DPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                <asp:TextBox ID="dpi" runat="server"></asp:TextBox>
                 <asp:Label ID="Label8" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
                 <br />
                  <br />
                 NIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <asp:TextBox ID="nit" runat="server"></asp:TextBox>
                 <br />
                 <br />
-                Telefono&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                Telefono&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="telefono" runat="server"></asp:TextBox>
                 <br />
                 <br />
-                Direccion&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                Direccion&nbsp;&nbsp;&nbsp; <asp:TextBox ID="direccion" runat="server"></asp:TextBox>
                 <br />
                 <br />
-                Tarjeta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                Tarjeta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="tarjeta" runat="server"></asp:TextBox>
                 <asp:Label ID="Label9" runat="server" ForeColor="#FF3300" Text="*"></asp:Label>
                 <br />
                 <br />
-                Usuario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                Usuario&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="usuario" runat="server"></asp:TextBox>
                  <br />
                 <br />
-                Contraseña<asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+                Contraseña<asp:TextBox ID="contra" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                <asp:Label ID="Label12" runat="server" Text="Sucursal de Preferencia"></asp:Label>
+&nbsp;
+                <asp:DropDownList ID="DropDownList1" runat="server">
+                </asp:DropDownList>
                 <br />
                  <br />
                 <center>

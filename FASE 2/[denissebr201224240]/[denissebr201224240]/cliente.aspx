@@ -11,14 +11,6 @@
     <style type="text/css">
         .auto-style2 {            height: 41px;
         }
-        .auto-style11 {
-            width: 363px;
-            height: 40px;
-        }
-        .auto-style12 {
-            height: 40px;
-            width: 364px;
-        }
         .auto-style14 {
             width: 363px;
             height: 39px;
@@ -44,10 +36,12 @@
        <br />
       <right>
       <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/modi.aspx" Font-Size="Medium" ForeColor="#660066">Editar Perfil</asp:HyperLink>
+      &nbsp; |&nbsp;
+      <asp:HyperLink ID="HyperLink2" runat="server" Font-Size="Medium" ForeColor="#660066" NavigateUrl="~/index.aspx">Cerrar Sesion</asp:HyperLink>
       </right>
   </div>
   <div class="panel-body">
-      <asp:Panel ID="Panel1" runat="server" BorderColor="#CC66FF" BorderStyle="Groove" Height="249px" ScrollBars="Auto">
+      <asp:Panel ID="Panel1" runat="server" BorderColor="#CC66FF" BorderStyle="Groove" Height="280px" ScrollBars="Auto">
           <asp:Panel ID="Panel2" runat="server" BackColor="#CC66FF" Height="40px">
               <CENTER>
               <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="X-Large" ForeColor="White" Text="COTIZADOR"></asp:Label>
@@ -64,6 +58,10 @@
               &nbsp;&nbsp;
               <asp:TextBox ID="peso" runat="server" Width="160px"></asp:TextBox>
               <asp:Label ID="Label7" runat="server" Text=" libras"></asp:Label>
+                   <br />
+                   <br />
+                   <asp:DropDownList ID="DropDownList2" runat="server">
+                   </asp:DropDownList>
               <br />
               <br />
               <asp:Button ID="cotizar" runat="server" Text="COTIZAR" OnClick="cotizar_Click" />
@@ -88,8 +86,15 @@
           <CENTER>
 
           
-          <asp:GridView ID="GridView1" runat="server">
+          <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="IdProducto" DataSourceID="SqlDataSource3">
+              <Columns>
+                  <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                  <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
+                  <asp:BoundField DataField="IdCategoria" HeaderText="IdCategoria" SortExpression="IdCategoria" />
+                  <asp:HyperLinkField AccessibleHeaderText="Estado" DataTextField="Estado" HeaderText="Estado" NavigateUrl="~/estado.aspx" Text="Estado" />
+              </Columns>
           </asp:GridView>
+              <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:IPC2J15ConnectionString %>" SelectCommand="SELECT * FROM [Producto]"></asp:SqlDataSource>
           </CENTER>
           
       </asp:Panel>
@@ -133,17 +138,15 @@
                   </td>
               </tr>
               <tr>
-                  <td class="auto-style11">
-                      <asp:Label ID="Label16" runat="server" Text="TIPO"></asp:Label>
-                  </td>
-                  <td class="auto-style12">
-                      <asp:DropDownList ID="DropDownList1" runat="server">
-                      </asp:DropDownList>
-                  </td>
-              </tr>
-              <tr>
                   <td class="auto-style2" colspan="2" style="align-items:CENTER">
 
+                      <asp:Label ID="Label16" runat="server" Text="TIPO"></asp:Label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="Direccion" DataValueField="Direccion">
+                      </asp:DropDownList>
+                      <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:IPC2J15ConnectionString %>" SelectCommand="SELECT [Direccion] FROM [Sucursal]"></asp:SqlDataSource>
+                      <br />
+                      <br />
                       <asp:Button ID="boton" runat="server" ForeColor="Black" Text="CREAR PEDIDO" />
                   </td>
               </tr>

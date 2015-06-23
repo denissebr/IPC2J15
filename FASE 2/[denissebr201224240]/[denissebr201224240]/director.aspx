@@ -19,7 +19,9 @@
     <form id="form1" runat="server">
     <div class="panel panel-warning">
   <div class="panel-heading" style="text-align:center">
-    <h3 class="panel-title">BIENVENIDO DIRECTOR</h3>
+    <h3 class="panel-title">BIENVENIDO DIRECTOR<br />
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/index.aspx">Cerrar Sesion</asp:HyperLink>
+      </h3>
   </div>
   <div class="panel-body" style="text-align:center">
       <asp:Panel ID="Panel1" runat="server" BorderColor="#00FF99" BorderStyle="Double" Height="177px">
@@ -67,7 +69,7 @@
       </asp:Panel>
       <br />
    <br />
-      <asp:Panel ID="Panel5" runat="server" BorderColor="#CC99FF" BorderStyle="Double" Height="172px" ScrollBars="Auto">
+      <asp:Panel ID="Panel5" runat="server" BorderColor="#CC99FF" BorderStyle="Double" Height="274px" ScrollBars="Auto">
           <asp:Panel ID="Panel6" runat="server" BackColor="#CC99FF" Height="50px">
               <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="X-Large" Text="MODIFICAR CONTRATACION"></asp:Label>
           </asp:Panel>
@@ -81,8 +83,85 @@
           <br />
           <br />
           <center>
-          <asp:GridView ID="GridView2" runat="server">
+          <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="codigo" DataSourceID="SqlDataSource1" GridLines="Horizontal">
+              <AlternatingRowStyle BackColor="#F7F7F7" />
+              <Columns>
+                  <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
+                  <asp:BoundField DataField="codigo" HeaderText="codigo" InsertVisible="False" ReadOnly="True" SortExpression="codigo" />
+                  <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                  <asp:BoundField DataField="Apelllido" HeaderText="Apelllido" SortExpression="Apelllido" />
+                  <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
+                  <asp:BoundField DataField="Sueldo" HeaderText="Sueldo" SortExpression="Sueldo" />
+                  <asp:BoundField DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
+                  <asp:BoundField DataField="IdDepartamento" HeaderText="IdDepartamento" SortExpression="IdDepartamento" />
+                  <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
+                  <asp:BoundField DataField="IdSucursal" HeaderText="IdSucursal" SortExpression="IdSucursal" />
+                  <asp:BoundField DataField="UsuarioEmpleado" HeaderText="UsuarioEmpleado" SortExpression="UsuarioEmpleado" />
+                  <asp:BoundField DataField="Contraseña" HeaderText="Contraseña" SortExpression="Contraseña" />
+              </Columns>
+              <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+              <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+              <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+              <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+              <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+              <SortedAscendingCellStyle BackColor="#F4F4FD" />
+              <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+              <SortedDescendingCellStyle BackColor="#D8D8F0" />
+              <SortedDescendingHeaderStyle BackColor="#3E3277" />
           </asp:GridView>
+              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:IPC2J15ConnectionString %>" DeleteCommand="DELETE FROM [Empleado] WHERE [codigo] = @original_codigo AND [Nombre] = @original_Nombre AND [Apelllido] = @original_Apelllido AND [Telefono] = @original_Telefono AND [Sueldo] = @original_Sueldo AND [Direccion] = @original_Direccion AND [IdDepartamento] = @original_IdDepartamento AND [Rol] = @original_Rol AND [IdSucursal] = @original_IdSucursal AND [UsuarioEmpleado] = @original_UsuarioEmpleado AND [Contraseña] = @original_Contraseña" InsertCommand="INSERT INTO [Empleado] ([Nombre], [Apelllido], [Telefono], [Sueldo], [Direccion], [IdDepartamento], [Rol], [IdSucursal], [UsuarioEmpleado], [Contraseña]) VALUES (@Nombre, @Apelllido, @Telefono, @Sueldo, @Direccion, @IdDepartamento, @Rol, @IdSucursal, @UsuarioEmpleado, @Contraseña)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Empleado] WHERE ([codigo] = @codigo)" UpdateCommand="UPDATE [Empleado] SET [Nombre] = @Nombre, [Apelllido] = @Apelllido, [Telefono] = @Telefono, [Sueldo] = @Sueldo, [Direccion] = @Direccion, [IdDepartamento] = @IdDepartamento, [Rol] = @Rol, [IdSucursal] = @IdSucursal, [UsuarioEmpleado] = @UsuarioEmpleado, [Contraseña] = @Contraseña WHERE [codigo] = @original_codigo AND [Nombre] = @original_Nombre AND [Apelllido] = @original_Apelllido AND [Telefono] = @original_Telefono AND [Sueldo] = @original_Sueldo AND [Direccion] = @original_Direccion AND [IdDepartamento] = @original_IdDepartamento AND [Rol] = @original_Rol AND [IdSucursal] = @original_IdSucursal AND [UsuarioEmpleado] = @original_UsuarioEmpleado AND [Contraseña] = @original_Contraseña">
+                  <DeleteParameters>
+                      <asp:Parameter Name="original_codigo" Type="Int32" />
+                      <asp:Parameter Name="original_Nombre" Type="String" />
+                      <asp:Parameter Name="original_Apelllido" Type="String" />
+                      <asp:Parameter Name="original_Telefono" Type="Int32" />
+                      <asp:Parameter Name="original_Sueldo" Type="Double" />
+                      <asp:Parameter Name="original_Direccion" Type="String" />
+                      <asp:Parameter Name="original_IdDepartamento" Type="Int32" />
+                      <asp:Parameter Name="original_Rol" Type="String" />
+                      <asp:Parameter Name="original_IdSucursal" Type="Int32" />
+                      <asp:Parameter Name="original_UsuarioEmpleado" Type="String" />
+                      <asp:Parameter Name="original_Contraseña" Type="String" />
+                  </DeleteParameters>
+                  <InsertParameters>
+                      <asp:Parameter Name="Nombre" Type="String" />
+                      <asp:Parameter Name="Apelllido" Type="String" />
+                      <asp:Parameter Name="Telefono" Type="Int32" />
+                      <asp:Parameter Name="Sueldo" Type="Double" />
+                      <asp:Parameter Name="Direccion" Type="String" />
+                      <asp:Parameter Name="IdDepartamento" Type="Int32" />
+                      <asp:Parameter Name="Rol" Type="String" />
+                      <asp:Parameter Name="IdSucursal" Type="Int32" />
+                      <asp:Parameter Name="UsuarioEmpleado" Type="String" />
+                      <asp:Parameter Name="Contraseña" Type="String" />
+                  </InsertParameters>
+                  <SelectParameters>
+                      <asp:ControlParameter ControlID="codEmp" Name="codigo" PropertyName="Text" Type="Int32" />
+                  </SelectParameters>
+                  <UpdateParameters>
+                      <asp:Parameter Name="Nombre" Type="String" />
+                      <asp:Parameter Name="Apelllido" Type="String" />
+                      <asp:Parameter Name="Telefono" Type="Int32" />
+                      <asp:Parameter Name="Sueldo" Type="Double" />
+                      <asp:Parameter Name="Direccion" Type="String" />
+                      <asp:Parameter Name="IdDepartamento" Type="Int32" />
+                      <asp:Parameter Name="Rol" Type="String" />
+                      <asp:Parameter Name="IdSucursal" Type="Int32" />
+                      <asp:Parameter Name="UsuarioEmpleado" Type="String" />
+                      <asp:Parameter Name="Contraseña" Type="String" />
+                      <asp:Parameter Name="original_codigo" Type="Int32" />
+                      <asp:Parameter Name="original_Nombre" Type="String" />
+                      <asp:Parameter Name="original_Apelllido" Type="String" />
+                      <asp:Parameter Name="original_Telefono" Type="Int32" />
+                      <asp:Parameter Name="original_Sueldo" Type="Double" />
+                      <asp:Parameter Name="original_Direccion" Type="String" />
+                      <asp:Parameter Name="original_IdDepartamento" Type="Int32" />
+                      <asp:Parameter Name="original_Rol" Type="String" />
+                      <asp:Parameter Name="original_IdSucursal" Type="Int32" />
+                      <asp:Parameter Name="original_UsuarioEmpleado" Type="String" />
+                      <asp:Parameter Name="original_Contraseña" Type="String" />
+                  </UpdateParameters>
+              </asp:SqlDataSource>
           </center>
 
       </asp:Panel>

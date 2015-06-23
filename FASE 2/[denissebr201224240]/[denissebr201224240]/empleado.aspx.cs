@@ -13,5 +13,17 @@ namespace _denissebr201224240_
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlDataSource1.Update();
+            }
+            catch (Exception except)
+            {
+                //Handle the Exception;
+            }
+        }
     }
 }

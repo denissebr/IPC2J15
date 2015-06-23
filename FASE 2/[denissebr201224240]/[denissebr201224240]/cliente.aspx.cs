@@ -9,10 +9,32 @@ namespace _denissebr201224240_
 {
     public partial class cliente : System.Web.UI.Page
     {
+        List<string> lista = new List<string>();
+        List<string> lista2 = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            websr.Service1SoapClient wsr = new websr.Service1SoapClient();
+            username.Text = wsr.DevolverNombreCliente(Convert.ToString(Session["Usuario"]));
+
+            
+            
+            lista = wsr.Categorias();
+
+            foreach (string categoria in lista)
+            {
+                
+                DropDownList2.Items.Add(categoria);
+            }
+            lista2 = wsr.Categorias();
+            foreach (string categoria in lista2)
+            {
+
+                DropDownList1.Items.Add(categoria);
+            }
+
 
         }
+
 
         protected void cotizar_Click(object sender, EventArgs e)
         {
@@ -24,7 +46,7 @@ namespace _denissebr201224240_
                 float libras = Convert.ToSingle(peso.Text);
                 
                 String prueba = wsr.cotizar(costo, libras);
-                String seleccion = DropDownList1.SelectedItem.ToString();
+                String seleccion = DropDownList2.SelectedItem.ToString();
                 seleccion = seleccion.Replace('%', ' ');
                 string[] aux = seleccion.Split('-');
                 float valor = float.Parse(aux[1]);
