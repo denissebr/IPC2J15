@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="_DenisseBR_.master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <title>Quetzal Express</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+ <header>
+     <div style="text-align: center">
+            
+            <h1>QUETZAL EXPRESS</h1>
+            <h4>La mejor experiencia en importacion de paquetes</h4>
+            
+        </div>
+ </header>
+
+    <form id="form1" runat="server">
+
+
+
+        <div>
+            <asp:ContentPlaceHolder ID="x" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+       
+    </form>
+     <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+              
+                 <p>&copy; <%: DateTime.Now.Year %> Joselyn Denisse Barrera Rodriguez</p>
+                 
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

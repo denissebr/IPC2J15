@@ -24,13 +24,15 @@ namespace _denissebr201224240_
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            Response.Write(user.Text + passw.Text);
 
             if(!user.Text.Equals("")&&!passw.Text.Equals("")){
             
             bool cliente = wsr.logC(user.Text, passw.Text);
-            bool emp=wsr.logE(user.Text,passw.Text);
+            int  emp=wsr.logE(user.Text,passw.Text);
             bool dir = wsr.logD(user.Text,passw.Text);
             bool admin=wsr.logA(user.Text,passw.Text);
+           
             if (cliente == true)
             {
                 Session["Usuario"] = user.Text;
@@ -39,8 +41,9 @@ namespace _denissebr201224240_
             }
             else
             {
-                if(emp==true){
-                    Response.Redirect("empleado.aspx");
+                if (admin == true)
+                {
+                    Response.Redirect("admin.aspx");
                 }
                 else
                 {
@@ -49,8 +52,8 @@ namespace _denissebr201224240_
                     }
                     else
                     {
-                        if(admin==true){
-                            Response.Redirect("admin.aspx");
+                        if(emp==1){
+                            Response.Redirect("empleado.aspx");
                         }
                         else
                         {
@@ -64,6 +67,7 @@ namespace _denissebr201224240_
             {
                 error.Visible = true;
             }
+        
         }
 
         protected void Button1_Click(object sender, EventArgs e)

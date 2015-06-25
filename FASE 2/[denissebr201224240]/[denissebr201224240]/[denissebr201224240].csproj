@@ -71,6 +71,8 @@
     <Content Include="estado.aspx" />
     <Content Include="index.aspx" />
     <Content Include="masterP.Master" />
+    <Content Include="datosP.csv" />
+    <Content Include="datoC.csv" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="modi.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -209,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\websr\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Archivo\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

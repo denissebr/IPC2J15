@@ -28,7 +28,8 @@ namespace WebService1
         [WebMethod]
         public bool logC(String user, String pass)
         {
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'", cadenaConexion);
+            int estado = 1;
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where Usuario='" + user + "' and Contraseña='" + pass + "'and Activo='"+estado+"'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -44,7 +45,7 @@ namespace WebService1
         }
         //------>LOG IN EMPLEADO
         [WebMethod]
-        public bool logE(String user, String pass)
+        public int logE(String user, String pass)
         {
             String empleado = "empleado";
             SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and Contraseña='" + pass + "' and Rol='" + empleado + "'", cadenaConexion);
@@ -53,12 +54,12 @@ namespace WebService1
             if (dt.Rows[0][0].ToString() == "1")
             {
 
-                return true;
+                return 1;
 
             }
             else
             {
-                return false;
+                return 0;
             }
         }
         //------>LOG IN DIRECTOR

@@ -21,16 +21,16 @@ namespace _denissebr201224240_
             if (archivo.HasFile)
             {
                 String path;
-                archivo.SaveAs(MapPath("Archivos/" + archivo.FileName));
+               
                 websr.Service1SoapClient wsr = new websr.Service1SoapClient();
                 if (ddo.SelectedIndex.Equals(0))
                 {
-                    path = MapPath("Archivos/" + archivo.FileName); 
+                    path = Server.MapPath(archivo.FileName);
                     wsr.cargarEmpleado(path);
                 }
                 else if(ddo.SelectedIndex.Equals(1))
                 {
-                    path = MapPath("Archivos/" + archivo.FileName); 
+                    path = Server.MapPath(archivo.FileName);
                     wsr.cargarCategoria(path);
                 }
 

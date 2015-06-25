@@ -243,12 +243,12 @@ namespace _denissebr201224240_.websr {
     public partial class logEResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool logEResult;
+        public int logEResult;
         
         public logEResponseBody() {
         }
         
-        public logEResponseBody(bool logEResult) {
+        public logEResponseBody(int logEResult) {
             this.logEResult = logEResult;
         }
     }
@@ -1002,7 +1002,7 @@ namespace _denissebr201224240_.websr {
             return base.Channel.logE(request);
         }
         
-        public bool logE(string user, string pass) {
+        public int logE(string user, string pass) {
             _denissebr201224240_.websr.logERequest inValue = new _denissebr201224240_.websr.logERequest();
             inValue.Body = new _denissebr201224240_.websr.logERequestBody();
             inValue.Body.user = user;
