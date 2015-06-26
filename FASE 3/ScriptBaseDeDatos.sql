@@ -1,0 +1,100 @@
+create database Fase3V1
+
+use Fase3V1
+
+CREATE TABLE Sede(
+IdSede INT IDENTITY(1,1) PRIMARY KEY,
+Pais VARCHAR(MAX) NOT NULL,
+Comision FLOAT NOT NULL,
+)
+
+CREATE TABLE Sucursal(
+IdSucursal INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(MAX) NOT NULL,
+Direccion VARCHAR(MAX) NOT NULL,
+Telefono INT NOT NULL,
+CantidadEmpleados INT NOT NULL,
+IdSede INT NOT NULL,
+FOREIGN KEY (IdSede) REFERENCES Sede(IdSede)
+)
+
+CREATE TABLE Departamento(
+IdDepartamento INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(MAX)   NOT NULL,
+Descripcion VARCHAR(MAX),
+)
+CREATE TABLE AsignacionSD(
+idAsignacion INT IDENTITY(1,1) PRIMARY KEY,
+IdDepartamento INT NOT NULL,
+IdSucursal INT NOT NULL,
+FOREIGN KEY (IdDepartamento) REFERENCES Departamento(IdDepartamento),
+FOREIGN KEY (IdSucursal) REFERENCES Sucursal(IdSucursal)
+)
+CREATE TABLE Empleado(
+IdEmpleado INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(MAX) NOT NULL,
+Apellido VARCHAR(MAX) NOT NULL,
+Dpi BIGINT,
+Telefono INT,
+Sueldo FLOAT,
+Direccion VARCHAR(MAX),
+Tipo VARCHAR(MAX),
+Rol INT NOT NULL,
+UsuarioEmpleado VARCHAR(MAX) NOT NULL,
+PasswordE VARCHAR(MAX) NOT NULL,
+FOREIGN KEY (Rol) REFERENCES Departamento(IdDepartamento)
+)
+CREATE TABLE Cliente(
+Nombre VARCHAR(MAX) NOT NULL,
+Apellido VARCHAR(MAX) NOT NULL,
+Dpi BIGINT PRIMARY KEY,
+Telefono INT,
+Nit INT,
+Direccion VARCHAR(MAX) NOT NULL,
+casilla  INT IDENTITY(1,1)   NOT NULL,
+Estado BIT NOT NULL,
+UsuarioCliente VARCHAR(MAX)   NOT NULL,
+PasswordC VARCHAR(MAX) NOT NULL,
+IdSucursal INT NOT NULL,
+FOREIGN KEY (IdSucursal) REFERENCES Sucursal(IdSucursal)
+)
+CREATE TABLE Categoria(
+IdCategoria INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(MAX) NOT NULL,
+Descripcion VARCHAR(MAX),
+Impuesto FLOAT NOT NULL
+)
+CREATE TABLE Lote(
+IdLote INT IDENTITY(1,1) PRIMARY KEY,
+FechaSalida DATE NOT NULL,
+)
+CREATE TABLE Factura(
+IdFactura INT IDENTITY(1,1) PRIMARY KEY,
+FechaEmision DATE NOT NULL,
+Dpi BIGINT NOT NULL,
+FOREIGN KEY (Dpi) REFERENCES Cliente(Dpi),
+)
+CREATE TABLE Detalle(
+IdDetalle INT IDENTITY(1,1) PRIMARY KEY,
+Descripcion VARCHAR(MAX) NOT NULL,
+Total INT NOT NULL,
+IdFactura INT NOT NULL,
+FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
+)
+CREATE TABLE Paquete(
+IdPaquete INT IDENTITY(1,1) PRIMARY KEY,
+Nombre VARCHAR(MAX) NOT NULL,
+Descripcion VARCHAR(MAX),
+peso FLOAT NOT NULL,
+Precio FLOAT NOT NULL,
+Estado VARCHAR(MAX) NOT NULL,
+Dpi BIGINT NOT NULL,
+IdCategoria INT NOT NULL,
+IdLote INT NOT NULL,
+IdDetalle INT NOT NULL,
+FOREIGN KEY (IdDetalle) REFERENCES Detalle(IdDetalle),
+FOREIGN KEY (Dpi) REFERENCES Cliente(Dpi),
+FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria),
+FOREIGN KEY (IdLote) REFERENCES Lote(IdLote)
+)
+
