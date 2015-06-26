@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "[DenisseBR]", "[DenisseBR]\[DenisseBR].csproj", "{A45212E9-A520-45AA-880E-9204D66860FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{226B67BC-8AF5-428F-920C-B98B659ECF14} = {226B67BC-8AF5-428F-920C-B98B659ECF14}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{226B67BC-8AF5-428F-920C-B98B659ECF14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{A45212E9-A520-45AA-880E-9204D66860FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A45212E9-A520-45AA-880E-9204D66860FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A45212E9-A520-45AA-880E-9204D66860FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226B67BC-8AF5-428F-920C-B98B659ECF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226B67BC-8AF5-428F-920C-B98B659ECF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226B67BC-8AF5-428F-920C-B98B659ECF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226B67BC-8AF5-428F-920C-B98B659ECF14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,10 +1,10 @@
-﻿<%@ Page Title="[INICIO]" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="_DenisseBR_.WebForm1" %>
+﻿<%@ Page Title="[INICIO]" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true"  CodeBehind="WebForm1.aspx.cs" Inherits="_DenisseBR_.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="x" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="x" runat="server" >
     <link href="Content/bootstrap.css" rel="stylesheet" />
-<div style="text-align:center">
+<div style="text-align:center" >
       <br />
       <br />
       <br />
@@ -36,11 +36,11 @@
          <br />
          <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="Large" Text="Tipo"></asp:Label>
          &nbsp;
-        <asp:DropDownList ID="ddt" runat="server" Width="131px" Height="16px">
+        <asp:DropDownList ID="ddt" runat="server" Width="131px" Height="30px" Font-Size="Medium">
         </asp:DropDownList>
         <br />
         <br />
-        <asp:Button ID="cotizar" runat="server" CssClass="btn-success" Height="46px" Text="Cotizar" Width="105px" />
+        <asp:Button ID="cotizar" runat="server" CssClass="btn-success" Height="46px" Text="Cotizar" Width="105px" OnClick="cotizar_Click" />
 
 
         <br />
@@ -74,7 +74,7 @@
             <asp:Label ID="msj" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#FF3300"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="logIn" runat="server" CssClass="btn" ForeColor="Black" Text="Iniciar Sesion" />
+            <asp:Button ID="logIn" runat="server" CssClass="btn" ForeColor="Black" Text="Iniciar Sesion" OnClick="logIn_Click" />
          
             <br />
          
