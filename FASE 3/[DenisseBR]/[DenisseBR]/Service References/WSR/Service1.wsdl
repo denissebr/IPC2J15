@@ -92,6 +92,162 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="Sucursal">
+        <s:complexType />
+      </s:element>
+      <s:element name="SucursalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SucursalResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSucursal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSucursalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerSucursalResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sucursalPedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sucursalPedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sucursalPedidoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="direccionSucur">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="direccionSucurResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccionSucurResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verificarUs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verificarUsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="verificarUsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registrarUS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nit" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="estado" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passw" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registrarUSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="registrarUSResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registrarPedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="idcategoria" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registrarPedidoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="obtenerDPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="obtenerDPIResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDatosUs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDatosUsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerDatosUsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nit" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passw" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdSucursal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDatosResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="logCSoapIn">
@@ -130,6 +286,66 @@
   <wsdl:message name="CategoriasSoapOut">
     <wsdl:part name="parameters" element="tns:CategoriasResponse" />
   </wsdl:message>
+  <wsdl:message name="SucursalSoapIn">
+    <wsdl:part name="parameters" element="tns:Sucursal" />
+  </wsdl:message>
+  <wsdl:message name="SucursalSoapOut">
+    <wsdl:part name="parameters" element="tns:SucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSucursalSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursal" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSucursalSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="sucursalPedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:sucursalPedido" />
+  </wsdl:message>
+  <wsdl:message name="sucursalPedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:sucursalPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="direccionSucurSoapIn">
+    <wsdl:part name="parameters" element="tns:direccionSucur" />
+  </wsdl:message>
+  <wsdl:message name="direccionSucurSoapOut">
+    <wsdl:part name="parameters" element="tns:direccionSucurResponse" />
+  </wsdl:message>
+  <wsdl:message name="verificarUsSoapIn">
+    <wsdl:part name="parameters" element="tns:verificarUs" />
+  </wsdl:message>
+  <wsdl:message name="verificarUsSoapOut">
+    <wsdl:part name="parameters" element="tns:verificarUsResponse" />
+  </wsdl:message>
+  <wsdl:message name="registrarUSSoapIn">
+    <wsdl:part name="parameters" element="tns:registrarUS" />
+  </wsdl:message>
+  <wsdl:message name="registrarUSSoapOut">
+    <wsdl:part name="parameters" element="tns:registrarUSResponse" />
+  </wsdl:message>
+  <wsdl:message name="registrarPedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:registrarPedido" />
+  </wsdl:message>
+  <wsdl:message name="registrarPedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:registrarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDPISoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerDPI" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDPISoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerDPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosUsSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerDatosUs" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDatosUsSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerDatosUsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarDatos" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarDatosResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -154,6 +370,46 @@
     <wsdl:operation name="Categorias">
       <wsdl:input message="tns:CategoriasSoapIn" />
       <wsdl:output message="tns:CategoriasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sucursal">
+      <wsdl:input message="tns:SucursalSoapIn" />
+      <wsdl:output message="tns:SucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursal">
+      <wsdl:input message="tns:ObtenerSucursalSoapIn" />
+      <wsdl:output message="tns:ObtenerSucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="sucursalPedido">
+      <wsdl:input message="tns:sucursalPedidoSoapIn" />
+      <wsdl:output message="tns:sucursalPedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="direccionSucur">
+      <wsdl:input message="tns:direccionSucurSoapIn" />
+      <wsdl:output message="tns:direccionSucurSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="verificarUs">
+      <wsdl:input message="tns:verificarUsSoapIn" />
+      <wsdl:output message="tns:verificarUsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registrarUS">
+      <wsdl:input message="tns:registrarUSSoapIn" />
+      <wsdl:output message="tns:registrarUSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registrarPedido">
+      <wsdl:input message="tns:registrarPedidoSoapIn" />
+      <wsdl:output message="tns:registrarPedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDPI">
+      <wsdl:input message="tns:obtenerDPISoapIn" />
+      <wsdl:output message="tns:obtenerDPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosUs">
+      <wsdl:input message="tns:obtenerDatosUsSoapIn" />
+      <wsdl:output message="tns:obtenerDatosUsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDatos">
+      <wsdl:input message="tns:ActualizarDatosSoapIn" />
+      <wsdl:output message="tns:ActualizarDatosSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -212,6 +468,96 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Sucursal">
+      <soap:operation soapAction="http://tempuri.org/Sucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursal">
+      <soap:operation soapAction="http://tempuri.org/ObtenerSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sucursalPedido">
+      <soap:operation soapAction="http://tempuri.org/sucursalPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="direccionSucur">
+      <soap:operation soapAction="http://tempuri.org/direccionSucur" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificarUs">
+      <soap:operation soapAction="http://tempuri.org/verificarUs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarUS">
+      <soap:operation soapAction="http://tempuri.org/registrarUS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarPedido">
+      <soap:operation soapAction="http://tempuri.org/registrarPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDPI">
+      <soap:operation soapAction="http://tempuri.org/obtenerDPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosUs">
+      <soap:operation soapAction="http://tempuri.org/obtenerDatosUs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDatos">
+      <soap:operation soapAction="http://tempuri.org/ActualizarDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -262,6 +608,96 @@
     </wsdl:operation>
     <wsdl:operation name="Categorias">
       <soap12:operation soapAction="http://tempuri.org/Categorias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sucursal">
+      <soap12:operation soapAction="http://tempuri.org/Sucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursal">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sucursalPedido">
+      <soap12:operation soapAction="http://tempuri.org/sucursalPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="direccionSucur">
+      <soap12:operation soapAction="http://tempuri.org/direccionSucur" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificarUs">
+      <soap12:operation soapAction="http://tempuri.org/verificarUs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarUS">
+      <soap12:operation soapAction="http://tempuri.org/registrarUS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarPedido">
+      <soap12:operation soapAction="http://tempuri.org/registrarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDPI">
+      <soap12:operation soapAction="http://tempuri.org/obtenerDPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDatosUs">
+      <soap12:operation soapAction="http://tempuri.org/obtenerDatosUs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDatos">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarDatos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

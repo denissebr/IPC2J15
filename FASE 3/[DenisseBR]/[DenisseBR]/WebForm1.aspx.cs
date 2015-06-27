@@ -10,7 +10,8 @@ namespace _DenisseBR_
     public partial class WebForm1 : System.Web.UI.Page
     {
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
-        List<string> lista = new List<string>();
+        private string[] lista;
+        private string[] sucursal;
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel2.Visible = false;
@@ -19,13 +20,23 @@ namespace _DenisseBR_
             Session["Activos"] = 0;
 
             ddt.Items.Clear();
+            dds.Items.Clear();
             lista = wsr.Categorias();
+            sucursal = wsr.Sucursal();
+
 
             foreach (string categoria in lista)
             {
                 
                 ddt.Items.Add(categoria);
             }
+            foreach (string sucur in sucursal)
+            {
+
+                dds.Items.Add(sucur);
+            }
+
+            
             
             ScriptResourceDefinition myScriptResDef = new ScriptResourceDefinition();
             myScriptResDef.Path = "~/Scripts/jquery-1.4.2.min.js";
@@ -51,6 +62,7 @@ namespace _DenisseBR_
             Panel2.Visible = false;
             Panel3.Visible = true;
             Panel1.Visible = false;
+            
         }
 
         protected void cot_Click(object sender, EventArgs e)
@@ -99,5 +111,34 @@ namespace _DenisseBR_
             precioF.Visible = true;
             precioF.Text = "Q" + totalf.ToString();*/
         }
+
+        protected void regitrarUs_Click(object sender, EventArgs e)
+        {
+               
+            
+         }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            Panel1.Visible = false;
+            Panel2.Visible = false;
+            Panel3.Visible = true;
+            // public String registrarUs(String nombre, String apellido, long dpi, int telefono,String direccion,bool estado,String usuario,String passw,int IdSucursal)
+
+            int idSucursal = wsr.ObtenerSucursal(Convert.ToString(dds.SelectedItem));
+            if (wsr.verificarUs(txtuser.Text))
+            {
+                msjerrus.Text = "EL USUARIO YA EXISTE, ELIJA OTRO NOMBRE DE USUARIO";
+            }
+            else
+            {
+                wsr.registrarUS(nombre.Text, apellido.Text, Convert.ToInt64(DPI.Text), Convert.ToInt32(telefono.Text), Convert.ToInt32(nit.Text), direccion.Text, 0, txtuser.Text, txtpass.Text, idSucursal);
+                msjsi.Text = "Usuario Registrado exitosamente";
+
+
+            }   
+        }
+
+    
     }
 }

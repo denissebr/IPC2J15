@@ -11,11 +11,20 @@ namespace _DenisseBR_
     public partial class cliente : System.Web.UI.Page
     {
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
-
+        private string[] lista;
         protected void Page_Load(object sender, EventArgs e)
         {
             //usuarioN.Text = Convert.ToString(Session["Usuario"]);
+            ddt1.Items.Clear();
             usuarioN.Text =wsr.obtenerUs(Convert.ToString(Session["Usuario"]), "cliente");
+            int sucur = wsr.sucursalPedido(Convert.ToString(Session["Usuario"]));
+            nSucursal.Text = wsr.direccionSucur(sucur);
+            lista = wsr.Categorias();
+            foreach (string categoria in lista)
+            {
+
+                ddt.Items.Add(categoria);
+            }
             pnlpedido.Visible = false;
             pnlcot.Visible = false;
         }
@@ -31,6 +40,7 @@ namespace _DenisseBR_
         protected void cotizar_Click(object sender, EventArgs e)
         {
             pnlpedido.Visible = false;
+            pnlPedidos.Visible = false;
             pnlcot.Visible = true;
         }
 
@@ -38,6 +48,19 @@ namespace _DenisseBR_
         {
             pnlpedido.Visible = true;
             pnlcot.Visible = false;
+            pnlPedidos.Visible = false;
+        }
+
+        protected void estados_Click(object sender, EventArgs e)
+        {
+            pnlpedido.Visible = false;
+            pnlcot.Visible = false;
+            pnlPedidos.Visible = true;
+        }
+
+        protected void linkd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("actualizar.aspx");
         }
     }
 }

@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="actualizar.aspx" />
     <Content Include="cliente.aspx" />
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap.css" />
@@ -71,6 +72,7 @@
     <Content Include="Imagenes\Fondos-para-paginas-web-02.jpg" />
     <Content Include="Imagenes\images.jpg" />
     <Content Include="Imagenes\xml.jpg" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -89,6 +91,13 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="actualizar.aspx.cs">
+      <DependentUpon>actualizar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="actualizar.aspx.designer.cs">
+      <DependentUpon>actualizar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cliente.aspx.cs">
       <DependentUpon>cliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,27 +136,6 @@
   <ItemGroup>
     <Content Include="master.Master" />
     <None Include="Service References\WSR\Service1.wsdl" />
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.logAResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.logCResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.logDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.logEResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.obtenerUsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.ArrayOfString.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\WSR\_DenisseBR_.WSR.CategoriasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -9,483 +9,124 @@
 //------------------------------------------------------------------------------
 
 namespace _DenisseBR_.WSR {
-    using System.Runtime.Serialization;
-    using System;
+    using System.Data;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://tempuri.org/", ItemName="string")]
-    [System.SerializableAttribute()]
-    public class ArrayOfString : System.Collections.Generic.List<string> {
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WSR.Service1Soap")]
     public interface Service1Soap {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logC", ReplyAction="*")]
-        _DenisseBR_.WSR.logCResponse logC(_DenisseBR_.WSR.logCRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool logC(string user, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logC", ReplyAction="*")]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logCResponse> logCAsync(_DenisseBR_.WSR.logCRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logE", ReplyAction="*")]
-        _DenisseBR_.WSR.logEResponse logE(_DenisseBR_.WSR.logERequest request);
+        System.Threading.Tasks.Task<bool> logCAsync(string user, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logE", ReplyAction="*")]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logEResponse> logEAsync(_DenisseBR_.WSR.logERequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool logE(string user, string pass);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logE", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> logEAsync(string user, string pass);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logD", ReplyAction="*")]
-        _DenisseBR_.WSR.logDResponse logD(_DenisseBR_.WSR.logDRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool logD(string user, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logD", ReplyAction="*")]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logDResponse> logDAsync(_DenisseBR_.WSR.logDRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logA", ReplyAction="*")]
-        _DenisseBR_.WSR.logAResponse logA(_DenisseBR_.WSR.logARequest request);
+        System.Threading.Tasks.Task<bool> logDAsync(string user, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logA", ReplyAction="*")]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logAResponse> logAAsync(_DenisseBR_.WSR.logARequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool logA(string user, string pass);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento user del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logA", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> logAAsync(string user, string pass);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerUs", ReplyAction="*")]
-        _DenisseBR_.WSR.obtenerUsResponse obtenerUs(_DenisseBR_.WSR.obtenerUsRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string obtenerUs(string user, string tipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerUs", ReplyAction="*")]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.obtenerUsResponse> obtenerUsAsync(_DenisseBR_.WSR.obtenerUsRequest request);
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento CategoriasResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
-        _DenisseBR_.WSR.CategoriasResponse Categorias(_DenisseBR_.WSR.CategoriasRequest request);
+        System.Threading.Tasks.Task<string> obtenerUsAsync(string user, string tipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.CategoriasResponse> CategoriasAsync(_DenisseBR_.WSR.CategoriasRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logCRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logC", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logCRequestBody Body;
-        
-        public logCRequest() {
-        }
-        
-        public logCRequest(_DenisseBR_.WSR.logCRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logCRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string user;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string pass;
-        
-        public logCRequestBody() {
-        }
-        
-        public logCRequestBody(string user, string pass) {
-            this.user = user;
-            this.pass = pass;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logCResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logCResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logCResponseBody Body;
-        
-        public logCResponse() {
-        }
-        
-        public logCResponse(_DenisseBR_.WSR.logCResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logCResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool logCResult;
-        
-        public logCResponseBody() {
-        }
-        
-        public logCResponseBody(bool logCResult) {
-            this.logCResult = logCResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logERequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logE", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logERequestBody Body;
-        
-        public logERequest() {
-        }
-        
-        public logERequest(_DenisseBR_.WSR.logERequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logERequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string user;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string pass;
-        
-        public logERequestBody() {
-        }
-        
-        public logERequestBody(string user, string pass) {
-            this.user = user;
-            this.pass = pass;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logEResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logEResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logEResponseBody Body;
-        
-        public logEResponse() {
-        }
-        
-        public logEResponse(_DenisseBR_.WSR.logEResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logEResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool logEResult;
-        
-        public logEResponseBody() {
-        }
-        
-        public logEResponseBody(bool logEResult) {
-            this.logEResult = logEResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logDRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logD", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logDRequestBody Body;
-        
-        public logDRequest() {
-        }
-        
-        public logDRequest(_DenisseBR_.WSR.logDRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logDRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string user;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string pass;
-        
-        public logDRequestBody() {
-        }
-        
-        public logDRequestBody(string user, string pass) {
-            this.user = user;
-            this.pass = pass;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logDResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logDResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logDResponseBody Body;
-        
-        public logDResponse() {
-        }
-        
-        public logDResponse(_DenisseBR_.WSR.logDResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logDResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool logDResult;
-        
-        public logDResponseBody() {
-        }
-        
-        public logDResponseBody(bool logDResult) {
-            this.logDResult = logDResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logARequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logA", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logARequestBody Body;
-        
-        public logARequest() {
-        }
-        
-        public logARequest(_DenisseBR_.WSR.logARequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logARequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string user;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string pass;
-        
-        public logARequestBody() {
-        }
-        
-        public logARequestBody(string user, string pass) {
-            this.user = user;
-            this.pass = pass;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class logAResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="logAResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.logAResponseBody Body;
-        
-        public logAResponse() {
-        }
-        
-        public logAResponse(_DenisseBR_.WSR.logAResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class logAResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool logAResult;
-        
-        public logAResponseBody() {
-        }
-        
-        public logAResponseBody(bool logAResult) {
-            this.logAResult = logAResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class obtenerUsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="obtenerUs", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.obtenerUsRequestBody Body;
-        
-        public obtenerUsRequest() {
-        }
-        
-        public obtenerUsRequest(_DenisseBR_.WSR.obtenerUsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class obtenerUsRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string user;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string tipo;
-        
-        public obtenerUsRequestBody() {
-        }
-        
-        public obtenerUsRequestBody(string user, string tipo) {
-            this.user = user;
-            this.tipo = tipo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class obtenerUsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="obtenerUsResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.obtenerUsResponseBody Body;
-        
-        public obtenerUsResponse() {
-        }
-        
-        public obtenerUsResponse(_DenisseBR_.WSR.obtenerUsResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class obtenerUsResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string obtenerUsResult;
-        
-        public obtenerUsResponseBody() {
-        }
-        
-        public obtenerUsResponseBody(string obtenerUsResult) {
-            this.obtenerUsResult = obtenerUsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class CategoriasRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Categorias", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.CategoriasRequestBody Body;
-        
-        public CategoriasRequest() {
-        }
-        
-        public CategoriasRequest(_DenisseBR_.WSR.CategoriasRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class CategoriasRequestBody {
-        
-        public CategoriasRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class CategoriasResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="CategoriasResponse", Namespace="http://tempuri.org/", Order=0)]
-        public _DenisseBR_.WSR.CategoriasResponseBody Body;
-        
-        public CategoriasResponse() {
-        }
-        
-        public CategoriasResponse(_DenisseBR_.WSR.CategoriasResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class CategoriasResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public _DenisseBR_.WSR.ArrayOfString CategoriasResult;
-        
-        public CategoriasResponseBody() {
-        }
-        
-        public CategoriasResponseBody(_DenisseBR_.WSR.ArrayOfString CategoriasResult) {
-            this.CategoriasResult = CategoriasResult;
-        }
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string[] Categorias();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
+        System.Threading.Tasks.Task<string[]> CategoriasAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Sucursal", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string[] Sucursal();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Sucursal", ReplyAction="*")]
+        System.Threading.Tasks.Task<string[]> SucursalAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerSucursal", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ObtenerSucursal(string direccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerSucursal", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenerSucursalAsync(string direccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/sucursalPedido", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int sucursalPedido(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/sucursalPedido", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> sucursalPedidoAsync(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/direccionSucur", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string direccionSucur(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/direccionSucur", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> direccionSucurAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/verificarUs", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool verificarUs(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/verificarUs", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> verificarUsAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarUS", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool registrarUS(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarUS", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> registrarUSAsync(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarPedido", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void registrarPedido(float peso, float precio, string estado, long dpi, int idcategoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarPedido", ReplyAction="*")]
+        System.Threading.Tasks.Task registrarPedidoAsync(float peso, float precio, string estado, long dpi, int idcategoria);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDPI", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        long obtenerDPI(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDPI", ReplyAction="*")]
+        System.Threading.Tasks.Task<long> obtenerDPIAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet obtenerDatosUs(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
+        System.Threading.Tasks.Task ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -515,162 +156,132 @@ namespace _DenisseBR_.WSR {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _DenisseBR_.WSR.logCResponse _DenisseBR_.WSR.Service1Soap.logC(_DenisseBR_.WSR.logCRequest request) {
-            return base.Channel.logC(request);
-        }
-        
         public bool logC(string user, string pass) {
-            _DenisseBR_.WSR.logCRequest inValue = new _DenisseBR_.WSR.logCRequest();
-            inValue.Body = new _DenisseBR_.WSR.logCRequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            _DenisseBR_.WSR.logCResponse retVal = ((_DenisseBR_.WSR.Service1Soap)(this)).logC(inValue);
-            return retVal.Body.logCResult;
+            return base.Channel.logC(user, pass);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logCResponse> _DenisseBR_.WSR.Service1Soap.logCAsync(_DenisseBR_.WSR.logCRequest request) {
-            return base.Channel.logCAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_DenisseBR_.WSR.logCResponse> logCAsync(string user, string pass) {
-            _DenisseBR_.WSR.logCRequest inValue = new _DenisseBR_.WSR.logCRequest();
-            inValue.Body = new _DenisseBR_.WSR.logCRequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            return ((_DenisseBR_.WSR.Service1Soap)(this)).logCAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _DenisseBR_.WSR.logEResponse _DenisseBR_.WSR.Service1Soap.logE(_DenisseBR_.WSR.logERequest request) {
-            return base.Channel.logE(request);
+        public System.Threading.Tasks.Task<bool> logCAsync(string user, string pass) {
+            return base.Channel.logCAsync(user, pass);
         }
         
         public bool logE(string user, string pass) {
-            _DenisseBR_.WSR.logERequest inValue = new _DenisseBR_.WSR.logERequest();
-            inValue.Body = new _DenisseBR_.WSR.logERequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            _DenisseBR_.WSR.logEResponse retVal = ((_DenisseBR_.WSR.Service1Soap)(this)).logE(inValue);
-            return retVal.Body.logEResult;
+            return base.Channel.logE(user, pass);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logEResponse> _DenisseBR_.WSR.Service1Soap.logEAsync(_DenisseBR_.WSR.logERequest request) {
-            return base.Channel.logEAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_DenisseBR_.WSR.logEResponse> logEAsync(string user, string pass) {
-            _DenisseBR_.WSR.logERequest inValue = new _DenisseBR_.WSR.logERequest();
-            inValue.Body = new _DenisseBR_.WSR.logERequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            return ((_DenisseBR_.WSR.Service1Soap)(this)).logEAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _DenisseBR_.WSR.logDResponse _DenisseBR_.WSR.Service1Soap.logD(_DenisseBR_.WSR.logDRequest request) {
-            return base.Channel.logD(request);
+        public System.Threading.Tasks.Task<bool> logEAsync(string user, string pass) {
+            return base.Channel.logEAsync(user, pass);
         }
         
         public bool logD(string user, string pass) {
-            _DenisseBR_.WSR.logDRequest inValue = new _DenisseBR_.WSR.logDRequest();
-            inValue.Body = new _DenisseBR_.WSR.logDRequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            _DenisseBR_.WSR.logDResponse retVal = ((_DenisseBR_.WSR.Service1Soap)(this)).logD(inValue);
-            return retVal.Body.logDResult;
+            return base.Channel.logD(user, pass);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logDResponse> _DenisseBR_.WSR.Service1Soap.logDAsync(_DenisseBR_.WSR.logDRequest request) {
-            return base.Channel.logDAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_DenisseBR_.WSR.logDResponse> logDAsync(string user, string pass) {
-            _DenisseBR_.WSR.logDRequest inValue = new _DenisseBR_.WSR.logDRequest();
-            inValue.Body = new _DenisseBR_.WSR.logDRequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            return ((_DenisseBR_.WSR.Service1Soap)(this)).logDAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _DenisseBR_.WSR.logAResponse _DenisseBR_.WSR.Service1Soap.logA(_DenisseBR_.WSR.logARequest request) {
-            return base.Channel.logA(request);
+        public System.Threading.Tasks.Task<bool> logDAsync(string user, string pass) {
+            return base.Channel.logDAsync(user, pass);
         }
         
         public bool logA(string user, string pass) {
-            _DenisseBR_.WSR.logARequest inValue = new _DenisseBR_.WSR.logARequest();
-            inValue.Body = new _DenisseBR_.WSR.logARequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            _DenisseBR_.WSR.logAResponse retVal = ((_DenisseBR_.WSR.Service1Soap)(this)).logA(inValue);
-            return retVal.Body.logAResult;
+            return base.Channel.logA(user, pass);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.logAResponse> _DenisseBR_.WSR.Service1Soap.logAAsync(_DenisseBR_.WSR.logARequest request) {
-            return base.Channel.logAAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<_DenisseBR_.WSR.logAResponse> logAAsync(string user, string pass) {
-            _DenisseBR_.WSR.logARequest inValue = new _DenisseBR_.WSR.logARequest();
-            inValue.Body = new _DenisseBR_.WSR.logARequestBody();
-            inValue.Body.user = user;
-            inValue.Body.pass = pass;
-            return ((_DenisseBR_.WSR.Service1Soap)(this)).logAAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _DenisseBR_.WSR.obtenerUsResponse _DenisseBR_.WSR.Service1Soap.obtenerUs(_DenisseBR_.WSR.obtenerUsRequest request) {
-            return base.Channel.obtenerUs(request);
+        public System.Threading.Tasks.Task<bool> logAAsync(string user, string pass) {
+            return base.Channel.logAAsync(user, pass);
         }
         
         public string obtenerUs(string user, string tipo) {
-            _DenisseBR_.WSR.obtenerUsRequest inValue = new _DenisseBR_.WSR.obtenerUsRequest();
-            inValue.Body = new _DenisseBR_.WSR.obtenerUsRequestBody();
-            inValue.Body.user = user;
-            inValue.Body.tipo = tipo;
-            _DenisseBR_.WSR.obtenerUsResponse retVal = ((_DenisseBR_.WSR.Service1Soap)(this)).obtenerUs(inValue);
-            return retVal.Body.obtenerUsResult;
+            return base.Channel.obtenerUs(user, tipo);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.obtenerUsResponse> _DenisseBR_.WSR.Service1Soap.obtenerUsAsync(_DenisseBR_.WSR.obtenerUsRequest request) {
-            return base.Channel.obtenerUsAsync(request);
+        public System.Threading.Tasks.Task<string> obtenerUsAsync(string user, string tipo) {
+            return base.Channel.obtenerUsAsync(user, tipo);
         }
         
-        public System.Threading.Tasks.Task<_DenisseBR_.WSR.obtenerUsResponse> obtenerUsAsync(string user, string tipo) {
-            _DenisseBR_.WSR.obtenerUsRequest inValue = new _DenisseBR_.WSR.obtenerUsRequest();
-            inValue.Body = new _DenisseBR_.WSR.obtenerUsRequestBody();
-            inValue.Body.user = user;
-            inValue.Body.tipo = tipo;
-            return ((_DenisseBR_.WSR.Service1Soap)(this)).obtenerUsAsync(inValue);
+        public string[] Categorias() {
+            return base.Channel.Categorias();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        _DenisseBR_.WSR.CategoriasResponse _DenisseBR_.WSR.Service1Soap.Categorias(_DenisseBR_.WSR.CategoriasRequest request) {
-            return base.Channel.Categorias(request);
+        public System.Threading.Tasks.Task<string[]> CategoriasAsync() {
+            return base.Channel.CategoriasAsync();
         }
         
-        public _DenisseBR_.WSR.ArrayOfString Categorias() {
-            _DenisseBR_.WSR.CategoriasRequest inValue = new _DenisseBR_.WSR.CategoriasRequest();
-            inValue.Body = new _DenisseBR_.WSR.CategoriasRequestBody();
-            _DenisseBR_.WSR.CategoriasResponse retVal = ((_DenisseBR_.WSR.Service1Soap)(this)).Categorias(inValue);
-            return retVal.Body.CategoriasResult;
+        public string[] Sucursal() {
+            return base.Channel.Sucursal();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<_DenisseBR_.WSR.CategoriasResponse> _DenisseBR_.WSR.Service1Soap.CategoriasAsync(_DenisseBR_.WSR.CategoriasRequest request) {
-            return base.Channel.CategoriasAsync(request);
+        public System.Threading.Tasks.Task<string[]> SucursalAsync() {
+            return base.Channel.SucursalAsync();
         }
         
-        public System.Threading.Tasks.Task<_DenisseBR_.WSR.CategoriasResponse> CategoriasAsync() {
-            _DenisseBR_.WSR.CategoriasRequest inValue = new _DenisseBR_.WSR.CategoriasRequest();
-            inValue.Body = new _DenisseBR_.WSR.CategoriasRequestBody();
-            return ((_DenisseBR_.WSR.Service1Soap)(this)).CategoriasAsync(inValue);
+        public int ObtenerSucursal(string direccion) {
+            return base.Channel.ObtenerSucursal(direccion);
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerSucursalAsync(string direccion) {
+            return base.Channel.ObtenerSucursalAsync(direccion);
+        }
+        
+        public int sucursalPedido(string usuario) {
+            return base.Channel.sucursalPedido(usuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> sucursalPedidoAsync(string usuario) {
+            return base.Channel.sucursalPedidoAsync(usuario);
+        }
+        
+        public string direccionSucur(int id) {
+            return base.Channel.direccionSucur(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> direccionSucurAsync(int id) {
+            return base.Channel.direccionSucurAsync(id);
+        }
+        
+        public bool verificarUs(string user) {
+            return base.Channel.verificarUs(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> verificarUsAsync(string user) {
+            return base.Channel.verificarUsAsync(user);
+        }
+        
+        public bool registrarUS(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal) {
+            return base.Channel.registrarUS(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal);
+        }
+        
+        public System.Threading.Tasks.Task<bool> registrarUSAsync(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal) {
+            return base.Channel.registrarUSAsync(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal);
+        }
+        
+        public void registrarPedido(float peso, float precio, string estado, long dpi, int idcategoria) {
+            base.Channel.registrarPedido(peso, precio, estado, dpi, idcategoria);
+        }
+        
+        public System.Threading.Tasks.Task registrarPedidoAsync(float peso, float precio, string estado, long dpi, int idcategoria) {
+            return base.Channel.registrarPedidoAsync(peso, precio, estado, dpi, idcategoria);
+        }
+        
+        public long obtenerDPI(string user) {
+            return base.Channel.obtenerDPI(user);
+        }
+        
+        public System.Threading.Tasks.Task<long> obtenerDPIAsync(string user) {
+            return base.Channel.obtenerDPIAsync(user);
+        }
+        
+        public System.Data.DataSet obtenerDatosUs(long dpi) {
+            return base.Channel.obtenerDatosUs(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi) {
+            return base.Channel.obtenerDatosUsAsync(dpi);
+        }
+        
+        public void ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
+            base.Channel.ActualizarDatos(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
+        }
+        
+        public System.Threading.Tasks.Task ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
+            return base.Channel.ActualizarDatosAsync(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
         }
     }
 }
