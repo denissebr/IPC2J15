@@ -67,7 +67,7 @@
             <asp:Label ID="Label5" runat="server" Text="Ingrese datos del cliente: "></asp:Label>
             <asp:TextBox ID="datosc" runat="server"></asp:TextBox>
             &nbsp;
-            <asp:Button ID="buscarC" runat="server" Text="Buscar" />
+            <asp:Button ID="buscarC" runat="server" Text="Buscar" OnClick="buscarC_Click" />
             <br />
             <br />
             <asp:GridView ID="buscarcliente" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">

@@ -123,10 +123,24 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
+        int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
-        System.Threading.Tasks.Task ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
+        System.Threading.Tasks.Task<int> ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet obtenerDatosPed(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosPedAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerCasilla", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet obtenerCasilla(string Texto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerCasilla", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> obtenerCasillaAsync(string Texto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -276,12 +290,28 @@ namespace _DenisseBR_.WSR {
             return base.Channel.obtenerDatosUsAsync(dpi);
         }
         
-        public void ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
-            base.Channel.ActualizarDatos(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
+        public int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
+            return base.Channel.ActualizarDatos(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
         }
         
-        public System.Threading.Tasks.Task ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
+        public System.Threading.Tasks.Task<int> ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
             return base.Channel.ActualizarDatosAsync(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
+        }
+        
+        public System.Data.DataSet obtenerDatosPed(long dpi) {
+            return base.Channel.obtenerDatosPed(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosPedAsync(long dpi) {
+            return base.Channel.obtenerDatosPedAsync(dpi);
+        }
+        
+        public System.Data.DataSet obtenerCasilla(string Texto) {
+            return base.Channel.obtenerCasilla(Texto);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerCasillaAsync(string Texto) {
+            return base.Channel.obtenerCasillaAsync(Texto);
         }
     }
 }

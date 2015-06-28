@@ -7,8 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace _DenisseBR_
 {
+    
     public partial class empleado : System.Web.UI.Page
     {
+        WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
+        private System.Data.DataSet dataset1;
         protected void Page_Load(object sender, EventArgs e)
         {
             eyf.Visible = true;
@@ -41,6 +44,18 @@ namespace _DenisseBR_
             eyf.Visible = false;
             dev.Visible = false;
             bus.Visible = true;
+        }
+
+        protected void buscarC_Click(object sender, EventArgs e)
+        {
+            dataset1=wsr.obtenerCasilla(datosc.Text);
+            buscarcliente.AutoGenerateColumns = true;
+
+
+            buscarcliente.DataSource = dataset1;
+            buscarcliente.DataBind();
+           
+ 
         }
     }
 }

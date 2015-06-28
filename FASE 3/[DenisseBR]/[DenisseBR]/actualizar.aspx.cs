@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Web.Services;
+using System.Data;
 
 namespace _DenisseBR_
 {
@@ -25,34 +28,6 @@ namespace _DenisseBR_
 
                 dds.Items.Add(sucur);
             }
-            
-
-        }
-
-        protected void regitrarUs_Click(object sender, EventArgs e)
-        {
-
-            
-
-            int idsuc=wsr.ObtenerSucursal(Convert.ToString(dds.SelectedItem));
-
-            wsr.ActualizarDatos(nombre.Text, apellido.Text, Convert.ToInt64(DPI.Text), Convert.ToInt32(telefono.Text), Convert.ToInt32(nit.Text), direccion.Text, txtuser.Text, txtpass.Text, idsuc);
-            
-                nombre.Text = "";
-                apellido.Text = "";
-                DPI.Text = "";
-                telefono.Text = "";
-                nit.Text = "";
-                direccion.Text = "";
-                txtuser.Text = "";
-                txtpass.Text = "";
-            
-            Response.Write(idsuc);
-
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
             dato = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
             dataset1 = wsr.obtenerDatosUs(dato);
             if (dataset1 != null)
@@ -66,10 +41,48 @@ namespace _DenisseBR_
                 txtuser.Text = dataset1.Tables[0].Rows[0][6].ToString();
                 txtpass.Text = dataset1.Tables[0].Rows[0][7].ToString();
 
+                GridView1.AutoGenerateColumns = true;
 
+
+                GridView1.DataSource = dataset1;
+                GridView1.DataBind();
+            }
+
+
+        }
+
+        protected void regitrarUs_Click(object sender, EventArgs e)
+        {
+
+
+            int idsuc = wsr.ObtenerSucursal(Convert.ToString(dds.SelectedItem));
+
+            int total = wsr.ActualizarDatos(nombre.Text, apellido.Text, Convert.ToInt64(DPI.Text), Convert.ToInt32(telefono.Text), Convert.ToInt32(nit.Text), direccion.Text, txtuser.Text, txtpass.Text, idsuc);
+            if (total == 1)
+            {
+                nombre.Text = "";
+                apellido.Text = "";
+                DPI.Text = "";
+                telefono.Text = "";
+                nit.Text = "";
+                direccion.Text = "";
+                txtuser.Text = "";
+                txtpass.Text = "";
+                msjsi.Visible = true;
+                msjsi.Text = "Informacion actualizada exitosamente";
 
             }
+            else
+            {
+                msjerrus.Visible = true;
+                msjerrus.Text = "No se pudo actualizar la informacion";
+            }
+               
+            
+           
+
         }
+
 
     }
 }

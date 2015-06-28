@@ -356,14 +356,92 @@ namespace WebService
         }
         //--->ACTUALIZAR DATOS CLIENTE
         [WebMethod]
-        public void ActualizarDatos(String nom, String apellido, long dpi, int telefono, int nit, String direccion, String usuario, String passw, int IdSucursal)
+        public int ActualizarDatos(String nom, String apellido, long dpi, int telefono, int nit, String direccion, String usuario, String passw, int IdSucursal)
         {
-            SqlCommand comando = new SqlCommand("Update  Cliente set Nombre='" + nom + "', Apellido='" + apellido + "', Telefono='" + telefono + "', Nit='" + nit + "', Direccion='" + direccion + "', UsuarioCliente='" + usuario + "', PasswordC='" + passw + "', IdSucursal'" + IdSucursal + "' where Dpi=" + dpi+"'");
+            SqlCommand comando = new SqlCommand("Update  Cliente set Nombre='" + nom + "', Apellido='" + apellido + "', Telefono='" + telefono + "', Nit='" + nit + "', Direccion='" + direccion + "', PasswordC='" + passw + "', IdSucursal='" + IdSucursal + "' where Dpi='" + dpi+"'");
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
             miConexionBase.Close();
 
         }
+
+        //--->OBTENER DATOS USUARIO
+        [WebMethod]
+        public DataSet obtenerDatosPed(long dpi)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select Nombre,Descripcion,Estado from Paquete where dpi=" + dpi, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+
+
+        //--------------------------------------MODULO DE EMPLEADO-----------------------------------------------------------------
+        //----------------------------------------SERVICIO AL CLIENTE--------------------------------------------------------------
+
+        //--->OBTENER CASILLA USUARIO
+        [WebMethod]
+        public DataSet obtenerCasilla(String Texto)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select nombre,apellido,dpi,telefono,nit,direccion,Casilla,UsuarioCliente from Cliente where Nombre='" + Texto+"'", miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+       
     }
 }
