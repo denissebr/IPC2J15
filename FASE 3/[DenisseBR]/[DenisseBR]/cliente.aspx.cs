@@ -16,7 +16,7 @@ namespace _DenisseBR_
         {
             //usuarioN.Text = Convert.ToString(Session["Usuario"]);
             ddt1.Items.Clear();
-            usuarioN.Text =wsr.obtenerUs(Convert.ToString(Session["Usuario"]), "cliente");
+            usuarioN.Text =wsr.obtenerUs(Convert.ToString(Session["Usuario"]));
             int sucur = wsr.sucursalPedido(Convert.ToString(Session["Usuario"]));
             nSucursal.Text = wsr.direccionSucur(sucur);
             lista = wsr.Categorias();

@@ -48,7 +48,7 @@ namespace WebService
         public bool logE(String user, String pass)
         {
             String empleado = "empleado";
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and Contraseña='" + pass + "' and Rol='" + empleado + "'", cadenaConexion);
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and PasswordE='" + pass + "' and Tipo='" + empleado + "'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -67,7 +67,7 @@ namespace WebService
         public bool logD(String user, String pass)
         {
             String director = "director";
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and Contraseña='" + pass + "' and Rol='" + director + "'", cadenaConexion);
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and PasswordE='" + pass + "' and Tipo='" + director + "'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -86,7 +86,7 @@ namespace WebService
         public bool logA(String user, String pass)
         {
             String admin = "administrador";
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and Contraseña='" + pass + "' and Rol='" + admin + "'", cadenaConexion);
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and PasswordE='" + pass + "' and Tipo='" + admin + "'", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -100,11 +100,11 @@ namespace WebService
                 return false;
             }
         }
+        //--->OBTENER EL NOMBRE DEL USUARIO
         [WebMethod]
-        public String obtenerUs(String user, String tipo)
+        public String obtenerUs(String user)
         {
             string nombre = "";
-           if(tipo.Equals("cliente")){
                miComandoSQL = new SqlCommand("SELECT Nombre FROM Cliente WHERE UsuarioCliente = '" + user + "'");
                miConexionBase = new SqlConnection(cadenaConexion);
                miComandoSQL.Connection = miConexionBase;
@@ -120,33 +120,54 @@ namespace WebService
                }
                lector.Close();
                miConexionBase.Close();
-               return nombre;
-           }
-           else if (tipo.Equals("empleado"))
-           {
-               miComandoSQL = new SqlCommand("SELECT Nombre FROM Empleado WHERE UsuarioEmpleado = '" + user + "'");
-               miConexionBase = new SqlConnection(cadenaConexion);
-               miComandoSQL.Connection = miConexionBase;
-               miConexionBase.Open();
-               SqlDataReader lector = miComandoSQL.ExecuteReader();
-               if (lector.HasRows)
-               {
-                   while (lector.Read())
-                   {
-                       nombre = lector.GetString(0);
+               return nombre;      
+        }
+        //--->OBTENER EL NOMBRE DEL EMPLEADO
+        [WebMethod]
+        public String obtenerEmp(String user)
+        {
+            string nombre = "";
+            int id = 0;
+            miComandoSQL = new SqlCommand("SELECT * FROM Empleado WHERE UsuarioEmpleado = '" + user + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    id = lector.GetInt32(0);
+                    nombre = lector.GetString(1);
 
-                   }
-               }
-               lector.Close();
-               miConexionBase.Close();
-               return nombre;
-           }
-           else
-           {
-               return "Usuario Invalido";
-           }
-           
-          
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return "Codigo: "+id+" Nombre: "+nombre;
+        }
+     
+        //--->OBTENER TIPO DE EMPLEADO
+        [WebMethod]
+        public int tipoEmp(String user)
+        {
+            int tipo=0;
+            miComandoSQL = new SqlCommand("SELECT Rol FROM Empleado WHERE UsuarioEmpleado = '" + user + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    tipo = lector.GetInt32(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return tipo;
         }
 
         //--->CARGAR

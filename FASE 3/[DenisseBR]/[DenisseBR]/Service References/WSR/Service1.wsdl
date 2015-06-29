@@ -66,7 +66,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -74,6 +73,34 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="obtenerUsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerEmp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerEmpResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tipoEmp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tipoEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tipoEmpResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -357,6 +384,18 @@
   <wsdl:message name="obtenerUsSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerUsResponse" />
   </wsdl:message>
+  <wsdl:message name="obtenerEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerEmp" />
+  </wsdl:message>
+  <wsdl:message name="obtenerEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerEmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="tipoEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:tipoEmp" />
+  </wsdl:message>
+  <wsdl:message name="tipoEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:tipoEmpResponse" />
+  </wsdl:message>
   <wsdl:message name="CategoriasSoapIn">
     <wsdl:part name="parameters" element="tns:Categorias" />
   </wsdl:message>
@@ -468,6 +507,14 @@
       <wsdl:input message="tns:obtenerUsSoapIn" />
       <wsdl:output message="tns:obtenerUsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="obtenerEmp">
+      <wsdl:input message="tns:obtenerEmpSoapIn" />
+      <wsdl:output message="tns:obtenerEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="tipoEmp">
+      <wsdl:input message="tns:tipoEmpSoapIn" />
+      <wsdl:output message="tns:tipoEmpSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Categorias">
       <wsdl:input message="tns:CategoriasSoapIn" />
       <wsdl:output message="tns:CategoriasSoapOut" />
@@ -569,6 +616,24 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerUs">
       <soap:operation soapAction="http://tempuri.org/obtenerUs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerEmp">
+      <soap:operation soapAction="http://tempuri.org/obtenerEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tipoEmp">
+      <soap:operation soapAction="http://tempuri.org/tipoEmp" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -752,6 +817,24 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerUs">
       <soap12:operation soapAction="http://tempuri.org/obtenerUs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerEmp">
+      <soap12:operation soapAction="http://tempuri.org/obtenerEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tipoEmp">
+      <soap12:operation soapAction="http://tempuri.org/tipoEmp" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

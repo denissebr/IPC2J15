@@ -46,10 +46,24 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerUs", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string obtenerUs(string user, string tipo);
+        string obtenerUs(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerUs", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> obtenerUsAsync(string user, string tipo);
+        System.Threading.Tasks.Task<string> obtenerUsAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string obtenerEmp(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> obtenerEmpAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tipoEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int tipoEmp(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tipoEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> tipoEmpAsync(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -216,12 +230,28 @@ namespace _DenisseBR_.WSR {
             return base.Channel.logAAsync(user, pass);
         }
         
-        public string obtenerUs(string user, string tipo) {
-            return base.Channel.obtenerUs(user, tipo);
+        public string obtenerUs(string user) {
+            return base.Channel.obtenerUs(user);
         }
         
-        public System.Threading.Tasks.Task<string> obtenerUsAsync(string user, string tipo) {
-            return base.Channel.obtenerUsAsync(user, tipo);
+        public System.Threading.Tasks.Task<string> obtenerUsAsync(string user) {
+            return base.Channel.obtenerUsAsync(user);
+        }
+        
+        public string obtenerEmp(string user) {
+            return base.Channel.obtenerEmp(user);
+        }
+        
+        public System.Threading.Tasks.Task<string> obtenerEmpAsync(string user) {
+            return base.Channel.obtenerEmpAsync(user);
+        }
+        
+        public int tipoEmp(string user) {
+            return base.Channel.tipoEmp(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> tipoEmpAsync(string user) {
+            return base.Channel.tipoEmpAsync(user);
         }
         
         public string[] Categorias() {

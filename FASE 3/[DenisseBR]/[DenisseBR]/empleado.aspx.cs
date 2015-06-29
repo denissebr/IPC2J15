@@ -15,6 +15,21 @@ namespace _DenisseBR_
         public System.Data.DataSet datasetin;
         protected void Page_Load(object sender, EventArgs e)
         {
+            userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Usuario"]));
+            int tipo=wsr.tipoEmp(Convert.ToString(Session["Usuario"]));
+            if(tipo==1){
+                servicioCliente.Visible = true;
+                bodega.Visible = false;
+                paquetes.Visible = false;
+            }
+            else if (tipo == 2)
+            {
+
+            }
+            else if (tipo == 3)
+            {
+
+            }
             eyf.Visible = true;
             dev.Visible = false;
             bus.Visible = false;

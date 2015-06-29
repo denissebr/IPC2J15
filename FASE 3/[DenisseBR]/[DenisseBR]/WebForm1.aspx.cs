@@ -78,15 +78,41 @@ namespace _DenisseBR_
 
             if (wsr.logC(usuario.Text, passw.Text))
             {
-                Session["Activos"] = Convert.ToInt32(Session["number"]) + 1;
+                
                 Session["Usuario"] = usuario.Text;
                 Response.Redirect("cliente.aspx");
             }
             else
             {
-                msj.Text = "ERROR \n datos incorrecto";
+                if(wsr.logE(usuario.Text,passw.Text)){
+                    Session["Usuario"] = usuario.Text;
+                    Response.Redirect("empleado.aspx");
+                }
+                else
+                {
+                    if (wsr.logD(usuario.Text, passw.Text))
+                    {
+                        Session["Usuario"] = usuario.Text;
+                        Response.Redirect(" ");
+                    }
+                    else
+                    {
+                        if (wsr.logA(usuario.Text, passw.Text))
+                        {
+                            Session["Usuario"] = usuario.Text;
+                            Response.Redirect("");
+                        }
+                        else
+                        {
+                            msj.Text = "ERROR \n datos incorrecto";
+                        }
+                    }
+                   
+                }
             }
-
+            Panel2.Visible = true;
+            Panel3.Visible = false;
+            Panel1.Visible = false;
         }
 
         protected void cotizar_Click(object sender, EventArgs e)
