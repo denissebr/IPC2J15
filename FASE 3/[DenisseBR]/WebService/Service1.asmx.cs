@@ -414,7 +414,7 @@ namespace WebService
             {
                 
                 miConexionBase.Open();
-                miComandoSQL = new SqlCommand("Select nombre,apellido,dpi,telefono,nit,direccion,Casilla,UsuarioCliente from Cliente where Nombre='" + Texto+"'", miConexionBase);
+                miComandoSQL = new SqlCommand("Select nombre,apellido,dpi,telefono,nit,direccion,Casilla,Estado,UsuarioCliente from Cliente where Nombre='" + Texto+"'", miConexionBase);
                 SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
                 da.Fill(ds);
             }
@@ -430,18 +430,52 @@ namespace WebService
             return ds;
 
         }
- 
 
+        //--->CLIENTES PENDIENTES DE APROVACION
+        [WebMethod]
+        public DataSet clientePendienteApr()
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select Nombre,Apellido,Dpi,Telefono,Nit,Direccion,Casilla,Estado,UsuarioCliente from Cliente where Estado="+0 , miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
 
+            return ds;
 
+        }
+        //-->ACTUALIZAR ESTADO CLIENTE
+        [WebMethod]
+        public int ActualizarEstado(long dpi)
+        {
+            SqlCommand comando = new SqlCommand("Update  Cliente set  Estado= 1  where Dpi='" + dpi + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            miConexionBase.Close();
 
-
-
-
-
-
- 
-
+        }
        
     }
 }

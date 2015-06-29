@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
     <div style="text-align:center">
-    <asp:Panel ID="servicioCliente" runat="server" BorderColor="#99FF99" BorderStyle="Solid" Height="957px" ScrollBars="Auto">
+    <asp:Panel ID="servicioCliente" runat="server" BorderColor="#99FF99" BorderStyle="Solid" Height="1241px" ScrollBars="Auto">
         <asp:Panel ID="Panel1" runat="server" BackColor="#CCFFCC" CssClass="panel-heading" Height="62px">
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Servicio al Cliente"></asp:Label>
         </asp:Panel>
@@ -13,6 +13,8 @@
             <asp:Button ID="facturar" runat="server" CssClass="btn" Text="Entrega &amp; Devolucion" OnClick="facturar_Click" />
             <asp:Button ID="devolucion" runat="server" CssClass="btn" Text="Devolucion" OnClick="devolucion_Click" />
             <asp:Button ID="buscar" runat="server" CssClass="btn" Text="Buscar" OnClick="buscar_Click" />
+
+            <asp:Button ID="aprc" runat="server" CssClass="btn" Text="Aprobar Cliente" OnClick="aprc_Click" />
 
         </div>
         <br />
@@ -82,6 +84,33 @@
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
+        </asp:Panel>
+        <asp:Panel ID="aprovar" runat="server" Height="578px">
+            <br />
+            <br />
+            &nbsp;
+            <br />
+            <center>
+            <asp:GridView ID="inactivos" runat="server" CellPadding="2" ForeColor="Black" GridLines="None" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CssClass="table-condensed" OnSelectedIndexChanged="inactivos_SelectedIndexChanged" >
+                <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                <Columns>
+                    <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+                </Columns>
+                <EmptyDataTemplate>
+                    NO HAY DATOS QUE MOSTRAR
+                </EmptyDataTemplate>
+                <FooterStyle BackColor="Tan" />
+                <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                <SelectedRowStyle BackColor="#FFCC66" ForeColor="Black" BorderColor="Black" BorderStyle="Solid" CssClass="table" />
+                <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+            </asp:GridView>
+            </center>
+            <br />
+            <asp:Label ID="msjAcc" runat="server" Font-Bold="True" Font-Size="Large" Visible="False"></asp:Label>
         </asp:Panel>
         </asp:Panel>
 </div>

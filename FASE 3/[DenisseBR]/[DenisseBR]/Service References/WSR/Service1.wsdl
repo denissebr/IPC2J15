@@ -294,6 +294,37 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="clientePendienteApr">
+        <s:complexType />
+      </s:element>
+      <s:element name="clientePendienteAprResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="clientePendienteAprResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarEstadoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="logCSoapIn">
@@ -404,6 +435,18 @@
   <wsdl:message name="obtenerCasillaSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerCasillaResponse" />
   </wsdl:message>
+  <wsdl:message name="clientePendienteAprSoapIn">
+    <wsdl:part name="parameters" element="tns:clientePendienteApr" />
+  </wsdl:message>
+  <wsdl:message name="clientePendienteAprSoapOut">
+    <wsdl:part name="parameters" element="tns:clientePendienteAprResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarEstado" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarEstadoResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -476,6 +519,14 @@
     <wsdl:operation name="obtenerCasilla">
       <wsdl:input message="tns:obtenerCasillaSoapIn" />
       <wsdl:output message="tns:obtenerCasillaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clientePendienteApr">
+      <wsdl:input message="tns:clientePendienteAprSoapIn" />
+      <wsdl:output message="tns:clientePendienteAprSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEstado">
+      <wsdl:input message="tns:ActualizarEstadoSoapIn" />
+      <wsdl:output message="tns:ActualizarEstadoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -642,6 +693,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="clientePendienteApr">
+      <soap:operation soapAction="http://tempuri.org/clientePendienteApr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEstado">
+      <soap:operation soapAction="http://tempuri.org/ActualizarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -800,6 +869,24 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerCasilla">
       <soap12:operation soapAction="http://tempuri.org/obtenerCasilla" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clientePendienteApr">
+      <soap12:operation soapAction="http://tempuri.org/clientePendienteApr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEstado">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarEstado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

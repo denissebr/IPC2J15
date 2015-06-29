@@ -11,12 +11,15 @@ namespace _DenisseBR_
     public partial class empleado : System.Web.UI.Page
     {
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
-        private System.Data.DataSet dataset1;
+        public System.Data.DataSet dataset1;
+        public System.Data.DataSet datasetin;
         protected void Page_Load(object sender, EventArgs e)
         {
             eyf.Visible = true;
             dev.Visible = false;
             bus.Visible = false;
+            aprovar.Visible = false;
+
            
         }
 
@@ -30,6 +33,7 @@ namespace _DenisseBR_
             eyf.Visible = true;
             dev.Visible = false;
             bus.Visible = false;
+            aprovar.Visible = false;
         }
 
         protected void devolucion_Click(object sender, EventArgs e)
@@ -37,6 +41,7 @@ namespace _DenisseBR_
             eyf.Visible = false;
             dev.Visible = true;
             bus.Visible = false;
+            aprovar.Visible = false;
         }
 
         protected void buscar_Click(object sender, EventArgs e)
@@ -44,18 +49,60 @@ namespace _DenisseBR_
             eyf.Visible = false;
             dev.Visible = false;
             bus.Visible = true;
+            aprovar.Visible = false;
         }
 
         protected void buscarC_Click(object sender, EventArgs e)
         {
+            eyf.Visible = false;
+            dev.Visible = false;
+            aprovar.Visible = false;
+            bus.Visible = true;
+
             dataset1=wsr.obtenerCasilla(datosc.Text);
             buscarcliente.AutoGenerateColumns = true;
-
-
             buscarcliente.DataSource = dataset1;
             buscarcliente.DataBind();
+
+           
            
  
         }
+
+        protected void aprc_Click(object sender, EventArgs e)
+        {
+            eyf.Visible = false;
+            dev.Visible = false;
+            bus.Visible = false;
+            aprovar.Visible = true;
+            datasetin = wsr.clientePendienteApr();
+            inactivos.AutoGenerateColumns = true;
+            inactivos.DataSource = datasetin;
+            inactivos.DataBind();
+
+            
+
+        }
+
+        protected void inactivos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = inactivos.SelectedRow;
+            
+
+            int res=wsr.ActualizarEstado(Convert.ToInt64(row.Cells[3].Text));
+
+            msjAcc.Visible = true;
+            if(res==1){
+                msjAcc.Text = "Cliente:" + row.Cells[1].Text + " " + row.Cells[2].Text + " aprobado"; 
+            }
+            else
+            {
+                msjAcc.Text = "Error al aprobar el cliente"; 
+            }
+            
+
+        }
+
+
     }
 }

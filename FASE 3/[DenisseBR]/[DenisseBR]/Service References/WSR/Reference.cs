@@ -141,6 +141,20 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerCasilla", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> obtenerCasillaAsync(string Texto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/clientePendienteApr", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet clientePendienteApr();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/clientePendienteApr", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> clientePendienteAprAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarEstado", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ActualizarEstado(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarEstado", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ActualizarEstadoAsync(long dpi);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -312,6 +326,22 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> obtenerCasillaAsync(string Texto) {
             return base.Channel.obtenerCasillaAsync(Texto);
+        }
+        
+        public System.Data.DataSet clientePendienteApr() {
+            return base.Channel.clientePendienteApr();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> clientePendienteAprAsync() {
+            return base.Channel.clientePendienteAprAsync();
+        }
+        
+        public int ActualizarEstado(long dpi) {
+            return base.Channel.ActualizarEstado(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarEstadoAsync(long dpi) {
+            return base.Channel.ActualizarEstadoAsync(dpi);
         }
     }
 }

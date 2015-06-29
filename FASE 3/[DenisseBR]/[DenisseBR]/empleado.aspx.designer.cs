@@ -67,6 +67,15 @@ namespace _DenisseBR_ {
         protected global::System.Web.UI.WebControls.Button buscar;
         
         /// <summary>
+        /// Control aprc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button aprc;
+        
+        /// <summary>
         /// Control eyf.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,33 @@ namespace _DenisseBR_ {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView buscarcliente;
+        
+        /// <summary>
+        /// Control aprovar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel aprovar;
+        
+        /// <summary>
+        /// Control inactivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView inactivos;
+        
+        /// <summary>
+        /// Control msjAcc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msjAcc;
         
         /// <summary>
         /// Control bodega.
