@@ -4,7 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
     <div style="text-align:center">
     <asp:Panel ID="servicioCliente" runat="server" BorderColor="#99FF99" BorderStyle="Solid" Height="1241px" ScrollBars="Auto">
-        <asp:Panel ID="Panel1" runat="server" BackColor="#CCFFCC" CssClass="panel-heading" Height="62px">
+        <asp:Panel ID="Panel1" runat="server" BackColor="#CCFFCC" CssClass="panel-heading" Height="95px">
+            &nbsp;<asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
+            <br />
+            <asp:Label ID="userEmp" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
+            <br />
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Servicio al Cliente"></asp:Label>
         </asp:Panel>
         <br />
@@ -19,10 +23,12 @@
         </div>
         <br />
         <asp:Panel ID="eyf" runat="server" Height="240px">
+            <br />
             Numero de casilla:
             <asp:TextBox ID="casilla" runat="server" Width="144px"></asp:TextBox>
             <br />
-            <asp:GridView ID="factura" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+            <br />
+            <asp:GridView ID="factura" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center">
                 <AlternatingRowStyle BackColor="White" />
                 <FooterStyle BackColor="#CCCC99" />
                 <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -42,11 +48,12 @@
             <br />
         </asp:Panel>
         <asp:Panel ID="dev" runat="server">
+            <br />
             <asp:Label ID="Label4" runat="server" Text="Numero de paquete: "></asp:Label>
             <asp:TextBox ID="paqueteNo" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:GridView ID="devolver" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+            <asp:GridView ID="devolver" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" HorizontalAlign="Center">
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                 <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                 <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
@@ -57,13 +64,14 @@
                 <SortedDescendingCellStyle BackColor="#F1E5CE" />
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
+                <br />
             <asp:Button ID="devolverBtn" runat="server" OnClick="Button1_Click" Text="Devolver" />
             <br />
             <br />
             <br />
             <br />
         </asp:Panel>
-        <asp:Panel ID="bus" runat="server">
+        <asp:Panel ID="bus" runat="server" Height="228px">
             <br />
             <br />
             <asp:Label ID="Label5" runat="server" Text="Ingrese datos del cliente: "></asp:Label>
@@ -72,7 +80,8 @@
             <asp:Button ID="buscarC" runat="server" Text="Buscar" OnClick="buscarC_Click" />
             <br />
             <br />
-            <asp:GridView ID="buscarcliente" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+            
+            <asp:GridView ID="buscarcliente" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" HorizontalAlign="Center">
                 <AlternatingRowStyle BackColor="White" />
                 <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -84,14 +93,14 @@
                 <SortedDescendingCellStyle BackColor="#FCF6C0" />
                 <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
+          
         </asp:Panel>
         <asp:Panel ID="aprovar" runat="server" Height="578px">
             <br />
             <br />
             &nbsp;
             <br />
-            <center>
-            <asp:GridView ID="inactivos" runat="server" CellPadding="2" ForeColor="Black" GridLines="None" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CssClass="table-condensed" OnSelectedIndexChanged="inactivos_SelectedIndexChanged" >
+            <asp:GridView ID="inactivos" runat="server" CellPadding="2" ForeColor="Black" GridLines="None" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CssClass="table-condensed" OnSelectedIndexChanged="inactivos_SelectedIndexChanged" HorizontalAlign="Center" >
                 <AlternatingRowStyle BackColor="PaleGoldenrod" />
                 <Columns>
                     <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
@@ -100,7 +109,7 @@
                     NO HAY DATOS QUE MOSTRAR
                 </EmptyDataTemplate>
                 <FooterStyle BackColor="Tan" />
-                <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                <HeaderStyle BackColor="Tan" Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
                 <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
                 <SelectedRowStyle BackColor="#FFCC66" ForeColor="Black" BorderColor="Black" BorderStyle="Solid" CssClass="table" />
                 <SortedAscendingCellStyle BackColor="#FAFAE7" />
@@ -108,7 +117,6 @@
                 <SortedDescendingCellStyle BackColor="#E1DB9C" />
                 <SortedDescendingHeaderStyle BackColor="#C2A47B" />
             </asp:GridView>
-            </center>
             <br />
             <asp:Label ID="msjAcc" runat="server" Font-Bold="True" Font-Size="Large" Visible="False"></asp:Label>
         </asp:Panel>
