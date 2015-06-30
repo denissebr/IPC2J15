@@ -169,6 +169,13 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarEstado", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ActualizarEstadoAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Rechazar", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int Rechazar(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Rechazar", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> RechazarAsync(long dpi);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -372,6 +379,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<int> ActualizarEstadoAsync(long dpi) {
             return base.Channel.ActualizarEstadoAsync(dpi);
+        }
+        
+        public int Rechazar(long dpi) {
+            return base.Channel.Rechazar(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<int> RechazarAsync(long dpi) {
+            return base.Channel.RechazarAsync(dpi);
         }
     }
 }

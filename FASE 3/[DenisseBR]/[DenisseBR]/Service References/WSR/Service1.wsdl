@@ -352,6 +352,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Rechazar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RechazarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RechazarResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="logCSoapIn">
@@ -486,6 +500,12 @@
   <wsdl:message name="ActualizarEstadoSoapOut">
     <wsdl:part name="parameters" element="tns:ActualizarEstadoResponse" />
   </wsdl:message>
+  <wsdl:message name="RechazarSoapIn">
+    <wsdl:part name="parameters" element="tns:Rechazar" />
+  </wsdl:message>
+  <wsdl:message name="RechazarSoapOut">
+    <wsdl:part name="parameters" element="tns:RechazarResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -574,6 +594,10 @@
     <wsdl:operation name="ActualizarEstado">
       <wsdl:input message="tns:ActualizarEstadoSoapIn" />
       <wsdl:output message="tns:ActualizarEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Rechazar">
+      <wsdl:input message="tns:RechazarSoapIn" />
+      <wsdl:output message="tns:RechazarSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -776,6 +800,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Rechazar">
+      <soap:operation soapAction="http://tempuri.org/Rechazar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -970,6 +1003,15 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarEstado">
       <soap12:operation soapAction="http://tempuri.org/ActualizarEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Rechazar">
+      <soap12:operation soapAction="http://tempuri.org/Rechazar" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

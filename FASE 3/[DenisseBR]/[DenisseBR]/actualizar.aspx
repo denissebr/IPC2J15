@@ -3,6 +3,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
     <div style="text-align:center">
+
+        <asp:Panel ID="Panel4" runat="server" Height="116px" CssClass="panel">
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="ACTUALIZACION DE DATOS" Font-Bold="True" Font-Size="XX-Large"></asp:Label>
+            <br />
+            <asp:Button ID="Button1" runat="server" CssClass="btn-link" OnClick="Button1_Click" Text="Inicio " />
+        </asp:Panel>
+
+    </div>
+    <div style="text-align:center">
     <asp:Panel ID="Panel3" runat="server">
         <br />
         <br />

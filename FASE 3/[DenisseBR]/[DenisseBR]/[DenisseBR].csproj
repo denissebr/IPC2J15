@@ -67,10 +67,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="empleado.aspx" />
+    <Content Include="Imagenes\banner.png" />
     <Content Include="Imagenes\Fondo-Medio-Ambiente.jpg" />
     <Content Include="Imagenes\fondo1.jpg" />
     <Content Include="Imagenes\Fondos-para-paginas-web-02.jpg" />
     <Content Include="Imagenes\images.jpg" />
+    <Content Include="Imagenes\quetzal.png" />
+    <Content Include="Imagenes\Sin nombre.png" />
     <Content Include="Imagenes\xml.jpg" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />

@@ -497,6 +497,24 @@ namespace WebService
             miConexionBase.Close();
 
         }
+        [WebMethod]
+        public int Rechazar(long dpi)
+        {
+            SqlCommand comando = new SqlCommand("Delete  Cliente where Dpi='" + dpi + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            miConexionBase.Close();
+
+        }
        
     }
 }

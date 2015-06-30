@@ -6,12 +6,12 @@
 
     <asp:Panel ID="pnlc" runat="server" Height="345px">
         <div style="text-align:right">
-    <asp:Panel ID="datos" runat="server" BackColor="White" Height="98px">
+    <asp:Panel ID="datos" runat="server" Height="98px" CssClass="panel">
         <asp:Label ID="Label1" runat="server" CssClass="label" Font-Size="XX-Large" Text="Bienvenido: " ForeColor="Black"></asp:Label>
         <asp:Label ID="usuarioN" runat="server" CssClass="label" Font-Size="XX-Large" ForeColor="Black"></asp:Label>
         <br />
-        <asp:Button ID="linkd" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" Text="Actualizar Datos" ForeColor="#CCFF33" OnClick="linkd_Click" />
-        <asp:Button ID="end" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" OnClick="end_Click" Text="Cerrar Sesion" ForeColor="#CCFF33" />
+        <asp:Button ID="linkd" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" Text="Actualizar Datos" ForeColor="#669999" OnClick="linkd_Click" />
+        <asp:Button ID="end" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" OnClick="end_Click" Text="Cerrar Sesion" ForeColor="#669999" />
     </asp:Panel>
             </div>
         <div style="text-align:center">

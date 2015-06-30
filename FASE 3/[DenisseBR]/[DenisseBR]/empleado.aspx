@@ -3,8 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
     <div style="text-align:center">
-    <asp:Panel ID="servicioCliente" runat="server" BorderColor="#99FF99" BorderStyle="Solid" Height="1241px" ScrollBars="Auto">
-        <asp:Panel ID="Panel1" runat="server" BackColor="#CCFFCC" CssClass="panel-heading" Height="95px">
+    <asp:Panel ID="servicioCliente" runat="server" Height="1241px" ScrollBars="Auto">
+        <asp:Panel ID="Panel1" runat="server" CssClass="panel" Height="95px" >
             &nbsp;<asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
             <br />
             <asp:Label ID="userEmp" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
@@ -14,7 +14,7 @@
         <br />
         <div>
 
-            <asp:Button ID="facturar" runat="server" CssClass="btn" Text="Entrega &amp; Devolucion" OnClick="facturar_Click" />
+            <asp:Button ID="facturar" runat="server" CssClass="btn" Text="Entrega &amp; Facturacion" OnClick="facturar_Click" />
             <asp:Button ID="devolucion" runat="server" CssClass="btn" Text="Devolucion" OnClick="devolucion_Click" />
             <asp:Button ID="buscar" runat="server" CssClass="btn" Text="Buscar" OnClick="buscar_Click" />
 
@@ -100,10 +100,10 @@
             <br />
             &nbsp;
             <br />
-            <asp:GridView ID="inactivos" runat="server" CellPadding="2" ForeColor="Black" GridLines="None" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CssClass="table-condensed" OnSelectedIndexChanged="inactivos_SelectedIndexChanged" HorizontalAlign="Center" >
+            <asp:GridView ID="inactivos" runat="server" CellPadding="2" ForeColor="Black" GridLines="None" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CssClass="table-condensed" OnSelectedIndexChanged="inactivos_SelectedIndexChanged" HorizontalAlign="Center"  >
                 <AlternatingRowStyle BackColor="PaleGoldenrod" />
                 <Columns>
-                    <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+                    <asp:CommandField ButtonType="Button" ShowSelectButton="True" SelectText="Aprobar" />
                 </Columns>
                 <EmptyDataTemplate>
                     NO HAY DATOS QUE MOSTRAR
@@ -126,7 +126,7 @@
     <div style="text-align:center">
 
             
-    <asp:Panel ID="bodega" runat="server" BorderColor="#CCCCFF" BorderStyle="Solid" Height="597px">
+    <asp:Panel ID="bodega" runat="server" Height="597px" ScrollBars="Auto">
         <asp:Panel ID="Panel3" runat="server" BackColor="#CCCCFF" CssClass="panel-heading" Height="64px">
             <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Bodegas"></asp:Label>
             <br />

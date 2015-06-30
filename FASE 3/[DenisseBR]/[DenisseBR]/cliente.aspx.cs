@@ -15,7 +15,7 @@ namespace _DenisseBR_
         protected void Page_Load(object sender, EventArgs e)
         {
             //usuarioN.Text = Convert.ToString(Session["Usuario"]);
-            ddt1.Items.Clear();
+            ddt.Items.Clear();
             usuarioN.Text =wsr.obtenerUs(Convert.ToString(Session["Usuario"]));
             int sucur = wsr.sucursalPedido(Convert.ToString(Session["Usuario"]));
             nSucursal.Text = wsr.direccionSucur(sucur);

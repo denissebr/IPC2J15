@@ -21,6 +21,10 @@ namespace _DenisseBR_
                 servicioCliente.Visible = true;
                 bodega.Visible = false;
                 paquetes.Visible = false;
+                datasetin = wsr.clientePendienteApr();
+                inactivos.AutoGenerateColumns = true;
+                inactivos.DataSource = datasetin;
+                inactivos.DataBind();
             }
             else if (tipo == 2)
             {
@@ -90,10 +94,8 @@ namespace _DenisseBR_
             dev.Visible = false;
             bus.Visible = false;
             aprovar.Visible = true;
-            datasetin = wsr.clientePendienteApr();
-            inactivos.AutoGenerateColumns = true;
-            inactivos.DataSource = datasetin;
-            inactivos.DataBind();
+           
+           
 
             
 
@@ -108,13 +110,30 @@ namespace _DenisseBR_
 
             msjAcc.Visible = true;
             if(res==1){
-                msjAcc.Text = "Cliente:" + row.Cells[1].Text + " " + row.Cells[2].Text + " aprobado"; 
+                
+                inactivos.SelectedIndex = -1;
+                aprovar.Visible = true;
+                msjAcc.Text = "Cliente: " + row.Cells[1].Text + " " + row.Cells[2].Text + " aprobado";
+                datasetin = wsr.clientePendienteApr();
+                inactivos.AutoGenerateColumns = true;
+                inactivos.DataSource = datasetin;
+                inactivos.DataBind();
+               
             }
             else
             {
-                msjAcc.Text = "Error al aprobar el cliente"; 
+                datasetin = wsr.clientePendienteApr();
+                inactivos.AutoGenerateColumns = true;
+                inactivos.DataSource = datasetin;
+                inactivos.DataBind();
+                inactivos.SelectedIndex = -1;
+                aprovar.Visible = true;
+                msjAcc.Text = "Error al aprobar el cliente";
             }
-            
+            eyf.Visible = false;
+            dev.Visible = false;
+            bus.Visible = false;
+           
 
         }
 
