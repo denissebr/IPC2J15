@@ -65,6 +65,27 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tipoEmp", ReplyAction="*")]
         System.Threading.Tasks.Task<int> tipoEmpAsync(string user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDPI", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        long obtenerDPI(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDPI", ReplyAction="*")]
+        System.Threading.Tasks.Task<long> obtenerDPIAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet obtenerDatosUs(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet obtenerDatosPed(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosPedAsync(long dpi);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Categorias", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string[] Categorias();
@@ -86,12 +107,33 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerSucursal", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ObtenerSucursalAsync(string direccion);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Obtenericcat", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int Obtenericcat(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Obtenericcat", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenericcatAsync(string nombre);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/sucursalPedido", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         int sucursalPedido(string usuario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/sucursalPedido", ReplyAction="*")]
         System.Threading.Tasks.Task<int> sucursalPedidoAsync(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDept", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int obtenerDept(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDept", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> obtenerDeptAsync(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/nombredept", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string nombredept(int rol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/nombredept", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> nombredeptAsync(int rol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/direccionSucur", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -100,54 +142,12 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/direccionSucur", ReplyAction="*")]
         System.Threading.Tasks.Task<string> direccionSucurAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/verificarUs", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarPedido", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool verificarUs(string user);
+        System.Data.DataSet mostrarPedido();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/verificarUs", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> verificarUsAsync(string user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarUS", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool registrarUS(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarUS", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> registrarUSAsync(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarPedido", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void registrarPedido(float peso, float precio, string estado, long dpi, int idcategoria);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarPedido", ReplyAction="*")]
-        System.Threading.Tasks.Task registrarPedidoAsync(float peso, float precio, string estado, long dpi, int idcategoria);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDPI", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        long obtenerDPI(string user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDPI", ReplyAction="*")]
-        System.Threading.Tasks.Task<long> obtenerDPIAsync(string user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Data.DataSet obtenerDatosUs(long dpi);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Data.DataSet obtenerDatosPed(long dpi);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosPedAsync(long dpi);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarPedido", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> mostrarPedidoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerCasilla", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -176,6 +176,90 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Rechazar", ReplyAction="*")]
         System.Threading.Tasks.Task<int> RechazarAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal, long tarjeta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal, long tarjeta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cotizar", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string cotizar(float precio, float peso, float tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cotizar", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> cotizarAsync(float precio, float peso, float tipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/verificarUs", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool verificarUs(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/verificarUs", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> verificarUsAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarUS", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool registrarUS(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal, long tarjeta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarUS", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> registrarUSAsync(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal, long tarjeta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecio", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecioF", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecioF", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> PedidoPrecioFAsync(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/despedir", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int despedir(int codigoEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/despedir", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> despedirAsync(int codigoEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarEmpleado", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet mostrarEmpleado(int sucursal, int departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarEmpleado", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> mostrarEmpleadoAsync(int sucursal, int departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarEquipo", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet mostrarEquipo(int sucursal, int departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarEquipo", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> mostrarEquipoAsync(int sucursal, int departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet obtenerDatosEmp(int cod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosEmpAsync(int cod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/departamentos", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string[] departamentos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/departamentos", ReplyAction="*")]
+        System.Threading.Tasks.Task<string[]> departamentosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatosEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ActualizarDatosEmp(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatosEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -261,6 +345,30 @@ namespace _DenisseBR_.WSR {
             return base.Channel.tipoEmpAsync(user);
         }
         
+        public long obtenerDPI(string user) {
+            return base.Channel.obtenerDPI(user);
+        }
+        
+        public System.Threading.Tasks.Task<long> obtenerDPIAsync(string user) {
+            return base.Channel.obtenerDPIAsync(user);
+        }
+        
+        public System.Data.DataSet obtenerDatosUs(long dpi) {
+            return base.Channel.obtenerDatosUs(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi) {
+            return base.Channel.obtenerDatosUsAsync(dpi);
+        }
+        
+        public System.Data.DataSet obtenerDatosPed(long dpi) {
+            return base.Channel.obtenerDatosPed(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosPedAsync(long dpi) {
+            return base.Channel.obtenerDatosPedAsync(dpi);
+        }
+        
         public string[] Categorias() {
             return base.Channel.Categorias();
         }
@@ -285,12 +393,36 @@ namespace _DenisseBR_.WSR {
             return base.Channel.ObtenerSucursalAsync(direccion);
         }
         
+        public int Obtenericcat(string nombre) {
+            return base.Channel.Obtenericcat(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenericcatAsync(string nombre) {
+            return base.Channel.ObtenericcatAsync(nombre);
+        }
+        
         public int sucursalPedido(string usuario) {
             return base.Channel.sucursalPedido(usuario);
         }
         
         public System.Threading.Tasks.Task<int> sucursalPedidoAsync(string usuario) {
             return base.Channel.sucursalPedidoAsync(usuario);
+        }
+        
+        public int obtenerDept(string usuario) {
+            return base.Channel.obtenerDept(usuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> obtenerDeptAsync(string usuario) {
+            return base.Channel.obtenerDeptAsync(usuario);
+        }
+        
+        public string nombredept(int rol) {
+            return base.Channel.nombredept(rol);
+        }
+        
+        public System.Threading.Tasks.Task<string> nombredeptAsync(int rol) {
+            return base.Channel.nombredeptAsync(rol);
         }
         
         public string direccionSucur(int id) {
@@ -301,60 +433,12 @@ namespace _DenisseBR_.WSR {
             return base.Channel.direccionSucurAsync(id);
         }
         
-        public bool verificarUs(string user) {
-            return base.Channel.verificarUs(user);
+        public System.Data.DataSet mostrarPedido() {
+            return base.Channel.mostrarPedido();
         }
         
-        public System.Threading.Tasks.Task<bool> verificarUsAsync(string user) {
-            return base.Channel.verificarUsAsync(user);
-        }
-        
-        public bool registrarUS(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal) {
-            return base.Channel.registrarUS(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal);
-        }
-        
-        public System.Threading.Tasks.Task<bool> registrarUSAsync(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal) {
-            return base.Channel.registrarUSAsync(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal);
-        }
-        
-        public void registrarPedido(float peso, float precio, string estado, long dpi, int idcategoria) {
-            base.Channel.registrarPedido(peso, precio, estado, dpi, idcategoria);
-        }
-        
-        public System.Threading.Tasks.Task registrarPedidoAsync(float peso, float precio, string estado, long dpi, int idcategoria) {
-            return base.Channel.registrarPedidoAsync(peso, precio, estado, dpi, idcategoria);
-        }
-        
-        public long obtenerDPI(string user) {
-            return base.Channel.obtenerDPI(user);
-        }
-        
-        public System.Threading.Tasks.Task<long> obtenerDPIAsync(string user) {
-            return base.Channel.obtenerDPIAsync(user);
-        }
-        
-        public System.Data.DataSet obtenerDatosUs(long dpi) {
-            return base.Channel.obtenerDatosUs(dpi);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi) {
-            return base.Channel.obtenerDatosUsAsync(dpi);
-        }
-        
-        public int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
-            return base.Channel.ActualizarDatos(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
-        }
-        
-        public System.Threading.Tasks.Task<int> ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal) {
-            return base.Channel.ActualizarDatosAsync(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal);
-        }
-        
-        public System.Data.DataSet obtenerDatosPed(long dpi) {
-            return base.Channel.obtenerDatosPed(dpi);
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosPedAsync(long dpi) {
-            return base.Channel.obtenerDatosPedAsync(dpi);
+        public System.Threading.Tasks.Task<System.Data.DataSet> mostrarPedidoAsync() {
+            return base.Channel.mostrarPedidoAsync();
         }
         
         public System.Data.DataSet obtenerCasilla(string Texto) {
@@ -387,6 +471,102 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<int> RechazarAsync(long dpi) {
             return base.Channel.RechazarAsync(dpi);
+        }
+        
+        public int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal, long tarjeta) {
+            return base.Channel.ActualizarDatos(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal, tarjeta);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarDatosAsync(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal, long tarjeta) {
+            return base.Channel.ActualizarDatosAsync(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal, tarjeta);
+        }
+        
+        public string cotizar(float precio, float peso, float tipo) {
+            return base.Channel.cotizar(precio, peso, tipo);
+        }
+        
+        public System.Threading.Tasks.Task<string> cotizarAsync(float precio, float peso, float tipo) {
+            return base.Channel.cotizarAsync(precio, peso, tipo);
+        }
+        
+        public bool verificarUs(string user) {
+            return base.Channel.verificarUs(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> verificarUsAsync(string user) {
+            return base.Channel.verificarUsAsync(user);
+        }
+        
+        public bool registrarUS(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal, long tarjeta) {
+            return base.Channel.registrarUS(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal, tarjeta);
+        }
+        
+        public System.Threading.Tasks.Task<bool> registrarUSAsync(string nombre, string apellido, long dpi, int telefono, int nit, string direccion, int estado, string usuario, string passw, int IdSucursal, long tarjeta) {
+            return base.Channel.registrarUSAsync(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal, tarjeta);
+        }
+        
+        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest) {
+            return base.Channel.PedidoPrecio(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest) {
+            return base.Channel.PedidoPrecioAsync(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        }
+        
+        public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest) {
+            return base.Channel.PedidoPrecioF(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PedidoPrecioFAsync(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest) {
+            return base.Channel.PedidoPrecioFAsync(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        }
+        
+        public int despedir(int codigoEmp) {
+            return base.Channel.despedir(codigoEmp);
+        }
+        
+        public System.Threading.Tasks.Task<int> despedirAsync(int codigoEmp) {
+            return base.Channel.despedirAsync(codigoEmp);
+        }
+        
+        public System.Data.DataSet mostrarEmpleado(int sucursal, int departamento) {
+            return base.Channel.mostrarEmpleado(sucursal, departamento);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> mostrarEmpleadoAsync(int sucursal, int departamento) {
+            return base.Channel.mostrarEmpleadoAsync(sucursal, departamento);
+        }
+        
+        public System.Data.DataSet mostrarEquipo(int sucursal, int departamento) {
+            return base.Channel.mostrarEquipo(sucursal, departamento);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> mostrarEquipoAsync(int sucursal, int departamento) {
+            return base.Channel.mostrarEquipoAsync(sucursal, departamento);
+        }
+        
+        public System.Data.DataSet obtenerDatosEmp(int cod) {
+            return base.Channel.obtenerDatosEmp(cod);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosEmpAsync(int cod) {
+            return base.Channel.obtenerDatosEmpAsync(cod);
+        }
+        
+        public string[] departamentos() {
+            return base.Channel.departamentos();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> departamentosAsync() {
+            return base.Channel.departamentosAsync();
+        }
+        
+        public int ActualizarDatosEmp(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
+            return base.Channel.ActualizarDatosEmp(nom, apellido, telefono, sueldo, direccion, rol, usuario, passw, cod);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
+            return base.Channel.ActualizarDatosEmpAsync(nom, apellido, telefono, sueldo, direccion, rol, usuario, passw, cod);
         }
     }
 }

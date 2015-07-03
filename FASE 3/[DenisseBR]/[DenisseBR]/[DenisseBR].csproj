@@ -66,6 +66,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="director.aspx" />
     <Content Include="empleado.aspx" />
     <Content Include="Imagenes\banner.png" />
     <Content Include="Imagenes\Fondo-Medio-Ambiente.jpg" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="cliente.aspx.designer.cs">
       <DependentUpon>cliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="director.aspx.cs">
+      <DependentUpon>director.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="director.aspx.designer.cs">
+      <DependentUpon>director.aspx</DependentUpon>
     </Compile>
     <Compile Include="empleado.aspx.cs">
       <DependentUpon>empleado.aspx</DependentUpon>
@@ -151,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WSR\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="precarga\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

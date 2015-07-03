@@ -75,8 +75,6 @@
         <br />
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" CssClass="table-hover">
-        </asp:GridView>
         <br />
         </asp:Panel>
         </div>

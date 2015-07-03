@@ -110,7 +110,7 @@ namespace _DenisseBR_
 
             msjAcc.Visible = true;
             if(res==1){
-                
+     
                 inactivos.SelectedIndex = -1;
                 aprovar.Visible = true;
                 msjAcc.Text = "Cliente: " + row.Cells[1].Text + " " + row.Cells[2].Text + " aprobado";

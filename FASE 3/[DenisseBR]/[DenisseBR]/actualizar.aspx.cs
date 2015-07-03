@@ -41,11 +41,6 @@ namespace _DenisseBR_
                 txtuser.Text = dataset1.Tables[0].Rows[0][6].ToString();
                 txtpass.Text = dataset1.Tables[0].Rows[0][7].ToString();
 
-                GridView1.AutoGenerateColumns = true;
-
-
-                GridView1.DataSource = dataset1;
-                GridView1.DataBind();
             }
 
 
@@ -57,7 +52,7 @@ namespace _DenisseBR_
 
             int idsuc = wsr.ObtenerSucursal(Convert.ToString(dds.SelectedItem));
 
-            int total = wsr.ActualizarDatos(nombre.Text, apellido.Text, Convert.ToInt64(DPI.Text), Convert.ToInt32(telefono.Text), Convert.ToInt32(nit.Text), direccion.Text, txtuser.Text, txtpass.Text, idsuc);
+            int total = wsr.ActualizarDatos(nombre.Text, apellido.Text, Convert.ToInt64(DPI.Text), Convert.ToInt32(telefono.Text), Convert.ToInt32(nit.Text), direccion.Text, txtuser.Text, txtpass.Text, idsuc,Convert.ToInt64(tarjeta.Text));
             if (total == 1)
             {
                 nombre.Text = "";

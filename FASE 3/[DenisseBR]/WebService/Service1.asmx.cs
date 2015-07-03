@@ -23,13 +23,14 @@ namespace WebService
         SqlCommand miComandoSQL;
         SqlConnection miConexionBase = null;
 
-
+        //------------------------------------------------------------------------------------------------------
+        //******************************************LOG IN******************************************************
         //------>LOG IN CLIENTE
         [WebMethod]
         public bool logC(String user, String pass)
         {
             
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where UsuarioCliente='" + user + "' and PasswordC='" + pass + "'", cadenaConexion);
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where UsuarioCliente='" + user + "' and PasswordC='" + pass + "' and Estado=1", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -48,7 +49,7 @@ namespace WebService
         public bool logE(String user, String pass)
         {
             String empleado = "empleado";
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and PasswordE='" + pass + "' and Tipo='" + empleado + "'", cadenaConexion);
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Empleado  where UsuarioEmpleado='" + user + "' and PasswordE='" + pass + "' and Tipo='" + empleado + "' and Habilitado=1", cadenaConexion);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -100,12 +101,15 @@ namespace WebService
                 return false;
             }
         }
+        //------------------------------------------------------------------------------------------------------
+        //******************************************OBTENER DATOS***********************************************
         //--->OBTENER EL NOMBRE DEL USUARIO
         [WebMethod]
         public String obtenerUs(String user)
         {
             string nombre = "";
-               miComandoSQL = new SqlCommand("SELECT Nombre FROM Cliente WHERE UsuarioCliente = '" + user + "'");
+            string apellido = "";
+               miComandoSQL = new SqlCommand("SELECT * FROM Cliente WHERE UsuarioCliente = '" + user + "'");
                miConexionBase = new SqlConnection(cadenaConexion);
                miComandoSQL.Connection = miConexionBase;
                miConexionBase.Open();
@@ -115,12 +119,13 @@ namespace WebService
                    while (lector.Read())
                    {
                        nombre = lector.GetString(0);
+                       apellido = lector.GetString(1);
 
                    }
                }
                lector.Close();
                miConexionBase.Close();
-               return nombre;      
+               return nombre+" "+apellido;      
         }
         //--->OBTENER EL NOMBRE DEL EMPLEADO
         [WebMethod]
@@ -169,7 +174,83 @@ namespace WebService
             miConexionBase.Close();
             return tipo;
         }
+        //--->OBTENER DPI CLIENTE
 
+        [WebMethod]
+        public long obtenerDPI(String user)
+        {
+            long dpi = 0;
+            miComandoSQL = new SqlCommand("SELECT Dpi FROM Cliente WHERE UsuarioCliente = '" + user + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    dpi = lector.GetInt64(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return dpi;
+        }
+
+
+        //--->OBTENER DATOS USUARIO
+        [WebMethod]
+        public DataSet obtenerDatosUs(long dpi)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select nombre,apellido,dpi,telefono,nit,direccion,UsuarioCliente,PasswordC, NoTarjeta from Cliente where dpi=" + dpi, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+        //--->OBTENER DATOS USUARIO
+        [WebMethod]
+        public DataSet obtenerDatosPed(long dpi)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select Nombre,Descripcion,Estado from Paquete where dpi=" + dpi, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+        //------------------------------------------------------------------------------------------------------------
+        //*******************************************CARGAR DATOS*****************************************************
         //--->CARGAR
         [WebMethod]
         public List<string> Categorias()
@@ -237,7 +318,26 @@ namespace WebService
             }
             return numero;
         }
+        //-->Obtener categoria
+        [WebMethod]
+        public int Obtenericcat(String nombre)
+        {
+            SqlCommand comando = new SqlCommand("Select IdCategoria FROM Categoria where Nombre='" + nombre + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            int numero=0;
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    numero = lector.GetInt32(0);
 
+                }
+            }
+            return numero;
+        }
         [WebMethod]
         public int sucursalPedido(String usuario)
         {
@@ -257,6 +357,47 @@ namespace WebService
             }
             return idsucur;
         }
+        //--->OBTENER DEPARTAMENTO
+        [WebMethod]
+        public int obtenerDept(String usuario)
+        {
+            SqlCommand comando = new SqlCommand("Select Rol FROM Empleado where UsuarioEmpleado='" + usuario + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            int rol = 0;
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    rol = lector.GetInt32(0);
+
+                }
+            }
+            return rol;
+        }
+        //--->nombreDept
+        [WebMethod]
+        public string nombredept(int rol)
+        {
+            SqlCommand comando = new SqlCommand("Select Nombre FROM Departamento where IdDepartamento='" + rol + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            String dept=""; 
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    dept = lector.GetString(0);
+
+                }
+            }
+            return dept;
+        }
+
 
         [WebMethod]
         public String direccionSucur(int id)
@@ -281,130 +422,21 @@ namespace WebService
         }
 
 
-        //-->Ingresar Cliente
-        [WebMethod]
-        public bool verificarUs(String user)
-        {
-            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where UsuarioCliente='" + user+"'", cadenaConexion);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows[0][0].ToString() == "1")
-            {
-
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
-            
-            
-            
-            
-        }
-        //--->AGREGAR USUARIO
-        [WebMethod]
-
-        public bool registrarUS(String nombre, String apellido, long dpi, int telefono, int nit,String direccion, int estado, String usuario, String passw, int IdSucursal)
-        {
-            SqlCommand comando = new SqlCommand("Insert into Cliente (Nombre, Apellido,Dpi,Telefono,Nit,Direccion,Estado,UsuarioCliente,PasswordC,IdSucursal) values ('" + nombre + "','" + apellido + "','" + dpi + "','" + telefono + "','" + nit + "','" + direccion + "','" + estado + "','" + usuario + "','" + passw + "','" + IdSucursal + "')");
-            miConexionBase = new SqlConnection(cadenaConexion);
-            comando.Connection = miConexionBase;
-            miConexionBase.Open();
-            comando.ExecuteNonQuery();
-            miConexionBase.Close();
-            
-            return true;
-        }
+       
+       
 
         //--->REGISTRAR PEDIDO
+      
         [WebMethod]
-        public void registrarPedido(float peso,float precio,String estado,long dpi,int idcategoria)
-        {
-
-        }
-
-        //--->OBTENER DPI CLIENTE
-
-        [WebMethod]
-        public long obtenerDPI(String user)
-        {
-            long dpi=0;
-            miComandoSQL = new SqlCommand("SELECT Dpi FROM Cliente WHERE UsuarioCliente = '" + user + "'");
-            miConexionBase = new SqlConnection(cadenaConexion);
-            miComandoSQL.Connection = miConexionBase;
-            miConexionBase.Open();
-            SqlDataReader lector = miComandoSQL.ExecuteReader();
-            if (lector.HasRows)
-            {
-                while (lector.Read())
-                {
-                    dpi = lector.GetInt64(0);
-
-                }
-            }
-            lector.Close();
-            miConexionBase.Close();
-            return dpi;
-        }
-
-
-        //--->OBTENER DATOS USUARIO
-        [WebMethod]
-        public DataSet obtenerDatosUs(long dpi)
-        {
-            DataSet ds = new DataSet();
-            miConexionBase  = new SqlConnection(cadenaConexion);
-            try
-            {
-                miConexionBase.Open();
-                miComandoSQL = new SqlCommand("Select nombre,apellido,dpi,telefono,nit,direccion,UsuarioCliente,PasswordC from Cliente where dpi="+dpi, miConexionBase);
-                SqlDataAdapter da =new SqlDataAdapter(miComandoSQL);
-                da.Fill(ds);
-            }
-            catch
-            {
-                ds = null;
-            }
-            finally
-            {
-                miConexionBase.Close();
-            }
-           
-                return ds;
-            
-        }
-        //--->ACTUALIZAR DATOS CLIENTE
-        [WebMethod]
-        public int ActualizarDatos(String nom, String apellido, long dpi, int telefono, int nit, String direccion, String usuario, String passw, int IdSucursal)
-        {
-            SqlCommand comando = new SqlCommand("Update  Cliente set Nombre='" + nom + "', Apellido='" + apellido + "', Telefono='" + telefono + "', Nit='" + nit + "', Direccion='" + direccion + "', PasswordC='" + passw + "', IdSucursal='" + IdSucursal + "' where Dpi='" + dpi+"'");
-            miConexionBase = new SqlConnection(cadenaConexion);
-            comando.Connection = miConexionBase;
-            miConexionBase.Open();
-            if (comando.ExecuteNonQuery() != 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-            miConexionBase.Close();
-
-        }
-
-        //--->OBTENER DATOS USUARIO
-        [WebMethod]
-        public DataSet obtenerDatosPed(long dpi)
+        public DataSet mostrarPedido()
         {
             DataSet ds = new DataSet();
             miConexionBase = new SqlConnection(cadenaConexion);
             try
             {
+
                 miConexionBase.Open();
-                miComandoSQL = new SqlCommand("Select Nombre,Descripcion,Estado from Paquete where dpi=" + dpi, miConexionBase);
+                miComandoSQL = new SqlCommand("Select Nombre,Apellido,Dpi,Telefono,Nit,Direccion,Casilla,Estado,UsuarioCliente from Cliente where Estado=" + 0, miConexionBase);
                 SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
                 da.Fill(ds);
             }
@@ -420,6 +452,11 @@ namespace WebService
             return ds;
 
         }
+
+        
+        
+
+        
 
 
         //--------------------------------------MODULO DE EMPLEADO-----------------------------------------------------------------
@@ -515,6 +552,254 @@ namespace WebService
             miConexionBase.Close();
 
         }
+        //---------------------------------------------------------------------------------------------------------
+        //********************************************CLIENTE******************************************************
+        //------------------------------------------OBTENER COMISION-----------------------------------------------
+        //--->ACTUALIZAR DATOS CLIENTE
+        [WebMethod]
+        public int ActualizarDatos(String nom, String apellido, long dpi, int telefono, int nit, String direccion, String usuario, String passw, int IdSucursal, long tarjeta)
+        {
+            SqlCommand comando = new SqlCommand("Update  Cliente set Nombre='" + nom + "', Apellido='" + apellido + "', Telefono='" + telefono + "', Nit='" + nit + "', Direccion='" + direccion + "', PasswordC='" + passw + "', IdSucursal='" + IdSucursal + "', NoTarjeta='" + tarjeta + "' where Dpi='" + dpi + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            miConexionBase.Close();
+
+        }
+        //--->COTIZAR
+        [WebMethod]
+        public String cotizar(float precio, float peso,float tipo)
+        {
+            float precioq = precio * Convert.ToSingle(7.74);
+            float libras = peso * 5;
+            float comision = Convert.ToSingle(0.05);
+            float parcial = (precioq + libras) * comision;
+            float total = parcial + precioq + libras;
+            float temporal = (tipo * precio) / 100;
+            float totalf = Convert.ToSingle(total) + temporal;
+            return "Q" + totalf.ToString();
+
+        }
+        //-->Ingresar Cliente
+        [WebMethod]
+        public bool verificarUs(String user)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) FROM Cliente  where UsuarioCliente='" + user + "'", cadenaConexion);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //--->AGREGAR USUARIO
+        [WebMethod]
+
+        public bool registrarUS(String nombre, String apellido, long dpi, int telefono, int nit, String direccion, int estado, String usuario, String passw, int IdSucursal, long tarjeta)
+        {
+            SqlCommand comando = new SqlCommand("Insert into Cliente (Nombre, Apellido,Dpi,Telefono,Nit,Direccion,Estado,UsuarioCliente,PasswordC,IdSucursal,NoTarjeta) values ('" + nombre + "','" + apellido + "','" + dpi + "','" + telefono + "','" + nit + "','" + direccion + "','" + estado + "','" + usuario + "','" + passw + "','" + IdSucursal + "','" + tarjeta + "')");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            comando.ExecuteNonQuery();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //--->CREAR PEDIDO
+        //---> CREAR PEDIDO PRECIO
+        [WebMethod]
+        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat,int idest)
+        {
+            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precio,dpi,idCategoria,idEstado) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + precio + "','" + dpi + "','" + idcat + "','" + idest+ "')");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            comando.ExecuteNonQuery();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //---> CREAR PEDIDO PRECARGA
+        [WebMethod]
+        public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest)
+        {
+            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precioF,dpi,idCategoria,idEstado) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + precio + "','" + dpi + "','" + idcat + "','" + idest + "')");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            comando.ExecuteNonQuery();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //---------------------------------------------------------------------------------------------------------
+        //********************************************DIRECTOR*****************************************************
+        //------------------------------------------MOSTRAR EMPLEADOS DEL DEPARTAMENTO-----------------------------
+        //--->DESPEDIR EMPLEADO
+        [WebMethod]
+        public int despedir(int codigoEmp)
+        {
+            SqlCommand comando = new SqlCommand("Update  Empleado set Habilitado=0 where IdEmpleado="+codigoEmp);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            miConexionBase.Close();
+        }
+
+        [WebMethod]
+        public DataSet mostrarEmpleado(int sucursal, int departamento)
+        {
+            DataSet ds = new DataSet();
+            string tipo = "empleado";
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select IdEmpleado,Nombre,Apellido,Sueldo from Empleado where Rol='" +departamento+"' and Tipo='"+tipo+"'" , miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds; 
+        }
+        [WebMethod]
+        public DataSet mostrarEquipo(int sucursal, int departamento)
+        {
+            DataSet ds = new DataSet();
+            string tipo = "empleado";
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select IdEmpleado,Nombre,Apellido,Sueldo from Empleado where Rol='" + departamento + "' and Tipo='" + tipo + "' and Habilitado=1", miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+        }
+        //--->EMPLEADO
+        [WebMethod]
+        public DataSet obtenerDatosEmp(int cod)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select * from Empleado where IdEmpleado=" + cod, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+        //--->DEPARTAMENTOS
+        [WebMethod]
+        public List<string> departamentos()
+        {
+            List<string> departamento = new List<string>();
+            SqlCommand comando = new SqlCommand("Select Nombre FROM Departamento");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            string nombre = "";
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    nombre = lector.GetString(0);
+                    departamento.Add(nombre);
+                }
+            }
+            return departamento;
+        }
+        //--->ACTUALIZAR DATOS EMPLEADO
+        [WebMethod]
+        public int ActualizarDatosEmp(String nom, String apellido, int telefono, float sueldo, String direccion,int rol, String usuario, String passw,int cod)
+        {
+            SqlCommand comando = new SqlCommand("Update  Empleado set Nombre='" + nom + "', Apellido='" + apellido + "', Telefono='" + telefono + "', sueldo='" + sueldo + "', Direccion='" + direccion + "', rol='" + rol + "', usuarioEmpleado='" + usuario + "', PasswordE='" + passw + "' where IdEmpleado=" + cod);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            miConexionBase.Close();
+
+        }
+        
        
     }
 }
