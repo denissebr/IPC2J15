@@ -60,7 +60,6 @@ FOREIGN KEY (IdSucursal) REFERENCES Sucursal(IdSucursal)
 CREATE TABLE Categoria(
 IdCategoria INT IDENTITY(1,1) PRIMARY KEY,
 Nombre VARCHAR(MAX) NOT NULL,
-Descripcion VARCHAR(MAX),
 Impuesto FLOAT NOT NULL
 )
 CREATE TABLE Lote(
@@ -88,7 +87,7 @@ PrecioF VARCHAR(MAX),
 Precio float,
 Estado VARCHAR(MAX) NULL,
 Dpi BIGINT NOT NULL,
-IdCategoria INT NOT NULL,
+IdCategoria INT NULL,
 IdLote INT NULL,
 IdEstado INT NOT NULL,
 IdEmpleado INT,
@@ -103,6 +102,21 @@ IdDetalle INT IDENTITY(1,1) PRIMARY KEY,
 Descripcion VARCHAR(MAX) NOT NULL,
 Total INT NOT NULL,
 IdFactura INT NOT NULL,
+IdPaquete INT NOT NULL,
+FOREIGN KEY (IdPaquete) REFERENCES Paquete(IdPaquete),
+FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
+)
+CREATE TABLE historialEmp(
+IdHistorial INT IDENTITY(1,1) PRIMARY KEY,
+FechaInicio VARCHAR(MAX) NOT NULL,
+FechaFin INT NOT NULL,
+IdEmpleado INT NOT NULL,
+FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
+)
+CREATE TABLE historialPa(
+IdPaquete INT IDENTITY(1,1) PRIMARY KEY,
+FechaMod VARCHAR(MAX) NOT NULL,
+IdEmpleado INT NOT NULL,
 IdPaquete INT NOT NULL,
 FOREIGN KEY (IdPaquete) REFERENCES Paquete(IdPaquete),
 FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),

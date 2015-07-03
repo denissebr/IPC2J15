@@ -615,7 +615,6 @@ namespace WebService
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
-            comando.ExecuteNonQuery();
             if (comando.ExecuteNonQuery() != 0)
             {
                 return true;
@@ -628,13 +627,19 @@ namespace WebService
         //--->CREAR PEDIDO
         //---> CREAR PEDIDO PRECIO
         [WebMethod]
-        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat,int idest)
+        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat,int idest,float valor)
         {
-            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precio,dpi,idCategoria,idEstado) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + precio + "','" + dpi + "','" + idcat + "','" + idest+ "')");
+            precio = precio * Convert.ToSingle(7.74);
+            float libras = peso * 5;
+            float comision = Convert.ToSingle(0.05);
+            float parcial = (precio + peso) * comision;
+            float total = parcial + precio + libras;
+            float temporal = (valor * precio) / 100;
+            float totalf = total + temporal;
+            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precio,dpi,idCategoria,idEstado) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + totalf + "','" + dpi + "','" + idcat + "','" + idest + "')");
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
-            comando.ExecuteNonQuery();
             if (comando.ExecuteNonQuery() != 0)
             {
                 return true;
@@ -652,7 +657,6 @@ namespace WebService
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
-            comando.ExecuteNonQuery();
             if (comando.ExecuteNonQuery() != 0)
             {
                 return true;
@@ -662,6 +666,31 @@ namespace WebService
                 return false;
             }
         }
+       /* //--->VER PEDIDOS GENERALES
+        [WebMethod]
+        public DataSet mostrarPedidosG(String usuario)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select IdEmpleado,Nombre,Apellido,Sueldo from Empleado where Rol='" + departamento + "' and Tipo='" + tipo + "'", miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+        }*/
         //---------------------------------------------------------------------------------------------------------
         //********************************************DIRECTOR*****************************************************
         //------------------------------------------MOSTRAR EMPLEADOS DEL DEPARTAMENTO-----------------------------

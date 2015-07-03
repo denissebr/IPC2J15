@@ -439,6 +439,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
             <s:element minOccurs="1" maxOccurs="1" name="idcat" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="idest" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="valor" type="s:float" />
           </s:sequence>
         </s:complexType>
       </s:element>

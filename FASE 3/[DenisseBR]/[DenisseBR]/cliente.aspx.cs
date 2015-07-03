@@ -86,6 +86,11 @@ namespace _DenisseBR_
             string[] aux = tipo.Split('-');
             float valor = float.Parse(aux[1]);
             lblprecio.Text=wsr.cotizar(precio, peso, valor);
+
+            pnlpedido.Visible = false;
+            pnlcot.Visible = true;
+            pnlPedidos.Visible = false;
+
         }
 
         protected void crear_Click(object sender, EventArgs e)
@@ -94,6 +99,7 @@ namespace _DenisseBR_
             tipo = tipo.Replace('%', ' ');
             string[] aux = tipo.Split('-');
             int idcat = wsr.Obtenericcat(Convert.ToString(aux[0]));
+            float valor = Convert.ToSingle(aux[1]);
             if (precarga.HasFile && txtprecio1.Text.Equals(null))
             {
                 long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
@@ -111,13 +117,18 @@ namespace _DenisseBR_
                     nombre.Text = "";
                     txtdescripcion.Text = "";
                 }
+                else
+                {
+                    msj = "Error inesperado, intentelo de nuevo";
+                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                }
             }
             else if (!precarga.HasFile && !txtprecio1.Text.Equals(null))
             {
                 float precio = Convert.ToSingle(txtprecio1.Text);
                 long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
                 int estadoF=1;
-                if (wsr.PedidoPrecio(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), Convert.ToSingle(txtprecio1.Text), dpiUS, idcat, estadoF))
+                if (wsr.PedidoPrecio(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), Convert.ToSingle(txtprecio1.Text), dpiUS, idcat, estadoF,valor))
                 {
 
                     msj = "Pedido Creado Exitosamente";
@@ -126,6 +137,11 @@ namespace _DenisseBR_
                     txtpeso1.Text = "";
                     nombre.Text = "";
                     txtdescripcion.Text = "";
+                }
+                else
+                {
+                    msj = "Error inesperado, intentelo de nuevo";
+                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
                 }
              }
            

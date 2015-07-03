@@ -207,10 +207,10 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest);
+        bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecio", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest);
+        System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecioF", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -505,12 +505,12 @@ namespace _DenisseBR_.WSR {
             return base.Channel.registrarUSAsync(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal, tarjeta);
         }
         
-        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest) {
-            return base.Channel.PedidoPrecio(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor) {
+            return base.Channel.PedidoPrecio(nombre, descripcion, peso, precio, dpi, idcat, idest, valor);
         }
         
-        public System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest) {
-            return base.Channel.PedidoPrecioAsync(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        public System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor) {
+            return base.Channel.PedidoPrecioAsync(nombre, descripcion, peso, precio, dpi, idcat, idest, valor);
         }
         
         public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest) {

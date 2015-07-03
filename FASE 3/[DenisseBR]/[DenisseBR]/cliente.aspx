@@ -81,7 +81,8 @@
                 &nbsp;<asp:TextBox ID="txtpeso1" runat="server" Font-Size="Medium"></asp:TextBox>
                 <asp:Label ID="Label10" runat="server" Text="Libras"></asp:Label>
                  &nbsp;<br /> <br />
-                 <table align="center" class="auto-style1">
+                 <center>
+                 <table  class="auto-style1">
                      <tr>
                          <td>
                              <asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Size="Medium" Text="Foto:"></asp:Label>
@@ -91,6 +92,7 @@
                          </td>
                      </tr>
                  </table>
+                     </center>
                  <br />
                  &nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Size="Medium" Text="Tipo: "></asp:Label>
