@@ -1,14 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="cliente.aspx.cs" Inherits="_DenisseBR_.cliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            width: 55px;
-            border-collapse: collapse;
-            margin-left: 0px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
+
+
 
 
     <asp:Panel ID="pnlc" runat="server" Height="345px">
@@ -17,18 +12,20 @@
         <asp:Label ID="Label1" runat="server" CssClass="label" Font-Size="XX-Large" Text="Bienvenido: " ForeColor="Black"></asp:Label>
         <asp:Label ID="usuarioN" runat="server" CssClass="label" Font-Size="XX-Large" ForeColor="Black"></asp:Label>
         <br />
-        <asp:Button ID="linkd" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" Text="Actualizar Datos" ForeColor="#669999" OnClick="linkd_Click" />
-        <asp:Button ID="end" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" OnClick="end_Click" Text="Cerrar Sesion" ForeColor="#669999" />
+        <asp:Button ID="linkd" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" Text="Actualizar Datos" ForeColor="#669999" OnClick="linkd_Click" Height="40px" />
+        <asp:Button ID="end" runat="server" CssClass="btn-link active" Font-Bold="True" Font-Size="X-Large" OnClick="end_Click" Text="Cerrar Sesion" ForeColor="#669999" Height="38px" />
     </asp:Panel>
             </div>
-        <div style="text-align:center">
+        <div style="text-align:center; height: 87px;">
 
             <br />
             <br />
 
-            <asp:Button ID="cotizar" runat="server" CssClass="btn" Text="Cotizar" BorderColor="#CCFFFF" OnClick="cotizar_Click" />
-            <asp:Button ID="pedido" runat="server" CssClass="btn" Text="Crear Pedido" BorderColor="#CC99FF" BorderStyle="Solid" OnClick="pedido_Click" />
-            <asp:Button ID="estados" runat="server" CssClass="btn" Text="Ver estados de Pedido" BorderColor="#CC33FF" OnClick="estados_Click" />
+            <asp:Button ID="cotizar" runat="server" CssClass="btn" Text="Cotizar" BorderColor="#CCFFFF" OnClick="cotizar_Click" Height="36px" />
+            <asp:Button ID="pedido" runat="server" CssClass="btn" Text="Crear Pedido" BorderColor="#CC99FF" BorderStyle="Solid" OnClick="pedido_Click" Height="36px" />
+            <asp:Button ID="estados" runat="server" CssClass="btn" Text="Ver estados de Pedido" BorderColor="#CC33FF" OnClick="estados_Click" Height="36px" />
+
+            <asp:Button ID="pedido0" runat="server" BorderColor="#CC99FF" BorderStyle="Solid" CssClass="btn" OnClick="pedido0_Click" Text="Imagen de Precarga" Height="36px" />
 
             <br />
 
@@ -53,7 +50,7 @@
                 </asp:DropDownList>
                 <br />
                 <br />
-                <asp:Button ID="btncot" runat="server" CssClass="btn active" Text="Cotizar" OnClick="btncot_Click" />
+                <asp:Button ID="btncot" runat="server" CssClass="btn active" Text="Cotizar" OnClick="btncot_Click" Height="38px" />
                 <br />
                 <br />
                 <asp:Label ID="Label12" runat="server" Text="El precio del pedido seria: "></asp:Label>
@@ -62,9 +59,9 @@
            
         </div>
         <div style="text-align:center">
-             <asp:Panel ID="pnlpedido" runat="server" Height="471px" TabIndex="1">
- <br />
-                 &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="Medium" Text="Nombre:"></asp:Label>
+             <asp:Panel ID="pnlpedido" runat="server" Height="532px" TabIndex="1">
+                 <br />
+                 &nbsp;&nbsp;<asp:Label ID="Label15" runat="server" Font-Bold="True" Font-Size="Medium" Text="Nombre:"></asp:Label>
                  <asp:TextBox ID="nombre" runat="server"></asp:TextBox>
                  <br />
                  <br />
@@ -72,27 +69,13 @@
                  <asp:TextBox ID="txtdescripcion" runat="server" TextMode="MultiLine"></asp:TextBox>
                  <br />
                  <br />
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="Medium" Text="Precio: "></asp:Label>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="Medium" Text="Precio: "></asp:Label>
                  <asp:TextBox ID="txtprecio1" runat="server" Font-Size="Medium"></asp:TextBox>
                  &nbsp;<asp:Label ID="Label8" runat="server" Text="US$"></asp:Label>
-                <br />
-                <br />
-                 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Size="Medium" Text="Peso:"></asp:Label>
+                 &nbsp;&nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Font-Bold="True" Font-Size="Medium" Text="Peso:"></asp:Label>
                 &nbsp;<asp:TextBox ID="txtpeso1" runat="server" Font-Size="Medium"></asp:TextBox>
                 <asp:Label ID="Label10" runat="server" Text="Libras"></asp:Label>
-                 &nbsp;<br /> <br />
-                 <center>
-                 <table  class="auto-style1">
-                     <tr>
-                         <td>
-                             <asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Size="Medium" Text="Foto:"></asp:Label>
-                         </td>
-                         <td>
-                             <asp:FileUpload ID="precarga" runat="server" ForeColor="Black" />
-                         </td>
-                     </tr>
-                 </table>
-                     </center>
+                 &nbsp;<br /> 
                  <br />
                  &nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label11" runat="server" Font-Bold="True" Font-Size="Medium" Text="Tipo: "></asp:Label>
@@ -104,10 +87,9 @@
                  <asp:Label ID="nSucursal" runat="server"></asp:Label>
                 <br />
                 <br />
-                <asp:Button ID="crear" runat="server" CssClass="btn active" Text="Crear Pedido" OnClick="crear_Click" />
+                <asp:Button ID="crear" runat="server" CssClass="btn active" Text="Crear Pedido" OnClick="crear_Click" Height="38px" />
                  <br />
                  <br />
-                 <asp:Label ID="lblmsjpe" runat="server"></asp:Label>
                  <br />
              </asp:Panel>
         </div>
@@ -138,7 +120,48 @@
  <br />
                 
              </asp:Panel>
+             <br />
+             <br />
+             <div>
+                 <asp:Panel ID="precarga" runat="server">
+                 &nbsp;&nbsp;<br />
+                 <br />
+                 <br />
+                 &nbsp;&nbsp;<asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Size="Medium" Text="Nombre:"></asp:Label>
+                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                 <br />
+                 <br />
+                 <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="Medium" Text="Descripcion:"></asp:Label>
+                 <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine"></asp:TextBox>
+                     <br />
+                 <br />
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label18" runat="server" Font-Bold="True" Font-Size="Medium" Text="Precio: "></asp:Label>
+                    <center>
+                      <asp:FileUpload ID="pre" runat="server" />
+                        </center>
+                     &nbsp;&nbsp;&nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="Medium" Text="Peso:"></asp:Label>
+                &nbsp;<asp:TextBox ID="TextBox4" runat="server" Font-Size="Medium"></asp:TextBox>
+                <asp:Label ID="Label21" runat="server" Text="Libras"></asp:Label>
+                 &nbsp;<br /> <br />
+                 <br />
+                 &nbsp;&nbsp;&nbsp;
+                <asp:Label ID="Label22" runat="server" Font-Bold="True" Font-Size="Medium" Text="Tipo: "></asp:Label>
+                <asp:DropDownList ID="ddt2" runat="server" Font-Size="Medium" TabIndex="1">
+                </asp:DropDownList>
+                 <br />
+                 <br />
+                 <asp:Label ID="Label23" runat="server" Font-Bold="True" Font-Size="Medium" Text="Sucursal: "></asp:Label>
+                 <asp:Label ID="Label24" runat="server"></asp:Label>
+                <br />
+                <br />
+                <asp:Button ID="btnprecar" runat="server" CssClass="btn active" Text="Crear Pedido" OnClick="btnprecar_Click" Height="38px" />
+                 <br />
+                 <br />
+                 <br />
+                 </asp:Panel>
+             </div>
         </div>
+
         
 </asp:Panel>
 
@@ -146,4 +169,9 @@
     <br />
 
 
+  
+
+
 </asp:Content>
+
+

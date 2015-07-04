@@ -26,6 +26,7 @@
         </div>
  </header>
 
+   
     <form id="form1" runat="server">
 
 
@@ -35,16 +36,8 @@
 
             </asp:ContentPlaceHolder>
         </div>
-       
-    </form>
-     <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-              
-                 <p>&copy; <%: DateTime.Now.Year %> Joselyn Denisse Barrera Rodriguez</p>
-                 
-            </div>
-        </div>
-    </footer>
+</form>
+    
+    
 </body>
 </html>

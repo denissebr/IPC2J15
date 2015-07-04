@@ -18,8 +18,8 @@ namespace _DenisseBR_
         private string[] departamento;
         protected void Page_Load(object sender, EventArgs e)
         {
-            userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Usuario"]));
-            rol = wsr.obtenerDept(Convert.ToString(Session["Usuario"]));
+            userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Director"]));
+            rol = wsr.obtenerDept(Convert.ToString(Session["Director"]));
             depto.Text = wsr.nombredept(rol);
             datasetin = wsr.mostrarEmpleado(1,rol);
             pnlcontra.Visible = false;
@@ -50,7 +50,7 @@ namespace _DenisseBR_
             if(res==1){
                 msj = "Empleado " + row.Cells[2].Text + " " + row.Cells[3].Text + " dado de baja";
                 Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                rol = wsr.obtenerDept(Convert.ToString(Session["Usuario"]));
+                rol = wsr.obtenerDept(Convert.ToString(Session["Director"]));
                 datasetin = wsr.mostrarEmpleado(1, rol);
                 despedirGV.AutoGenerateColumns = true;
                 despedirGV.DataSource = datasetin;
@@ -60,7 +60,7 @@ namespace _DenisseBR_
             {
                 msj = "Error al dar de baja al empleado";
                 Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                rol = wsr.obtenerDept(Convert.ToString(Session["Usuario"]));
+                rol = wsr.obtenerDept(Convert.ToString(Session["Director"]));
                 datasetin = wsr.mostrarEmpleado(1, rol);
                 despedirGV.AutoGenerateColumns = true;
                 despedirGV.DataSource = datasetin;

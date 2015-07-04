@@ -4,14 +4,14 @@
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="x" runat="server" >
     <link href="Content/bootstrap.css" rel="stylesheet" />
-<div style="text-align:center" >
+<div style="text-align:center; height: 171px;" >
       <br />
       <br />
       <br />
       <br />
       <br />
-    <asp:Button ID="log" runat="server" CssClass="btn-info active" Font-Bold="True" Font-Size="X-Large" OnClick="Button1_Click" Text="INICIAR SESION" />
-    <asp:Button ID="regis" runat="server" CssClass="btn-info disabled focus" Font-Bold="True" Font-Size="X-Large" OnClick="Button2_Click" Text="REGISTRAR" />
+    <asp:Button ID="log" runat="server" CssClass="btn-info active" Font-Bold="True" Font-Size="X-Large" OnClick="Button1_Click" Text="INICIAR SESION" Height="50px" />
+    <asp:Button ID="regis" runat="server" CssClass="btn-info disabled focus" Font-Bold="True" Font-Size="X-Large" OnClick="Button2_Click" Text="REGISTRAR" Height="51px" />
 
     
 </div>
@@ -33,7 +33,7 @@
             <asp:Label ID="msj" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#FF3300"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="logIn" runat="server" CssClass="btn" ForeColor="Black" Text="Iniciar Sesion" OnClick="logIn_Click" />
+            <asp:Button ID="logIn" runat="server" CssClass="btn" ForeColor="Black" Text="Iniciar Sesion" OnClick="logIn_Click" Height="29px" />
          
             <br />
          
@@ -93,7 +93,7 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click1" Text="Registrar Usuario" />
+        <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click1" Text="Registrar Usuario" Height="39px" />
         <br />
         <br />
         <asp:Label ID="msjerrus" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#FF3300"></asp:Label>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,8 +16,9 @@ namespace _DenisseBR_
         public System.Data.DataSet datasetin;
         protected void Page_Load(object sender, EventArgs e)
         {
-            userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Usuario"]));
-            int tipo=wsr.tipoEmp(Convert.ToString(Session["Usuario"]));
+            userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Empleado"]));
+            userEmp0.Text = wsr.obtenerEmp(Convert.ToString(Session["Empleado"]));
+            int tipo = wsr.tipoEmp(Convert.ToString(Session["Empleado"]));
             if(tipo==1){
                 servicioCliente.Visible = true;
                 bodega.Visible = false;
@@ -32,20 +34,22 @@ namespace _DenisseBR_
             }
             else if (tipo == 3)
             {
+                servicioCliente.Visible = false;
+                bodega.Visible = true;
+                paquetes.Visible = false;
+                DataSet dataPrecarga = wsr.mostrarPrecarga();
+                precargaGV.DataSource = dataPrecarga;
+                precargaGV.DataBind();
 
             }
             eyf.Visible = true;
             dev.Visible = false;
             bus.Visible = false;
             aprovar.Visible = false;
-
+            pnlprecar.Visible = false;
            
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void facturar_Click(object sender, EventArgs e)
         {
@@ -134,6 +138,21 @@ namespace _DenisseBR_
             dev.Visible = false;
             bus.Visible = false;
            
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            pnlprecar.Visible = true;
+        }
+
+        protected void devolverBtn_Click(object sender, EventArgs e)
+        {
 
         }
 

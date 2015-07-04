@@ -581,6 +581,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="mostrarPrecarga">
+        <s:complexType />
+      </s:element>
+      <s:element name="mostrarPrecargaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarPrecargaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="logCSoapIn">
@@ -793,6 +810,12 @@
   <wsdl:message name="ActualizarDatosEmpSoapOut">
     <wsdl:part name="parameters" element="tns:ActualizarDatosEmpResponse" />
   </wsdl:message>
+  <wsdl:message name="mostrarPrecargaSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarPrecarga" />
+  </wsdl:message>
+  <wsdl:message name="mostrarPrecargaSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarPrecargaResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -933,6 +956,10 @@
     <wsdl:operation name="ActualizarDatosEmp">
       <wsdl:input message="tns:ActualizarDatosEmpSoapIn" />
       <wsdl:output message="tns:ActualizarDatosEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mostrarPrecarga">
+      <wsdl:input message="tns:mostrarPrecargaSoapIn" />
+      <wsdl:output message="tns:mostrarPrecargaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -1252,6 +1279,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="mostrarPrecarga">
+      <soap:operation soapAction="http://tempuri.org/mostrarPrecarga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1563,6 +1599,15 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarDatosEmp">
       <soap12:operation soapAction="http://tempuri.org/ActualizarDatosEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarPrecarga">
+      <soap12:operation soapAction="http://tempuri.org/mostrarPrecarga" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

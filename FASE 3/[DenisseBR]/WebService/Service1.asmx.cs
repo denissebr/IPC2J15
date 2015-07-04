@@ -828,6 +828,31 @@ namespace WebService
             miConexionBase.Close();
 
         }
+        [WebMethod]
+        public DataSet mostrarPrecarga()
+        {
+            DataSet ds = new DataSet();
+            int estado = 2;
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select IdPaqute, Nombre, PrecioF from Paquete where IdEstado='"+estado+"", miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
         
        
     }

@@ -13,6 +13,7 @@ namespace _DenisseBR_
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
         private string[] lista;
         private string[] lista1;
+        private string[] lista2;
         String msj;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,13 +24,20 @@ namespace _DenisseBR_
             int sucur = wsr.sucursalPedido(Convert.ToString(Session["Usuario"]));
            
             nSucursal.Text = wsr.direccionSucur(sucur);
+            Label24.Text = wsr.direccionSucur(sucur);
             lista = wsr.Categorias();
-            lista1 = wsr.Categorias();
+            lista1 = wsr.Categorias(); 
+            lista2 = wsr.Categorias();
 
-           
           
             pnlpedido.Visible = false;
             pnlcot.Visible = false;
+            precarga.Visible = false;
+            pnlPedidos.Visible = false;
+
+            
+           
+           
         }
 
 
@@ -46,11 +54,13 @@ namespace _DenisseBR_
             pnlpedido.Visible = false;
             pnlPedidos.Visible = false;
             pnlcot.Visible = true;
+            precarga.Visible = false;
             foreach (string categoria in lista)
             {
 
                 ddt.Items.Add(categoria);
             }
+           
         }
 
         protected void pedido_Click(object sender, EventArgs e)
@@ -58,6 +68,7 @@ namespace _DenisseBR_
             pnlpedido.Visible = true;
             pnlcot.Visible = false;
             pnlPedidos.Visible = false;
+
             foreach (string categoria in lista1)
             {
 
@@ -70,6 +81,7 @@ namespace _DenisseBR_
             pnlpedido.Visible = false;
             pnlcot.Visible = false;
             pnlPedidos.Visible = true;
+            precarga.Visible = false;
         }
 
         protected void linkd_Click(object sender, EventArgs e)
@@ -90,7 +102,8 @@ namespace _DenisseBR_
             pnlpedido.Visible = false;
             pnlcot.Visible = true;
             pnlPedidos.Visible = false;
-
+            precarga.Visible = false;
+            
         }
 
         protected void crear_Click(object sender, EventArgs e)
@@ -98,15 +111,66 @@ namespace _DenisseBR_
             String tipo = ddt1.SelectedItem.ToString();
             tipo = tipo.Replace('%', ' ');
             string[] aux = tipo.Split('-');
+
             int idcat = wsr.Obtenericcat(Convert.ToString(aux[0]));
             float valor = Convert.ToSingle(aux[1]);
-            if (precarga.HasFile && txtprecio1.Text.Equals(null))
+            long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
+
+            int estadoF = 1;
+            if (wsr.PedidoPrecio(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), Convert.ToSingle(txtprecio1.Text), dpiUS, idcat, estadoF, valor))
             {
-                long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
+
+                msj = "Pedido Creado Exitosamente";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                txtprecio1.Text = "";
+                txtpeso1.Text = "";
+                nombre.Text = "";
+                txtdescripcion.Text = "";
+            }
+            else
+            {
+                msj = "Error inesperado, intentelo de nuevo";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            pnlpedido.Visible = true;
+            pnlcot.Visible = false;
+            pnlPedidos.Visible = false;
+            precarga.Visible = false;
+           
+        }
+
+        protected void pedido0_Click(object sender, EventArgs e)
+        {
+
+           
+            pnlpedido.Visible = false;
+            pnlcot.Visible = false; ;
+            pnlPedidos.Visible = false;
+            precarga.Visible = true;
+            foreach (string categoria in lista2)
+            {
+
+                ddt2.Items.Add(categoria);
+            }
+        }
+
+
+        protected void btnprecar_Click(object sender, EventArgs e)
+        {
+            String tipo = ddt2.SelectedItem.ToString();
+            tipo = tipo.Replace('%', ' ');
+            string[] aux = tipo.Split('-');
+
+            int idcat = wsr.Obtenericcat(Convert.ToString(aux[0]));
+            float valor = Convert.ToSingle(aux[1]);
+            long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
+
+            if(pre.HasFile){
+                                
                 int estadoF=2;
-                string str = precarga.FileName;
-                precarga.PostedFile.SaveAs(Server.MapPath(".") + "//precarga//" + str);
-                string path = "//precarga//" + str.ToString();
+                string str = pre.FileName;
+                pre.PostedFile.SaveAs(Server.MapPath(".") + "~//precarga//" + str);
+                string path = "~//precarga//" + str.ToString();
                 if (wsr.PedidoPrecioF(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), path, dpiUS, idcat, estadoF))
                 {
 
@@ -123,33 +187,14 @@ namespace _DenisseBR_
                     Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
                 }
             }
-            else if (!precarga.HasFile && !txtprecio1.Text.Equals(null))
-            {
-                float precio = Convert.ToSingle(txtprecio1.Text);
-                long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
-                int estadoF=1;
-                if (wsr.PedidoPrecio(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), Convert.ToSingle(txtprecio1.Text), dpiUS, idcat, estadoF,valor))
-                {
 
-                    msj = "Pedido Creado Exitosamente";
-                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                    txtprecio1.Text = "";
-                    txtpeso1.Text = "";
-                    nombre.Text = "";
-                    txtdescripcion.Text = "";
-                }
-                else
-                {
-                    msj = "Error inesperado, intentelo de nuevo";
-                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                }
-             }
-           
-            pnlpedido.Visible = true;
+            pnlpedido.Visible = false;
             pnlcot.Visible = false;
             pnlPedidos.Visible = false;
+            precarga.Visible = true;
             
         }
+
        
        
 

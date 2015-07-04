@@ -69,21 +69,21 @@ namespace _DenisseBR_
             else
             {
                 if(wsr.logE(usuario.Text,passw.Text)){
-                    Session["Usuario"] = usuario.Text;
+                    Session["Empleado"] = usuario.Text;
                     Response.Redirect("empleado.aspx");
                 }
                 else
                 {
                     if (wsr.logD(usuario.Text, passw.Text))
                     {
-                        Session["Usuario"] = usuario.Text;
+                        Session["Director"] = usuario.Text;
                         Response.Redirect("director.aspx");
                     }
                     else
                     {
                         if (wsr.logA(usuario.Text, passw.Text))
                         {
-                            Session["Usuario"] = usuario.Text;
+                            Session["Administrador"] = usuario.Text;
                             Response.Redirect("");
                         }
                         else

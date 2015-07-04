@@ -260,6 +260,13 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatosEmp", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarPrecarga", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet mostrarPrecarga();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarPrecarga", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> mostrarPrecargaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -567,6 +574,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<int> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
             return base.Channel.ActualizarDatosEmpAsync(nom, apellido, telefono, sueldo, direccion, rol, usuario, passw, cod);
+        }
+        
+        public System.Data.DataSet mostrarPrecarga() {
+            return base.Channel.mostrarPrecarga();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> mostrarPrecargaAsync() {
+            return base.Channel.mostrarPrecargaAsync();
         }
     }
 }

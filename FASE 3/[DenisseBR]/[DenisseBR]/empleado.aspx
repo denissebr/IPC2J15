@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
     <div style="text-align:center">
-    <asp:Panel ID="servicioCliente" runat="server" Height="1241px" ScrollBars="Auto">
+    <asp:Panel ID="servicioCliente" runat="server" Height="1332px" ScrollBars="Auto">
         <asp:Panel ID="Panel1" runat="server" CssClass="panel" Height="95px" >
             &nbsp;<asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
             <br />
@@ -65,7 +65,7 @@
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
                 <br />
-            <asp:Button ID="devolverBtn" runat="server" OnClick="Button1_Click" Text="Devolver" />
+            <asp:Button ID="devolverBtn" runat="server" OnClick="devolverBtn_Click" Text="Devolver" />
             <br />
             <br />
             <br />
@@ -95,7 +95,7 @@
             </asp:GridView>
           
         </asp:Panel>
-        <asp:Panel ID="aprovar" runat="server" Height="578px">
+        <asp:Panel ID="aprovar" runat="server" Height="646px">
             <br />
             <br />
             &nbsp;
@@ -127,13 +127,52 @@
 
             
     <asp:Panel ID="bodega" runat="server" Height="597px" ScrollBars="Auto">
-        <asp:Panel ID="Panel3" runat="server" BackColor="#CCCCFF" CssClass="panel-heading" Height="64px">
+        <asp:Panel ID="Panel3" runat="server" BackColor="#CCCCFF" CssClass="panel-heading" Height="109px">
+            &nbsp;<asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
+            <br />
+            <asp:Label ID="userEmp0" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
+            <br />
             <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Bodegas"></asp:Label>
             <br />
         </asp:Panel>
         <br />
         
         <br />
+        <div>
+            <asp:Button ID="btnprecarga" runat="server" CssClass="btn" OnClick="Button1_Click1" Text="Precio de Precarga" />
+            <asp:Button ID="Button2" runat="server" Text="Button" />
+            <asp:Button ID="Button3" runat="server" Text="Button" />
+            <asp:Panel ID="pnlprecar" runat="server" Height="228px" Visible="False">
+                <br />
+                <asp:GridView ID="precargaGV" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="False" DataKeyNames="IdPaquete" DataSourceID="precarga">
+                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                    <Columns>
+                        <asp:BoundField DataField="IdPaquete" HeaderText="IdPaquete" InsertVisible="False" ReadOnly="True" SortExpression="IdPaquete" />
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                        <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
+                        <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
+                        <asp:ImageField DataImageUrlField="PrecioF" DataImageUrlFormatString="~/precarga/{0}" HeaderText="Precio Foto">
+                        </asp:ImageField>
+                    </Columns>
+                    <EditRowStyle BackColor="#999999" />
+                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+
+                </asp:GridView>
+                <asp:SqlDataSource ID="precarga" runat="server" ConnectionString="<%$ ConnectionStrings:Fase3V1ConnectionString %>" SelectCommand="SELECT [IdPaquete], [Nombre], [Descripcion], [PrecioF], [Precio] FROM [Paquete] WHERE ([IdEstado] = @IdEstado)">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="2" Name="IdEstado" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </asp:Panel>
+        </div>
     </asp:Panel>
 
 
