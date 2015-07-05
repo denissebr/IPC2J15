@@ -17,11 +17,12 @@ namespace _DenisseBR_
         private System.Data.DataSet dataset1;
         private long dato;
         private string[] sucursal;
+        private string msj;
         
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            dds.Items.Clear();
+            
             sucursal = wsr.Sucursal();
             foreach (string sucur in sucursal)
             {
@@ -40,6 +41,7 @@ namespace _DenisseBR_
                 direccion.Text = dataset1.Tables[0].Rows[0][5].ToString();
                 txtuser.Text = dataset1.Tables[0].Rows[0][6].ToString();
                 txtpass.Text = dataset1.Tables[0].Rows[0][7].ToString();
+                tarjeta.Text = dataset1.Tables[0].Rows[0][8].ToString();
 
             }
 
@@ -63,16 +65,18 @@ namespace _DenisseBR_
                 direccion.Text = "";
                 txtuser.Text = "";
                 txtpass.Text = "";
-                msjsi.Visible = true;
-                msjsi.Text = "Informacion actualizada exitosamente";
+                tarjeta.Text = "";
+                msj= "Informacion actualizada exitosamente";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                Response.Redirect("cliente.aspx");
 
             }
             else
             {
-                msjerrus.Visible = true;
-                msjerrus.Text = "No se pudo actualizar la informacion";
+                msj = "No se pudo actualizar la informacion";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
             }
-               
+            
             
            
 
@@ -80,7 +84,7 @@ namespace _DenisseBR_
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("cliente.aspx");
+           
         }
 
 

@@ -2,16 +2,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
-
-    <div style="text-align:center">
-        <asp:Panel ID="Panel1" runat="server" Height="84px" CssClass="panel">
+    
+    <div style="text-align:center; height: 146px;">
+        <asp:Panel ID="Panel1" runat="server" Height="123px" CssClass="panel">
          &nbsp;<asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
             <br />
             <asp:Label ID="userEmp" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
             <br />
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="X-Large" Text="Director de: "></asp:Label>
       
-            <asp:Label ID="depto" runat="server"></asp:Label>
+            <asp:Label ID="depto" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
+      
+            <br />
+            <asp:Button ID="logOut" runat="server" CssClass="btn-link" OnClick="logOut_Click" Text="Cerrar Sesion" />
       
     </asp:Panel>
         </div>
@@ -21,6 +24,7 @@
         <asp:Button ID="contratacion" runat="server" CssClass="btn" Text="Contratacion" OnClick="contratacion_Click" />
         <asp:Button ID="equipo" runat="server" CssClass="btn" Text="Consultar Equipo" OnClick="equipo_Click" />
         <asp:Button ID="despedir" runat="server" CssClass="btn" Text="Despedir Empleado" OnClick="despedir_Click" />
+        <asp:Button ID="btnpre" runat="server" CssClass="btn" Enabled="False" OnClick="btnpre_Click" Text="Autorizar Precarga" />
         <br />
 
     </div>
@@ -58,7 +62,7 @@
             <asp:Label ID="msjcs" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#CCFF33" Text="Contratacion Exitosa" Visible="False"></asp:Label>
             <asp:Label ID="msjcn" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Red" Text="Error en la carga de archivos" Visible="False"></asp:Label>
         </asp:Panel>
-        <asp:Panel ID="ConsultarEquipo" runat="server" Height="898px" ScrollBars="Auto">
+        <asp:Panel ID="ConsultarEquipo" runat="server" Height="903px" ScrollBars="Auto">
             <br />
             <asp:GridView ID="generalGV" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" CssClass="table" OnSelectedIndexChanged="generalGV_SelectedIndexChanged">
                 <AlternatingRowStyle BackColor="White" />
@@ -131,7 +135,49 @@
                 <br />
                 <br />
             </asp:Panel>
+            
+            <br />
+            
         </asp:Panel>
+            
+            <asp:Panel ID="precarga" runat="server" Height="357px" HorizontalAlign="Center" ScrollBars="Auto">
+                <br />
+                <br />
+                <asp:GridView ID="precaGV" runat="server" AutoGenerateColumns="False" CellPadding="4" CssClass="table-condensed" DataKeyNames="IdPaquete" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="312px">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:BoundField DataField="IdPaquete" HeaderText="IdPaquete" InsertVisible="False" ReadOnly="True" SortExpression="IdPaquete" />
+                        <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
+                        <asp:ImageField DataImageUrlField="PrecioF" HeaderText="Precio Foto">
+                        </asp:ImageField>
+                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+                    </Columns>
+                    <EditRowStyle BackColor="#7C6F57" />
+                    <EmptyDataTemplate>
+                        NO HAY DATOS QUE MOSTRAR
+                    </EmptyDataTemplate>
+                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#E3EAEB" />
+                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                    <SortedAscendingHeaderStyle BackColor="#246B61" />
+                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                    <SortedDescendingHeaderStyle BackColor="#15524A" />
+                </asp:GridView>
+                <br />
+                <asp:Button ID="btnap" runat="server" OnClick="btnap_Click" Text="Aprovar" />
+                &nbsp;&nbsp;
+                <asp:Button ID="btnre" runat="server" Text="Rechazar" OnClick="btnre_Click" />
+                <br />
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Fase3V1ConnectionString %>" SelectCommand="SELECT [IdPaquete], [PrecioF], [Precio] FROM [Paquete] WHERE ([IdEstado] = @IdEstado)">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="3" Name="IdEstado" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </asp:Panel>
+           
         <br />
 
     </div>

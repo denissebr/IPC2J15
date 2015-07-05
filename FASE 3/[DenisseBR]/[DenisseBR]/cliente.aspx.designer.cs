@@ -364,13 +364,13 @@ namespace _DenisseBR_ {
         protected global::System.Web.UI.WebControls.Panel pnlPedidos;
         
         /// <summary>
-        /// Control GridView1.
+        /// Control pedidoGV.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView pedidoGV;
         
         /// <summary>
         /// Control precarga.
@@ -391,13 +391,13 @@ namespace _DenisseBR_ {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control nombrep.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox nombrep;
         
         /// <summary>
         /// Control Label17.
@@ -409,13 +409,13 @@ namespace _DenisseBR_ {
         protected global::System.Web.UI.WebControls.Label Label17;
         
         /// <summary>
-        /// Control TextBox2.
+        /// Control descp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox descp;
         
         /// <summary>
         /// Control Label18.
@@ -445,13 +445,13 @@ namespace _DenisseBR_ {
         protected global::System.Web.UI.WebControls.Label Label20;
         
         /// <summary>
-        /// Control TextBox4.
+        /// Control pesp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox pesp;
         
         /// <summary>
         /// Control Label21.

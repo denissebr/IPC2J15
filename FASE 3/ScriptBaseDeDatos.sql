@@ -40,7 +40,9 @@ Rol INT NOT NULL,
 UsuarioEmpleado VARCHAR(MAX),
 PasswordE VARCHAR(MAX),
 Habilitado BIT NOT NULL,
-FOREIGN KEY (Rol) REFERENCES Departamento(IdDepartamento)
+IdSucursal  INT  NOT NULL,
+FOREIGN KEY (Rol) REFERENCES Departamento(IdDepartamento),
+FOREIGN KEY (IdSucursal) REFERENCES Sucursal(IdSucursal)
 )
 CREATE TABLE Cliente(
 Nombre VARCHAR(MAX) NOT NULL,
@@ -85,17 +87,16 @@ Descripcion VARCHAR(MAX),
 peso FLOAT NOT NULL,
 PrecioF VARCHAR(MAX),
 Precio float,
-Estado VARCHAR(MAX) NULL,
 Dpi BIGINT NOT NULL,
 IdCategoria INT NULL,
 IdLote INT NULL,
 IdEstado INT NOT NULL,
-IdEmpleado INT,
+IdSucursal INT NOT NULL,
 FOREIGN KEY (IdEstado) REFERENCES estadoPrecio(IdEstado),
 FOREIGN KEY (Dpi) REFERENCES Cliente(Dpi),
 FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria),
 FOREIGN KEY (IdLote) REFERENCES Lote(IdLote),
-FOREIGN KEY (IdEmpleado) REFERENCES Empleado(IdEmpleado)
+FOREIGN KEY (IdSucursal) REFERENCES Sucursal(IdSucursal)
 )
 CREATE TABLE Detalle(
 IdDetalle INT IDENTITY(1,1) PRIMARY KEY,
@@ -106,18 +107,24 @@ IdPaquete INT NOT NULL,
 FOREIGN KEY (IdPaquete) REFERENCES Paquete(IdPaquete),
 FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
 )
-CREATE TABLE historialEmp(
-IdHistorial INT IDENTITY(1,1) PRIMARY KEY,
-FechaInicio VARCHAR(MAX) NOT NULL,
-FechaFin INT NOT NULL,
-IdEmpleado INT NOT NULL,
-FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
+CREATE TABLE EstadoPaqete(
+EstadoTrack INT IDENTITY(1,1) PRIMARY KEY,
+estadoDes VARCHAR(MAX) NOT NULL
 )
 CREATE TABLE historialPa(
-IdPaquete INT IDENTITY(1,1) PRIMARY KEY,
+IdHistorialPa INT IDENTITY(1,1) PRIMARY KEY,
 FechaMod VARCHAR(MAX) NOT NULL,
 IdEmpleado INT NOT NULL,
 IdPaquete INT NOT NULL,
+EstadoTrack INT NOT NULL,
 FOREIGN KEY (IdPaquete) REFERENCES Paquete(IdPaquete),
+FOREIGN KEY (IdEmpleado) REFERENCES Empleado(IdEmpleado),
+FOREIGN KEY (EstadoTrack) REFERENCES EstadoPaqete(EstadoTrack)
+)
+CREATE TABLE historialEmp(
+IdHistorialE INT IDENTITY(1,1) PRIMARY KEY,
+FechaInicio VARCHAR(MAX) NOT NULL,
+FechaFin INT NOT NULL,
+IdEmpleado INT NOT NULL,
 FOREIGN KEY (IdFactura) REFERENCES Factura(IdFactura),
 )

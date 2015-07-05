@@ -1,16 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="empleado.aspx.cs" Inherits="_DenisseBR_.empleado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            border-collapse: collapse;
+            border-style: solid;
+            border-width: 1px;
+            background-color: #FFFFFF;
+        }
+        .auto-style3 {
+        }
+        .auto-style4 {
+            width: 462px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
-    <div style="text-align:center">
-    <asp:Panel ID="servicioCliente" runat="server" Height="1332px" ScrollBars="Auto">
-        <asp:Panel ID="Panel1" runat="server" CssClass="panel" Height="95px" >
+    <div style="text-align: center">
+         <asp:Panel ID="Panel1" runat="server" CssClass="panel" Height="143px" >
             &nbsp;<asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
             <br />
             <asp:Label ID="userEmp" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
             <br />
-            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Servicio al Cliente"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Departamento: "></asp:Label>
+             <asp:Label ID="dept" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+             <br />
+             <asp:Button ID="logOut" runat="server" CssClass="btn-link" OnClick="logOut_Click" Text="Cerrar Sesion" />
         </asp:Panel>
+    </div>
+    <div style="text-align:center">
+    <asp:Panel ID="servicioCliente" runat="server" Height="1332px" ScrollBars="Auto" style="margin-top: 0px">
+       
         <br />
         <div>
 
@@ -126,73 +145,98 @@
     <div style="text-align:center">
 
             
-    <asp:Panel ID="bodega" runat="server" Height="597px" ScrollBars="Auto">
-        <asp:Panel ID="Panel3" runat="server" BackColor="#CCCCFF" CssClass="panel-heading" Height="109px">
-            &nbsp;<asp:Label ID="Label7" runat="server" Font-Bold="True" Font-Size="Large" Text="BIENVENIDO"></asp:Label>
-            <br />
-            <asp:Label ID="userEmp0" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
-            <br />
-            <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Bodegas"></asp:Label>
-            <br />
-        </asp:Panel>
-        <br />
+    <asp:Panel ID="bodega" runat="server" Height="1115px" ScrollBars="Auto">
         
         <br />
         <div>
             <asp:Button ID="btnprecarga" runat="server" CssClass="btn" OnClick="Button1_Click1" Text="Precio de Precarga" />
             <asp:Button ID="Button2" runat="server" Text="Button" />
             <asp:Button ID="Button3" runat="server" Text="Button" />
-            <asp:Panel ID="pnlprecar" runat="server" Height="228px" Visible="False">
+            <asp:Panel ID="pnlprecar" runat="server" Height="405px" Visible="False">
                 <br />
-                <asp:GridView ID="precargaGV" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="False" DataKeyNames="IdPaquete" DataSourceID="precarga">
-                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                <asp:GridView ID="precargaGV" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="False" DataKeyNames="IdPaquete" DataSourceID="precarga" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
+                    <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="IdPaquete" HeaderText="IdPaquete" InsertVisible="False" ReadOnly="True" SortExpression="IdPaquete" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                         <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
                         <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
-                        <asp:ImageField DataImageUrlField="PrecioF" DataImageUrlFormatString="~/precarga/{0}" HeaderText="Precio Foto">
+                        <asp:ImageField DataImageUrlField="PrecioF" HeaderText="Precio Foto">
                         </asp:ImageField>
+                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
                     </Columns>
-                    <EditRowStyle BackColor="#999999" />
-                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                    <EmptyDataTemplate>
+                        NO HAY PAQUETES PARA PRECARGAR EL PRECIO.
+                    </EmptyDataTemplate>
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
 
                 </asp:GridView>
+                <br />
                 <asp:SqlDataSource ID="precarga" runat="server" ConnectionString="<%$ ConnectionStrings:Fase3V1ConnectionString %>" SelectCommand="SELECT [IdPaquete], [Nombre], [Descripcion], [PrecioF], [Precio] FROM [Paquete] WHERE ([IdEstado] = @IdEstado)">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="2" Name="IdEstado" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
+                <asp:Label ID="Label8" runat="server" Text="IdPaquete: " Visible="False"></asp:Label>
+                <asp:TextBox ID="idpa" runat="server" ReadOnly="True" Visible="False" Width="87px" AutoCompleteType="Disabled"></asp:TextBox>
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="Label9" runat="server" Text="Precio: " Visible="False"></asp:Label>
+                <asp:TextBox ID="precio" runat="server" Visible="False"></asp:TextBox>
+                <br />
+                <br />
+                <asp:Button ID="apr" runat="server" OnClick="apr_Click" Text="Ingresar Precio" Visible="False" Height="29px" />
+                <br />
+                <br />
+                <br />
+                               
             </asp:Panel>
-        </div>
+        </div>       
     </asp:Panel>
-
-
-        <asp:Panel ID="paquetes" runat="server" BorderColor="#CCFF33" BorderStyle="Solid" Height="149px">
-            <asp:Panel ID="Panel4" runat="server" BackColor="#CCFF33" Height="71px" style="margin-right: 0px">
-                <asp:Label ID="Label3" runat="server" Font-Bold="True" Font-Size="XX-Large" Text="Paquetes"></asp:Label>
-            </asp:Panel>
-            <br />
-            <div>
-
-            <asp:Button ID="rp" runat="server" CssClass="btn" Text="Registrar Paquete" />
-            <asp:Button ID="ap" runat="server" CssClass="btn" Text="Añadir Paquete" />
-            <asp:Button ID="ep" runat="server" CssClass="btn" Text="Estados de Paquete" />
-
-            </div>
-            <br />
-            <br />
-            <br />
-        </asp:Panel>
-
+               <div>
+                <asp:Panel ID="paquetes" runat="server" Height="754px">
+                    <br />
+                    <div style="text-align:center">
+                        <asp:Button ID="rp" runat="server" CssClass="btn" Text="Registrar Paquete" OnClick="rp_Click" />
+                        <asp:Button ID="ap" runat="server" CssClass="btn" Text="Añadir Paquete" />
+                        <asp:Button ID="ep" runat="server" CssClass="btn" Text="Estados de Paquete" />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Panel ID="registro" runat="server" Visible="False">
+                        <table align="center" cellpadding="2" cellspacing="3" class="auto-style1">
+                        <tr>
+                            <td colspan="2">
+                                <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="#666666" Text="REGISTRO DE PAQUETES"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style3">
+                                <asp:Label ID="Label11" runat="server" ForeColor="#666666" Text="Seleccionar Archivos"></asp:Label>
+                            </td>
+                            <td class="auto-style4">
+                                <asp:FileUpload ID="regisF" runat="server" ForeColor="#666666" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style3" colspan="2">
+                                <asp:Button ID="btnC" runat="server" Text="Cargar" Font-Bold="True" ForeColor="#666666" OnClick="btnC_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                    </asp:Panel>
+                </asp:Panel>
+           </div>
 
     </div>
 

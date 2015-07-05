@@ -79,6 +79,20 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarDatosPed", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet mostrarDatosPed(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarDatosPed", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> mostrarDatosPedAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarDatosPedIn", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet mostrarDatosPedIn(int IdPa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarDatosPedIn", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> mostrarDatosPedInAsync(int IdPa);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet obtenerDatosPed(long dpi);
@@ -106,6 +120,13 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerSucursal", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ObtenerSucursalAsync(string direccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerSucursalEmpl", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ObtenerSucursalEmpl(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerSucursalEmpl", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenerSucursalEmplAsync(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Obtenericcat", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -177,6 +198,13 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Rechazar", ReplyAction="*")]
         System.Threading.Tasks.Task<int> RechazarAsync(long dpi);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/actualizarPrecio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool actualizarPrecio(int idpa, float precio, int estado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/actualizarPrecio", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> actualizarPrecioAsync(int idpa, float precio, int estado);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatos", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal, long tarjeta);
@@ -207,17 +235,17 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecio", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor);
+        bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor, int idsuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecio", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor);
+        System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor, int idsuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecioF", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest);
+        bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest, int idsuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PedidoPrecioF", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> PedidoPrecioFAsync(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest);
+        System.Threading.Tasks.Task<bool> PedidoPrecioFAsync(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest, int idsuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/despedir", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -267,6 +295,62 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarPrecarga", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> mostrarPrecargaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/aprobarPrecio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool aprobarPrecio(int idpa, float precioAc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/aprobarPrecio", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> aprobarPrecioAsync(int idpa, float precioAc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarPrecio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool rechazarPrecio(int idpa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarPrecio", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> rechazarPrecioAsync(int idpa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerDatosPrecio", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ObtenerDatosPrecio(int idpa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerDatosPrecio", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ObtenerDatosPrecioAsync(int idpa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Obtenercat", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        float Obtenercat(int idcat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Obtenercat", ReplyAction="*")]
+        System.Threading.Tasks.Task<float> ObtenercatAsync(int idcat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/precioFinal", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        float precioFinal(float peso, float impuesto, float precio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/precioFinal", ReplyAction="*")]
+        System.Threading.Tasks.Task<float> precioFinalAsync(float peso, float impuesto, float precio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearRegistro", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool crearRegistro(int categoria, int casilla, float peso, float precio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearRegistro", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> crearRegistroAsync(int categoria, int casilla, float peso, float precio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearHisPa", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool crearHisPa(string fecha, int Idemp, int idPa, int estado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearHisPa", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> crearHisPaAsync(string fecha, int Idemp, int idPa, int estado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IdEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int IdEmp(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IdEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> IdEmpAsync(string user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -368,6 +452,22 @@ namespace _DenisseBR_.WSR {
             return base.Channel.obtenerDatosUsAsync(dpi);
         }
         
+        public System.Data.DataSet mostrarDatosPed(long dpi) {
+            return base.Channel.mostrarDatosPed(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> mostrarDatosPedAsync(long dpi) {
+            return base.Channel.mostrarDatosPedAsync(dpi);
+        }
+        
+        public System.Data.DataSet mostrarDatosPedIn(int IdPa) {
+            return base.Channel.mostrarDatosPedIn(IdPa);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> mostrarDatosPedInAsync(int IdPa) {
+            return base.Channel.mostrarDatosPedInAsync(IdPa);
+        }
+        
         public System.Data.DataSet obtenerDatosPed(long dpi) {
             return base.Channel.obtenerDatosPed(dpi);
         }
@@ -398,6 +498,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<int> ObtenerSucursalAsync(string direccion) {
             return base.Channel.ObtenerSucursalAsync(direccion);
+        }
+        
+        public int ObtenerSucursalEmpl(string user) {
+            return base.Channel.ObtenerSucursalEmpl(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerSucursalEmplAsync(string user) {
+            return base.Channel.ObtenerSucursalEmplAsync(user);
         }
         
         public int Obtenericcat(string nombre) {
@@ -480,6 +588,14 @@ namespace _DenisseBR_.WSR {
             return base.Channel.RechazarAsync(dpi);
         }
         
+        public bool actualizarPrecio(int idpa, float precio, int estado) {
+            return base.Channel.actualizarPrecio(idpa, precio, estado);
+        }
+        
+        public System.Threading.Tasks.Task<bool> actualizarPrecioAsync(int idpa, float precio, int estado) {
+            return base.Channel.actualizarPrecioAsync(idpa, precio, estado);
+        }
+        
         public int ActualizarDatos(string nom, string apellido, long dpi, int telefono, int nit, string direccion, string usuario, string passw, int IdSucursal, long tarjeta) {
             return base.Channel.ActualizarDatos(nom, apellido, dpi, telefono, nit, direccion, usuario, passw, IdSucursal, tarjeta);
         }
@@ -512,20 +628,20 @@ namespace _DenisseBR_.WSR {
             return base.Channel.registrarUSAsync(nombre, apellido, dpi, telefono, nit, direccion, estado, usuario, passw, IdSucursal, tarjeta);
         }
         
-        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor) {
-            return base.Channel.PedidoPrecio(nombre, descripcion, peso, precio, dpi, idcat, idest, valor);
+        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor, int idsuc) {
+            return base.Channel.PedidoPrecio(nombre, descripcion, peso, precio, dpi, idcat, idest, valor, idsuc);
         }
         
-        public System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor) {
-            return base.Channel.PedidoPrecioAsync(nombre, descripcion, peso, precio, dpi, idcat, idest, valor);
+        public System.Threading.Tasks.Task<bool> PedidoPrecioAsync(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor, int idsuc) {
+            return base.Channel.PedidoPrecioAsync(nombre, descripcion, peso, precio, dpi, idcat, idest, valor, idsuc);
         }
         
-        public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest) {
-            return base.Channel.PedidoPrecioF(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest, int idsuc) {
+            return base.Channel.PedidoPrecioF(nombre, descripcion, peso, precio, dpi, idcat, idest, idsuc);
         }
         
-        public System.Threading.Tasks.Task<bool> PedidoPrecioFAsync(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest) {
-            return base.Channel.PedidoPrecioFAsync(nombre, descripcion, peso, precio, dpi, idcat, idest);
+        public System.Threading.Tasks.Task<bool> PedidoPrecioFAsync(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest, int idsuc) {
+            return base.Channel.PedidoPrecioFAsync(nombre, descripcion, peso, precio, dpi, idcat, idest, idsuc);
         }
         
         public int despedir(int codigoEmp) {
@@ -582,6 +698,70 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> mostrarPrecargaAsync() {
             return base.Channel.mostrarPrecargaAsync();
+        }
+        
+        public bool aprobarPrecio(int idpa, float precioAc) {
+            return base.Channel.aprobarPrecio(idpa, precioAc);
+        }
+        
+        public System.Threading.Tasks.Task<bool> aprobarPrecioAsync(int idpa, float precioAc) {
+            return base.Channel.aprobarPrecioAsync(idpa, precioAc);
+        }
+        
+        public bool rechazarPrecio(int idpa) {
+            return base.Channel.rechazarPrecio(idpa);
+        }
+        
+        public System.Threading.Tasks.Task<bool> rechazarPrecioAsync(int idpa) {
+            return base.Channel.rechazarPrecioAsync(idpa);
+        }
+        
+        public System.Data.DataSet ObtenerDatosPrecio(int idpa) {
+            return base.Channel.ObtenerDatosPrecio(idpa);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ObtenerDatosPrecioAsync(int idpa) {
+            return base.Channel.ObtenerDatosPrecioAsync(idpa);
+        }
+        
+        public float Obtenercat(int idcat) {
+            return base.Channel.Obtenercat(idcat);
+        }
+        
+        public System.Threading.Tasks.Task<float> ObtenercatAsync(int idcat) {
+            return base.Channel.ObtenercatAsync(idcat);
+        }
+        
+        public float precioFinal(float peso, float impuesto, float precio) {
+            return base.Channel.precioFinal(peso, impuesto, precio);
+        }
+        
+        public System.Threading.Tasks.Task<float> precioFinalAsync(float peso, float impuesto, float precio) {
+            return base.Channel.precioFinalAsync(peso, impuesto, precio);
+        }
+        
+        public bool crearRegistro(int categoria, int casilla, float peso, float precio) {
+            return base.Channel.crearRegistro(categoria, casilla, peso, precio);
+        }
+        
+        public System.Threading.Tasks.Task<bool> crearRegistroAsync(int categoria, int casilla, float peso, float precio) {
+            return base.Channel.crearRegistroAsync(categoria, casilla, peso, precio);
+        }
+        
+        public bool crearHisPa(string fecha, int Idemp, int idPa, int estado) {
+            return base.Channel.crearHisPa(fecha, Idemp, idPa, estado);
+        }
+        
+        public System.Threading.Tasks.Task<bool> crearHisPaAsync(string fecha, int Idemp, int idPa, int estado) {
+            return base.Channel.crearHisPaAsync(fecha, Idemp, idPa, estado);
+        }
+        
+        public int IdEmp(string user) {
+            return base.Channel.IdEmp(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> IdEmpAsync(string user) {
+            return base.Channel.IdEmpAsync(user);
         }
     }
 }

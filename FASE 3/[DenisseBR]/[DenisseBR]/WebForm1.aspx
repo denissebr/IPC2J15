@@ -23,7 +23,7 @@
             <br />
             <asp:Label ID="Label4" runat="server" Text="Usuario: "></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="usuario" runat="server" ValidateRequestMode="Enabled"></asp:TextBox>
+            <asp:TextBox ID="usuario" runat="server" ValidateRequestMode="Enabled" AutoCompleteType="Disabled"></asp:TextBox>
             <br />
             <br />
             <asp:Label ID="Label5" runat="server" Text="Contraseña: "></asp:Label>

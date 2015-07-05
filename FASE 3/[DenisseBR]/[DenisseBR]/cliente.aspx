@@ -99,50 +99,49 @@
                  <br />
                  PEDIDOS:<br />
                  <br />
-                 <asp:GridView ID="GridView1" runat="server" style="align-self:center" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" HorizontalAlign="Center">
-                     <AlternatingRowStyle BackColor="#F7F7F7" />
+                 <asp:GridView ID="pedidoGV" runat="server" style="align-self:center" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" HorizontalAlign="Center" CssClass="table-condensed" ForeColor="Black" OnSelectedIndexChanged="pedidoGV_SelectedIndexChanged" Width="310px">
+                     <AlternatingRowStyle BackColor="White" />
+                     <Columns>
+                         <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+                     </Columns>
                      <EmptyDataTemplate>
                          No hay pedidos que
                          <br />
                          mostrar
                      </EmptyDataTemplate>
-                     <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                     <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                     <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                     <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                     <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                     <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                     <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                     <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                     <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                     <FooterStyle BackColor="#CCCC99" />
+                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                     <RowStyle BackColor="#F7F7DE" />
+                     <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                     <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                     <SortedAscendingHeaderStyle BackColor="#848384" />
+                     <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                     <SortedDescendingHeaderStyle BackColor="#575357" />
                  </asp:GridView>
                  <br />
  <br />
                 
              </asp:Panel>
-             <br />
-             <br />
              <div>
                  <asp:Panel ID="precarga" runat="server">
-                 &nbsp;&nbsp;<br />
-                 <br />
-                 <br />
-                 &nbsp;&nbsp;<asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Size="Medium" Text="Nombre:"></asp:Label>
-                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                 <br />
-                 <br />
-                 <asp:Label ID="Label17" runat="server" Font-Bold="True" Font-Size="Medium" Text="Descripcion:"></asp:Label>
-                 <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine"></asp:TextBox>
                      <br />
-                 <br />
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label18" runat="server" Font-Bold="True" Font-Size="Medium" Text="Precio: "></asp:Label>
-                    <center>
-                      <asp:FileUpload ID="pre" runat="server" />
-                        </center>
+                     &nbsp;&nbsp;<asp:Label ID="Label14" runat="server" Font-Bold="True" Font-Size="Medium" Text="Nombre:"></asp:Label>
+                     <asp:TextBox ID="nombrep" runat="server"></asp:TextBox>
+                     <br />
+                     <br />
+                <asp:Label ID="Label17" runat="server" Text="Descripcion:" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                     <asp:TextBox ID="descp" runat="server" TextMode="MultiLine"></asp:TextBox>
+                     <br />
+                     <br />
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label18" runat="server" Font-Bold="True" Font-Size="Medium" Text="Precio: "></asp:Label>
+                     <center>
+                         <asp:FileUpload ID="pre" runat="server" />
+                     </center>
                      &nbsp;&nbsp;&nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label20" runat="server" Font-Bold="True" Font-Size="Medium" Text="Peso:"></asp:Label>
-                &nbsp;<asp:TextBox ID="TextBox4" runat="server" Font-Size="Medium"></asp:TextBox>
-                <asp:Label ID="Label21" runat="server" Text="Libras"></asp:Label>
-                 &nbsp;<br /> <br />
+                 &nbsp;<asp:TextBox ID="pesp" runat="server" Font-Size="Medium"></asp:TextBox>
+                     <asp:Label ID="Label21" runat="server" Text="Libras"></asp:Label>
+                     &nbsp;<br /> <br />
                  <br />
                  &nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label22" runat="server" Font-Bold="True" Font-Size="Medium" Text="Tipo: "></asp:Label>

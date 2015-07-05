@@ -41,6 +41,7 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
@@ -72,6 +73,7 @@
     <Content Include="Content\style.css" />
     <Content Include="director.aspx" />
     <Content Include="empleado.aspx" />
+    <Content Include="estadoPedidos.aspx" />
     <Content Include="Imagenes\banner.png" />
     <Content Include="Imagenes\Fondo-Medio-Ambiente.jpg" />
     <Content Include="Imagenes\fondo1.jpg" />
@@ -80,8 +82,7 @@
     <Content Include="Imagenes\quetzal.png" />
     <Content Include="Imagenes\Sin nombre.png" />
     <Content Include="Imagenes\xml.jpg" />
-    <Content Include="precarga\precio.png" />
-    <Content Include="precarga\Sin título.png" />
+    <Content Include="precarga\fotos\precio.png" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
@@ -130,6 +131,13 @@
     <Compile Include="empleado.aspx.designer.cs">
       <DependentUpon>empleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="estadoPedidos.aspx.cs">
+      <DependentUpon>estadoPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estadoPedidos.aspx.designer.cs">
+      <DependentUpon>estadoPedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="master.Master.cs">
       <DependentUpon>master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,9 +175,11 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\WSR\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Documentos\registro\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

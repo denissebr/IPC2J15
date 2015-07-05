@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,11 +15,16 @@ namespace _DenisseBR_
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
         public System.Data.DataSet dataset1;
         public System.Data.DataSet datasetin;
+        private string msj;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["Empleado"]==null){
+                Response.Redirect("WebForm1.aspx");
+            }
+            else { 
             userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Empleado"]));
-            userEmp0.Text = wsr.obtenerEmp(Convert.ToString(Session["Empleado"]));
             int tipo = wsr.tipoEmp(Convert.ToString(Session["Empleado"]));
+            dept.Text = wsr.nombredept(tipo);
             if(tipo==1){
                 servicioCliente.Visible = true;
                 bodega.Visible = false;
@@ -30,7 +36,10 @@ namespace _DenisseBR_
             }
             else if (tipo == 2)
             {
-
+                Response.Write("Empleado de registro");
+                servicioCliente.Visible = false;
+                bodega.Visible = false;
+                paquetes.Visible = true;
             }
             else if (tipo == 3)
             {
@@ -47,6 +56,7 @@ namespace _DenisseBR_
             bus.Visible = false;
             aprovar.Visible = false;
             pnlprecar.Visible = false;
+            }
            
         }
 
@@ -143,6 +153,16 @@ namespace _DenisseBR_
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            idpa.Visible = true;
+            precio.Visible = true;
+            Label8.Visible = true;
+            Label9.Visible = true;
+            apr.Visible = true;
+            GridViewRow row = precargaGV.SelectedRow;
+            idpa.Text = (row.Cells[0].Text);
+            pnlprecar.Visible = true;
+
+
 
         }
 
@@ -154,6 +174,97 @@ namespace _DenisseBR_
         protected void devolverBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void apr_Click(object sender, EventArgs e)
+        {
+            int estado=3;
+            if (wsr.actualizarPrecio(Convert.ToInt32(idpa.Text), Convert.ToSingle(precio.Text), estado))
+            {
+                msj = "Precio actualizado";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            else
+            {
+                msj = "Error al actualizar el dato";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            precargaGV.DataBind();
+            pnlprecar.Visible = true;
+            idpa.Visible = false;
+            precio.Visible = false;
+            Label8.Visible = false;
+            Label9.Visible = false;
+            apr.Visible = false;
+            
+        }
+
+        protected void logOut_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("WebForm1.aspx");
+        }
+
+        protected void rp_Click(object sender, EventArgs e)
+        {
+            registro.Visible = true;
+        }
+
+        protected void btnC_Click(object sender, EventArgs e)
+        {
+            DateTime time = DateTime.Now; 
+            string format = "d/MM/yyyy";   // formato
+            String fecha= time.ToString(format); 
+           
+            string str = regisF.FileName;
+            regisF.PostedFile.SaveAs(Server.MapPath(".") + "/Documentos/registro/" + str);
+            string path = "~/Documentos/registro/" + str.ToString();
+            if(regisF.HasFile){
+                try
+                {
+                    StreamReader leer = new StreamReader(regisF.PostedFile.InputStream);
+                    string linea;
+                    int cont = 0;
+
+                    while ((linea = leer.ReadLine()) != null)
+                    {
+                        
+
+                                    string categoria;
+                                    float peso;
+                                    float precio;
+                                    int idPaquete;
+                                    string[] fila;
+                                    if (linea != "CATEGORIA,IDPAQUETE,PESO,PRECIO")
+                                    {
+                                        if (cont == 0)
+                                        {
+                                            fila = linea.Split(',');
+                                            categoria = fila[0];
+                                            idPaquete = Convert.ToInt32(fila[1]);
+                                            peso = Convert.ToSingle(fila[2]);
+                                            precio = Convert.ToSingle(fila[3]);
+                                            int idcat=wsr.Obtenericcat(categoria);
+                                            if (wsr.crearRegistro(idcat, idPaquete, peso, precio))
+                                            {
+                                                int idemp = wsr.IdEmp(Convert.ToString(Session["Empleado"]));
+                                                if (wsr.crearHisPa(fecha, idemp, idPaquete, 3))
+                                                {
+                                                    msj = "informacion del paquete actualizada";
+                                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                                }
+                                            }
+                                           
+                                        }
+                                  
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex);
+                }
+            }
         }
 
 

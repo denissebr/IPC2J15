@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,20 +13,36 @@ namespace _DenisseBR_
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
         String msj;
         int rol;
+        static int idPa;
+        static float pre;
         private System.Data.DataSet datasetin;
         private System.Data.DataSet datasetemp;
         private System.Data.DataSet dataseEmp;
         private string[] departamento;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["Director"]==null){
+                Response.Redirect("WebForm1.aspx");
+            }
+            else { 
             userEmp.Text = wsr.obtenerEmp(Convert.ToString(Session["Director"]));
             rol = wsr.obtenerDept(Convert.ToString(Session["Director"]));
+            if(rol==3){
+                btnpre.Enabled = true;
+            }
+            else
+            {
+                btnpre.Enabled = false;
+                precarga.Visible = false;
+            }
             depto.Text = wsr.nombredept(rol);
-            datasetin = wsr.mostrarEmpleado(1,rol);
+            int sucursal = wsr.ObtenerSucursalEmpl(Convert.ToString(Session["Director"]));
+            datasetin = wsr.mostrarEmpleado(sucursal,rol);
             pnlcontra.Visible = false;
             pnldespedir.Visible = false;
             ConsultarEquipo.Visible = false;
             individual.Visible = false;
+            precarga.Visible = false;
             despedirGV.AutoGenerateColumns = true;
             despedirGV.DataSource = datasetin;
             despedirGV.DataBind();
@@ -41,6 +58,7 @@ namespace _DenisseBR_
             generalGV.AutoGenerateColumns = true;
             generalGV.DataSource = datasetemp;
             generalGV.DataBind();
+            }
         }
 
         protected void despedirGV_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,6 +93,7 @@ namespace _DenisseBR_
             pnldespedir.Visible = true;
             ConsultarEquipo.Visible = false;
             individual.Visible = false;
+            precarga.Visible = false;
         }
 
 
@@ -84,6 +103,7 @@ namespace _DenisseBR_
             pnldespedir.Visible = false;
             ConsultarEquipo.Visible = false;
             individual.Visible = false;
+            precarga.Visible = false;
         }
 
         protected void equipo_Click(object sender, EventArgs e)
@@ -92,6 +112,7 @@ namespace _DenisseBR_
             pnldespedir.Visible = false;
             ConsultarEquipo.Visible = true;
             individual.Visible = false;
+            precarga.Visible = false;
         }
 
         protected void generalGV_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,6 +194,86 @@ namespace _DenisseBR_
             generalGV.AutoGenerateColumns = true;
             generalGV.DataSource = datasetemp;
             generalGV.DataBind();
+        }
+
+        protected void btnpre_Click(object sender, EventArgs e)
+        {
+            precarga.Visible = true;
+            pnlcontra.Visible = false;
+            pnldespedir.Visible = false;
+            ConsultarEquipo.Visible = false;
+            individual.Visible = false;
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = precaGV.SelectedRow;
+            idPa = Convert.ToInt32(row.Cells[0].Text);
+            pre=Convert.ToSingle(row.Cells[1].Text);
+            precarga.Visible = true;
+            pnlcontra.Visible = false;
+            pnldespedir.Visible = false;
+            ConsultarEquipo.Visible = false;
+            individual.Visible = false;
+        }
+
+        protected void btnap_Click(object sender, EventArgs e)
+        {
+            float peso=0;
+            int cat=0;
+            DataSet datos =wsr.ObtenerDatosPrecio(idPa);
+            if (datos != null)
+            {
+                peso = Convert.ToSingle(datos.Tables[0].Rows[0][0]);
+                cat = Convert.ToInt32(dataseEmp.Tables[0].Rows[0][1]);
+
+            }
+
+            float impuesto = wsr.Obtenercat(cat);
+            float precioAct = wsr.precioFinal(peso,impuesto,pre);
+            if (wsr.aprobarPrecio(idPa, precioAct))
+            {
+                msj = "Paquete aprobado";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                precarga.Visible = true;
+                pnlcontra.Visible = false;
+                pnldespedir.Visible = false;
+                ConsultarEquipo.Visible = false;
+                individual.Visible = false;
+            }
+            else
+            {
+                msj = "Error al actualizar el dato";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                precarga.Visible = true;
+                pnlcontra.Visible = false;
+                pnldespedir.Visible = false;
+                ConsultarEquipo.Visible = false;
+                individual.Visible = false;
+            }
+            precaGV.DataBind();
+        }
+
+        protected void btnre_Click(object sender, EventArgs e)
+        {
+            if(wsr.rechazarPrecio(idPa)){
+                msj = "Paquete rechazado, se regreso al empleado de bodega para revision";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            else
+            {
+
+                msj = "Error al actualizar el dato";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            precaGV.DataBind();
+        }
+
+        protected void logOut_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("WebForm1.aspx");
+            
         }
     }
 }

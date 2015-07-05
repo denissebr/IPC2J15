@@ -8,7 +8,6 @@
             <br />
             <asp:Label ID="Label1" runat="server" Text="ACTUALIZACION DE DATOS" Font-Bold="True" Font-Size="XX-Large"></asp:Label>
             <br />
-            <asp:Button ID="Button1" runat="server" CssClass="btn-link" OnClick="Button1_Click" Text="Inicio " />
         </asp:Panel>
 
     </div>
@@ -69,8 +68,6 @@
         <asp:Button ID="update" runat="server" CssClass="btn" OnClick="regitrarUs_Click" Text="Actualizar Datos" />
         <br />
         <br />
-        <asp:Label ID="msjerrus" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#FF3300"></asp:Label>
-        <asp:Label ID="msjsi" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#CCFF33"></asp:Label>
         <br />
         <br />
         <br />

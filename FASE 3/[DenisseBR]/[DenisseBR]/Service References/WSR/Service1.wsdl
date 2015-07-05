@@ -139,6 +139,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="mostrarDatosPed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDatosPedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarDatosPedResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDatosPedIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPa" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mostrarDatosPedInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mostrarDatosPedInResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="obtenerDatosPed">
         <s:complexType>
           <s:sequence>
@@ -196,6 +238,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="ObtenerSucursalResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSucursalEmpl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerSucursalEmplResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerSucursalEmplResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -352,6 +408,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="actualizarPrecio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idpa" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="estado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizarPrecioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizarPrecioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ActualizarDatos">
         <s:complexType>
           <s:sequence>
@@ -440,6 +512,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="idcat" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="idest" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="valor" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="idsuc" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -460,6 +533,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
             <s:element minOccurs="1" maxOccurs="1" name="idcat" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="idest" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idsuc" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -598,6 +672,134 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="aprobarPrecio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idpa" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="precioAc" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aprobarPrecioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="aprobarPrecioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rechazarPrecio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idpa" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rechazarPrecioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rechazarPrecioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDatosPrecio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idpa" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDatosPrecioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerDatosPrecioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Obtenercat">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idcat" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenercatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenercatResult" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="precioFinal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="impuesto" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="precioFinalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="precioFinalResult" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearRegistro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="categoria" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearRegistroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="crearRegistroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearHisPa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Idemp" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idPa" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="estado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearHisPaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="crearHisPaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdEmp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IdEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="logCSoapIn">
@@ -654,6 +856,18 @@
   <wsdl:message name="obtenerDatosUsSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerDatosUsResponse" />
   </wsdl:message>
+  <wsdl:message name="mostrarDatosPedSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarDatosPed" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDatosPedSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarDatosPedResponse" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDatosPedInSoapIn">
+    <wsdl:part name="parameters" element="tns:mostrarDatosPedIn" />
+  </wsdl:message>
+  <wsdl:message name="mostrarDatosPedInSoapOut">
+    <wsdl:part name="parameters" element="tns:mostrarDatosPedInResponse" />
+  </wsdl:message>
   <wsdl:message name="obtenerDatosPedSoapIn">
     <wsdl:part name="parameters" element="tns:obtenerDatosPed" />
   </wsdl:message>
@@ -677,6 +891,12 @@
   </wsdl:message>
   <wsdl:message name="ObtenerSucursalSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSucursalEmplSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursalEmpl" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerSucursalEmplSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerSucursalEmplResponse" />
   </wsdl:message>
   <wsdl:message name="ObtenericcatSoapIn">
     <wsdl:part name="parameters" element="tns:Obtenericcat" />
@@ -737,6 +957,12 @@
   </wsdl:message>
   <wsdl:message name="RechazarSoapOut">
     <wsdl:part name="parameters" element="tns:RechazarResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizarPrecioSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizarPrecio" />
+  </wsdl:message>
+  <wsdl:message name="actualizarPrecioSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizarPrecioResponse" />
   </wsdl:message>
   <wsdl:message name="ActualizarDatosSoapIn">
     <wsdl:part name="parameters" element="tns:ActualizarDatos" />
@@ -816,6 +1042,54 @@
   <wsdl:message name="mostrarPrecargaSoapOut">
     <wsdl:part name="parameters" element="tns:mostrarPrecargaResponse" />
   </wsdl:message>
+  <wsdl:message name="aprobarPrecioSoapIn">
+    <wsdl:part name="parameters" element="tns:aprobarPrecio" />
+  </wsdl:message>
+  <wsdl:message name="aprobarPrecioSoapOut">
+    <wsdl:part name="parameters" element="tns:aprobarPrecioResponse" />
+  </wsdl:message>
+  <wsdl:message name="rechazarPrecioSoapIn">
+    <wsdl:part name="parameters" element="tns:rechazarPrecio" />
+  </wsdl:message>
+  <wsdl:message name="rechazarPrecioSoapOut">
+    <wsdl:part name="parameters" element="tns:rechazarPrecioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDatosPrecioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerDatosPrecio" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDatosPrecioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerDatosPrecioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenercatSoapIn">
+    <wsdl:part name="parameters" element="tns:Obtenercat" />
+  </wsdl:message>
+  <wsdl:message name="ObtenercatSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenercatResponse" />
+  </wsdl:message>
+  <wsdl:message name="precioFinalSoapIn">
+    <wsdl:part name="parameters" element="tns:precioFinal" />
+  </wsdl:message>
+  <wsdl:message name="precioFinalSoapOut">
+    <wsdl:part name="parameters" element="tns:precioFinalResponse" />
+  </wsdl:message>
+  <wsdl:message name="crearRegistroSoapIn">
+    <wsdl:part name="parameters" element="tns:crearRegistro" />
+  </wsdl:message>
+  <wsdl:message name="crearRegistroSoapOut">
+    <wsdl:part name="parameters" element="tns:crearRegistroResponse" />
+  </wsdl:message>
+  <wsdl:message name="crearHisPaSoapIn">
+    <wsdl:part name="parameters" element="tns:crearHisPa" />
+  </wsdl:message>
+  <wsdl:message name="crearHisPaSoapOut">
+    <wsdl:part name="parameters" element="tns:crearHisPaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IdEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:IdEmp" />
+  </wsdl:message>
+  <wsdl:message name="IdEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:IdEmpResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -853,6 +1127,14 @@
       <wsdl:input message="tns:obtenerDatosUsSoapIn" />
       <wsdl:output message="tns:obtenerDatosUsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="mostrarDatosPed">
+      <wsdl:input message="tns:mostrarDatosPedSoapIn" />
+      <wsdl:output message="tns:mostrarDatosPedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDatosPedIn">
+      <wsdl:input message="tns:mostrarDatosPedInSoapIn" />
+      <wsdl:output message="tns:mostrarDatosPedInSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="obtenerDatosPed">
       <wsdl:input message="tns:obtenerDatosPedSoapIn" />
       <wsdl:output message="tns:obtenerDatosPedSoapOut" />
@@ -868,6 +1150,10 @@
     <wsdl:operation name="ObtenerSucursal">
       <wsdl:input message="tns:ObtenerSucursalSoapIn" />
       <wsdl:output message="tns:ObtenerSucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursalEmpl">
+      <wsdl:input message="tns:ObtenerSucursalEmplSoapIn" />
+      <wsdl:output message="tns:ObtenerSucursalEmplSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Obtenericcat">
       <wsdl:input message="tns:ObtenericcatSoapIn" />
@@ -908,6 +1194,10 @@
     <wsdl:operation name="Rechazar">
       <wsdl:input message="tns:RechazarSoapIn" />
       <wsdl:output message="tns:RechazarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizarPrecio">
+      <wsdl:input message="tns:actualizarPrecioSoapIn" />
+      <wsdl:output message="tns:actualizarPrecioSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ActualizarDatos">
       <wsdl:input message="tns:ActualizarDatosSoapIn" />
@@ -960,6 +1250,38 @@
     <wsdl:operation name="mostrarPrecarga">
       <wsdl:input message="tns:mostrarPrecargaSoapIn" />
       <wsdl:output message="tns:mostrarPrecargaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aprobarPrecio">
+      <wsdl:input message="tns:aprobarPrecioSoapIn" />
+      <wsdl:output message="tns:aprobarPrecioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rechazarPrecio">
+      <wsdl:input message="tns:rechazarPrecioSoapIn" />
+      <wsdl:output message="tns:rechazarPrecioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDatosPrecio">
+      <wsdl:input message="tns:ObtenerDatosPrecioSoapIn" />
+      <wsdl:output message="tns:ObtenerDatosPrecioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Obtenercat">
+      <wsdl:input message="tns:ObtenercatSoapIn" />
+      <wsdl:output message="tns:ObtenercatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="precioFinal">
+      <wsdl:input message="tns:precioFinalSoapIn" />
+      <wsdl:output message="tns:precioFinalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="crearRegistro">
+      <wsdl:input message="tns:crearRegistroSoapIn" />
+      <wsdl:output message="tns:crearRegistroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="crearHisPa">
+      <wsdl:input message="tns:crearHisPaSoapIn" />
+      <wsdl:output message="tns:crearHisPaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IdEmp">
+      <wsdl:input message="tns:IdEmpSoapIn" />
+      <wsdl:output message="tns:IdEmpSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -1045,6 +1367,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="mostrarDatosPed">
+      <soap:operation soapAction="http://tempuri.org/mostrarDatosPed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDatosPedIn">
+      <soap:operation soapAction="http://tempuri.org/mostrarDatosPedIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="obtenerDatosPed">
       <soap:operation soapAction="http://tempuri.org/obtenerDatosPed" style="document" />
       <wsdl:input>
@@ -1074,6 +1414,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerSucursal">
       <soap:operation soapAction="http://tempuri.org/ObtenerSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursalEmpl">
+      <soap:operation soapAction="http://tempuri.org/ObtenerSucursalEmpl" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1164,6 +1513,15 @@
     </wsdl:operation>
     <wsdl:operation name="Rechazar">
       <soap:operation soapAction="http://tempuri.org/Rechazar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarPrecio">
+      <soap:operation soapAction="http://tempuri.org/actualizarPrecio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1288,6 +1646,78 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="aprobarPrecio">
+      <soap:operation soapAction="http://tempuri.org/aprobarPrecio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rechazarPrecio">
+      <soap:operation soapAction="http://tempuri.org/rechazarPrecio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDatosPrecio">
+      <soap:operation soapAction="http://tempuri.org/ObtenerDatosPrecio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Obtenercat">
+      <soap:operation soapAction="http://tempuri.org/Obtenercat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="precioFinal">
+      <soap:operation soapAction="http://tempuri.org/precioFinal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearRegistro">
+      <soap:operation soapAction="http://tempuri.org/crearRegistro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearHisPa">
+      <soap:operation soapAction="http://tempuri.org/crearHisPa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdEmp">
+      <soap:operation soapAction="http://tempuri.org/IdEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1372,6 +1802,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="mostrarDatosPed">
+      <soap12:operation soapAction="http://tempuri.org/mostrarDatosPed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarDatosPedIn">
+      <soap12:operation soapAction="http://tempuri.org/mostrarDatosPedIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="obtenerDatosPed">
       <soap12:operation soapAction="http://tempuri.org/obtenerDatosPed" style="document" />
       <wsdl:input>
@@ -1401,6 +1849,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerSucursal">
       <soap12:operation soapAction="http://tempuri.org/ObtenerSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerSucursalEmpl">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerSucursalEmpl" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1491,6 +1948,15 @@
     </wsdl:operation>
     <wsdl:operation name="Rechazar">
       <soap12:operation soapAction="http://tempuri.org/Rechazar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarPrecio">
+      <soap12:operation soapAction="http://tempuri.org/actualizarPrecio" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1608,6 +2074,78 @@
     </wsdl:operation>
     <wsdl:operation name="mostrarPrecarga">
       <soap12:operation soapAction="http://tempuri.org/mostrarPrecarga" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aprobarPrecio">
+      <soap12:operation soapAction="http://tempuri.org/aprobarPrecio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rechazarPrecio">
+      <soap12:operation soapAction="http://tempuri.org/rechazarPrecio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDatosPrecio">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerDatosPrecio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Obtenercat">
+      <soap12:operation soapAction="http://tempuri.org/Obtenercat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="precioFinal">
+      <soap12:operation soapAction="http://tempuri.org/precioFinal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearRegistro">
+      <soap12:operation soapAction="http://tempuri.org/crearRegistro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearHisPa">
+      <soap12:operation soapAction="http://tempuri.org/crearHisPa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IdEmp">
+      <soap12:operation soapAction="http://tempuri.org/IdEmp" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

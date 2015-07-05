@@ -5,37 +5,50 @@ insert into Departamento values('Paquete','Por medio de éste módulo los emplea
 insert into Departamento values('Bodega','Cada sucursal tiene una bodega, los empleados de bodega son los encargados de revisar si todos los paquetes dentro del lote salieron de aduana')
 
 /*INSERTS EMPLEADO*/
-insert into empleado values('Lesly','Barrera',42117848,3500,'San Jose Villa Nueva','empleado','1','LeslyBarrera','lbarrera37',1)
-insert into empleado values('Alejandro','Lopez',57896314,3500,'San Jose Villa Nueva','empleado','2','alejoLop','alejo89',1)
-insert into empleado values('Dora','Arreaga',78541203,3500,'zona 1 colonia las flores','empleado','3','dora','da69',1)
+insert into empleado values('Lesly','Barrera',42117848,3500,'San Jose Villa Nueva','empleado','1','LeslyBarrera','lbarrera37',1,3)
+insert into empleado values('Alejandro','Lopez',57896314,3500,'San Jose Villa Nueva','empleado','2','alejoLop','alejo89',1,3)
+insert into empleado values('Dora','Arreaga',78541203,3500,'zona 1 colonia las flores','empleado','3','dora','da69',1,3)
 
-insert into empleado values('Marellyn','Trejo',89652314,4500,'zona 7','director','1','malisTrejo','jossie',1)
-insert into empleado values('Jossie','Castrillo',40125603,4500,'Villa Nueva','director','2','luser','marellyn',1)
-insert into empleado values('Glen','Calel',78965412,4500,'Petapa','director','3','glencal','mate',1)
-
+insert into empleado values('Marellyn','Trejo',89652314,4500,'zona 7','director','1','malisTrejo','jossie',1,3)
+insert into empleado values('Jossie','Castrillo',40125603,4500,'Villa Nueva','director','2','luser','marellyn',1,3)
+insert into empleado values('Glen','Calel',78965412,4500,'Petapa','director','3','glencal','mate',1,3)
+/*INSERT DE SEDE*/
 insert into sede values('Guatemala',5)
-
+/*INSERTS DE SUCURSAL*/
 insert into sucursal values('La rapidita','zona 10',22883421,42,1)
 insert into sucursal values('Punto 1','zona 12 Universidad de San Carlos',22887477,36,1)
-
-insert into cliente values('Jose','Melgar',1478520321456,14523608,22321478,'9na Av. 1-56 zona 1',1,'josmel','1234',1,1478520321456)
-
+/*INSERTS DE CLIENTES*/
+insert into cliente values('Jose','Melgar',1478520321456,14523608,22321478,'9na Av. 1-56 zona 1',1,'josmel','1234',3,1478520321456)
+/*INSERTS DE CATEGORIA*/
 insert into Categoria values('Accesorio de Telefonia',15)
 insert into Categoria values('Accesorio Deportivo',10)
 insert into Categoria values('Videojuegos',15)
-update Cliente set Estado=1 where DPI=2492944860101
-update Cliente set Estado=0 where DPI=2159685210101
+/*INSERTS DE ESTADO DE PRECIO*/
+insert into estadoPrecio values('si tiene precio')
+insert into estadoPrecio values('tiene imagen')
+insert into estadoPrecio values('aprobado bodega')
+insert into estadoPrecio values('aprobado director')
+/*INSERTS DE ESTADO DE PAQUETE*/
+insert into EstadoPaqete values('Pendiente de aprobacion')
+insert into EstadoPaqete values('En espera')
+insert into EstadoPaqete values('En USA')
+insert into EstadoPaqete values('En transito')
+insert into EstadoPaqete values('En sucursal')
+insert into EstadoPaqete values('Devuelto')
+update Paquete set IdEstado=3, Precio=0 where IdPaquete=1
+update Paquete set IdEstado=3, Precio=0  where IdPaquete=2
+update Empleado set Estado=0 where DPI=2159685210101
 update Cliente set Estado=0 where DPI=2492944860101
 update Cliente set NoTarjeta=4789652012365874 where DPI=2589631470101
 update Cliente set NoTarjeta=4102589630258963 where DPI=2685268110101
 // and Tipo:'"+tipo+"'//
 alter table cliente
 ADD  NoTarjeta bigint  null
-update Empleado set Habilitado=1
-select * from paquete
+update cliente set Estado=0 where dpi=1478520321456
+select * from empleado
 select * from cliente
 select * from paquete
-select * from departamento
+select * from Sucursal
 use fase2
 BULK INSERT Categoria FROM '‪C:/Users/Denisse/Desktop/datoC.csv' WITH (FIRSTROW = 2, FIELDTERMINATOR=',', ROWTERMINATOR= '/n')
 select * from Categoria
@@ -66,10 +79,6 @@ Select nombre,apellido,dpi,telefono,nit,direccion,Casilla,Estado,UsuarioCliente 
 
 alter table Categoria
 drop column Descripcion
-insert into estadoPrecio values('si tiene precio')
-insert into estadoPrecio values('tiene imagen')
-insert into estadoPrecio values('aprobado bodega')
-insert into estadoPrecio values('aprobado director')
 
 select * from asignacionSD
 
@@ -92,10 +101,30 @@ ON P.IdCategoria = C.IdCategoria
 GROUP BY C.Nombre
 ORDER BY 2 DESC
 
+Select * from cliente
+
+
 select P.IdPaquete,P.Estado,P.Precio,C.Nombre
 from dbo.Paquete P join dbo.Categoria C
 on P.IdCategoria = C.IdCategoria
-Update  Paquete set Precio=129.405 where Nombre='Call of Duty: MWF'
 
-select * from Paquete
-insert into 
+Update  Paquete set PrecioF='~/precarga/fotos/Sin título.png' where IdPaquete=1
+
+select * from dbo.Departamento
+select * from dbo.Empleado
+
+select * from dbo.Paquete
+select * from dbo.EstadoPaqete
+select * from dbo.Cliente
+select * from historialPa
+
+SELECT C.casilla, P.IdPaquete, P.Nombre, P.Descripcion FROM dbo.Paquete P JOIN dbo.Cliente C ON P.Dpi = C.Dpi where P.Dpi=1478520321456
+
+select P.IdPaquete,P.IdEstado,P.Precio,C.Nombre
+from dbo.Paquete P join dbo.Categoria C
+on P.IdCategoria = C.IdCategoria
+
+
+select C.Nombre, P.Precio, P.Peso, E.FechaMod, E.EstadoTrack from dbo.Paquete p 
+join dbo.Categoria C on P.IdCategoria = C.IdCategoria
+join dbo.historialPa E on P.IdPaquete=E.IdPaquete

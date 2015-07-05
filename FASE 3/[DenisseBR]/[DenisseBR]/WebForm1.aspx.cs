@@ -12,21 +12,17 @@ namespace _DenisseBR_
         WSR.Service1SoapClient wsr = new WSR.Service1SoapClient();
         private string[] lista;
         private string[] sucursal;
+        private string msje;
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel2.Visible = false;
             Panel3.Visible = false;
-            Session["Activos"] = 0;
 
-            dds.Items.Clear();
+            
             lista = wsr.Categorias();
             sucursal = wsr.Sucursal();
            
-            foreach (string sucur in sucursal)
-            {
-
-                dds.Items.Add(sucur);
-            }
+           
            
             
             ScriptResourceDefinition myScriptResDef = new ScriptResourceDefinition();
@@ -50,9 +46,14 @@ namespace _DenisseBR_
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            dds.Items.Clear();
             Panel2.Visible = false;
             Panel3.Visible = true;
-            
+            foreach (string sucur in sucursal)
+            {
+
+                dds.Items.Add(sucur);
+            }
         }
 
 
@@ -62,7 +63,7 @@ namespace _DenisseBR_
 
             if (wsr.logC(usuario.Text, passw.Text))
             {
-                
+                Session["ActivaC"] = 1;
                 Session["Usuario"] = usuario.Text;
                 Response.Redirect("cliente.aspx");
             }
@@ -114,9 +115,18 @@ namespace _DenisseBR_
             else
             {
                 wsr.registrarUS(nombre.Text, apellido.Text, Convert.ToInt64(DPI.Text), Convert.ToInt32(telefono.Text), Convert.ToInt32(nit.Text), direccion.Text, 0, txtuser.Text, txtpass.Text, idSucursal, Convert.ToInt64(noTarjeta.Text));
-                msjsi.Text = "Usuario Registrado exitosamente";
-
-
+                msje = "Usuario registrado exitosamente";
+                Response.Write("<script language='JavaScript'>window.alert('" + msje + "');</script>");
+                nombre.Text = "";
+                apellido.Text = "";
+                DPI.Text = "";
+                telefono.Text = "";
+                nit.Text = "";
+                direccion.Text = "";
+                txtuser.Text = "";
+                txtpass.Text = "";
+                noTarjeta.Text = "";
+                dds.ClearSelection();
             }   
         }
 

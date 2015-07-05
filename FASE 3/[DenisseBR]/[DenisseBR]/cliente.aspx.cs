@@ -14,14 +14,19 @@ namespace _DenisseBR_
         private string[] lista;
         private string[] lista1;
         private string[] lista2;
+        public static int sucur;
         String msj;
+        private System.Data.DataSet pedidos;
         protected void Page_Load(object sender, EventArgs e)
         {
             //usuarioN.Text = Convert.ToString(Session["Usuario"]);
-            
-            
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("WebForm1.aspx");
+            }
+            else { 
             usuarioN.Text =wsr.obtenerUs(Convert.ToString(Session["Usuario"]));
-            int sucur = wsr.sucursalPedido(Convert.ToString(Session["Usuario"]));
+            sucur = wsr.sucursalPedido(Convert.ToString(Session["Usuario"]));
            
             nSucursal.Text = wsr.direccionSucur(sucur);
             Label24.Text = wsr.direccionSucur(sucur);
@@ -29,13 +34,17 @@ namespace _DenisseBR_
             lista1 = wsr.Categorias(); 
             lista2 = wsr.Categorias();
 
+            long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
+            pedidos = wsr.mostrarDatosPed(dpiUS);
+            pedidoGV.DataSource = pedidos;
+            pedidoGV.DataBind();
           
             pnlpedido.Visible = false;
             pnlcot.Visible = false;
             precarga.Visible = false;
             pnlPedidos.Visible = false;
 
-            
+            }
            
            
         }
@@ -43,7 +52,7 @@ namespace _DenisseBR_
 
         protected void end_Click(object sender, EventArgs e)
         {
-            Session["Active Users"] = -1;
+            Session.Clear();
             Response.Redirect("WebForm1.aspx");
         }
 
@@ -51,6 +60,7 @@ namespace _DenisseBR_
 
         protected void cotizar_Click(object sender, EventArgs e)
         {
+            ddt.Items.Clear();
             pnlpedido.Visible = false;
             pnlPedidos.Visible = false;
             pnlcot.Visible = true;
@@ -65,6 +75,7 @@ namespace _DenisseBR_
 
         protected void pedido_Click(object sender, EventArgs e)
         {
+            ddt1.Items.Clear();
             pnlpedido.Visible = true;
             pnlcot.Visible = false;
             pnlPedidos.Visible = false;
@@ -82,6 +93,7 @@ namespace _DenisseBR_
             pnlcot.Visible = false;
             pnlPedidos.Visible = true;
             precarga.Visible = false;
+
         }
 
         protected void linkd_Click(object sender, EventArgs e)
@@ -117,7 +129,7 @@ namespace _DenisseBR_
             long dpiUS = wsr.obtenerDPI(Convert.ToString(Session["Usuario"]));
 
             int estadoF = 1;
-            if (wsr.PedidoPrecio(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), Convert.ToSingle(txtprecio1.Text), dpiUS, idcat, estadoF, valor))
+            if (wsr.PedidoPrecio(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), Convert.ToSingle(txtprecio1.Text), dpiUS, idcat, estadoF, valor, sucur))
             {
 
                 msj = "Pedido Creado Exitosamente";
@@ -142,7 +154,7 @@ namespace _DenisseBR_
         protected void pedido0_Click(object sender, EventArgs e)
         {
 
-           
+            ddt2.Items.Clear();
             pnlpedido.Visible = false;
             pnlcot.Visible = false; ;
             pnlPedidos.Visible = false;
@@ -169,17 +181,16 @@ namespace _DenisseBR_
                                 
                 int estadoF=2;
                 string str = pre.FileName;
-                pre.PostedFile.SaveAs(Server.MapPath(".") + "~//precarga//" + str);
-                string path = "~//precarga//" + str.ToString();
-                if (wsr.PedidoPrecioF(nombre.Text, txtdescripcion.Text, Convert.ToSingle(txtpeso1.Text), path, dpiUS, idcat, estadoF))
+                pre.PostedFile.SaveAs(Server.MapPath(".") + "/precarga/fotos/" + str);
+                string path = "~/precarga/fotos/" + str.ToString();
+                if (wsr.PedidoPrecioF(nombrep.Text, descp.Text, Convert.ToSingle(pesp.Text), path, dpiUS, idcat, estadoF, sucur))
                 {
 
                     msj = "Precarga de imagen pendiente de aprovacion";
                     Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                    txtprecio1.Text = "";
-                    txtpeso1.Text = "";
-                    nombre.Text = "";
-                    txtdescripcion.Text = "";
+                    nombrep.Text = "";
+                    descp.Text = "";
+                    pesp.Text = "";
                 }
                 else
                 {
@@ -193,6 +204,15 @@ namespace _DenisseBR_
             pnlPedidos.Visible = false;
             precarga.Visible = true;
             
+        }
+
+        protected void pedidoGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = pedidoGV.SelectedRow;
+            int idPaquete = Convert.ToInt32(row.Cells[2].Text);
+            Session["IdPaquete"] = idPaquete;
+            
+            Response.Redirect("estadoPedidos.aspx");
         }
 
        

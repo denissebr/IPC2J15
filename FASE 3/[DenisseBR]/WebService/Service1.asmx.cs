@@ -132,6 +132,7 @@ namespace WebService
         public String obtenerEmp(String user)
         {
             string nombre = "";
+            string apellido = "";
             int id = 0;
             miComandoSQL = new SqlCommand("SELECT * FROM Empleado WHERE UsuarioEmpleado = '" + user + "'");
             miConexionBase = new SqlConnection(cadenaConexion);
@@ -144,12 +145,13 @@ namespace WebService
                 {
                     id = lector.GetInt32(0);
                     nombre = lector.GetString(1);
+                    apellido = lector.GetString(2);
 
                 }
             }
             lector.Close();
             miConexionBase.Close();
-            return "Codigo: "+id+" Nombre: "+nombre;
+            return "Codigo: "+id+" Nombre: "+nombre+" "+apellido;
         }
      
         //--->OBTENER TIPO DE EMPLEADO
@@ -174,6 +176,8 @@ namespace WebService
             miConexionBase.Close();
             return tipo;
         }
+
+     
         //--->OBTENER DPI CLIENTE
 
         [WebMethod]
@@ -215,6 +219,57 @@ namespace WebService
             catch
             {
                 ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+        //--->MOSTRAR DATOS DEL PEDIDO
+        [WebMethod]
+        public DataSet mostrarDatosPed(long dpi)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("SELECT C.casilla, 'Identificador de Paquete'=P.IdPaquete, P.Nombre, P.Descripcion FROM dbo.Paquete P JOIN dbo.Cliente C ON P.Dpi = C.Dpi where IdEstado=1 and P.Dpi=" + dpi, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+        //--->MOSTRAR DATOS PEDIDO INDIVIDUAL
+        [WebMethod]
+        public DataSet mostrarDatosPedIn(int IdPa)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("select Categoria=C.Nombre, P.Precio, P.Peso,'Fecha de Modificacion'= E.FechaMod, Estado=EP.EstadoDes from dbo.Paquete p join dbo.Categoria C on P.IdCategoria = C.IdCategoria join dbo.historialPa E on P.IdPaquete=E.IdPaquete  join dbo.EstadoPaqete EP on E.EstadoTrack=EP.EstadoTrack where P.IdPaquete="+IdPa, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+               throw ex;
+              
             }
             finally
             {
@@ -314,6 +369,26 @@ namespace WebService
                 {
                     numero = lector.GetInt32(0);
                     
+                }
+            }
+            return numero;
+        }
+        [WebMethod]
+        public int ObtenerSucursalEmpl(String user)
+        {
+            List<string> sucursal = new List<string>();
+            SqlCommand comando = new SqlCommand("Select IdSucursal FROM Sucursal where IdEmpleado='" + user + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            int numero = 0;
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    numero = lector.GetInt32(0);
+
                 }
             }
             return numero;
@@ -553,6 +628,26 @@ namespace WebService
 
         }
         //---------------------------------------------------------------------------------------------------------
+        //--------------------------------------------BODEGA-------------------------------------------------------
+        [WebMethod]
+        public bool actualizarPrecio(int idpa,float precio,int estado)
+        {
+            SqlCommand comando = new SqlCommand("Update  Paquete set Precio='"+precio+"', IdEstado= 3 where IdPaquete=" + idpa);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            miConexionBase.Close();
+        }
+        
+        //---------------------------------------------------------------------------------------------------------
         //********************************************CLIENTE******************************************************
         //------------------------------------------OBTENER COMISION-----------------------------------------------
         //--->ACTUALIZAR DATOS CLIENTE
@@ -627,16 +722,17 @@ namespace WebService
         //--->CREAR PEDIDO
         //---> CREAR PEDIDO PRECIO
         [WebMethod]
-        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat,int idest,float valor)
+        public bool PedidoPrecio(string nombre, string descripcion, float peso, float precio, long dpi, int idcat, int idest, float valor, int idsuc)
         {
-            precio = precio * Convert.ToSingle(7.74);
+           
+            float precioq = precio * Convert.ToSingle(7.74);
             float libras = peso * 5;
             float comision = Convert.ToSingle(0.05);
-            float parcial = (precio + peso) * comision;
-            float total = parcial + precio + libras;
+            float parcial = (precioq + libras) * comision;
+            float total = parcial + precioq + libras;
             float temporal = (valor * precio) / 100;
-            float totalf = total + temporal;
-            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precio,dpi,idCategoria,idEstado) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + totalf + "','" + dpi + "','" + idcat + "','" + idest + "')");
+            float precioAc = total + temporal;
+            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precio,dpi,idCategoria,idEstado, idsucursal) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + precioAc + "','" + dpi + "','" + idcat + "','" + idest + "','" + idsuc + "')");
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
@@ -651,9 +747,9 @@ namespace WebService
         }
         //---> CREAR PEDIDO PRECARGA
         [WebMethod]
-        public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest)
+        public bool PedidoPrecioF(string nombre, string descripcion, float peso, string precio, long dpi, int idcat, int idest,int idsuc)
         {
-            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precioF,dpi,idCategoria,idEstado) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + precio + "','" + dpi + "','" + idcat + "','" + idest + "')");
+            SqlCommand comando = new SqlCommand("Insert into Paquete (Nombre, Descripcion,peso,precioF,dpi,idCategoria,idEstado, idsucursal) values ('" + nombre + "','" + descripcion + "','" + peso + "','" + precio + "','" + dpi + "','" + idcat + "','" + idest + "','" + idsuc + "')");
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
@@ -828,6 +924,7 @@ namespace WebService
             miConexionBase.Close();
 
         }
+        //--->MOSTRAR PAQUETES APROBADOS POR EMPLEADO
         [WebMethod]
         public DataSet mostrarPrecarga()
         {
@@ -852,6 +949,159 @@ namespace WebService
 
             return ds;
 
+        }
+        //--->APROBAR PRECIOS
+        [WebMethod]
+        public bool aprobarPrecio(int idpa, float precioAc)
+        {
+
+            SqlCommand comando = new SqlCommand("Update  Paquete set IdEstado= 1 , Precio='"+precioAc+"'where IdPaquete=" + idpa);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            miConexionBase.Close();
+        }
+        //--->RECHAZAR PRECIOS
+        [WebMethod]
+        public bool rechazarPrecio(int idpa)
+        {
+
+            SqlCommand comando = new SqlCommand("Update  Paquete set IdEstado= 2, Precio=0 where IdPaquete=" + idpa);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            miConexionBase.Close();
+        }
+        //--->OBTENER DATOS DE PRECIO
+        [WebMethod]
+        public DataSet ObtenerDatosPrecio(int idpa)
+        {
+            DataSet ds = new DataSet();
+           
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("Select peso, idCategoria from Paquete where IdPaquete='" + idpa + "", miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+        [WebMethod]
+        public float Obtenercat(int idcat)
+        {
+            SqlCommand comando = new SqlCommand("Select impuesto FROM Categoria where Idcategoria='" + idcat + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            float numero = 0;
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    numero = lector.GetInt32(0);
+
+                }
+            }
+            return numero;
+        }
+
+        [WebMethod]
+        public float precioFinal(float peso, float impuesto, float precio)
+        {
+            float precioq = precio * Convert.ToSingle(7.74);
+            float libras = peso * 5;
+            float comision = Convert.ToSingle(0.05);
+            float parcial = (precioq + libras) * comision;
+            float total = parcial + precioq + libras;
+            float temporal = (impuesto * precio) / 100;
+            float precioAc = total + temporal;
+            
+            return precioAc;
+        }
+        [WebMethod]
+        public bool crearRegistro(int categoria, int casilla, float peso, float precio)
+        {
+           
+            SqlCommand comando = new SqlCommand( "Update Paquete set Peso='"+peso+"', Precio='"+precio+"', IdCategoria='"+categoria+"' where IdPaquete="+casilla);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool crearHisPa(String fecha,int Idemp,int idPa,int estado)
+        {
+
+            SqlCommand comando = new SqlCommand("Insert into historialPa values('"+fecha+"',"+Idemp+","+idPa+","+estado+")");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public int IdEmp(String user)
+        {
+            int id = 0;
+            miComandoSQL = new SqlCommand("SELECT IdEmpleado FROM Empleado WHERE UsuarioEmpleado = '" + user + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    id = lector.GetInt32(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return id;
         }
         
        
