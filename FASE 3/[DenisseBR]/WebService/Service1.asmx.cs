@@ -228,6 +228,30 @@ namespace WebService
             return ds;
 
         }
+        [WebMethod]
+        public DataSet perfilIndividual(int IdEmp)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("select 'Identificador'=E.IdEmpleado, E.Nombre,E.Apellido,E.Telefono,E.Sueldo,E.Direccion,'Rol'=D.Nombre,'Usuario'=E.UsuarioEmpleado,'Contraseña'=E.PasswordE,S.Nombre,H.FechaInicio,H.Fechafin from Empleado E join historialEmp H on  H.IdEmpleado = E.IdEmpleado join Departamento D on D.IdDepartamento=E.Rol join Sucursal S on S.IdSucursal=E.IdSucursal where E.IdEmpleado="+IdEmp, miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
         //--->MOSTRAR DATOS DEL PEDIDO
         [WebMethod]
         public DataSet mostrarDatosPed(long dpi)
@@ -593,7 +617,7 @@ namespace WebService
             {
 
                 miConexionBase.Open();
-                miComandoSQL = new SqlCommand("select C.Casilla,P.IdPaquete,C.Nombre,C.Apellido,P.Nombre,P.Descripcion,'Peso Q'=P.Precio,'Peso LB'=P.Peso, Estado=E.EstadoDes from Paquete P join Cliente C on C.Dpi=P.Dpi  join historialPa H on H.IdPaquete=P.IdPaquete join EstadoPaqete E on E.EstadoTrack=H.EstadoTrack where C.Dpi='" + dpi + "'and H.EstadoTrack=6", miConexionBase);
+                miComandoSQL = new SqlCommand("select C.Casilla,P.IdPaquete,C.Nombre,C.Apellido,P.Nombre,P.Descripcion,'Precio Q'=P.Precio,'Peso LB'=P.Peso, Estado=E.EstadoDes from Paquete P join Cliente C on C.Dpi=P.Dpi  join historialPa H on H.IdPaquete=P.IdPaquete join EstadoPaqete E on E.EstadoTrack=H.EstadoTrack where C.Dpi='" + dpi + "'and H.EstadoTrack=6", miConexionBase);
                 SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
                 da.Fill(ds);
             }
@@ -1229,10 +1253,10 @@ namespace WebService
         }
 
         [WebMethod]
-        public int ObtenerUltimoEmp()
+        public int ObtenerUltimoHis(int emp)
         {
             int id = 0;
-            miComandoSQL = new SqlCommand("select MAX(IdEmpleado) from Empleado");
+            miComandoSQL = new SqlCommand("select MAX(IdEmpleado) from Empleado where IdEmpleado="+emp);
             miConexionBase = new SqlConnection(cadenaConexion);
             miComandoSQL.Connection = miConexionBase;
             miConexionBase.Open();
@@ -1249,10 +1273,11 @@ namespace WebService
             miConexionBase.Close();
             return id;
         }
+
         [WebMethod]
-        public bool agregarHisEmp(string fecha, int idemp)
+        public bool agregarHisEmp(string fechain,int Idemplead,string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc)
         {
-            miComandoSQL = new SqlCommand("Insert into historialEmp (Fechainicio,IdEmpleado) values('" + fecha + "'," + idemp + ")");
+            miComandoSQL = new SqlCommand("Insert into historialEmp (Fechainicio,IdEmpleado,nombre, apellido,sueldo,tipo,rol,habilitado,idsucursal) values('" + fechain + "'," + Idemplead + ",'" + nombre + "','" + apellido + "','" + sueldo + "','" + tipo + "'," + rol + "," + habilitado + "," + idsuc + ")");
             miConexionBase = new SqlConnection(cadenaConexion);
             miComandoSQL.Connection = miConexionBase;
             miConexionBase.Open();
@@ -1266,9 +1291,44 @@ namespace WebService
             }
         }
         [WebMethod]
+        public bool ActualizarHisEmp(string fechain, int Idemplead, string nombre, string apellido,int telefono, float sueldo,string direccion, string tipo, int rol, string usuarioEmpleado,string PasswordE,int habilitado)
+        {
+            miComandoSQL = new SqlCommand("Insert into historialEmp values('" + fechain + "'," + Idemplead + ",'" + nombre + "','" + apellido +"',"+telefono+ ",'" + sueldo + "','"+direccion+"','" + tipo + "'," + rol + ",'"+usuarioEmpleado+"','"+PasswordE+"'," + habilitado + ")");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (miComandoSQL.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        [WebMethod]
+        public bool ActualizarHisEmpFn(string fechafn,int id)
+        {
+            SqlCommand comando = new SqlCommand("Update  historialEmp set  FechaFin='" + fechafn + "' where IdHistorialE="+id);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (comando.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            miConexionBase.Close();
+
+        }
+        [WebMethod]
         public int obtenerDeptId(String nombre)
         {
-            SqlCommand comando = new SqlCommand("Select Rol FROM Empleado where Nombre='" + nombre + "'");
+            SqlCommand comando = new SqlCommand("Select IdDepartamento FROM Departamento where Nombre='" + nombre + "'");
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
@@ -1284,5 +1344,8 @@ namespace WebService
             }
             return rol;
         }
+
+
+
     }
 }

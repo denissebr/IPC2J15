@@ -139,6 +139,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="perfilIndividual">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmp" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="perfilIndividualResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perfilIndividualResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="mostrarDatosPed">
         <s:complexType>
           <s:sequence>
@@ -895,21 +916,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ObtenerUltimoEmp">
-        <s:complexType />
-      </s:element>
-      <s:element name="ObtenerUltimoEmpResponse">
+      <s:element name="ObtenerUltimoHis">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ObtenerUltimoEmpResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="emp" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerUltimoHisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerUltimoHisResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="agregarHisEmp">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="idemp" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechain" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Idemplead" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sueldo" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="habilitado" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idsuc" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -917,6 +949,46 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="agregarHisEmpResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarHisEmp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fechain" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Idemplead" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sueldo" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rol" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuarioEmpleado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PasswordE" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="habilitado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarHisEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarHisEmpResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarHisEmpFn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fechafn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarHisEmpFnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarHisEmpFnResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -989,6 +1061,12 @@
   </wsdl:message>
   <wsdl:message name="obtenerDatosUsSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerDatosUsResponse" />
+  </wsdl:message>
+  <wsdl:message name="perfilIndividualSoapIn">
+    <wsdl:part name="parameters" element="tns:perfilIndividual" />
+  </wsdl:message>
+  <wsdl:message name="perfilIndividualSoapOut">
+    <wsdl:part name="parameters" element="tns:perfilIndividualResponse" />
   </wsdl:message>
   <wsdl:message name="mostrarDatosPedSoapIn">
     <wsdl:part name="parameters" element="tns:mostrarDatosPed" />
@@ -1260,17 +1338,29 @@
   <wsdl:message name="agregarEmpleadoSoapOut">
     <wsdl:part name="parameters" element="tns:agregarEmpleadoResponse" />
   </wsdl:message>
-  <wsdl:message name="ObtenerUltimoEmpSoapIn">
-    <wsdl:part name="parameters" element="tns:ObtenerUltimoEmp" />
+  <wsdl:message name="ObtenerUltimoHisSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoHis" />
   </wsdl:message>
-  <wsdl:message name="ObtenerUltimoEmpSoapOut">
-    <wsdl:part name="parameters" element="tns:ObtenerUltimoEmpResponse" />
+  <wsdl:message name="ObtenerUltimoHisSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoHisResponse" />
   </wsdl:message>
   <wsdl:message name="agregarHisEmpSoapIn">
     <wsdl:part name="parameters" element="tns:agregarHisEmp" />
   </wsdl:message>
   <wsdl:message name="agregarHisEmpSoapOut">
     <wsdl:part name="parameters" element="tns:agregarHisEmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarHisEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarHisEmp" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarHisEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarHisEmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarHisEmpFnSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarHisEmpFn" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarHisEmpFnSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarHisEmpFnResponse" />
   </wsdl:message>
   <wsdl:message name="obtenerDeptIdSoapIn">
     <wsdl:part name="parameters" element="tns:obtenerDeptId" />
@@ -1314,6 +1404,10 @@
     <wsdl:operation name="obtenerDatosUs">
       <wsdl:input message="tns:obtenerDatosUsSoapIn" />
       <wsdl:output message="tns:obtenerDatosUsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="perfilIndividual">
+      <wsdl:input message="tns:perfilIndividualSoapIn" />
+      <wsdl:output message="tns:perfilIndividualSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="mostrarDatosPed">
       <wsdl:input message="tns:mostrarDatosPedSoapIn" />
@@ -1495,13 +1589,21 @@
       <wsdl:input message="tns:agregarEmpleadoSoapIn" />
       <wsdl:output message="tns:agregarEmpleadoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ObtenerUltimoEmp">
-      <wsdl:input message="tns:ObtenerUltimoEmpSoapIn" />
-      <wsdl:output message="tns:ObtenerUltimoEmpSoapOut" />
+    <wsdl:operation name="ObtenerUltimoHis">
+      <wsdl:input message="tns:ObtenerUltimoHisSoapIn" />
+      <wsdl:output message="tns:ObtenerUltimoHisSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="agregarHisEmp">
       <wsdl:input message="tns:agregarHisEmpSoapIn" />
       <wsdl:output message="tns:agregarHisEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarHisEmp">
+      <wsdl:input message="tns:ActualizarHisEmpSoapIn" />
+      <wsdl:output message="tns:ActualizarHisEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarHisEmpFn">
+      <wsdl:input message="tns:ActualizarHisEmpFnSoapIn" />
+      <wsdl:output message="tns:ActualizarHisEmpFnSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="obtenerDeptId">
       <wsdl:input message="tns:obtenerDeptIdSoapIn" />
@@ -1584,6 +1686,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerDatosUs">
       <soap:operation soapAction="http://tempuri.org/obtenerDatosUs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="perfilIndividual">
+      <soap:operation soapAction="http://tempuri.org/perfilIndividual" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1996,8 +2107,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ObtenerUltimoEmp">
-      <soap:operation soapAction="http://tempuri.org/ObtenerUltimoEmp" style="document" />
+    <wsdl:operation name="ObtenerUltimoHis">
+      <soap:operation soapAction="http://tempuri.org/ObtenerUltimoHis" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2007,6 +2118,24 @@
     </wsdl:operation>
     <wsdl:operation name="agregarHisEmp">
       <soap:operation soapAction="http://tempuri.org/agregarHisEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarHisEmp">
+      <soap:operation soapAction="http://tempuri.org/ActualizarHisEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarHisEmpFn">
+      <soap:operation soapAction="http://tempuri.org/ActualizarHisEmpFn" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2100,6 +2229,15 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerDatosUs">
       <soap12:operation soapAction="http://tempuri.org/obtenerDatosUs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="perfilIndividual">
+      <soap12:operation soapAction="http://tempuri.org/perfilIndividual" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2512,8 +2650,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ObtenerUltimoEmp">
-      <soap12:operation soapAction="http://tempuri.org/ObtenerUltimoEmp" style="document" />
+    <wsdl:operation name="ObtenerUltimoHis">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerUltimoHis" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2523,6 +2661,24 @@
     </wsdl:operation>
     <wsdl:operation name="agregarHisEmp">
       <soap12:operation soapAction="http://tempuri.org/agregarHisEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarHisEmp">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarHisEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarHisEmpFn">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarHisEmpFn" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

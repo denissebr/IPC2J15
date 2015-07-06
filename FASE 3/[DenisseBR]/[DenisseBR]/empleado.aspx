@@ -48,6 +48,7 @@
             <br />
             Numero de casilla:
             <asp:TextBox ID="casilla" runat="server" Width="144px"></asp:TextBox>
+            &nbsp;<asp:Button ID="btnbc" runat="server" OnClick="btnbc_Click" Text="Buscar" />
             <br />
             <br />
             <asp:GridView ID="factura" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center">
@@ -63,7 +64,7 @@
                 <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
             <br />
-            <asp:Button ID="deliver" runat="server" Text="Entregar" />
+            <asp:Button ID="deliver" runat="server" Text="Entregar" OnClick="deliver_Click" />
             <br />
             <br />
             <br />
@@ -73,10 +74,13 @@
             <br />
             <asp:Label ID="Label4" runat="server" Text="Numero de paquete: "></asp:Label>
             <asp:TextBox ID="paqueteNo" runat="server"></asp:TextBox>
-            &nbsp;<asp:Button ID="btncasdev" runat="server" CssClass="btn" Text="Buscar casilla" />
+            &nbsp;<asp:Button ID="btncasdev" runat="server" CssClass="btn" OnClick="btncasdev_Click" Text="Buscar casilla" />
             <br />
             <br />
-            <asp:GridView ID="devolver" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" HorizontalAlign="Center">
+            <asp:GridView ID="devolver" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" HorizontalAlign="Center" OnSelectedIndexChanged="devolver_SelectedIndexChanged" Width="309px">
+                <Columns>
+                    <asp:CommandField ButtonType="Button" SelectText="Devolver" ShowSelectButton="True" />
+                </Columns>
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                 <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                 <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
@@ -88,7 +92,6 @@
                 <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
                 <br />
-            <asp:Button ID="devolverBtn" runat="server" OnClick="devolverBtn_Click" Text="Devolver" />
             <br />
             <br />
             <br />

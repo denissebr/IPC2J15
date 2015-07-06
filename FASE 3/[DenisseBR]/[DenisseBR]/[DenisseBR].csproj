@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="actualizar.aspx" />
+    <Content Include="administrador.aspx" />
     <Content Include="cliente.aspx" />
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap.css" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="actualizar.aspx.designer.cs">
       <DependentUpon>actualizar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="administrador.aspx.cs">
+      <DependentUpon>administrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administrador.aspx.designer.cs">
+      <DependentUpon>administrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="cliente.aspx.cs">
       <DependentUpon>cliente.aspx</DependentUpon>

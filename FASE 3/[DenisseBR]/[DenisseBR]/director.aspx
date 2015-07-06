@@ -62,7 +62,7 @@
             <asp:Label ID="msjcs" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#CCFF33" Text="Contratacion Exitosa" Visible="False"></asp:Label>
             <asp:Label ID="msjcn" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Red" Text="Error en la carga de archivos" Visible="False"></asp:Label>
         </asp:Panel>
-        <asp:Panel ID="ConsultarEquipo" runat="server" Height="903px" ScrollBars="Auto">
+        <asp:Panel ID="ConsultarEquipo" runat="server" Height="1170px" ScrollBars="Auto">
             <br />
             <asp:GridView ID="generalGV" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" CssClass="table" OnSelectedIndexChanged="generalGV_SelectedIndexChanged">
                 <AlternatingRowStyle BackColor="White" />
@@ -80,8 +80,27 @@
                 <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
             <br />
-            <br />
-            <asp:Panel ID="individual" runat="server" Height="498px">
+            <asp:Panel ID="Panel2" runat="server" Height="272px">
+
+                <br />
+                <asp:GridView ID="datosIn" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" OnSelectedIndexChanged="datosIn_SelectedIndexChanged" CssClass="table">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:CommandField ButtonType="Button" SelectText="Modificar" ShowSelectButton="True" />
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
+                </asp:GridView>
+                
+            </asp:Panel>
+            <asp:Panel ID="individual" runat="server" Height="984px" style="margin-top: 82px">
                 <br />
                 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label18" runat="server" Text="Codigo Empleado: "></asp:Label>
@@ -136,8 +155,6 @@
                 <br />
             </asp:Panel>
             
-            <br />
-            
         </asp:Panel>
             
             <asp:Panel ID="precarga" runat="server" Height="357px" HorizontalAlign="Center" ScrollBars="Auto">
@@ -167,7 +184,7 @@
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
                 <br />
-                <asp:Button ID="btnap" runat="server" OnClick="btnap_Click" Text="Aprovar" />
+                <asp:Button ID="btnap" runat="server" OnClick="btnap_Click" Text="Aprobar" />
                 &nbsp;&nbsp;
                 <asp:Button ID="btnre" runat="server" Text="Rechazar" OnClick="btnre_Click" />
                 <br />

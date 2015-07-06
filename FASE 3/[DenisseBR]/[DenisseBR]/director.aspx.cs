@@ -20,6 +20,8 @@ namespace _DenisseBR_
         private System.Data.DataSet datasetemp;
         private System.Data.DataSet dataseEmp;
         private string[] departamento;
+        static int idempleadogen;
+        private DataSet TablaHis;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["Director"]==null){
@@ -127,38 +129,13 @@ namespace _DenisseBR_
             pnlcontra.Visible = false;
             pnldespedir.Visible = false;
             ConsultarEquipo.Visible = true;
-            individual.Visible = true;
             
-            GridViewRow row = generalGV.SelectedRow;
-            int codi = Convert.ToInt32(row.Cells[1].Text);
-            dataseEmp = wsr.obtenerDatosEmp(codi);
-            
-            if (dataseEmp != null)
-            {
-                cod.Text = dataseEmp.Tables[0].Rows[0][0].ToString();
-                nom.Text = dataseEmp.Tables[0].Rows[0][1].ToString();
-                ape.Text = dataseEmp.Tables[0].Rows[0][2].ToString();
-                tel.Text = dataseEmp.Tables[0].Rows[0][3].ToString();
-                sueldo.Text = dataseEmp.Tables[0].Rows[0][4].ToString();
-                direc.Text = dataseEmp.Tables[0].Rows[0][5].ToString();
-                ddd.SelectedItem.Equals(dataseEmp.Tables[0].Rows[0][7].ToString());
-                usuarioEmp.Text = dataseEmp.Tables[0].Rows[0][8].ToString();
-                txtpass.Text = dataseEmp.Tables[0].Rows[0][9].ToString();
-            }
-            else
-            {
 
-                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-            }
-            nom.ReadOnly = true;
-            ape.ReadOnly = true;
-            tel.ReadOnly = true;
-            sueldo.ReadOnly = true;
-            direc.ReadOnly = true;
-            usuarioEmp.ReadOnly = true;
-            txtpass.ReadOnly = true;
-            ddd.Enabled = false;
-            cod.ReadOnly = true;
+            GridViewRow row = generalGV.SelectedRow;
+            idempleadogen=Convert.ToInt32(row.Cells[1].Text);
+            TablaHis=wsr.perfilIndividual(idempleadogen);
+            datosIn.DataSource = TablaHis;
+            datosIn.DataBind();
 
         }
 
@@ -190,7 +167,17 @@ namespace _DenisseBR_
             pnlcontra.Visible = false;
             pnldespedir.Visible = false;
             ConsultarEquipo.Visible = true;
-
+            int id = wsr.ObtenerUltimoHis(Convert.ToInt32(cod.Text));
+            DateTime time = DateTime.Now;
+            string format = "d/MM/yyyy";   // formato
+            String fechafin = time.ToString(format);
+            if (wsr.ActualizarHisEmpFn(fechafin, id))
+            {
+                if (wsr.ActualizarHisEmp(fechafin, Convert.ToInt32(cod.Text), nom.Text, ape.Text, Convert.ToInt32(tel.Text), Convert.ToSingle(sueldo.Text), direc.Text, Convert.ToInt32(ddd.SelectedIndex + 1), usuarioEmp.Text, txtpass.Text))
+                {
+                    Response.Write("");
+                }
+            }
             datasetemp = wsr.mostrarEquipo(1, rol);
             generalGV.AutoGenerateColumns = true;
             generalGV.DataSource = datasetemp;
@@ -285,77 +272,102 @@ namespace _DenisseBR_
             string str = cntra.FileName;
             cntra.PostedFile.SaveAs(Server.MapPath(".") + "/Documentos/contratacion/" + str);
             string path = "~/Documentos/contratacion/" + str.ToString();
-            if (cntra.HasFile)
+             try
             {
-                try
+                StreamReader leer = new StreamReader(cntra.PostedFile.InputStream);
+                string linea;
+                int cont = 0;
+
+                while ((linea = leer.ReadLine()) != null)
                 {
-                    StreamReader leer = new StreamReader(cntra.PostedFile.InputStream);
-                    string linea;
-                    int cont = 0;
-
-                    while ((linea = leer.ReadLine()) != null)
-                    {
-
-
-                        string apellido;
-                        string nombre;
-                        float sueldo;
-                        string sucursal;
-                        string departamento;
-                        string[] fila;
-                        if (linea != "APELLIDOS,NOMBRES,SUELDO,SUCURSAL,DEPARTAMENTO")
-                        {
-                            if (cont == 0) { 
-                                fila = linea.Split(',');
-
-                                apellido = fila[0];
-                                nombre = fila[1];
-                                sueldo = Convert.ToSingle(fila[2]);
-                                sucursal = fila[3];
-                                departamento = fila[4];
-                                int idsucursal=wsr.ObtenerSucursal(sucursal);
-                                int rol=wsr.obtenerDeptId(departamento);
-                                
-                                if(wsr.agregarEmpleado(nombre,apellido,sueldo,"empleado",rol,1,idsucursal)){
-                                   
-                                    int idem = wsr.ObtenerUltimoEmp();
-                                    if (wsr.agregarHisEmp(fechaAc,idem))
-                                    {
-                                        msj = "Se actualizo la tabla de historial de empleados";
-                                        Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                                    }
-
-                                    msj = "Se contrataron los empleados con exito";
-                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                                }
-                                else
-                                {
-                                    msj = "No se puede registrar";
-                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                                }
-                               
-                           }
-                             else
-                                {
-                                    msj = "No se puede registrar el paquete, es necesario crear un nuevo Lote";
-                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                                   
-
-                                }
-
-
-                        }  
-
-                        }
                     
-                }
-                catch (Exception ex)
-                {
-                    msj = "Error en la carga de archivo, verifique que sea formato .CSV y que los campos sean: \n CATEGORIA,IDPAQUETE,PESO,PRECIO";
-                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
 
-                }
+                                string apellido;
+                                string nombre;
+                                float sueldo;
+                                string sucursal;
+                                string departamento;
+                                string[] fila;
+                                if (linea != "APELLIDOS,NOMBRES,SUELDO,SUCURSAL,DEPARTAMENTO")
+                                {
+                                    
+                                        fila = linea.Split(',');
+                                        apellido = fila[0];
+                                        nombre = fila[1];
+                                        sueldo = Convert.ToSingle(fila[2]);
+                                        sucursal=fila[3];
+                                        departamento = fila[4];
+                                        int idsuc=wsr.ObtenerSucursal(fila[3]);
+                                        int idDept=wsr.obtenerDeptId(fila[4]);
+                                        if (wsr.agregarEmpleado(nombre, apellido, sueldo, "empleado", idDept, 1, idsuc))
+                                        {
+                                            int idEmp=wsr.ObtenerUltimoEmp();
+                                            if (wsr.agregarHisEmp(fechaAc, idEmp, nombre, apellido, sueldo, "empleado", idDept, 1, idsuc))
+                                            {
+                                                msj = "Se actualizo el historial de empleados";
+                                                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                            }
+                                            else
+                                            {
+                                                msj = "Error al actualizar el historial";
+                                                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                            }
+                                            msj = "Se realizo la contratacion exitosamente";
+                                            Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                        }
+                                        else
+                                        {
+                                            msj = "No se pudo realizar la contratacion";
+                                            Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                        }
+                                    
+                                }
+                           }
+                    }
+                
+            
+            catch (Exception ex)
+            {
+
             }
+        }
+
+        protected void datosIn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            individual.Visible = true;
+
+            GridViewRow row = generalGV.SelectedRow;
+            int codi = Convert.ToInt32(row.Cells[1].Text);
+            dataseEmp = wsr.obtenerDatosEmp(codi);
+
+            if (dataseEmp != null)
+            {
+                cod.Text = dataseEmp.Tables[0].Rows[0][0].ToString();
+                nom.Text = dataseEmp.Tables[0].Rows[0][1].ToString();
+                ape.Text = dataseEmp.Tables[0].Rows[0][2].ToString();
+                tel.Text = dataseEmp.Tables[0].Rows[0][3].ToString();
+                sueldo.Text = dataseEmp.Tables[0].Rows[0][4].ToString();
+                direc.Text = dataseEmp.Tables[0].Rows[0][5].ToString();
+                ddd.SelectedItem.Equals(dataseEmp.Tables[0].Rows[0][7].ToString());
+                usuarioEmp.Text = dataseEmp.Tables[0].Rows[0][8].ToString();
+                txtpass.Text = dataseEmp.Tables[0].Rows[0][9].ToString();
+            }
+            else
+            {
+
+            }
+            nom.ReadOnly = true;
+            ape.ReadOnly = true;
+            tel.ReadOnly = true;
+            sueldo.ReadOnly = true;
+            direc.ReadOnly = true;
+            usuarioEmp.ReadOnly = true;
+            txtpass.ReadOnly = true;
+            ddd.Enabled = false;
+            cod.ReadOnly = true;
+            pnlcontra.Visible = false;
+            pnldespedir.Visible = false;
+            ConsultarEquipo.Visible = true;
         }
 
 

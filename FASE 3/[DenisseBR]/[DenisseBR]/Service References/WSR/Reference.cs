@@ -79,6 +79,13 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/perfilIndividual", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet perfilIndividual(int IdEmp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/perfilIndividual", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> perfilIndividualAsync(int IdEmp);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarDatosPed", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet mostrarDatosPed(long dpi);
@@ -394,19 +401,33 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarEmpleado", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> agregarEmpleadoAsync(string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoEmp", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoHis", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int ObtenerUltimoEmp();
+        int ObtenerUltimoHis(int emp);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoEmp", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> ObtenerUltimoEmpAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoHis", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoHisAsync(int emp);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarHisEmp", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool agregarHisEmp(string fecha, int idemp);
+        bool agregarHisEmp(string fechain, int Idemplead, string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarHisEmp", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> agregarHisEmpAsync(string fecha, int idemp);
+        System.Threading.Tasks.Task<bool> agregarHisEmpAsync(string fechain, int Idemplead, string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarHisEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ActualizarHisEmp(string fechain, int Idemplead, string nombre, string apellido, int telefono, float sueldo, string direccion, string tipo, int rol, string usuarioEmpleado, string PasswordE, int habilitado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarHisEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ActualizarHisEmpAsync(string fechain, int Idemplead, string nombre, string apellido, int telefono, float sueldo, string direccion, string tipo, int rol, string usuarioEmpleado, string PasswordE, int habilitado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarHisEmpFn", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool ActualizarHisEmpFn(string fechafn, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarHisEmpFn", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> ActualizarHisEmpFnAsync(string fechafn, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDeptId", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -513,6 +534,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi) {
             return base.Channel.obtenerDatosUsAsync(dpi);
+        }
+        
+        public System.Data.DataSet perfilIndividual(int IdEmp) {
+            return base.Channel.perfilIndividual(IdEmp);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> perfilIndividualAsync(int IdEmp) {
+            return base.Channel.perfilIndividualAsync(IdEmp);
         }
         
         public System.Data.DataSet mostrarDatosPed(long dpi) {
@@ -875,20 +904,36 @@ namespace _DenisseBR_.WSR {
             return base.Channel.agregarEmpleadoAsync(nombre, apellido, sueldo, tipo, rol, habilitado, idsuc);
         }
         
-        public int ObtenerUltimoEmp() {
-            return base.Channel.ObtenerUltimoEmp();
+        public int ObtenerUltimoHis(int emp) {
+            return base.Channel.ObtenerUltimoHis(emp);
         }
         
-        public System.Threading.Tasks.Task<int> ObtenerUltimoEmpAsync() {
-            return base.Channel.ObtenerUltimoEmpAsync();
+        public System.Threading.Tasks.Task<int> ObtenerUltimoHisAsync(int emp) {
+            return base.Channel.ObtenerUltimoHisAsync(emp);
         }
         
-        public bool agregarHisEmp(string fecha, int idemp) {
-            return base.Channel.agregarHisEmp(fecha, idemp);
+        public bool agregarHisEmp(string fechain, int Idemplead, string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc) {
+            return base.Channel.agregarHisEmp(fechain, Idemplead, nombre, apellido, sueldo, tipo, rol, habilitado, idsuc);
         }
         
-        public System.Threading.Tasks.Task<bool> agregarHisEmpAsync(string fecha, int idemp) {
-            return base.Channel.agregarHisEmpAsync(fecha, idemp);
+        public System.Threading.Tasks.Task<bool> agregarHisEmpAsync(string fechain, int Idemplead, string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc) {
+            return base.Channel.agregarHisEmpAsync(fechain, Idemplead, nombre, apellido, sueldo, tipo, rol, habilitado, idsuc);
+        }
+        
+        public bool ActualizarHisEmp(string fechain, int Idemplead, string nombre, string apellido, int telefono, float sueldo, string direccion, string tipo, int rol, string usuarioEmpleado, string PasswordE, int habilitado) {
+            return base.Channel.ActualizarHisEmp(fechain, Idemplead, nombre, apellido, telefono, sueldo, direccion, tipo, rol, usuarioEmpleado, PasswordE, habilitado);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarHisEmpAsync(string fechain, int Idemplead, string nombre, string apellido, int telefono, float sueldo, string direccion, string tipo, int rol, string usuarioEmpleado, string PasswordE, int habilitado) {
+            return base.Channel.ActualizarHisEmpAsync(fechain, Idemplead, nombre, apellido, telefono, sueldo, direccion, tipo, rol, usuarioEmpleado, PasswordE, habilitado);
+        }
+        
+        public bool ActualizarHisEmpFn(string fechafn, int id) {
+            return base.Channel.ActualizarHisEmpFn(fechafn, id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarHisEmpFnAsync(string fechafn, int id) {
+            return base.Channel.ActualizarHisEmpFnAsync(fechafn, id);
         }
         
         public int obtenerDeptId(string nombre) {

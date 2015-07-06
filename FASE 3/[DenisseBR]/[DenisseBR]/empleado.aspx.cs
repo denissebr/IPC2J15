@@ -17,6 +17,8 @@ namespace _DenisseBR_
         public System.Data.DataSet datasetin;
         private string msj;
         private string[] sucursal;
+        static long numcasilla;
+        private DataSet datasetDev;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["Empleado"]==null){
@@ -51,11 +53,6 @@ namespace _DenisseBR_
                 precargaGV.DataBind();
 
             }
-            eyf.Visible = true;
-            dev.Visible = false;
-            bus.Visible = false;
-            aprovar.Visible = false;
-            pnlprecar.Visible = false;
             }
            
         }
@@ -204,6 +201,7 @@ namespace _DenisseBR_
         protected void rp_Click(object sender, EventArgs e)
         {
             registro.Visible = true;
+            lote.Visible = false;
         }
 
         protected void btnC_Click(object sender, EventArgs e)
@@ -315,6 +313,63 @@ namespace _DenisseBR_
         {
             
 
+        }
+
+        protected void btncasdev_Click(object sender, EventArgs e)
+        {
+            numcasilla =wsr.devolverDPI(Convert.ToInt32(paqueteNo.Text));
+            datasetDev=wsr.tablaDevolver(numcasilla);
+            devolver.DataSource = datasetDev;
+            devolver.DataBind();
+            dev.Visible = true;
+            lote.Visible = false;
+            eyf.Visible = false;
+            dev.Visible = true;
+            aprovar.Visible = false;
+            bus.Visible = false;
+        }
+
+        protected void devolver_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = devolver.SelectedRow;
+            int paquete=Convert.ToInt32(row.Cells[2].Text);
+            DateTime time = DateTime.Now; 
+            string format = "d/MM/yyyy";   // formato
+            String fecha= time.ToString(format); 
+            int idemp = wsr.IdEmp(Convert.ToString(Session["Empleado"]));
+            if (wsr.crearHisPa(fecha, idemp, paquete, 7))
+            {
+
+                msj = "El paquete ha sido devuelto";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            else
+            {
+
+                msj = "Error al actualizar la informacion";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            devolver.DataBind();
+            eyf.Visible = false;
+            dev.Visible = true;
+            aprovar.Visible = false;
+            bus.Visible = false;
+        }
+
+        protected void deliver_Click(object sender, EventArgs e)
+        {
+            eyf.Visible = true;
+            dev.Visible = false;
+            aprovar.Visible = false;
+            bus.Visible = false;
+        }
+
+        protected void btnbc_Click(object sender, EventArgs e)
+        {
+            eyf.Visible = true;
+            dev.Visible = false;
+            aprovar.Visible = false;
+            bus.Visible = false;
         }
 
 
