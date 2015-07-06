@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -54,7 +55,7 @@ namespace _DenisseBR_
 
                 ddd.Items.Add(dept);
             }
-            datasetemp = wsr.mostrarEquipo(1, rol);
+            datasetemp = wsr.mostrarEquipo(3, rol);
             generalGV.AutoGenerateColumns = true;
             generalGV.DataSource = datasetemp;
             generalGV.DataBind();
@@ -275,5 +276,91 @@ namespace _DenisseBR_
             Response.Redirect("WebForm1.aspx");
             
         }
+
+        protected void cargar_Click(object sender, EventArgs e)
+        {
+            DateTime time = DateTime.Now; 
+            string format = "d/MM/yyyy";   // formato
+            String fechaAc= time.ToString(format); 
+            string str = cntra.FileName;
+            cntra.PostedFile.SaveAs(Server.MapPath(".") + "/Documentos/contratacion/" + str);
+            string path = "~/Documentos/contratacion/" + str.ToString();
+            if (cntra.HasFile)
+            {
+                try
+                {
+                    StreamReader leer = new StreamReader(cntra.PostedFile.InputStream);
+                    string linea;
+                    int cont = 0;
+
+                    while ((linea = leer.ReadLine()) != null)
+                    {
+
+
+                        string apellido;
+                        string nombre;
+                        float sueldo;
+                        string sucursal;
+                        string departamento;
+                        string[] fila;
+                        if (linea != "APELLIDOS,NOMBRES,SUELDO,SUCURSAL,DEPARTAMENTO")
+                        {
+                            if (cont == 0) { 
+                                fila = linea.Split(',');
+
+                                apellido = fila[0];
+                                nombre = fila[1];
+                                sueldo = Convert.ToSingle(fila[2]);
+                                sucursal = fila[3];
+                                departamento = fila[4];
+                                int idsucursal=wsr.ObtenerSucursal(sucursal);
+                                int rol=wsr.obtenerDeptId(departamento);
+                                
+                                if(wsr.agregarEmpleado(nombre,apellido,sueldo,"empleado",rol,1,idsucursal)){
+                                   
+                                    int idem = wsr.ObtenerUltimoEmp();
+                                    if (wsr.agregarHisEmp(fechaAc,idem))
+                                    {
+                                        msj = "Se actualizo la tabla de historial de empleados";
+                                        Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                    }
+
+                                    msj = "Se contrataron los empleados con exito";
+                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                }
+                                else
+                                {
+                                    msj = "No se puede registrar";
+                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                }
+                               
+                           }
+                             else
+                                {
+                                    msj = "No se puede registrar el paquete, es necesario crear un nuevo Lote";
+                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                   
+
+                                }
+
+
+                        }  
+
+                        }
+                    
+                }
+                catch (Exception ex)
+                {
+                    msj = "Error en la carga de archivo, verifique que sea formato .CSV y que los campos sean: \n CATEGORIA,IDPAQUETE,PESO,PRECIO";
+                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+
+                }
+            }
+        }
+
+
+
+
+
     }
 }

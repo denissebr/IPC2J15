@@ -16,6 +16,7 @@ namespace _DenisseBR_
         public System.Data.DataSet dataset1;
         public System.Data.DataSet datasetin;
         private string msj;
+        private string[] sucursal;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["Empleado"]==null){
@@ -36,7 +37,6 @@ namespace _DenisseBR_
             }
             else if (tipo == 2)
             {
-                Response.Write("Empleado de registro");
                 servicioCliente.Visible = false;
                 bodega.Visible = false;
                 paquetes.Visible = true;
@@ -92,14 +92,10 @@ namespace _DenisseBR_
             aprovar.Visible = false;
             bus.Visible = true;
 
-            dataset1=wsr.obtenerCasilla(datosc.Text);
+            dataset1 = wsr.obtenerCasilla(datosc.Text);
             buscarcliente.AutoGenerateColumns = true;
             buscarcliente.DataSource = dataset1;
             buscarcliente.DataBind();
-
-           
-           
- 
         }
 
         protected void aprc_Click(object sender, EventArgs e)
@@ -245,15 +241,31 @@ namespace _DenisseBR_
                                             peso = Convert.ToSingle(fila[2]);
                                             precio = Convert.ToSingle(fila[3]);
                                             int idcat=wsr.Obtenericcat(categoria);
-                                            if (wsr.crearRegistro(idcat, idPaquete, peso, precio))
-                                            {
-                                                int idemp = wsr.IdEmp(Convert.ToString(Session["Empleado"]));
-                                                if (wsr.crearHisPa(fecha, idemp, idPaquete, 3))
+                                            int idlot = wsr.ObtenerUltimoLote();
+                                            DateTime fechaLot = wsr.ObtenerFechaUltimoLote(idlot);
+                                            String fecha2=fechaLot.ToString(format);
+                                            int compara = String.Compare(fecha,fecha2);
+                                            Response.Write(fecha +" "+fecha2);
+                                            if(compara<=0){
+                                                if (wsr.crearRegistro(idcat, idPaquete, peso, precio,idlot))
                                                 {
-                                                    msj = "informacion del paquete actualizada";
-                                                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
-                                                }
+                                                 int idemp = wsr.IdEmp(Convert.ToString(Session["Empleado"]));
+                                                 if (wsr.crearHisPa(fecha, idemp, idPaquete, 3))
+                                                 {
+                                                 msj = "informacion del paquete actualizada";
+                                                 Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                                 }
+                                                 }
                                             }
+                                            
+                                            else
+                                            {
+                                                msj = "No se puede registrar el paquete, es necesario crear un nuevo Lote";
+                                                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                                ap.Enabled = true;
+                                                 
+                                            }
+                                          
                                            
                                         }
                                   
@@ -262,9 +274,47 @@ namespace _DenisseBR_
                 }
                 catch (Exception ex)
                 {
-                    Response.Write(ex);
+                    msj = "Error en la carga de archivo, verifique que sea formato .CSV y que los campos sean: \n CATEGORIA,IDPAQUETE,PESO,PRECIO";
+                    Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+                                             
                 }
             }
+        }
+
+        protected void ap_Click(object sender, EventArgs e)
+        {
+            sucursal = wsr.Sucursal();
+            foreach (string sucur in sucursal)
+            {
+
+                ddsucr.Items.Add(sucur);
+            }
+        }
+
+        protected void crearLot_Click(object sender, EventArgs e)
+        {
+            
+            string format = "d/MM/yyyy";   // formato
+            fechatxt.Text = DateTime.Now.ToString(format);
+            
+            int idsuc = wsr.ObtenerSucursal(Convert.ToString(ddsucr.SelectedItem));
+            if (wsr.CrearLote(fechatxt.Text, idsuc))
+            {
+                msj = "Lote creado exitosamente";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+            else
+            {
+
+                msj = "Error inesperado al crear el Lote";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
+        }
+
+        protected void datosc_TextChanged(object sender, EventArgs e)
+        {
+            
+
         }
 
 

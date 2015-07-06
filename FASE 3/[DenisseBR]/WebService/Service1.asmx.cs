@@ -376,8 +376,7 @@ namespace WebService
         [WebMethod]
         public int ObtenerSucursalEmpl(String user)
         {
-            List<string> sucursal = new List<string>();
-            SqlCommand comando = new SqlCommand("Select IdSucursal FROM Sucursal where IdEmpleado='" + user + "'");
+            SqlCommand comando = new SqlCommand("Select IdSucursal FROM Empleado where UsuarioEmpleado='" + user + "'");
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
@@ -547,7 +546,7 @@ namespace WebService
             {
                 
                 miConexionBase.Open();
-                miComandoSQL = new SqlCommand("Select nombre,apellido,dpi,telefono,nit,direccion,Casilla,Estado,UsuarioCliente from Cliente where Nombre='" + Texto+"'", miConexionBase);
+                miComandoSQL = new SqlCommand("SELECT Nombre,Apellido,Dpi,Telefono,Nit,Direccion,Casilla,Estado,UsuarioCliente FROM cliente WHERE CONCAT (Nombre,Apellido,Dpi,Telefono,Nit,Direccion,Casilla,UsuarioCliente) LIKE '%"+Texto+"%'", miConexionBase);
                 SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
                 da.Fill(ds);
             }
@@ -563,6 +562,55 @@ namespace WebService
             return ds;
 
         }
+//----
+        [WebMethod]
+        public long devolverDPI(int cas)
+        {
+            long dpi=0;
+            miComandoSQL = new SqlCommand("select dpi from cliente where casilla="+cas, miConexionBase);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    dpi = lector.GetInt64(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return dpi;
+         }
+        [WebMethod]
+        public DataSet tablaDevolver(long dpi)
+        {
+            DataSet ds = new DataSet();
+            miConexionBase = new SqlConnection(cadenaConexion);
+            try
+            {
+
+                miConexionBase.Open();
+                miComandoSQL = new SqlCommand("select C.Casilla,P.IdPaquete,C.Nombre,C.Apellido,P.Nombre,P.Descripcion,'Peso Q'=P.Precio,'Peso LB'=P.Peso, Estado=E.EstadoDes from Paquete P join Cliente C on C.Dpi=P.Dpi  join historialPa H on H.IdPaquete=P.IdPaquete join EstadoPaqete E on E.EstadoTrack=H.EstadoTrack where C.Dpi='" + dpi + "'and H.EstadoTrack=6", miConexionBase);
+                SqlDataAdapter da = new SqlDataAdapter(miComandoSQL);
+                da.Fill(ds);
+            }
+            catch
+            {
+                ds = null;
+            }
+            finally
+            {
+                miConexionBase.Close();
+            }
+
+            return ds;
+
+        }
+
+
 
         //--->CLIENTES PENDIENTES DE APROVACION
         [WebMethod]
@@ -1048,10 +1096,10 @@ namespace WebService
             return precioAc;
         }
         [WebMethod]
-        public bool crearRegistro(int categoria, int casilla, float peso, float precio)
+        public bool crearRegistro(int categoria, int casilla, float peso, float precio,int lote)
         {
            
-            SqlCommand comando = new SqlCommand( "Update Paquete set Peso='"+peso+"', Precio='"+precio+"', IdCategoria='"+categoria+"' where IdPaquete="+casilla);
+            SqlCommand comando = new SqlCommand( "Update Paquete set Peso='"+peso+"', Precio='"+precio+"', IdCategoria="+categoria+", IdLote="+lote+" where IdPaquete="+casilla);
             miConexionBase = new SqlConnection(cadenaConexion);
             comando.Connection = miConexionBase;
             miConexionBase.Open();
@@ -1103,7 +1151,138 @@ namespace WebService
             miConexionBase.Close();
             return id;
         }
-        
-       
+        [WebMethod]
+        public int ObtenerUltimoLote()
+        {
+            int id = 0;
+            miComandoSQL = new SqlCommand("select MAX(IdLote) from lote");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    id = lector.GetInt32(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return id;
+        }
+        [WebMethod]
+        public DateTime ObtenerFechaUltimoLote(int idlote)
+        {
+            DateTime id = new DateTime();
+            miComandoSQL = new SqlCommand("select Fechasalida from Lote where idlote="+idlote);
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    id = lector.GetDateTime(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return id;
+        }
+        [WebMethod]
+        public bool CrearLote(String fecha,int idsucursal)
+        {
+
+            miComandoSQL = new SqlCommand("Insert into Lote values('" + fecha + "'," + idsucursal+")");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (miComandoSQL.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool agregarEmpleado(string nombre, string apellido,float sueldo,string tipo,int rol,int habilitado,int idsuc)
+        {
+            miComandoSQL = new SqlCommand("Insert into Empleado (nombre, apellido,sueldo,tipo,rol,habilitado,idsucursal) values('" + nombre + "','" + apellido +"','"+sueldo +"','"+tipo+"',"+rol+","+habilitado+","+idsuc+")");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (miComandoSQL.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public int ObtenerUltimoEmp()
+        {
+            int id = 0;
+            miComandoSQL = new SqlCommand("select MAX(IdEmpleado) from Empleado");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = miComandoSQL.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    id = lector.GetInt32(0);
+
+                }
+            }
+            lector.Close();
+            miConexionBase.Close();
+            return id;
+        }
+        [WebMethod]
+        public bool agregarHisEmp(string fecha, int idemp)
+        {
+            miComandoSQL = new SqlCommand("Insert into historialEmp (Fechainicio,IdEmpleado) values('" + fecha + "'," + idemp + ")");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            miComandoSQL.Connection = miConexionBase;
+            miConexionBase.Open();
+            if (miComandoSQL.ExecuteNonQuery() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        [WebMethod]
+        public int obtenerDeptId(String nombre)
+        {
+            SqlCommand comando = new SqlCommand("Select Rol FROM Empleado where Nombre='" + nombre + "'");
+            miConexionBase = new SqlConnection(cadenaConexion);
+            comando.Connection = miConexionBase;
+            miConexionBase.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            int rol = 0;
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    rol = lector.GetInt32(0);
+
+                }
+            }
+            return rol;
+        }
     }
 }
