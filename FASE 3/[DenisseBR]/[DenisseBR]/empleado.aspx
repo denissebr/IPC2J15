@@ -12,6 +12,9 @@
         .auto-style4 {
             width: 462px;
         }
+        .auto-style5 {
+            width: 228px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="x" runat="server">
@@ -70,6 +73,7 @@
             <br />
             <asp:Label ID="Label4" runat="server" Text="Numero de paquete: "></asp:Label>
             <asp:TextBox ID="paqueteNo" runat="server"></asp:TextBox>
+            &nbsp;<asp:Button ID="btncasdev" runat="server" CssClass="btn" Text="Buscar casilla" />
             <br />
             <br />
             <asp:GridView ID="devolver" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" HorizontalAlign="Center">
@@ -100,17 +104,17 @@
             <br />
             <br />
             
-            <asp:GridView ID="buscarcliente" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" HorizontalAlign="Center">
+            <asp:GridView ID="buscarcliente" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                 <AlternatingRowStyle BackColor="White" />
-                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                <SortedDescendingHeaderStyle BackColor="#820000" />
+                <FooterStyle BackColor="#CCCC99" />
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#F7F7DE" />
+                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                <SortedAscendingHeaderStyle BackColor="#848384" />
+                <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                <SortedDescendingHeaderStyle BackColor="#575357" />
             </asp:GridView>
           
         </asp:Panel>
@@ -207,7 +211,7 @@
                     <br />
                     <div style="text-align:center">
                         <asp:Button ID="rp" runat="server" CssClass="btn" Text="Registrar Paquete" OnClick="rp_Click" />
-                        <asp:Button ID="ap" runat="server" CssClass="btn" Text="Añadir Paquete" />
+                        <asp:Button ID="ap" runat="server" CssClass="btn" Text="Crear Lote" OnClick="ap_Click" />
                         <asp:Button ID="ep" runat="server" CssClass="btn" Text="Estados de Paquete" />
                     </div>
                     <br />
@@ -221,7 +225,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style3">
+                            <td class="auto-style5">
                                 <asp:Label ID="Label11" runat="server" ForeColor="#666666" Text="Seleccionar Archivos"></asp:Label>
                             </td>
                             <td class="auto-style4">
@@ -234,7 +238,24 @@
                             </td>
                         </tr>
                     </table>
+
                     </asp:Panel>
+                     <br />
+                    <br />
+                    <br />
+                        <div>
+                            <asp:Panel ID="lote" runat="server" Height="220px">
+                                <br />
+                                <asp:TextBox ID="fechatxt" runat="server" AutoCompleteType="Disabled" TextMode="Date"></asp:TextBox>
+                                <br />
+                                <br />
+                                <asp:DropDownList ID="ddsucr" runat="server">
+                                </asp:DropDownList>
+                                <br />
+                                <br />
+                                <asp:Button ID="crearLot" runat="server" BorderColor="#FFCC99" BorderStyle="Solid" CssClass="btn" OnClick="crearLot_Click" Text="Button" />
+                            </asp:Panel>
+                        </div>
                 </asp:Panel>
            </div>
 

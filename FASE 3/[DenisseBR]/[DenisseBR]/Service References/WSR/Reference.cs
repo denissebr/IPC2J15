@@ -177,6 +177,20 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerCasilla", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> obtenerCasillaAsync(string Texto);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/devolverDPI", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        long devolverDPI(int cas);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/devolverDPI", ReplyAction="*")]
+        System.Threading.Tasks.Task<long> devolverDPIAsync(int cas);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tablaDevolver", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet tablaDevolver(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tablaDevolver", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> tablaDevolverAsync(long dpi);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/clientePendienteApr", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet clientePendienteApr();
@@ -333,10 +347,10 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearRegistro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool crearRegistro(int categoria, int casilla, float peso, float precio);
+        bool crearRegistro(int categoria, int casilla, float peso, float precio, int lote);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearRegistro", ReplyAction="*")]
-        System.Threading.Tasks.Task<bool> crearRegistroAsync(int categoria, int casilla, float peso, float precio);
+        System.Threading.Tasks.Task<bool> crearRegistroAsync(int categoria, int casilla, float peso, float precio, int lote);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/crearHisPa", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -351,6 +365,55 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IdEmp", ReplyAction="*")]
         System.Threading.Tasks.Task<int> IdEmpAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoLote", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ObtenerUltimoLote();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoLote", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoLoteAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerFechaUltimoLote", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.DateTime ObtenerFechaUltimoLote(int idlote);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerFechaUltimoLote", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.DateTime> ObtenerFechaUltimoLoteAsync(int idlote);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearLote", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool CrearLote(string fecha, int idsucursal);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CrearLote", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CrearLoteAsync(string fecha, int idsucursal);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarEmpleado", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool agregarEmpleado(string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarEmpleado", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> agregarEmpleadoAsync(string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ObtenerUltimoEmp();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoEmpAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarHisEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool agregarHisEmp(string fecha, int idemp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarHisEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> agregarHisEmpAsync(string fecha, int idemp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDeptId", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int obtenerDeptId(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDeptId", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> obtenerDeptIdAsync(string nombre);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -564,6 +627,22 @@ namespace _DenisseBR_.WSR {
             return base.Channel.obtenerCasillaAsync(Texto);
         }
         
+        public long devolverDPI(int cas) {
+            return base.Channel.devolverDPI(cas);
+        }
+        
+        public System.Threading.Tasks.Task<long> devolverDPIAsync(int cas) {
+            return base.Channel.devolverDPIAsync(cas);
+        }
+        
+        public System.Data.DataSet tablaDevolver(long dpi) {
+            return base.Channel.tablaDevolver(dpi);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> tablaDevolverAsync(long dpi) {
+            return base.Channel.tablaDevolverAsync(dpi);
+        }
+        
         public System.Data.DataSet clientePendienteApr() {
             return base.Channel.clientePendienteApr();
         }
@@ -740,12 +819,12 @@ namespace _DenisseBR_.WSR {
             return base.Channel.precioFinalAsync(peso, impuesto, precio);
         }
         
-        public bool crearRegistro(int categoria, int casilla, float peso, float precio) {
-            return base.Channel.crearRegistro(categoria, casilla, peso, precio);
+        public bool crearRegistro(int categoria, int casilla, float peso, float precio, int lote) {
+            return base.Channel.crearRegistro(categoria, casilla, peso, precio, lote);
         }
         
-        public System.Threading.Tasks.Task<bool> crearRegistroAsync(int categoria, int casilla, float peso, float precio) {
-            return base.Channel.crearRegistroAsync(categoria, casilla, peso, precio);
+        public System.Threading.Tasks.Task<bool> crearRegistroAsync(int categoria, int casilla, float peso, float precio, int lote) {
+            return base.Channel.crearRegistroAsync(categoria, casilla, peso, precio, lote);
         }
         
         public bool crearHisPa(string fecha, int Idemp, int idPa, int estado) {
@@ -762,6 +841,62 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<int> IdEmpAsync(string user) {
             return base.Channel.IdEmpAsync(user);
+        }
+        
+        public int ObtenerUltimoLote() {
+            return base.Channel.ObtenerUltimoLote();
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerUltimoLoteAsync() {
+            return base.Channel.ObtenerUltimoLoteAsync();
+        }
+        
+        public System.DateTime ObtenerFechaUltimoLote(int idlote) {
+            return base.Channel.ObtenerFechaUltimoLote(idlote);
+        }
+        
+        public System.Threading.Tasks.Task<System.DateTime> ObtenerFechaUltimoLoteAsync(int idlote) {
+            return base.Channel.ObtenerFechaUltimoLoteAsync(idlote);
+        }
+        
+        public bool CrearLote(string fecha, int idsucursal) {
+            return base.Channel.CrearLote(fecha, idsucursal);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CrearLoteAsync(string fecha, int idsucursal) {
+            return base.Channel.CrearLoteAsync(fecha, idsucursal);
+        }
+        
+        public bool agregarEmpleado(string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc) {
+            return base.Channel.agregarEmpleado(nombre, apellido, sueldo, tipo, rol, habilitado, idsuc);
+        }
+        
+        public System.Threading.Tasks.Task<bool> agregarEmpleadoAsync(string nombre, string apellido, float sueldo, string tipo, int rol, int habilitado, int idsuc) {
+            return base.Channel.agregarEmpleadoAsync(nombre, apellido, sueldo, tipo, rol, habilitado, idsuc);
+        }
+        
+        public int ObtenerUltimoEmp() {
+            return base.Channel.ObtenerUltimoEmp();
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerUltimoEmpAsync() {
+            return base.Channel.ObtenerUltimoEmpAsync();
+        }
+        
+        public bool agregarHisEmp(string fecha, int idemp) {
+            return base.Channel.agregarHisEmp(fecha, idemp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> agregarHisEmpAsync(string fecha, int idemp) {
+            return base.Channel.agregarHisEmpAsync(fecha, idemp);
+        }
+        
+        public int obtenerDeptId(string nombre) {
+            return base.Channel.obtenerDeptId(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<int> obtenerDeptIdAsync(string nombre) {
+            return base.Channel.obtenerDeptIdAsync(nombre);
         }
     }
 }

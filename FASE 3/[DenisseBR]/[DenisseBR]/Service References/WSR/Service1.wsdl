@@ -363,6 +363,41 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="devolverDPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cas" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="devolverDPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="devolverDPIResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tablaDevolver">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tablaDevolverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tablaDevolverResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="clientePendienteApr">
         <s:complexType />
       </s:element>
@@ -759,6 +794,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:float" />
             <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="lote" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -797,6 +833,104 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="IdEmpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerUltimoLote">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerUltimoLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerUltimoLoteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerFechaUltimoLote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idlote" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerFechaUltimoLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerFechaUltimoLoteResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearLote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idsucursal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CrearLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CrearLoteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarEmpleado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sueldo" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rol" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="habilitado" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idsuc" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarEmpleadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="agregarEmpleadoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerUltimoEmp">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerUltimoEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerUltimoEmpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarHisEmp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idemp" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarHisEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="agregarHisEmpResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDeptId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerDeptIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="obtenerDeptIdResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -939,6 +1073,18 @@
   </wsdl:message>
   <wsdl:message name="obtenerCasillaSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerCasillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="devolverDPISoapIn">
+    <wsdl:part name="parameters" element="tns:devolverDPI" />
+  </wsdl:message>
+  <wsdl:message name="devolverDPISoapOut">
+    <wsdl:part name="parameters" element="tns:devolverDPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="tablaDevolverSoapIn">
+    <wsdl:part name="parameters" element="tns:tablaDevolver" />
+  </wsdl:message>
+  <wsdl:message name="tablaDevolverSoapOut">
+    <wsdl:part name="parameters" element="tns:tablaDevolverResponse" />
   </wsdl:message>
   <wsdl:message name="clientePendienteAprSoapIn">
     <wsdl:part name="parameters" element="tns:clientePendienteApr" />
@@ -1090,6 +1236,48 @@
   <wsdl:message name="IdEmpSoapOut">
     <wsdl:part name="parameters" element="tns:IdEmpResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerUltimoLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoLote" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerUltimoLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoLoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerFechaUltimoLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerFechaUltimoLote" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerFechaUltimoLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerFechaUltimoLoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CrearLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:CrearLote" />
+  </wsdl:message>
+  <wsdl:message name="CrearLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:CrearLoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmpleadoSoapIn">
+    <wsdl:part name="parameters" element="tns:agregarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmpleadoSoapOut">
+    <wsdl:part name="parameters" element="tns:agregarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerUltimoEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoEmp" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerUltimoEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoEmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarHisEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:agregarHisEmp" />
+  </wsdl:message>
+  <wsdl:message name="agregarHisEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:agregarHisEmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDeptIdSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerDeptId" />
+  </wsdl:message>
+  <wsdl:message name="obtenerDeptIdSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerDeptIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="Service1Soap">
     <wsdl:operation name="logC">
       <wsdl:input message="tns:logCSoapIn" />
@@ -1182,6 +1370,14 @@
     <wsdl:operation name="obtenerCasilla">
       <wsdl:input message="tns:obtenerCasillaSoapIn" />
       <wsdl:output message="tns:obtenerCasillaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="devolverDPI">
+      <wsdl:input message="tns:devolverDPISoapIn" />
+      <wsdl:output message="tns:devolverDPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="tablaDevolver">
+      <wsdl:input message="tns:tablaDevolverSoapIn" />
+      <wsdl:output message="tns:tablaDevolverSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="clientePendienteApr">
       <wsdl:input message="tns:clientePendienteAprSoapIn" />
@@ -1282,6 +1478,34 @@
     <wsdl:operation name="IdEmp">
       <wsdl:input message="tns:IdEmpSoapIn" />
       <wsdl:output message="tns:IdEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoLote">
+      <wsdl:input message="tns:ObtenerUltimoLoteSoapIn" />
+      <wsdl:output message="tns:ObtenerUltimoLoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFechaUltimoLote">
+      <wsdl:input message="tns:ObtenerFechaUltimoLoteSoapIn" />
+      <wsdl:output message="tns:ObtenerFechaUltimoLoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CrearLote">
+      <wsdl:input message="tns:CrearLoteSoapIn" />
+      <wsdl:output message="tns:CrearLoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmpleado">
+      <wsdl:input message="tns:agregarEmpleadoSoapIn" />
+      <wsdl:output message="tns:agregarEmpleadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoEmp">
+      <wsdl:input message="tns:ObtenerUltimoEmpSoapIn" />
+      <wsdl:output message="tns:ObtenerUltimoEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarHisEmp">
+      <wsdl:input message="tns:agregarHisEmpSoapIn" />
+      <wsdl:output message="tns:agregarHisEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDeptId">
+      <wsdl:input message="tns:obtenerDeptIdSoapIn" />
+      <wsdl:output message="tns:obtenerDeptIdSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
@@ -1486,6 +1710,24 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerCasilla">
       <soap:operation soapAction="http://tempuri.org/obtenerCasilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="devolverDPI">
+      <soap:operation soapAction="http://tempuri.org/devolverDPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tablaDevolver">
+      <soap:operation soapAction="http://tempuri.org/tablaDevolver" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1718,6 +1960,69 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoLote">
+      <soap:operation soapAction="http://tempuri.org/ObtenerUltimoLote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFechaUltimoLote">
+      <soap:operation soapAction="http://tempuri.org/ObtenerFechaUltimoLote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearLote">
+      <soap:operation soapAction="http://tempuri.org/CrearLote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmpleado">
+      <soap:operation soapAction="http://tempuri.org/agregarEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoEmp">
+      <soap:operation soapAction="http://tempuri.org/ObtenerUltimoEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarHisEmp">
+      <soap:operation soapAction="http://tempuri.org/agregarHisEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDeptId">
+      <soap:operation soapAction="http://tempuri.org/obtenerDeptId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1921,6 +2226,24 @@
     </wsdl:operation>
     <wsdl:operation name="obtenerCasilla">
       <soap12:operation soapAction="http://tempuri.org/obtenerCasilla" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="devolverDPI">
+      <soap12:operation soapAction="http://tempuri.org/devolverDPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tablaDevolver">
+      <soap12:operation soapAction="http://tempuri.org/tablaDevolver" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2146,6 +2469,69 @@
     </wsdl:operation>
     <wsdl:operation name="IdEmp">
       <soap12:operation soapAction="http://tempuri.org/IdEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoLote">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerUltimoLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerFechaUltimoLote">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerFechaUltimoLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CrearLote">
+      <soap12:operation soapAction="http://tempuri.org/CrearLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/agregarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoEmp">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerUltimoEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarHisEmp">
+      <soap12:operation soapAction="http://tempuri.org/agregarHisEmp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDeptId">
+      <soap12:operation soapAction="http://tempuri.org/obtenerDeptId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

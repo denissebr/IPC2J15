@@ -179,6 +179,7 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Documentos\contratacion\" />
     <Folder Include="Documentos\registro\" />
   </ItemGroup>
   <PropertyGroup>

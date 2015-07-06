@@ -53,10 +53,10 @@
             <br />
             <asp:Label ID="Label7" runat="server" Text="Seleccione el archivo:" Font-Bold="True" Font-Size="Medium"></asp:Label>
             <center>
-            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn" ForeColor="Black" />
+            <asp:FileUpload ID="cntra" runat="server" CssClass="btn" ForeColor="Black" />
             </center>
                 <br />
-            <asp:Button ID="cargar" runat="server" CssClass="btn" Text="Cargar Datos" />
+            <asp:Button ID="cargar" runat="server" CssClass="btn" Text="Cargar Datos" OnClick="cargar_Click" />
             <br />
             <br />
             <asp:Label ID="msjcs" runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#CCFF33" Text="Contratacion Exitosa" Visible="False"></asp:Label>
