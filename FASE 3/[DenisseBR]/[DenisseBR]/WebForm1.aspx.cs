@@ -85,7 +85,7 @@ namespace _DenisseBR_
                         if (wsr.logA(usuario.Text, passw.Text))
                         {
                             Session["Administrador"] = usuario.Text;
-                            Response.Redirect("");
+                            Response.Redirect("administrador.aspx");
                         }
                         else
                         {

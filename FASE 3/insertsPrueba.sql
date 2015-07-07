@@ -12,11 +12,15 @@ insert into empleado values('Dora','Arreaga',78541203,3500,'zona 1 colonia las f
 insert into empleado values('Marellyn','Trejo',89652314,4500,'zona 7','director','1','malisTrejo','jossie',1,3)
 insert into empleado values('Jossie','Castrillo',40125603,4500,'Villa Nueva','director','2','luser','marellyn',1,3)
 insert into empleado values('Glen','Calel',78965412,4500,'Petapa','director','3','glencal','mate',1,3)
+
+insert into empleado values('Jose','gonzales',78989412,5500,'zona 7','administrador','3','josg','1234',1,3)
 /*INSERT DE SEDE*/
 insert into sede values('Guatemala',5)
+insert into sede values('USA',5)
 /*INSERTS DE SUCURSAL*/
 insert into sucursal values('La rapidita','zona 10',22883421,42,1)
 insert into sucursal values('Punto 1','zona 12 Universidad de San Carlos',22887477,36,1)
+insert into sucursal values('Central','Miami FL', 4027394,24,2)
 /*INSERTS DE CLIENTES*/
 insert into cliente values('Jose','Melgar',1478520321456,14523608,22321478,'9na Av. 1-56 zona 1',1,'josmel','1234',3,1478520321456)
 /*INSERTS DE CATEGORIA*/
@@ -100,31 +104,126 @@ INNER JOIN dbo.Categoria C
 ON P.IdCategoria = C.IdCategoria
 GROUP BY C.Nombre
 ORDER BY 2 DESC
-
-Select * from cliente
-
-
+use Fase3V1
+Select * from empleado
+Select * from empleado where IdEmpleado=9
+select MAX(idhistorialE) from historialEmp where IdEmpleado=9
+insert into historialEmp (fechainicio,Idempleado,nombre,apellido,telefono,sueldo,Direccion,tipo,rol,UsuarioEmpleado,PasswordE,Habilitado) values('6/07/2015',9,'Dora','Arreaga','78541204','3550','zona 1 colonia las flores','empleado',3,'dora1','da69',1) 
 select P.IdPaquete,P.Estado,P.Precio,C.Nombre
 from dbo.Paquete P join dbo.Categoria C
 on P.IdCategoria = C.IdCategoria
 
-Update  Paquete set PrecioF='~/precarga/fotos/Sin título.png' where IdPaquete=1
-
-select * from dbo.Departamento
-select * from dbo.Empleado
-
+Update  Empleado set Rol=3 where IdEmpleado=9
+select * from cliente
+SELECT * FROM cliente WHERE CONCAT (Nombre,Apellido,Dpi,Telefono,Nit,Direccion,Casilla,UsuarioCliente) LIKE '%1%'
+select * from dbo.Empleado where Tipo= %like em%
+use Fase3V1
 select * from dbo.Paquete
+update paquete set idLote=1 where idPaquete=3
 select * from dbo.EstadoPaqete
 select * from dbo.Cliente
-select * from historialPa
-
+select * from departamento
+select * from lote
+insert into historialPa values('4/07/2015',9,3,2)
 SELECT C.casilla, P.IdPaquete, P.Nombre, P.Descripcion FROM dbo.Paquete P JOIN dbo.Cliente C ON P.Dpi = C.Dpi where P.Dpi=1478520321456
 
 select P.IdPaquete,P.IdEstado,P.Precio,C.Nombre
 from dbo.Paquete P join dbo.Categoria C
 on P.IdCategoria = C.IdCategoria
+update historialPa set EstadoTrack=3 where IdHistorialPa=2
 
-
-select C.Nombre, P.Precio, P.Peso, E.FechaMod, E.EstadoTrack from dbo.Paquete p 
+select Categoria=C.Nombre, P.Precio, P.Peso,'Fecha de Modificacion'= E.FechaMod, Estado=EP.EstadoDes
+from dbo.Paquete p 
 join dbo.Categoria C on P.IdCategoria = C.IdCategoria
-join dbo.historialPa E on P.IdPaquete=E.IdPaquete
+join dbo.historialPa E on P.IdPaquete=E.IdPaquete 
+join dbo.Cliente Cl on P.Dpi=Cl.Dpi
+join dbo.EstadoPaqete EP on E.EstadoTrack=EP.EstadoTrack
+where P.IdPaquete=3 and P.Dpi=1478520321456
+
+
+select Categoria=C.Nombre, P.Precio, P.Peso,'Fecha de Modificacion'= E.FechaMod, Estado=EP.EstadoDes 
+from dbo.Paquete p 
+join dbo.Categoria C on P.IdCategoria = C.IdCategoria 
+join dbo.historialPa E on P.IdPaquete=E.IdPaquete  
+join dbo.EstadoPaqete EP on E.EstadoTrack=EP.EstadoTrack 
+where P.IdPaquete=3
+
+insert into lote values('5/07/2015',3)
+select * from lote
+select MAX(IdLote) from lote
+
+select Fechasalida from lote
+
+CREATE TABLE LotePrueba(
+IdLote INT IDENTITY(1,1) PRIMARY KEY,
+FechaSalida DATE NOT NULL,
+IdSucursal INT NOT NULL
+)
+use Fase3V1
+select * from historialEmp
+update EstadoPaqete set estadoDes='entregado' where EstadoTrack=6
+insert into estadopaqete values('devuelto')
+insert into LotePrueba (FechaSalida,IdSucursal) values('5/07/2015',3)
+select dpi from cliente where casilla=2
+select C.Casilla,P.IdPaquete, C.Nombre,C.Apellido,P.Nombre,P.Descripcion,'Precio Q'=P.Precio,'Peso LB'=P.Peso, Estado=E.EstadoDes 
+from Paquete P 
+join Cliente C on C.Dpi=P.Dpi  
+join historialPa H on H.IdPaquete=P.IdPaquete 
+join EstadoPaqete E on E.EstadoTrack=H.EstadoTrack 
+where C.Dpi=1478520321456 and H.EstadoTrack=2
+
+select 'Identificador'=E.IdEmpleado, E.Nombre,E.Apellido,E.Telefono,E.Sueldo,E.Direccion,'Rol'=D.Nombre,'Usuario'=E.UsuarioEmpleado,'Contraseña'=E.PasswordE,'Sucursal'=S.Nombre,H.FechaInicio,H.Fechafin
+from Empleado E
+join historialEmp H on  H.IdEmpleado = E.IdEmpleado
+join Departamento D on D.IdDepartamento=E.Rol
+join Sucursal S on S.IdSucursal=E.IdSucursal
+where E.IdEmpleado=18
+
+select 'Fecha Inicio'=fechainicio, 'Fecha Fin'=fechafin, 'Id Empleado'=IdEmpleado, H.nombre, apellido,telefono,Sueldo,Direccion,'Departamento'=D.Nombre,'Usuario Empleado'=usuarioEmpleado, 'Contraseña'=PasswordE  from historialEmp H join Departamento D on D.IdDepartamento=H.Rol
+
+select 'Identificador'=E.IdEmpleado, E.Nombre,E.Apellido,E.Telefono,E.Sueldo,E.Direccion,'Rol'=D.Nombre,'Usuario'=E.UsuarioEmpleado,'Contraseña'=E.PasswordE,S.Nombre,H.FechaInicio,H.Fechafin from Empleado E join historialEmp H on  H.IdEmpleado = E.IdEmpleado join Departamento D on D.IdDepartamento=E.Rol join Sucursal S on S.IdSucursal=E.IdSucursal where E.IdEmpleado=9
+alter table historialEmp
+drop column IdSucursal
+Nombre de categoría,
+cantidad de paquetes recibidos, cantidad de paquetes perdidos, cantidad de paquetes
+entregados a cliente, suma de totales de costos en impuestos, suma de totales de
+costos en peso, suma de totales de comisiones
+select C.Nombre, P.IdPaquete, 'Cantidad de Paquetes'=Sum(P.IdPaquete)
+from Paquete P
+join Categoria c on C.IdCategoria=P.IdCategoria
+group by C.Nombre
+
+
+Nombre de categoría, cantidad
+de paquetes recibidos, cantidad de paquetes perdidos, cantidad de paquetes
+entregados a cliente, suma de totales de costos en impuestos, suma de totales de
+costos en peso, suma de totales de comisione
+
+
+
+
+Resumen administrativo sobre los empleados por departamentos y sucursales.
+(Nombre de depto/sucursal, número de empleados, totales en sueldos).
+
+
+Select S.Nombre,'Sucursal'=Count(E.IdEmpleado),'Suma de Sueldos'=Sum(E.Sueldo)
+from Empleado E
+join Sucursal S on S.IdSucursal=E.Idsucursal 
+Group by S.Nombre
+
+Select 'Departamento'=D.Nombre,'Cantidad de empleados por Departamento'=Count(E.IdEmpleado),'Suma de Sueldos'=Sum(E.Sueldo)
+from Empleado E
+join Departamento D on D.IdDepartamento=E.Rol 
+Group by D.Nombre
+
+
+Nombre de categoría, cantidad
+de paquetes recibidos, cantidad de paquetes perdidos, cantidad de paquetes
+entregados a cliente, suma de totales de costos en impuestos, suma de totales de
+costos en peso, suma de totales de comisiones
+
+Select C.Nombre, 'Cantidad de paquetes'=Sum(P.IdPaquete)
+from Paquete P
+join Categoria C on C.IdCategoria = P.IdCategoria
+Group by C.Nombre
+

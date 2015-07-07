@@ -19,6 +19,10 @@ namespace _DenisseBR_
         private string[] sucursal;
         static long numcasilla;
         private DataSet datasetDev;
+        private DataSet datosFac;
+        private DataSet datosAcPed;
+        private string[] listEstados;
+        static int paquete;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["Empleado"]==null){
@@ -36,18 +40,28 @@ namespace _DenisseBR_
                 inactivos.AutoGenerateColumns = true;
                 inactivos.DataSource = datasetin;
                 inactivos.DataBind();
+                eyf.Visible = false;
+                dev.Visible = false;
+                bus.Visible = false;
+                aprovar.Visible = false;
             }
             else if (tipo == 2)
             {
                 servicioCliente.Visible = false;
                 bodega.Visible = false;
                 paquetes.Visible = true;
+                registro.Visible = false;
+                lote.Visible = false;
             }
             else if (tipo == 3)
             {
                 servicioCliente.Visible = false;
                 bodega.Visible = true;
                 paquetes.Visible = false;
+               
+                pnlprecar.Visible = false;
+                paper.Visible = false;
+                estados.Visible = false;
                 DataSet dataPrecarga = wsr.mostrarPrecarga();
                 precargaGV.DataSource = dataPrecarga;
                 precargaGV.DataBind();
@@ -154,6 +168,8 @@ namespace _DenisseBR_
             GridViewRow row = precargaGV.SelectedRow;
             idpa.Text = (row.Cells[0].Text);
             pnlprecar.Visible = true;
+            paper.Visible = false;
+            estados.Visible = false;
 
 
 
@@ -189,7 +205,8 @@ namespace _DenisseBR_
             Label8.Visible = false;
             Label9.Visible = false;
             apr.Visible = false;
-            
+            paper.Visible = false;
+            estados.Visible = false;
         }
 
         protected void logOut_Click(object sender, EventArgs e)
@@ -287,6 +304,9 @@ namespace _DenisseBR_
 
                 ddsucr.Items.Add(sucur);
             }
+
+            registro.Visible = false;
+            lote.Visible = true;
         }
 
         protected void crearLot_Click(object sender, EventArgs e)
@@ -370,6 +390,44 @@ namespace _DenisseBR_
             dev.Visible = false;
             aprovar.Visible = false;
             bus.Visible = false;
+            datosFac=wsr.tablaFactura(Convert.ToInt32(casilla.Text));
+            factura.DataSource = datosFac;
+            factura.DataBind();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            datosAcPed=wsr.bodegaPedidos();
+            paquetesGV.DataSource = datosAcPed;
+            paquetesGV.DataBind();
+            pnlprecar.Visible = false;
+            paper.Visible = false;
+            estados.Visible = true;
+        }
+
+        protected void paquetesGV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = paquetesGV.SelectedRow;
+            paquete=Convert.ToInt32(row.Cells[1].Text);
+            TextBox1.Text = row.Cells[1].Text;
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            DateTime time = DateTime.Now; 
+            string format = "d/MM/yyyy";   // formato
+            String fecha= time.ToString(format); 
+            
+            int idemp = wsr.IdEmp(Convert.ToString(Session["Empleado"]));
+            if(wsr.crearHisPa(fecha,idemp,paquete,Convert.ToInt32(dde.SelectedValue))){
+
+                msj = "Estado Actualizado";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+
+            } 
+            pnlprecar.Visible = false;
+            paper.Visible = false;
+            estados.Visible = true;
         }
 
 

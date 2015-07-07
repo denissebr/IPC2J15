@@ -139,6 +139,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="cargarCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarCategoriaResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="perfilIndividual">
         <s:complexType>
           <s:sequence>
@@ -192,6 +202,23 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="mostrarDatosPedInResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bodegaPedidos">
+        <s:complexType />
+      </s:element>
+      <s:element name="bodegaPedidosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bodegaPedidosResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -409,6 +436,27 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="tablaDevolverResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tablaFactura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cas" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tablaFacturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tablaFacturaResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -707,7 +755,7 @@
       <s:element name="ActualizarDatosEmpResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="ActualizarDatosEmpResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarDatosEmpResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -864,6 +912,16 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="ObtenerUltimoLoteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerUltimoEmp">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerUltimoEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerUltimoEmpResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1062,6 +1120,12 @@
   <wsdl:message name="obtenerDatosUsSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerDatosUsResponse" />
   </wsdl:message>
+  <wsdl:message name="cargarCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="cargarCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarCategoriaResponse" />
+  </wsdl:message>
   <wsdl:message name="perfilIndividualSoapIn">
     <wsdl:part name="parameters" element="tns:perfilIndividual" />
   </wsdl:message>
@@ -1079,6 +1143,12 @@
   </wsdl:message>
   <wsdl:message name="mostrarDatosPedInSoapOut">
     <wsdl:part name="parameters" element="tns:mostrarDatosPedInResponse" />
+  </wsdl:message>
+  <wsdl:message name="bodegaPedidosSoapIn">
+    <wsdl:part name="parameters" element="tns:bodegaPedidos" />
+  </wsdl:message>
+  <wsdl:message name="bodegaPedidosSoapOut">
+    <wsdl:part name="parameters" element="tns:bodegaPedidosResponse" />
   </wsdl:message>
   <wsdl:message name="obtenerDatosPedSoapIn">
     <wsdl:part name="parameters" element="tns:obtenerDatosPed" />
@@ -1163,6 +1233,12 @@
   </wsdl:message>
   <wsdl:message name="tablaDevolverSoapOut">
     <wsdl:part name="parameters" element="tns:tablaDevolverResponse" />
+  </wsdl:message>
+  <wsdl:message name="tablaFacturaSoapIn">
+    <wsdl:part name="parameters" element="tns:tablaFactura" />
+  </wsdl:message>
+  <wsdl:message name="tablaFacturaSoapOut">
+    <wsdl:part name="parameters" element="tns:tablaFacturaResponse" />
   </wsdl:message>
   <wsdl:message name="clientePendienteAprSoapIn">
     <wsdl:part name="parameters" element="tns:clientePendienteApr" />
@@ -1320,6 +1396,12 @@
   <wsdl:message name="ObtenerUltimoLoteSoapOut">
     <wsdl:part name="parameters" element="tns:ObtenerUltimoLoteResponse" />
   </wsdl:message>
+  <wsdl:message name="ObtenerUltimoEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoEmp" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerUltimoEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerUltimoEmpResponse" />
+  </wsdl:message>
   <wsdl:message name="ObtenerFechaUltimoLoteSoapIn">
     <wsdl:part name="parameters" element="tns:ObtenerFechaUltimoLote" />
   </wsdl:message>
@@ -1405,6 +1487,10 @@
       <wsdl:input message="tns:obtenerDatosUsSoapIn" />
       <wsdl:output message="tns:obtenerDatosUsSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="cargarCategoria">
+      <wsdl:input message="tns:cargarCategoriaSoapIn" />
+      <wsdl:output message="tns:cargarCategoriaSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="perfilIndividual">
       <wsdl:input message="tns:perfilIndividualSoapIn" />
       <wsdl:output message="tns:perfilIndividualSoapOut" />
@@ -1416,6 +1502,10 @@
     <wsdl:operation name="mostrarDatosPedIn">
       <wsdl:input message="tns:mostrarDatosPedInSoapIn" />
       <wsdl:output message="tns:mostrarDatosPedInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="bodegaPedidos">
+      <wsdl:input message="tns:bodegaPedidosSoapIn" />
+      <wsdl:output message="tns:bodegaPedidosSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="obtenerDatosPed">
       <wsdl:input message="tns:obtenerDatosPedSoapIn" />
@@ -1472,6 +1562,10 @@
     <wsdl:operation name="tablaDevolver">
       <wsdl:input message="tns:tablaDevolverSoapIn" />
       <wsdl:output message="tns:tablaDevolverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="tablaFactura">
+      <wsdl:input message="tns:tablaFacturaSoapIn" />
+      <wsdl:output message="tns:tablaFacturaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="clientePendienteApr">
       <wsdl:input message="tns:clientePendienteAprSoapIn" />
@@ -1576,6 +1670,10 @@
     <wsdl:operation name="ObtenerUltimoLote">
       <wsdl:input message="tns:ObtenerUltimoLoteSoapIn" />
       <wsdl:output message="tns:ObtenerUltimoLoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoEmp">
+      <wsdl:input message="tns:ObtenerUltimoEmpSoapIn" />
+      <wsdl:output message="tns:ObtenerUltimoEmpSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ObtenerFechaUltimoLote">
       <wsdl:input message="tns:ObtenerFechaUltimoLoteSoapIn" />
@@ -1693,6 +1791,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cargarCategoria">
+      <soap:operation soapAction="http://tempuri.org/cargarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="perfilIndividual">
       <soap:operation soapAction="http://tempuri.org/perfilIndividual" style="document" />
       <wsdl:input>
@@ -1713,6 +1820,15 @@
     </wsdl:operation>
     <wsdl:operation name="mostrarDatosPedIn">
       <soap:operation soapAction="http://tempuri.org/mostrarDatosPedIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bodegaPedidos">
+      <soap:operation soapAction="http://tempuri.org/bodegaPedidos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1839,6 +1955,15 @@
     </wsdl:operation>
     <wsdl:operation name="tablaDevolver">
       <soap:operation soapAction="http://tempuri.org/tablaDevolver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tablaFactura">
+      <soap:operation soapAction="http://tempuri.org/tablaFactura" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2080,6 +2205,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoEmp">
+      <soap:operation soapAction="http://tempuri.org/ObtenerUltimoEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ObtenerFechaUltimoLote">
       <soap:operation soapAction="http://tempuri.org/ObtenerFechaUltimoLote" style="document" />
       <wsdl:input>
@@ -2236,6 +2370,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="cargarCategoria">
+      <soap12:operation soapAction="http://tempuri.org/cargarCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="perfilIndividual">
       <soap12:operation soapAction="http://tempuri.org/perfilIndividual" style="document" />
       <wsdl:input>
@@ -2256,6 +2399,15 @@
     </wsdl:operation>
     <wsdl:operation name="mostrarDatosPedIn">
       <soap12:operation soapAction="http://tempuri.org/mostrarDatosPedIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bodegaPedidos">
+      <soap12:operation soapAction="http://tempuri.org/bodegaPedidos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2382,6 +2534,15 @@
     </wsdl:operation>
     <wsdl:operation name="tablaDevolver">
       <soap12:operation soapAction="http://tempuri.org/tablaDevolver" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tablaFactura">
+      <soap12:operation soapAction="http://tempuri.org/tablaFactura" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2616,6 +2777,15 @@
     </wsdl:operation>
     <wsdl:operation name="ObtenerUltimoLote">
       <soap12:operation soapAction="http://tempuri.org/ObtenerUltimoLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerUltimoEmp">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerUltimoEmp" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

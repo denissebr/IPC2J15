@@ -85,9 +85,6 @@
                 <br />
                 <asp:GridView ID="datosIn" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" OnSelectedIndexChanged="datosIn_SelectedIndexChanged" CssClass="table">
                     <AlternatingRowStyle BackColor="White" />
-                    <Columns>
-                        <asp:CommandField ButtonType="Button" SelectText="Modificar" ShowSelectButton="True" />
-                    </Columns>
                     <FooterStyle BackColor="#CCCC99" />
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />

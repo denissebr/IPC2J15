@@ -50,13 +50,7 @@ namespace _DenisseBR_
             despedirGV.DataSource = datasetin;
             despedirGV.DataBind();
             //departamentos
-            ddd.Items.Clear();
-            departamento = wsr.departamentos();
-            foreach (string dept in departamento)
-            {
-
-                ddd.Items.Add(dept);
-            }
+            
             datasetemp = wsr.mostrarEquipo(3, rol);
             generalGV.AutoGenerateColumns = true;
             generalGV.DataSource = datasetemp;
@@ -111,11 +105,18 @@ namespace _DenisseBR_
 
         protected void equipo_Click(object sender, EventArgs e)
         {
+            ddd.Items.Clear();
             pnlcontra.Visible = false;
             pnldespedir.Visible = false;
             ConsultarEquipo.Visible = true;
             individual.Visible = false;
             precarga.Visible = false;
+            departamento = wsr.departamentos();
+            foreach (string dept in departamento)
+            {
+
+                ddd.Items.Add(dept);
+            }
         }
 
         protected void generalGV_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,6 +138,40 @@ namespace _DenisseBR_
             datosIn.DataSource = TablaHis;
             datosIn.DataBind();
 
+
+            individual.Visible = true;
+
+            int codi = Convert.ToInt32(row.Cells[1].Text);
+            dataseEmp = wsr.obtenerDatosEmp(codi);
+
+            if (dataseEmp != null)
+            {
+                cod.Text = dataseEmp.Tables[0].Rows[0][0].ToString();
+                nom.Text = dataseEmp.Tables[0].Rows[0][1].ToString();
+                ape.Text = dataseEmp.Tables[0].Rows[0][2].ToString();
+                tel.Text = dataseEmp.Tables[0].Rows[0][3].ToString();
+                sueldo.Text = dataseEmp.Tables[0].Rows[0][4].ToString();
+                direc.Text = dataseEmp.Tables[0].Rows[0][5].ToString();
+                ddd.SelectedItem.Equals(dataseEmp.Tables[0].Rows[0][7].ToString());
+                usuarioEmp.Text = dataseEmp.Tables[0].Rows[0][8].ToString();
+                txtpass.Text = dataseEmp.Tables[0].Rows[0][9].ToString();
+            }
+            else
+            {
+
+            }
+            nom.ReadOnly = true;
+            ape.ReadOnly = true;
+            tel.ReadOnly = true;
+            sueldo.ReadOnly = true;
+            direc.ReadOnly = true;
+            usuarioEmp.ReadOnly = true;
+            txtpass.ReadOnly = true;
+            ddd.Enabled = false;
+            cod.ReadOnly = true;
+            pnlcontra.Visible = false;
+            pnldespedir.Visible = false;
+            ConsultarEquipo.Visible = true;
         }
 
         protected void btnmod_Click(object sender, EventArgs e)
@@ -160,9 +195,15 @@ namespace _DenisseBR_
 
         protected void btng_Click(object sender, EventArgs e)
         {
-            msj = "Datos actualizados exitosamente";
-            wsr.ActualizarDatosEmp(nom.Text,ape.Text,Convert.ToInt32(tel.Text),Convert.ToSingle(sueldo.Text),direc.Text,Convert.ToInt32(ddd.SelectedIndex+1),usuarioEmp.Text,txtpass.Text,Convert.ToInt32(cod.Text));
-            Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            
+            int idep=wsr.obtenerDeptId(ddd.SelectedItem.ToString());
+            Response.Write(ddd.SelectedItem.ToString());
+            if (wsr.ActualizarDatosEmp(nom.Text, ape.Text, Convert.ToInt32(tel.Text), Convert.ToSingle(sueldo.Text), direc.Text, idep, usuarioEmp.Text, txtpass.Text, Convert.ToInt32(cod.Text)))
+            {
+
+                msj = "Datos actualizados exitosamente";
+                Response.Write("<script language='JavaScript'>window.alert('" + msj + "');</script>");
+            }
             individual.Visible = false; 
             pnlcontra.Visible = false;
             pnldespedir.Visible = false;
@@ -173,9 +214,16 @@ namespace _DenisseBR_
             String fechafin = time.ToString(format);
             if (wsr.ActualizarHisEmpFn(fechafin, id))
             {
-                if (wsr.ActualizarHisEmp(fechafin, Convert.ToInt32(cod.Text), nom.Text, ape.Text, Convert.ToInt32(tel.Text), Convert.ToSingle(sueldo.Text), direc.Text, Convert.ToInt32(ddd.SelectedIndex + 1), usuarioEmp.Text, txtpass.Text))
+                if (wsr.ActualizarHisEmp(fechafin, Convert.ToInt32(cod.Text), nom.Text, ape.Text, Convert.ToInt32(tel.Text), Convert.ToSingle(sueldo.Text), direc.Text, "empleado", idep, usuarioEmp.Text, txtpass.Text, 1))
                 {
-                    Response.Write("");
+                   Response.Write("Hola");
+                }
+            }
+            else
+            {
+                if (wsr.ActualizarHisEmp(fechafin, Convert.ToInt32(cod.Text), nom.Text, ape.Text, Convert.ToInt32(tel.Text), Convert.ToSingle(sueldo.Text), direc.Text, "empleado", idep, usuarioEmp.Text, txtpass.Text, 1))
+                {
+                    Response.Write("adios");
                 }
             }
             datasetemp = wsr.mostrarEquipo(1, rol);
@@ -334,40 +382,6 @@ namespace _DenisseBR_
 
         protected void datosIn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            individual.Visible = true;
-
-            GridViewRow row = generalGV.SelectedRow;
-            int codi = Convert.ToInt32(row.Cells[1].Text);
-            dataseEmp = wsr.obtenerDatosEmp(codi);
-
-            if (dataseEmp != null)
-            {
-                cod.Text = dataseEmp.Tables[0].Rows[0][0].ToString();
-                nom.Text = dataseEmp.Tables[0].Rows[0][1].ToString();
-                ape.Text = dataseEmp.Tables[0].Rows[0][2].ToString();
-                tel.Text = dataseEmp.Tables[0].Rows[0][3].ToString();
-                sueldo.Text = dataseEmp.Tables[0].Rows[0][4].ToString();
-                direc.Text = dataseEmp.Tables[0].Rows[0][5].ToString();
-                ddd.SelectedItem.Equals(dataseEmp.Tables[0].Rows[0][7].ToString());
-                usuarioEmp.Text = dataseEmp.Tables[0].Rows[0][8].ToString();
-                txtpass.Text = dataseEmp.Tables[0].Rows[0][9].ToString();
-            }
-            else
-            {
-
-            }
-            nom.ReadOnly = true;
-            ape.ReadOnly = true;
-            tel.ReadOnly = true;
-            sueldo.ReadOnly = true;
-            direc.ReadOnly = true;
-            usuarioEmp.ReadOnly = true;
-            txtpass.ReadOnly = true;
-            ddd.Enabled = false;
-            cod.ReadOnly = true;
-            pnlcontra.Visible = false;
-            pnldespedir.Visible = false;
-            ConsultarEquipo.Visible = true;
         }
 
 

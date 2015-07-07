@@ -79,6 +79,13 @@ namespace _DenisseBR_.WSR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosUs", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> obtenerDatosUsAsync(long dpi);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cargarCategoria", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void cargarCategoria(string direccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/cargarCategoria", ReplyAction="*")]
+        System.Threading.Tasks.Task cargarCategoriaAsync(string direccion);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/perfilIndividual", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataSet perfilIndividual(int IdEmp);
@@ -99,6 +106,13 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarDatosPedIn", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> mostrarDatosPedInAsync(int IdPa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bodegaPedidos", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet bodegaPedidos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/bodegaPedidos", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> bodegaPedidosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/obtenerDatosPed", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -197,6 +211,13 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tablaDevolver", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> tablaDevolverAsync(long dpi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tablaFactura", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet tablaFactura(int cas);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/tablaFactura", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> tablaFacturaAsync(int cas);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/clientePendienteApr", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -305,10 +326,10 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatosEmp", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int ActualizarDatosEmp(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
+        bool ActualizarDatosEmp(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarDatosEmp", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
+        System.Threading.Tasks.Task<bool> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/mostrarPrecarga", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -379,6 +400,13 @@ namespace _DenisseBR_.WSR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoLote", ReplyAction="*")]
         System.Threading.Tasks.Task<int> ObtenerUltimoLoteAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoEmp", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ObtenerUltimoEmp();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerUltimoEmp", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ObtenerUltimoEmpAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ObtenerFechaUltimoLote", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -536,6 +564,14 @@ namespace _DenisseBR_.WSR {
             return base.Channel.obtenerDatosUsAsync(dpi);
         }
         
+        public void cargarCategoria(string direccion) {
+            base.Channel.cargarCategoria(direccion);
+        }
+        
+        public System.Threading.Tasks.Task cargarCategoriaAsync(string direccion) {
+            return base.Channel.cargarCategoriaAsync(direccion);
+        }
+        
         public System.Data.DataSet perfilIndividual(int IdEmp) {
             return base.Channel.perfilIndividual(IdEmp);
         }
@@ -558,6 +594,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> mostrarDatosPedInAsync(int IdPa) {
             return base.Channel.mostrarDatosPedInAsync(IdPa);
+        }
+        
+        public System.Data.DataSet bodegaPedidos() {
+            return base.Channel.bodegaPedidos();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> bodegaPedidosAsync() {
+            return base.Channel.bodegaPedidosAsync();
         }
         
         public System.Data.DataSet obtenerDatosPed(long dpi) {
@@ -670,6 +714,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> tablaDevolverAsync(long dpi) {
             return base.Channel.tablaDevolverAsync(dpi);
+        }
+        
+        public System.Data.DataSet tablaFactura(int cas) {
+            return base.Channel.tablaFactura(cas);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> tablaFacturaAsync(int cas) {
+            return base.Channel.tablaFacturaAsync(cas);
         }
         
         public System.Data.DataSet clientePendienteApr() {
@@ -792,11 +844,11 @@ namespace _DenisseBR_.WSR {
             return base.Channel.departamentosAsync();
         }
         
-        public int ActualizarDatosEmp(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
+        public bool ActualizarDatosEmp(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
             return base.Channel.ActualizarDatosEmp(nom, apellido, telefono, sueldo, direccion, rol, usuario, passw, cod);
         }
         
-        public System.Threading.Tasks.Task<int> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
+        public System.Threading.Tasks.Task<bool> ActualizarDatosEmpAsync(string nom, string apellido, int telefono, float sueldo, string direccion, int rol, string usuario, string passw, int cod) {
             return base.Channel.ActualizarDatosEmpAsync(nom, apellido, telefono, sueldo, direccion, rol, usuario, passw, cod);
         }
         
@@ -878,6 +930,14 @@ namespace _DenisseBR_.WSR {
         
         public System.Threading.Tasks.Task<int> ObtenerUltimoLoteAsync() {
             return base.Channel.ObtenerUltimoLoteAsync();
+        }
+        
+        public int ObtenerUltimoEmp() {
+            return base.Channel.ObtenerUltimoEmp();
+        }
+        
+        public System.Threading.Tasks.Task<int> ObtenerUltimoEmpAsync() {
+            return base.Channel.ObtenerUltimoEmpAsync();
         }
         
         public System.DateTime ObtenerFechaUltimoLote(int idlote) {

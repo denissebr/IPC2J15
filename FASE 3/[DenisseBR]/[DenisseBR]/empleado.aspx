@@ -157,8 +157,10 @@
         <br />
         <div>
             <asp:Button ID="btnprecarga" runat="server" CssClass="btn" OnClick="Button1_Click1" Text="Precio de Precarga" />
-            <asp:Button ID="Button2" runat="server" Text="Button" />
-            <asp:Button ID="Button3" runat="server" Text="Button" />
+            <asp:Button ID="perdido" runat="server" Text="Reporte Paquete Perdido" />
+            <asp:Button ID="Button3" runat="server" Text="Actualizar Estado" OnClick="Button3_Click" />
+            <br />
+            <br />
             <asp:Panel ID="pnlprecar" runat="server" Height="405px" Visible="False">
                 <br />
                 <asp:GridView ID="precargaGV" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="False" DataKeyNames="IdPaquete" DataSourceID="precarga" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
@@ -207,6 +209,50 @@
                 <br />
                                
             </asp:Panel>
+            <br />
+            <asp:Panel ID="paper" runat="server" Height="103px">
+                <br />
+                <asp:Label ID="Label12" runat="server" Text="Seleccione archivo:"></asp:Label>
+                <asp:FileUpload ID="fper" runat="server" />
+                <asp:Button ID="Button4" runat="server" Text="Cargar" />
+                &nbsp;</asp:Panel>
+
+            <asp:Panel ID="estados" runat="server">
+
+                <br />
+                <asp:GridView ID="paquetesGV" runat="server" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" HorizontalAlign="Center" OnSelectedIndexChanged="paquetesGV_SelectedIndexChanged">
+                    <AlternatingRowStyle BackColor="PaleGoldenrod" />
+                    <Columns>
+                        <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+                    </Columns>
+                    <FooterStyle BackColor="Tan" />
+                    <HeaderStyle BackColor="Tan" Font-Bold="True" />
+                    <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
+                    <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+                    <SortedAscendingCellStyle BackColor="#FAFAE7" />
+                    <SortedAscendingHeaderStyle BackColor="#DAC09E" />
+                    <SortedDescendingCellStyle BackColor="#E1DB9C" />
+                    <SortedDescendingHeaderStyle BackColor="#C2A47B" />
+                </asp:GridView>
+                <br />
+                Id del Paquete:
+                <asp:TextBox ID="TextBox1" runat="server" ReadOnly="True"></asp:TextBox>
+                <br />
+                <br />
+                Estados:
+                <asp:DropDownList ID="dde" runat="server">
+                    <asp:ListItem Value="4">En transito</asp:ListItem>
+                    <asp:ListItem Value="5">En sucursal</asp:ListItem>
+                    <asp:ListItem Value="6">entregado</asp:ListItem>
+                </asp:DropDownList>
+                <br />
+                <br />
+                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Actualizar" />
+                <br />
+                <br />
+                <br />
+
+            </asp:Panel>
         </div>       
     </asp:Panel>
                <div>
@@ -214,8 +260,7 @@
                     <br />
                     <div style="text-align:center">
                         <asp:Button ID="rp" runat="server" CssClass="btn" Text="Registrar Paquete" OnClick="rp_Click" />
-                        <asp:Button ID="ap" runat="server" CssClass="btn" Text="Crear Lote" OnClick="ap_Click" />
-                        <asp:Button ID="ep" runat="server" CssClass="btn" Text="Estados de Paquete" />
+                        <asp:Button ID="ap" runat="server" CssClass="btn" Text="Crear Lote" OnClick="ap_Click" Enabled="False" />
                     </div>
                     <br />
                     <br />
@@ -247,7 +292,7 @@
                     <br />
                     <br />
                         <div>
-                            <asp:Panel ID="lote" runat="server" Height="220px">
+                            <asp:Panel ID="lote" runat="server" Height="220px" Visible="False">
                                 <br />
                                 <asp:TextBox ID="fechatxt" runat="server" AutoCompleteType="Disabled" TextMode="Date"></asp:TextBox>
                                 <br />

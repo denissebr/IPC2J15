@@ -23,8 +23,11 @@
     </div>
     <div style="text-align:center">
         <br />
-        <asp:GridView ID="pain" runat="server" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" HorizontalAlign="Center">
+        <asp:GridView ID="pain" runat="server" BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" CellPadding="2" ForeColor="Black" GridLines="None" HorizontalAlign="Center" OnSelectedIndexChanged="pain_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="PaleGoldenrod" />
+            <EmptyDataTemplate>
+                LOS PEDIDOS ESTAN PENDIENTES
+            </EmptyDataTemplate>
             <FooterStyle BackColor="Tan" />
             <HeaderStyle BackColor="Tan" Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle" />
             <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" HorizontalAlign="Center" />
